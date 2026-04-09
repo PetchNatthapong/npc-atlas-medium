@@ -1133,7 +1133,7 @@ async function loadMedicine() {
   if (medicineLoaded) return;
   const container = document.getElementById('medicine-tree');
   try {
-    const resp = await fetch('/input_data.json');
+    const resp = await fetch('/inputs.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const tree = await resp.json();
     medicineLoaded = true;
