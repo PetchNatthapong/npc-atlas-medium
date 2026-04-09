@@ -1086,8 +1086,8 @@ function setImbrTab(tab, btn) {
 
 // ── Render Input Files (tree style) ──
 function renderInputFiles() {
-  if (!allData || !allData.input) return;
-  const files = allData.input;
+  if (!allData || !allData.inputFiles) return;
+  const files = allData.inputFiles;
   const el = document.getElementById('input-header-count');
   if (el) el.textContent = files.length + ' files';
   const icons = { pdf: '📄', txt: '📃', other: '📎' };
@@ -1133,7 +1133,6 @@ async function loadMedicine() {
   if (medicineLoaded) return;
   const container = document.getElementById('medicine-tree');
   try {
-    const resp = await fetch('/inputs.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const tree = await resp.json();
     medicineLoaded = true;
