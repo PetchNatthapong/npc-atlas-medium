@@ -889,7 +889,7 @@ if (_initBtn) showSection(_initHash, _initBtn);
 // ── Data loading ──
 async function loadData() {
   try {
-    const resp = await fetch('/data.json');
+    const resp = await fetch('/api/scan');
     allData = await resp.json();
     updateStats();
     renderOverviewFolders();
