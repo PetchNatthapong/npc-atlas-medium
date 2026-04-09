@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📁 FOR OPENCLAW - Projects Overview</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-2: #334155;
+      --border: #475569;
+      --text: #f1f5f9;
+      --text-dim: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --accent-2: #8b5cf6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --html-color: #f59e0b;
+      --pdf-color: #ef4444;
+      --md-color: #10b981;
+      --txt-color: #3b82f6;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100dvh;
+      padding-bottom: 80px;
+    }
+    a { color: var(--accent); text-decoration: none; transition: color 0.15s; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 60%, rgba(59,130,246,0.08) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(59,130,246,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .hero__title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+    .hero__subtitle { font-size: 0.88rem; color: var(--text-dim); }
+    .hero__meta {
+      margin-top: 12px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.25);
+      padding: 2px 8px;
+      border-radius: 20px;
+      color: var(--accent);
+    }
+    .hero__badge.green { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.25); color: var(--success); }
+
+    /* ── Nav ── */
+    .nav {
+      display: flex;
+      gap: 5px;
+      padding: 1rem 2rem;
+      background: rgba(30,41,59,0.95);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .nav__tab {
+      padding: 0.55rem 1.1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .nav__tab:hover { border-color: var(--accent); color: var(--accent); }
+    .nav__tab.active { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
+
+    /* ── Main ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.5rem; }
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ── Section headers ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .section-header__icon { font-size: 1.2rem; }
+    .section-header__title { font-size: 1.05rem; font-weight: 700; }
+    .section-header__count {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      background: rgba(59,130,246,0.12);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    /* ── File Filter Buttons ── */
+    .file-filter {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .file-filter__btn {
+      padding: 0.4rem 0.85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      transition: all 0.15s;
+    }
+    .file-filter__btn:hover { border-color: var(--accent); color: var(--accent); }
+    .file-filter__btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* ── Refresh Button ── */
+    .hero__refresh {
+      padding: 0.35rem 0.8rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      transition: all 0.15s;
+      margin-left: auto;
+    }
+    .hero__refresh:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Folder grid (Overview) ── */
+    .folder-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .folder-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem;
+      transition: all 0.2s;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    .folder-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(59,130,246,0.15);
+      text-decoration: none;
+      color: inherit;
+    }
+    .folder-card__row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .folder-card__icon { font-size: 1.3rem; }
+    .folder-card__name { font-weight: 600; font-size: 0.9rem; flex: 1; }
+    .folder-card__count {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      background: rgba(59,130,246,0.12);
+      color: var(--accent);
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+    .folder-card__desc { font-size: 0.75rem; color: var(--text-dim); }
+    .folder-card__files { margin-top: 8px; display: flex; gap: 5px; flex-wrap: wrap; }
+    .folder-card__ext {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+    .folder-card__ext.html { background: rgba(245,158,11,0.15); color: var(--html-color); }
+    .folder-card__ext.md { background: rgba(16,185,129,0.15); color: var(--md-color); }
+    .folder-card__ext.pdf { background: rgba(239,68,68,0.15); color: var(--pdf-color); }
+
+    /* ── Highlight card ── */
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(139,92,246,0.12));
+      border: 2px solid var(--accent);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-card__icon { font-size: 2.5rem; }
+    .highlight-card__info { flex: 1; }
+    .highlight-card__title { font-size: 1.2rem; font-weight: 700; margin-bottom: 3px; }
+    .highlight-card__desc { color: var(--text-dim); font-size: 0.83rem; margin-bottom: 6px; }
+    .highlight-card__stats { display: flex; gap: 10px; flex-wrap: wrap; }
+    .highlight-card__stat {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(0,0,0,0.2);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+    .highlight-card__btn {
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 9px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .highlight-card__btn:hover { background: var(--accent-hover); transform: translateY(-1px); text-decoration: none; color: white; }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+    .stats-bar__item {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 8px;
+      color: var(--text-dim);
+    }
+    .stats-bar__item strong { color: var(--accent); }
+
+    /* ── Controls: filters + sort ── */
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+    .controls__label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .btn-group { display: flex; gap: 4px; }
+    .btn {
+      padding: 6px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      transition: all 0.15s;
+      font-family: var(--font-body);
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+    .btn.active.html-btn { background: var(--html-color); border-color: var(--html-color); }
+    .btn.active.pdf-btn { background: var(--pdf-color); border-color: var(--pdf-color); }
+    .btn.active.md-btn { background: var(--md-color); border-color: var(--md-color); }
+    .btn.refresh { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); color: var(--accent); }
+    .btn.refresh:hover { background: rgba(59,130,246,0.2); }
+    .btn.mark-read { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.3); color: var(--accent-2); }
+    .btn.mark-read:hover { background: rgba(139,92,246,0.2); }
+    .controls__spacer { flex: 1; }
+
+    /* ── File sections by folder ── */
+    .file-section {
+      margin-bottom: 1.5rem;
+    }
+    .file-section__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .file-section__icon { font-size: 1.1rem; }
+    .file-section__name { font-weight: 600; font-size: 0.9rem; }
+    .file-section__count {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      background: rgba(59,130,246,0.1);
+      color: var(--accent);
+      padding: 1px 6px;
+      border-radius: 8px;
+    }
+
+    /* ── File grid ── */
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 8px;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.83rem;
+      transition: all 0.15s;
+      position: relative;
+    }
+    .file-item:hover { border-color: var(--accent); background: rgba(59,130,246,0.06); }
+    .file-item.unread::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 6px;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .file-item__icon { font-size: 1rem; flex-shrink: 0; margin-left: 8px; }
+    .file-item__info { flex: 1; min-width: 0; }
+    .file-item__name {
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 8px;
+      cursor: pointer;
+    }
+    .file-item__name:hover { color: var(--accent); }
+    .file-item__meta {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .file-item__badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+    .file-item__badge.html { background: rgba(245,158,11,0.15); color: var(--html-color); }
+    .file-item__badge.pdf { background: rgba(239,68,68,0.15); color: var(--pdf-color); }
+    .file-item__badge.md { background: rgba(16,185,129,0.15); color: var(--md-color); }
+    .file-item__badge.txt { background: rgba(59,130,246,0.15); color: var(--txt-color); }
+
+    /* ── Flat file list (all files) ── */
+    .flat-list { display: flex; flex-direction: column; gap: 6px; }
+    .flat-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.83rem;
+      transition: all 0.15s;
+    }
+    .flat-item:hover { border-color: var(--accent); background: rgba(59,130,246,0.06); }
+    .flat-item.unread::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 8px;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .flat-item__folder {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      background: rgba(59,130,246,0.1);
+      color: var(--accent);
+      padding: 2px 7px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .flat-item__icon { font-size: 1rem; flex-shrink: 0; }
+    .flat-item__name {
+      flex: 1;
+      font-weight: 500;
+      word-break: break-word;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      cursor: pointer;
+      font-size: 0.82rem;
+    }
+    .flat-item__name:hover { color: var(--accent); }
+    .flat-item__date {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .flat-item__size {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      min-width: 50px;
+      text-align: right;
+    }
+    .flat-item__badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+    .flat-item__badge.html { background: rgba(245,158,11,0.15); color: var(--html-color); }
+    .flat-item__badge.pdf { background: rgba(239,68,68,0.15); color: var(--pdf-color); }
+    .flat-item__badge.md { background: rgba(16,185,129,0.15); color: var(--md-color); }
+
+    /* ── Load More ── */
+    .load-more {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .load-more__btn {
+      padding: 10px 28px;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: all 0.15s;
+    }
+    .load-more__btn:hover { background: rgba(59,130,246,0.15); }
+    .load-more__info {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    /* ── Tree view ── */
+    .tree-root { margin-top: 0; }
+    .tree-folder {
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .tree-folder-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--surface);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .tree-folder-header:hover { background: var(--surface-2); }
+    .tree-folder-icon { font-size: 1rem; }
+    .tree-folder-name { font-weight: 600; font-size: 0.88rem; flex: 1; }
+    .tree-folder-count {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      background: rgba(59,130,246,0.12);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .tree-folder-toggle { font-size: 0.75rem; color: var(--text-muted); transition: transform 0.2s; }
+    .tree-folder-toggle.open { transform: rotate(90deg); }
+    .tree-children {
+      display: none;
+      padding: 4px 0 6px 0;
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.15);
+    }
+    .tree-children.open { display: block; }
+    .tree-file {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      transition: background 0.1s;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .tree-file:hover { background: rgba(59,130,246,0.08); text-decoration: none; color: var(--accent); }
+    .tree-file__icon { font-size: 0.9rem; flex-shrink: 0; }
+    .tree-file__name { flex: 1; word-break: break-word; }
+    .tree-file__meta {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .tree-file__badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .tree-file__badge.html { background: rgba(245,158,11,0.15); color: var(--html-color); }
+    .tree-file__badge.pdf { background: rgba(239,68,68,0.15); color: var(--pdf-color); }
+    .tree-file__badge.md { background: rgba(16,185,129,0.15); color: var(--md-color); }
+    .tree-file__badge.txt { background: rgba(59,130,246,0.15); color: var(--txt-color); }
+    .tree-file__badge.sh, .tree-file__badge.json { background: rgba(139,92,246,0.15); color: var(--accent-2); }
+    .tree-subfolder-header {
+      padding: 4px 16px 2px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Outputs / Knowledge / ClawHub ── */
+    .simple-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .simple-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      transition: all 0.15s;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .simple-card:hover { border-color: var(--accent); text-decoration: none; color: var(--accent); }
+    .simple-card__icon { font-size: 1.2rem; }
+    .simple-card__name { font-weight: 500; }
+    .simple-card__desc { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; }
+
+    
+    .tree-file.unread { position: relative; padding-left: 18px; }
+    .tree-file.unread::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 8px;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+  /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .folder-grid, .simple-grid { grid-template-columns: 1fr 1fr; }
+      .file-grid { grid-template-columns: 1fr; }
+      .highlight-card { flex-direction: column; text-align: center; }
+      .controls { gap: 8px; }
+      .nav { padding: 0.8rem 1rem; }
+    }
+    @media (max-width: 480px) {
+      .folder-grid, .simple-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero__label">Petch NPC · FOR OPENCLAW Workspace</div>
+  <h1 class="hero__title">📁 Projects Overview</h1>
+  <p class="hero__subtitle">Medical research, review articles, and project files</p>
+  <div class="hero__meta">
+    <span class="hero__badge green">🟢 Server Active</span>
+    <span class="hero__badge">📱 iPhone Friendly</span>
+    <button class="hero__refresh" onclick="loadData()" title="Refresh data">🔄 Refresh</button>
+  </div>
+</header>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <button class="nav__tab active" onclick="showSection('project', this)">🗂️ Project</button>
+  <button class="nav__tab" onclick="showSection('overview', this)">📊 Overview</button>
+  <button class="nav__tab" onclick="showSection('imbr', this)">🏥 IMBR</button>
+  <button class="nav__tab" onclick="showSection('medicine', this)">💊 Medicine</button>
+  <button class="nav__tab" onclick="showSection('outputs', this)">📤 Outputs</button>
+  <button class="nav__tab" onclick="showSection('knowledge', this)">📚 Knowledge</button>
+  <button class="nav__tab" onclick="showSection('clawhub', this)">🛠️ ClawHub</button>
+</nav>
+
+<!-- ── MAIN ── -->
+<main class="container">
+
+  <!-- ══ PROJECT OVERVIEW ══ -->
+  <section id="project" class="section active">
+    <div class="section-header">
+      <span class="section-header__icon">🗂️</span>
+      <span class="section-header__title">FOR OPENCLAW — Full Directory</span>
+      <span class="section-header__count" id="project-count">—</span>
+    </div>
+    <div class="file-filter" id="project-filter">
+      <button class="file-filter__btn active" data-type="all" onclick="setProjectFilter('all')">All</button>
+      <button class="file-filter__btn" data-type="html" onclick="setProjectFilter('html')">🌐 HTML</button>
+      <button class="file-filter__btn" data-type="pdf" onclick="setProjectFilter('pdf')">📄 PDF</button>
+      <button class="file-filter__btn" data-type="md" onclick="setProjectFilter('md')">📝 MD</button>
+      <button class="file-filter__btn" data-type="txt" onclick="setProjectFilter('txt')">📃 TXT</button>
+      <button class="file-filter__btn" data-type="py" onclick="setProjectFilter('py')">🐍 PY</button>
+      <button class="file-filter__btn" data-type="js" onclick="setProjectFilter('js')">📜 JS</button>
+      <button class="file-filter__btn" data-type="json" onclick="setProjectFilter('json')">{} JSON</button>
+      <button class="file-filter__btn" data-type="other" onclick="setProjectFilter('other')">📎 Other</button>
+    </div>
+    <div id="project-tree">
+      <div style="text-align:center;padding:2rem;color:var(--text-muted)">⏳ Loading tree...</div>
+    </div>
+  </section>
+
+  <!-- ══ OVERVIEW ══ -->
+  <section id="overview" class="section">
+    <div class="highlight-card">
+      <span class="highlight-card__icon">📚</span>
+      <div class="highlight-card__info">
+        <div class="highlight-card__title">IMBR Review — All Medical Reviews</div>
+        <div class="highlight-card__desc">Browse all review articles with filters · HTML / PDF / MD</div>
+        <div class="highlight-card__stats">
+          <span class="highlight-card__stat" id="stat-folders">📁 — Folders</span>
+          <span class="highlight-card__stat" id="stat-total">📄 — Files</span>
+          <span class="highlight-card__stat" id="stat-html">🌐 HTML</span>
+          <span class="highlight-card__stat" id="stat-pdf">📄 PDF</span>
+          <span class="highlight-card__stat" id="stat-md">📝 MD</span>
+        </div>
+      </div>
+      <a href="#" class="highlight-card__btn" onclick="showSection('imbr', document.querySelector(\".nav__tab[onclick*='imbr']\")); return false;">📂 Open IMBR</a>
+    </div>
+
+    <div class="section-header">
+      <span class="section-header__icon">🗂️</span>
+      <span class="section-header__title">Quick Access — Main Folders</span>
+    </div>
+    <div class="folder-grid" id="overview-folders">
+      <div style="text-align:center;padding:2rem;color:var(--text-muted)">⏳ Loading...</div>
+    </div>
+  </section>
+
+  <!-- ══ IMBR ══ -->
+  <section id="imbr" class="section">
+    <!-- Sub-tabs -->
+    <div style="display:flex;gap:6px;margin-bottom:1.2rem;border-bottom:1px solid var(--border);padding-bottom:0.8rem;">
+      <button class="btn active" id="imbr-sub-review" onclick="setImbrTab('review',this)">📚 Review</button>
+      <button class="btn" id="imbr-sub-input" onclick="setImbrTab('input',this)">📥 Input</button>
+    </div>
+
+    <!-- Review panel -->
+    <div id="imbr-panel-review">
+      <div class="section-header">
+        <span class="section-header__icon">🏥</span>
+        <span class="section-header__title">IMBR Review</span>
+        <span class="section-header__count" id="imbr-header-count">—</span>
+      </div>
+      <div class="stats-bar">
+        <span class="stats-bar__item">📁 <strong id="imbr-folders-count">—</strong> Folders</span>
+        <span class="stats-bar__item">📄 <strong id="imbr-total-count">—</strong> Total Files</span>
+        <span class="stats-bar__item">👁️ <strong id="imbr-showing-count">—</strong> Showing</span>
+      </div>
+      <div class="controls">
+        <span class="controls__label">กรอง:</span>
+        <div class="btn-group">
+          <button class="btn active" id="filter-all" onclick="setFilter('all', this)">ทั้งหมด</button>
+          <button class="btn html-btn" id="filter-html" onclick="setFilter('html', this)">🌐 HTML</button>
+          <button class="btn pdf-btn" id="filter-pdf" onclick="setFilter('pdf', this)">📄 PDF</button>
+          <button class="btn md-btn" id="filter-md" onclick="setFilter('md', this)">📝 MD</button>
+        </div>
+        <div class="controls__spacer"></div>
+        <span class="controls__label">เรียง:</span>
+        <div class="btn-group">
+          <button class="btn active" id="sort-az" onclick="setSort('az', this)">A-Z</button>
+          <button class="btn" id="sort-date" onclick="setSort('date', this)">📅 ล่าสุด</button>
+        </div>
+        <div class="controls__spacer"></div>
+        <button class="btn refresh" onclick="refreshData()">🔄 Refresh</button>
+        <button class="btn mark-read" onclick="markAllRead()">✓ Mark Read</button>
+      </div>
+      <div id="file-sections">
+        <div style="text-align:center;padding:2rem;color:var(--text-muted)">⏳ Loading files...</div>
+      </div>
+      <div class="load-more" id="load-more" style="display:none">
+        <button class="load-more__btn" onclick="loadMore()">Load More</button>
+        <div class="load-more__info" id="load-more-info"></div>
+      </div>
+    </div>
+
+    <!-- Input panel -->
+    <div id="imbr-panel-input" style="display:none">
+      <div class="section-header">
+        <span class="section-header__icon">📥</span>
+        <span class="section-header__title">IMBR Input Files</span>
+        <span class="section-header__count" id="input-header-count">—</span>
+      </div>
+      <div id="input-file-list">
+        <div style="text-align:center;padding:2rem;color:var(--text-muted)">⏳ Loading...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MEDICINE ══ -->
+
+  <section id="medicine" class="section">
+    <div class="section-header">
+      <span class="section-header__icon">💊</span>
+      <span class="section-header__title">MEDICINE</span>
+      <span class="section-header__count" id="medicine-count">—</span>
+    </div>
+    <div id="medicine-tree">
+      <div style="text-align:center;padding:2rem;color:var(--text-muted)">⏳ Loading MEDICINE files...</div>
+    </div>
+  </section>
+
+  <!-- ══ OUTPUTS ══ -->
+  <section id="outputs" class="section">
+    <div class="section-header">
+      <span class="section-header__icon">📤</span>
+      <span class="section-header__title">Outputs</span>
+    </div>
+    <div class="simple-grid">
+      <a href="/outputs/imbr-review-all/" class="simple-card"><span class="simple-card__icon">📚</span><div><div class="simple-card__name">imbr-review-all</div><div class="simple-card__desc">Live file browser</div></div></a>
+      <a href="/outputs/imbr-input-all/" class="simple-card"><span class="simple-card__icon">📥</span><div><div class="simple-card__name">imbr-input-all</div><div class="simple-card__desc">Input PDFs & sources</div></div></a>
+      <a href="/outputs/journal/" class="simple-card"><span class="simple-card__icon">📰</span><div><div class="simple-card__name">journal</div><div class="simple-card__desc">Journal updates</div></div></a>
+      <a href="/outputs/investx/" class="simple-card"><span class="simple-card__icon">📈</span><div><div class="simple-card__name">investx</div><div class="simple-card__desc">Investment research</div></div></a>
+      <a href="/outputs/visual-explainer/" class="simple-card"><span class="simple-card__icon">📊</span><div><div class="simple-card__name">visual-explainer</div><div class="simple-card__desc">Visual explanations</div></div></a>
+      <a href="/outputs/images/" class="simple-card"><span class="simple-card__icon">🖼️</span><div><div class="simple-card__name">images</div><div class="simple-card__desc">Generated images</div></div></a>
+      <a href="/outputs/presentation-pro/" class="simple-card"><span class="simple-card__icon">🎨</span><div><div class="simple-card__name">presentation-pro</div><div class="simple-card__desc">Presentations</div></div></a>
+      <a href="/outputs/file-organizer/" class="simple-card"><span class="simple-card__icon">📋</span><div><div class="simple-card__name">file-organizer</div><div class="simple-card__desc">File organization</div></div></a>
+    </div>
+  </section>
+
+  <!-- ══ KNOWLEDGE ══ -->
+  <section id="knowledge" class="section">
+    <div class="section-header">
+      <span class="section-header__icon">📚</span>
+      <span class="section-header__title">Knowledge Base</span>
+    </div>
+    <div class="simple-grid">
+      <a href="/FOR OPENCLAW/Knowledge/" class="simple-card"><span class="simple-card__icon">📚</span><div><div class="simple-card__name">Knowledge</div><div class="simple-card__desc">Templates & workflows</div></div></a>
+      <a href="/FOR OPENCLAW/Knowledge/medical-patterns.md" class="simple-card"><span class="simple-card__icon">🩺</span><div><div class="simple-card__name">medical-patterns.md</div><div class="simple-card__desc">Clinical reasoning</div></div></a>
+      <a href="/FOR OPENCLAW/Knowledge/skills-reference.md" class="simple-card"><span class="simple-card__icon">⚡</span><div><div class="simple-card__name">skills-reference.md</div><div class="simple-card__desc">Skills guide</div></div></a>
+      <a href="/FOR OPENCLAW/Knowledge/effective-prompts.md" class="simple-card"><span class="simple-card__icon">💡</span><div><div class="simple-card__name">effective-prompts.md</div><div class="simple-card__desc">Prompt templates</div></div></a>
+      <a href="/FOR OPENCLAW/Knowledge/workflows.md" class="simple-card"><span class="simple-card__icon">🔄</span><div><div class="simple-card__name">workflows.md</div><div class="simple-card__desc">SOPs</div></div></a>
+    </div>
+  </section>
+
+  <!-- ══ CLAWHUB ══ -->
+  <section id="clawhub" class="section">
+    <div class="section-header">
+      <span class="section-header__icon">🛠️</span>
+      <span class="section-header__title">Installed Skills</span>
+    </div>
+    <div class="simple-grid">
+      <a href="/FOR OPENCLAW/ClawHub/review-article/SKILL.md" class="simple-card"><span class="simple-card__icon">📰</span><div><div class="simple-card__name">review-article</div></div></a>
+      <a href="/FOR OPENCLAW/ClawHub/presentation-pro/SKILL.md" class="simple-card"><span class="simple-card__icon">🎨</span><div><div class="simple-card__name">presentation-pro</div></div></a>
+      <a href="/FOR OPENCLAW/ClawHub/visual-explainer/SKILL.md" class="simple-card"><span class="simple-card__icon">📊</span><div><div class="simple-card__name">visual-explainer</div></div></a>
+      <a href="/FOR OPENCLAW/ClawHub/pdf-reader/SKILL.md" class="simple-card"><span class="simple-card__icon">📄</span><div><div class="simple-card__name">pdf-reader</div></div></a>
+      <a href="/FOR OPENCLAW/ClawHub/nano-banana-pro/SKILL.md" class="simple-card"><span class="simple-card__icon">🖼️</span><div><div class="simple-card__name">nano-banana-pro</div></div></a>
+      <a href="/FOR OPENCLAW/ClawHub/academic-deep-research/SKILL.md" class="simple-card"><span class="simple-card__icon">🔬</span><div><div class="simple-card__name">academic-deep-research</div></div></a>
+      <a href="/FOR OPENCLAW/ClawHub/self-improving-1/SKILL.md" class="simple-card"><span class="simple-card__icon">🤖</span><div><div class="simple-card__name">self-improving-1</div></div></a>
+      <a href="/FOR OPENCLAW/ClawHub/tavily-search/SKILL.md" class="simple-card"><span class="simple-card__icon">🔍</span><div><div class="simple-card__name">tavily-search</div></div></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  FOR OPENCLAW · Petch NPC · OpenClaw Workspace
+</footer>
+
+<script>
+// ── State ──
+let allData = null;
+let currentFilter = 'all';
+let currentSort = 'az';
+let displayLimit = 999999; // show all by default
+let readItems = new Set(JSON.parse(localStorage.getItem('readItems') || '[]'));
+
+// ── Tab navigation ──
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav__tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  history.replaceState(null, '', '#' + id);
+  if (id === 'imbr' && allData) { renderFiles(); renderInputFiles(); }
+  if (id === 'project' && allData) renderProjectTree();
+  if (id === 'medicine') loadMedicine();
+}
+const _initHash = window.location.hash.slice(1) || 'project';
+const _initBtn = document.querySelector(`.nav__tab[onclick*="'${_initHash}'"]`);
+if (_initBtn) showSection(_initHash, _initBtn);
+
+// ── Data loading ──
+async function loadData() {
+  try {
+    const resp = await fetch('/api/scan');
+    allData = await resp.json();
+    updateStats();
+    renderOverviewFolders();
+    if (document.getElementById('imbr').classList.contains('active')) { renderFiles(); renderInputFiles(); }
+    if (document.getElementById('project').classList.contains('active')) renderProjectTree();
+  } catch(e) {
+    console.error('Failed to load:', e);
+  }
+}
+
+function updateStats() {
+  if (!allData) return;
+  const folders = Object.keys(allData.folders || {});
+  const totalFiles = allData.total || 0;
+  const typeStats = allData.typeStats || {};
+  document.getElementById('stat-folders').textContent = `📁 ${folders.length} Folders`;
+  document.getElementById('stat-total').textContent = `📄 ${totalFiles} Files`;
+  document.getElementById('stat-html').textContent = `🌐 ${typeStats.html || 0} HTML`;
+  document.getElementById('stat-pdf').textContent = `📄 ${typeStats.pdf || 0} PDF`;
+  document.getElementById('stat-md').textContent = `📝 ${typeStats.md || 0} MD`;
+  document.getElementById('imbr-folders-count').textContent = folders.length;
+  document.getElementById('imbr-total-count').textContent = totalFiles;
+  document.getElementById('imbr-header-count').textContent = `${folders.length} folders · ${totalFiles} files`;
+}
+
+// ── Overview folders ──
+function renderOverviewFolders() {
+  if (!allData) return;
+  const icons = {
+    'Infectious-Disease': '🦠', 'Neurology': '🧠', 'Cardiology': '❤️',
+    'Pulmonology': '🫁', 'Hematology': '🩸', 'Nephrology': '🫘',
+    'Gastroenterology': '🍽️', 'Rheumatology': '🦴', 'Endocrinology': '💊',
+    'Allergy-Immunology': '🔬', 'Genetics': '🧬', 'Toxicology': '⚠️',
+    'Nutrition': '🍎', 'Oncology': '🎗️', 'Critical-Care': '💉'
+  };
+  const container = document.getElementById('overview-folders');
+  container.innerHTML = '';
+  for (const [folder, files] of Object.entries(allData.folders)) {
+    if (files.length === 0) continue;
+    const htmlC = files.filter(f => f.type === 'html').length;
+    const pdfC = files.filter(f => f.type === 'pdf').length;
+    const mdC = files.filter(f => f.type === 'md').length;
+    const icon = icons[folder] || '📁';
+    let exts = '';
+    if (htmlC) exts += `<span class="folder-card__ext html">${htmlC} HTML</span>`;
+    if (pdfC) exts += `<span class="folder-card__ext pdf">${pdfC} PDF</span>`;
+    if (mdC) exts += `<span class="folder-card__ext md">${mdC} MD</span>`;
+    container.innerHTML += `
+      <a href="/IMBR/Review/${encodeURIComponent(folder)}/" class="folder-card">
+        <div class="folder-card__row">
+          <span class="folder-card__icon">${icon}</span>
+          <span class="folder-card__name">${folder}</span>
+          <span class="folder-card__count">${files.length}</span>
+        </div>
+        <div class="folder-card__files">${exts}</div>
+      </a>
+    `;
+  }
+}
+
+// ── Filter & Sort ──
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('#imbr .btn-group:first-child .btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  displayLimit = 30;
+  renderFiles();
+}
+
+function setSort(sort, btn) {
+  currentSort = sort;
+  document.querySelectorAll('#imbr .btn-group:last-child .btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFiles();
+}
+
+function markAllRead() {
+  if (!allData) return;
+  const allFiles = Object.values(allData.folders).flat();
+  allFiles.forEach(f => readItems.add(f.path));
+  localStorage.setItem('readItems', JSON.stringify([...readItems]));
+  renderFiles();
+}
+
+function refreshData() {
+  displayLimit = 30;
+  loadData();
+}
+
+// ── Get filtered + sorted files ──
+function getFilteredFiles() {
+  if (!allData) return [];
+  let files = [];
+  if (currentFilter === 'all') {
+    files = Object.entries(allData.folders).flatMap(([folder, filesArr]) =>
+      filesArr.map(f => ({ ...f, folder }))
+    );
+  } else {
+    files = Object.entries(allData.folders).flatMap(([folder, filesArr]) =>
+      filesArr.filter(f => f.type === currentFilter).map(f => ({ ...f, folder }))
+    );
+  }
+  if (currentSort === 'az') {
+    files.sort((a, b) => a.name.localeCompare(b.name));
+  } else {
+    files.sort((a, b) => b.mtime - a.mtime);
+  }
+  return files;
+}
+
+// ── Render files (collapsible tree) ──
+function renderFiles() {
+  if (!allData) return;
+  const files = getFilteredFiles();
+  document.getElementById('imbr-showing-count').textContent = files.length;
+
+  if (files.length === 0) {
+    document.getElementById('file-sections').innerHTML = `
+      <div style="text-align:center;padding:3rem;color:var(--text-muted)">
+        ไม่มีไฟล์ประเภทนี้
+      </div>`;
+    document.getElementById('load-more').style.display = 'none';
+    return;
+  }
+
+  // Group by folder
+  const byFolder = {};
+  files.forEach(f => {
+    if (!byFolder[f.folder]) byFolder[f.folder] = [];
+    byFolder[f.folder].push(f);
+  });
+
+  const icons = {
+    'Infectious-Disease': '🦠', 'Neurology': '🧠', 'Cardiology': '❤️',
+    'Pulmonology': '🫁', 'Hematology': '🩸', 'Nephrology': '🫘',
+    'Gastroenterology': '🍽️', 'Rheumatology': '🦴', 'Endocrinology': '💊',
+    'Allergy-Immunology': '🔬', 'Genetics': '🧬', 'Toxicology': '⚠️',
+    'Nutrition': '🍎', 'Oncology': '🎗️', 'Critical-Care': '💉'
+  };
+
+  let html = '';
+  for (const [folder, folderFiles] of Object.entries(byFolder)) {
+    const icon = icons[folder] || '📁';
+    const uid = 'rf_' + Math.random().toString(36).slice(2);
+    const unreadCount = folderFiles.filter(f => !readItems.has(f.path)).length;
+
+    html += `
+      <div class="tree-folder">
+        <div class="tree-folder-header" onclick="toggleFolder('${uid}')">
+          <span class="tree-folder-toggle" id="arrow_${uid}">▶</span>
+          <span class="tree-folder-icon">${icon}</span>
+          <span class="tree-folder-name">${folder}</span>
+          <span class="tree-folder-count">${folderFiles.length} files${unreadCount > 0 ? ' · ' + unreadCount + ' new' : ''}</span>
+        </div>
+        <div class="tree-children" id="${uid}">
+    `;
+    folderFiles.forEach(f => {
+      const fileIcon = f.type === 'html' ? '🌐' : f.type === 'md' ? '📝' : f.type === 'pdf' ? '📄' : '📎';
+      const unread = !readItems.has(f.path) ? 'unread' : '';
+      html += `
+        <a href="/${f.path}" target="_blank" class="tree-file ${unread}">
+          <span class="tree-file__icon">${fileIcon}</span>
+          <span class="tree-file__name">${f.name}</span>
+          <span class="tree-file__meta">${f.date} · ${f.size || ''}</span>
+          <span class="tree-file__badge ${f.type}">${f.type}</span>
+        </a>`;
+      readItems.add(f.path);
+    });
+    html += `</div></div>`;
+  }
+
+  document.getElementById('file-sections').innerHTML = html;
+  localStorage.setItem('readItems', JSON.stringify([...readItems]));
+  document.getElementById('load-more').style.display = 'none';
+}
+
+function loadMore() {
+  displayLimit += 30;
+  renderFiles();
+}
+
+
+// ── IMBR Sub-tabs ──
+function setImbrTab(tab, btn) {
+  document.querySelectorAll('#imbr .btn[id^="imbr-sub-"]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('imbr-panel-review').style.display = tab === 'review' ? '' : 'none';
+  document.getElementById('imbr-panel-input').style.display = tab === 'input' ? '' : 'none';
+  if (tab === 'input' && allData) renderInputFiles();
+}
+
+// ── Render Input Files (tree style) ──
+function renderInputFiles() {
+  if (!allData || !allData.input) return;
+  const files = allData.input;
+  const el = document.getElementById('input-header-count');
+  if (el) el.textContent = files.length + ' files';
+  const icons = { pdf: '📄', txt: '📃', other: '📎' };
+  // Group by type for clean structure
+  const byExt = { pdf: [], txt: [], other: [] };
+  files.forEach(f => {
+    const bucket = byExt[f.type] || byExt.other;
+    bucket.push(f);
+  });
+  let html = '';
+  const extLabels = { pdf: 'PDF Files', txt: 'Text Files', other: 'Other Files' };
+  const extIcons = { pdf: '📄', txt: '📃', other: '📎' };
+  for (const [ext, extFiles] of Object.entries(byExt)) {
+    if (extFiles.length === 0) continue;
+    const uid = 'inp_' + Math.random().toString(36).slice(2);
+    html += `
+      <div class="tree-folder">
+        <div class="tree-folder-header" onclick="toggleFolder('${uid}')">
+          <span class="tree-folder-toggle" id="arrow_${uid}">▶</span>
+          <span class="tree-folder-icon">${extIcons[ext]}</span>
+          <span class="tree-folder-name">${extLabels[ext]}</span>
+          <span class="tree-folder-count">${extFiles.length} files</span>
+        </div>
+        <div class="tree-children" id="${uid}">`;
+    extFiles.forEach(f => {
+      html += `
+          <a href="/${f.path}" target="_blank" class="tree-file">
+            <span class="tree-file__icon">${icons[f.type] || '📎'}</span>
+            <span class="tree-file__name">${f.name}</span>
+            <span class="tree-file__meta">${f.date} · ${f.size || ''}</span>
+            <span class="tree-file__badge ${f.type}">${f.type}</span>
+          </a>`;
+    });
+    html += `</div></div>`;
+  }
+  if (!html) html = '<div style="color:var(--text-muted);padding:1rem">No input files found</div>';
+  document.getElementById('input-file-list').innerHTML = html;
+}
+
+// ── Medicine loader ──
+let medicineLoaded = false;
+async function loadMedicine() {
+  if (medicineLoaded) return;
+  const container = document.getElementById('medicine-tree');
+  try {
+    const resp = await fetch('/api/medicine');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const tree = await resp.json();
+    medicineLoaded = true;
+    const fCount = Object.values(tree).filter(v => v.type === 'dir').length;
+    const cntEl = document.getElementById('medicine-count');
+    if (cntEl) cntEl.textContent = fCount + ' folders';
+    container.innerHTML = '<div class="tree-root">' + buildMedTree(tree, '') + '</div>';
+  } catch(e) {
+    container.innerHTML = '<div style="color:var(--danger);padding:1rem">❌ Cannot load MEDICINE: ' + e.message + '</div>';
+  }
+}
+
+const MED_ICONS = { 'CARDIOLOGY':'❤️','NEUROLOGY':'🧠','CRITICAL CARE':'💉','NEPHROLOGY':'🫘','EPILEPSY_IMAGES':'💡' };
+
+function buildMedTree(node, basePath) {
+  let html = '';
+  for (const [name, item] of Object.entries(node)) {
+    if (item.type === 'dir') {
+      const icon = MED_ICONS[name] || '📁';
+      const childCount = Object.keys(item.children || {}).length;
+      const uid = 'med_' + Math.random().toString(36).slice(2);
+      html += `
+        <div class="tree-folder">
+          <div class="tree-folder-header" onclick="toggleFolder('${uid}')">
+            <span class="tree-folder-toggle" id="arrow_${uid}">▶</span>
+            <span class="tree-folder-icon">${icon}</span>
+            <span class="tree-folder-name">${name}</span>
+            <span class="tree-folder-count">${childCount} items</span>
+          </div>
+          <div class="tree-children" id="${uid}">${buildMedTree(item.children || {}, (basePath ? basePath + '/' : '') + name)}</div>
+        </div>`;
+    } else {
+      const ftype = item.ftype || 'other';
+      const ficon = FILE_ICONS[ftype] || '📎';
+      const href = '/MEDICINE/' + (basePath ? basePath + '/' : '') + name;
+      html += `
+        <a href="${href}" target="_blank" class="tree-file">
+          <span class="tree-file__icon">${ficon}</span>
+          <span class="tree-file__name">${name}</span>
+          <span class="tree-file__meta">${item.size || ''}</span>
+          <span class="tree-file__badge ${ftype}">${ftype}</span>
+        </a>`;
+    }
+  }
+  return html;
+}
+
+// ── Project Tree ──
+let projectFilter = 'all';
+
+function setProjectFilter(type) {
+  projectFilter = type;
+  // Update active button
+  document.querySelectorAll('#project-filter .file-filter__btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.type === type);
+  });
+  renderProjectTree();
+}
+
+const FOLDER_ICONS = {
+  'IMBR': '🏥', 'Review': '📚', 'Input': '📥', 'Quiz': '❓',
+  'Knowledge': '💡', 'Setup': '⚙️', 'ClawHub': '🛠️', 'outputs': '📤',
+  'scripts': '📜', 'trash': '🗑️', 'workspace-backup': '💾',
+  'Cardiology': '❤️', 'Critical-Care': '💉', 'Gastroenterology': '🍽️',
+  'Infectious-Disease': '🦠', 'Neurology': '🧠', 'Hematology': '🩸',
+  'Nephrology': '🫘', 'Pulmonology': '🫁', 'Rheumatology': '🦴',
+  'Endocrinology': '💊', 'Allergy-Immunology': '🔬', 'Genetics': '🧬',
+  'Toxicology': '⚠️', 'Nutrition': '🍎', 'Oncology': '🎗️', 'Nutrition': '🍎',
+  'InvestX': '📈', 'investx': '📈', 'journal': '📰', 'images': '🖼️',
+  'FOR CLAUDE': '🤖', 'qdrant_storage': '🗄️'
+};
+const FILE_ICONS = { html: '🌐', pdf: '📄', md: '📝', txt: '📃', sh: '⚙️', json: '{}', other: '📎' };
+
+function renderProjectTree() {
+  if (!allData || !allData.fullTree) return;
+  const container = document.getElementById('project-tree');
+  let totalFolders = 0, totalFiles = 0;
+
+  function countItems(node) {
+    for (const [k, v] of Object.entries(node)) {
+      if (v.type === 'dir') { totalFolders++; countItems(v.children || {}); }
+      else { totalFiles++; }
+    }
+  }
+  countItems(allData.fullTree);
+  document.getElementById('project-count').textContent = `${totalFolders} folders · ${totalFiles} files`;
+
+  function buildTree(node, depth = 0) {
+    let html = '';
+    for (const [name, item] of Object.entries(node)) {
+      if (item.type === 'dir') {
+        const icon = FOLDER_ICONS[name] || '📁';
+        const children = item.children || {};
+        const childCount = Object.keys(children).length;
+        const uid = 'tf_' + Math.random().toString(36).slice(2);
+        html += `
+          <div class="tree-folder">
+            <div class="tree-folder-header" onclick="toggleFolder('${uid}')">
+              <span class="tree-folder-toggle" id="arrow_${uid}">▶</span>
+              <span class="tree-folder-icon">${icon}</span>
+              <span class="tree-folder-name">${name}</span>
+              <span class="tree-folder-count">${childCount} items</span>
+            </div>
+            <div class="tree-children" id="${uid}">
+              ${buildTree(children, depth + 1)}
+            </div>
+          </div>
+        `;
+      } else {
+        const ftype = item.ftype || 'other';
+        // Filter by file type
+        if (projectFilter !== 'all' && ftype !== projectFilter) continue;
+        const icon = FILE_ICONS[ftype] || '📎';
+        const href = item.path ? '/' + item.path : '#';
+        html += `
+          <a href="${href}" target="_blank" class="tree-file">
+            <span class="tree-file__icon">${icon}</span>
+            <span class="tree-file__name">${name}</span>
+            <span class="tree-file__meta">${item.size || ''} · ${item.date || ''}</span>
+            <span class="tree-file__badge ${ftype}">${ftype}</span>
+          </a>
+        `;
+      }
+    }
+    return html;
+  }
+
+  container.innerHTML = `<div class="tree-root">${buildTree(allData.fullTree)}</div>`;
+
+  // Auto-expand IMBR
+  const headers = container.querySelectorAll('.tree-folder-header');
+  headers.forEach(h => {
+    if (h.querySelector('.tree-folder-name')?.textContent === 'IMBR') {
+      const uid = h.getAttribute('onclick').match(/'([^']+)'/)?.[1];
+      if (uid) { document.getElementById(uid).classList.add('open'); document.getElementById('arrow_' + uid).classList.add('open'); }
+    }
+  });
+}
+
+function toggleFolder(uid) {
+  const el = document.getElementById(uid);
+  const arrow = document.getElementById('arrow_' + uid);
+  el.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+// ── Init ──
+loadData();
+setInterval(loadData, 60000);
+</script>
+</body>
+</html>
