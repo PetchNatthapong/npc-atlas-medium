@@ -3937,14 +3937,14 @@
             "type": "file",
             "ftype": "pdf",
             "path": "IMBR/Input/Cancer screening and Palliative care 2026.pdf",
-            "date": "5d ago",
+            "date": "6d ago",
             "size": "10.4 MB"
           },
           "Handout Genetic Dis Adult.pdf": {
             "type": "file",
             "ftype": "pdf",
             "path": "IMBR/Input/Handout Genetic Dis Adult.pdf",
-            "date": "5d ago",
+            "date": "6d ago",
             "size": "3.8 MB"
           },
           "KKU long case board\u0e1b\u0e25\u0e32\u0e22\u0e1b\u0e35 60-\u0e27\u0e0a\u0e34\u0e23\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25.pdf": {
@@ -4014,7 +4014,7 @@
             "type": "file",
             "ftype": "pdf",
             "path": "IMBR/Input/Reproductive and growth disorders 4-4-26 handout 2.pdf",
-            "date": "5d ago",
+            "date": "6d ago",
             "size": "5.0 MB"
           },
           "Reproductive and growth disorders 4-4-26 handout.pdf": {
@@ -4023,25 +4023,6 @@
             "path": "IMBR/Input/Reproductive and growth disorders 4-4-26 handout.pdf",
             "date": "6d ago",
             "size": "5.0 MB"
-          }
-        }
-      },
-      "Neurology": {
-        "type": "dir",
-        "children": {
-          "CADASIL-vs-CARASAL-2026.html": {
-            "type": "file",
-            "ftype": "html",
-            "path": "IMBR/Neurology/CADASIL-vs-CARASAL-2026.html",
-            "date": "Today",
-            "size": "59.1 KB"
-          },
-          "CADASIL-vs-CARASAL-2026.pdf": {
-            "type": "file",
-            "ftype": "pdf",
-            "path": "IMBR/Neurology/CADASIL-vs-CARASAL-2026.pdf",
-            "date": "Today",
-            "size": "126.0 KB"
           }
         }
       },
@@ -4348,6 +4329,13 @@
                 "date": "Today",
                 "size": "59.1 KB"
               },
+              "CADASIL-vs-CARASAL-2026.pdf": {
+                "type": "file",
+                "ftype": "pdf",
+                "path": "IMBR/Review/Neurology/CADASIL-vs-CARASAL-2026.pdf",
+                "date": "Today",
+                "size": "126.0 KB"
+              },
               "Candesartan-vs-Topiramate-Migraine-Review.html": {
                 "type": "file",
                 "ftype": "html",
@@ -4422,7 +4410,7 @@
                 "type": "file",
                 "ftype": "html",
                 "path": "IMBR/Review/Neurology/EVT-Large-Core-Eligibility-Infographic.html",
-                "date": "4d ago",
+                "date": "5d ago",
                 "size": "14.3 KB"
               },
               "EVT-Large-Core-Landmark-Trials-2026.html": {
@@ -4464,7 +4452,7 @@
                 "type": "file",
                 "ftype": "md",
                 "path": "IMBR/Review/Neurology/FXIa-Inhibitors-Stroke-Prevention-2026.md",
-                "date": "3d ago",
+                "date": "4d ago",
                 "size": "10.2 KB"
               },
               "Intensive-BP-after-EVT-WMH-Review.html": {
@@ -4854,7 +4842,7 @@
             "ftype": "json",
             "path": "outputs/imbr-review-all/data.json",
             "date": "Today",
-            "size": "55.7 KB"
+            "size": "56.3 KB"
           },
           "index-v2.html": {
             "type": "file",
