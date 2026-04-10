@@ -1210,6 +1210,11 @@ const FILE_ICONS = { html: '🌐', pdf: '📄', md: '📝', txt: '📃', sh: '�
 function renderProjectTree() {
   if (!allData || !allData.fullTree) return;
   const container = document.getElementById('project-tree');
+
+  // Save current folder open state before re-rendering
+  const savedOpen = new Set();
+  container.querySelectorAll('.tree-children.open').forEach(el => savedOpen.add(el.id));
+
   let totalFolders = 0, totalFiles = 0;
 
   function countItems(node) {
@@ -1262,6 +1267,14 @@ function renderProjectTree() {
   }
 
   container.innerHTML = `<div class="tree-root">${buildTree(allData.fullTree)}</div>`;
+
+  // Restore folder open state
+  savedOpen.forEach(uid => {
+    const el = document.getElementById(uid);
+    if (el) el.classList.add('open');
+    const arrow = document.getElementById('arrow_' + uid);
+    if (arrow) arrow.classList.add('open');
+  });
 
   // Auto-expand IMBR
   const headers = container.querySelectorAll('.tree-folder-header');
