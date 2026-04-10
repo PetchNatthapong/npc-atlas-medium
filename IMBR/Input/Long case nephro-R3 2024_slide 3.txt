@@ -1,0 +1,1937 @@
+=== Page 1 ===
+R3 Nephrology
+Approach
+Asst. Prof. Kanin Thammavaranucupt, M.D.
+Chakri Naruebodindra Medical Institute, Ramathibodi Hospital
+
+=== Page 2 ===
+Pool
+Nephrology
+long case
+for R3
+2014-2017
+Courtesy of Solos J.
+
+=== Page 3 ===
+Glomerular disease
+HT in the young
+Electrolyte disorder
+
+=== Page 4 ===
+66-year-old man with unknown U/D 2
+Occupation: Farmer
+Chief complaint: ออ่ นเพลยี 2 สปั ดาห ์
+Present illness
+่ ้
+2 สปั ดาหก์ อ่ น ออ่ นเพลยี เบอื อาหาร กนิ ไดน้ อ้ ย ไม่มไี ข ้ ปวดจกุ แน่นทอ้ ง น าหนักลด 3
+กก ใน 2 สปั ดาห ์
+1 สปั ดาหก์ อ่ น ยงั ออ่ นเพลยี อย ู่ ปัสสาวะออกนอ้ ยลง ไม่บวม นอนราบได ้ ไม่มแี น่น
+่
+หนา้ อก ไม่มไี อ ไม่มเี จ็บคอ ไม่มผี นื หรอื ปวดขอ้ อจุ จาระปกติ
+Past illness
+Smoking 20 pack-year
+No alcohol use
+No IVDU
+No Family Hx of kidney disease or malignancy
+
+=== Page 5 ===
+2
+Physical examination
+V/S: BT 37.7c BP 189/85 mmHg PR 92 bpm RR 16 tpm
+BP 4 extremities:
+Rt arm 176/85, Lt arm 170/79, Rt leg 202/97, Lt leg 234/86
+mmHg
+GA: Alert, mild pale, no jaundice
+Thyroid: not enlarged
+Heart&Lungs: WNL
+Abdomen: Soft, not tender, liver and spleen can’t be palpated
+Ext: No edema, no rash
+Neuro: CN – intact, Motor gr V, all
+
+=== Page 6 ===
+99 24 3 Sgr
+agn
+✓ UPCR detects both albumin and non-albumin
+proteins
+✓ Urine pro dipstick detects only albumin
+✓ UACR was preferred to early CKD screening
+and predict CKD progression
+Meta-analysis included 12 research and 21
+clinical cohorts
+P: 919,383 pts, mean eGFR 80 (eGFR <60: 21%),
+median UACR 14 mg/g
+Poor association in UPCR < 50 mg/g Measurements: Equations to covert UPCR,
+dipstick protein to UACR for CKD screening
+1. CyriacJ, et al. Arch Dis Child Educ PractEd. 2017 Jun;102(3):148-154. 2. Sana Waheed, et al. BMJ 2018. July 3. Sumida K, et al. Ann Intern Med. 2020 Sep 15;173(6):426-435.
+
+=== Page 7 ===
+dispropret
+I
+Dipstick protein UPCR (mg/g) UACR (mg/g)
+Negative < 0.1 < 10
+Trace 0.1-0.15 10-30
+1+ 0.15 30
+0.5 300
+2+
+1.0 500
+max 39
+2.0 1000-1100
+3+
+ma 5g
+3.5 2200
+Poor association in UPCR < 50 mg/g
+4+ > 5.0 > 2800-3000
+1. CyriacJ, et al. Arch Dis Child Educ PractEd. 2017 Jun;102(3):148-154. 2. Sana Waheed, et al. BMJ 2018. July 3. Sumida K, et al. Ann Intern Med. 2020 Sep 15;173(6):426-435.
+
+=== Page 8 ===
+Ginsberg JM, et al. N Engl J Med. 1983
+Proteinuria Abnormal
+> 150 mg/day
+• Semiquantitative measurement
+• Urine protein dipstick: albumin
+• Sulfosalicylic acid test: albumin, Ig, lysozyme
+• Quantitative measurement
+• UPCI
+• 24-hour urine collection for total protein and
+Cr (15-25 mg/kg/day)
+UPCI > 4-5 g/day may not accurately equal to 24-hr urine protein
+
+=== Page 9 ===
+Ginsberg JM, et al. N Engl J Med. 1983
+Proteinuria
+Functional: fever, exercise, sepsis, high output HF, mens
+Orthostatic: split urine test (overnight 8-hr urine pro < 50 mg)
+Transient proteinuria → Functional, Orthostatic MM (light chain Ig)
+Persistent proteinuria Rhabdomyolysis (Myoglobin)
+Glomerular > 2 g/day→ Glomerular disease Hemolysis (Hemoglobin)
+Tubular < 2 g/day→ ATIN, CTIN AML (Lysozyme)
+Overflow Any → Upro dipstick ≠ 24hr-Upro
+
+=== Page 10 ===
+Glomerular disease
+MCD MN FSGS
+Nephrotic syndrome
+DN Deposition dz
+Classical: LN, Cryoglobulinemia
+IC Alternative: IRGN, C3GN, IgAN
+Lectin: IgAN
+Nephritic syndrome
+Anti-GBM
+Pauci-immune (ANCA +,-)
+
+=== Page 11 ===
+Primary (idiopathic) glomerular disease
+Renal limited
+- MCD, IgMN, FSGS, MN, MPGN, IgAN
+Secondary glomerular disease
+Classification Systemic disease
+- 2o MCD, 2o FSGS, 2o MN, 2o MPGN, 2o IgAN, DN, LN,
+of glomerular
+amyloid, cryoglobulin, HSP, TMA, vasculitis, APS
+disease
+Secondary cause of glomerular disease
+down unsafesee
+✓ Infection: HBV/HCV/HIV, SY, Malaria, Strep, Staph
+most on
+The ✓ Autoimmune/Vasculitis: SLE, RA, AS, MCTD, Small vss
+✓ Malignancy/Paraproteinemia: Solid tumor, Hematologic
+rotation
+✓ Allergy/Toxin: Bee sting, snake venom
+✓ Drugs: NSAIDs, Pamidronate, Lithium
+✓ Metabolic: Obesity, DM Genetic
+
+=== Page 12 ===
+Secondary glomerular disease
+Pathology Cause
+Allergy, NSAID, Li, IFN, Thymoma, Hodgkin’s lymphoma,
+MCD
+Strongyloides, Bee sting
+Gold, D-Penicillamine, NSAID, LN Class V, solid organ tumor, HBV >
+MN
+HCV, HIV, SY, P. Falciparum, filariasis
+Eff Nt editor
+hwan
+msn.IE
+Obesity, Black, HIV, IVDU (Heroin), steroid, Li, Pamidronate, IFN,
+d
+FSGS ParvovirusB19, VUR, Atheroemboli, single kidney, DM/HT, s
+rare in
+cyanotic heart disease
+own by
+2ndFSGS 10
+long1am trove
+any
+HCV > HBV, HIV, TMA, IE, Solid organ tumor, LN class III/IV, Sjogren,
+MPGN
+PIGN, Cryoglobulinemia, LCDD
+IgAN Liver cirrhosis, HBV, HIV, RA/AS/Reiter’s, IBD, Celiac , NHL
+
+=== Page 13 ===
+Nephrotic syndrome
+add
+both
+down18 Malignancy
+Autoimmune Onset Hematuria
+MCD
+Abrupt (1°), insidious (2°) +/-
+FSGS
+Abrupt (1°), insidious (2°) +++ (> 50%)
+MN
+Acute (2°), insidious (1°) ++ (30-50%)
++/-
+DN
+Insidious
+from ruptured
+microaneurysm
+Deposition dz
+Insidious, Age ≈ 60 yr +/-
+
+=== Page 14 ===
+110 comm IgA
+MCD FSGS
+biforallay
+imionirare
+mankind
+Bi-modal age Age 20-40 yr
+Abrupt onset in 1° (day-week) Abrupt onset in 1°
+Insidious onset in 2° (week-month) Insidious onset in 2°
+100% NS 70-100% NS
+Lowontitor
+50% Micro hematuria
+douler
+respond
+Response to steroid at 4 wks: 50% 20% HT
+1808
+3
+(add-on 10-25% at 16 wks) 25-50% Cr rising
+9105
+EXAM
+HA
+Treatment
+Prednisolone 1 MKD upto 80 mg OD or 2 MKD upto
+120 mg AD for 4-16 wks then taper off upto 6 mo
+(Contraindication: Uncontrolled DM, Psychi, Severe OP)
+Frequent relapse, resistant: CY, CNI, MMF, Rituximab
+wsm
+
+=== Page 15 ===
+or Strat VA
+Pattern of response to steroid
+(MCD/FSGS)
+✓CR: UPCI < 0.3 g/d, stable Cr, Serum Alb > 3.5 g/dL
+✓PR: UPCI 0.3-3.5 g/d + decrease > 50% baseline
+✓Relapse: UPCI > 3.5 g/d after CR
+✓Steroid-resistant: Persist proteinuria (UPCI > 3.5 g/d + < 50%
+reduction from baseline) with pred 1 MKD > 16 weeks
+✓Steroid-dependent: Relapse during or within 2 weeks of
+completing steroid therapy
+✓Frequent relapse: ≥ 2 relapses in 6 months
+CR: complete remission; PR: partial remission
+
+=== Page 16 ===
+Glomerular disease
+Age > 40 yr
+w̅
+Nephrotic syndrome
+MCD
+Insidious onset in 1° (wk-mo)
+Acute onset in 2°
+FSGS
+1/3 → spont improved
+80% NS
+1/3 → stable
+MN 50% Microscopic hematuria
+1/3 → progress to ESKD
+DR
+30% Cr rising
+Eimer
+DN
+Secondary
+Renal pathology
+primary - Autoimmune: LN V, RA
+Deposition
+Subepithelial dense deposit,
+- Infection: HBV,HCV, HIV, SY, Malaria
+disease
+thickening GBM, spike and hole
+- Malig: Solid tumor, NHL
+(Secondary MN: mesangial or
+- Drugs: Gold, penicillamine, NSAIDs
+subendothelial deposit)
+
+=== Page 17 ===
+89C
+Treatment of MN
+FAAS
+6month
+hey
+I
+Then reval
+nd
+high
+threek very
+Ydricson life
+CY Ritu
+modified monteselli TY
+ow
+
+=== Page 18 ===
+Nephrotic syndrome
+Less likely DKD
+1) Absence of diabetic retinopathy
+2) LowO onrs reaptidly decreasing GFR Hematuria
+3) Rapidly increasing proteinuria or nephrotic
+MCD
+Abruspytn d(1ro°m), einsidious (2°) +/-
+4) Refractory hypertension
+5) Presence of active urinary sediment
+FSGS
+Abrupt (1°), insidious (2°) +++ (> 50%)
+6) Signs or symptoms of other systemic disease
+7) > 30 % reduction in GFR within 2-3 months after
+MN
+Abruipnitt i(a2t°io)n, ionfs aidni oAuCEsI (o1r° A) RB. ++ (30-50%)
+DN +/-
+Insidious
+from ruptured
+microaneurysm
+Deposition dz
+Insidious, Age ≈ 60 yr +/-
+40 50
+
+=== Page 19 ===
+MM and The Kidney ✓ Hyperviscosity: IgA/M
+myeloma, Waldenstrom’s
+✓ Amyloid deposit
+Pre-renal
+✓ MPGN type I, C3GN
+✓ HyperCa → afferent
+✓ Cryoglobulinemia type I, II
+vasoconstrict, nephro DI
+✓ Amyloidosis, MIDD
+✓ Drugs: NSAID, ACEI/ARB,
+✓ PGNMID
+Diuretic, CIN, BP
+✓ FGN, ITG, GOMMID
+✓ Volume depletion
+Post-renal
+✓ ATN
+✓ pRTA ± Fanconi syn Intraluminal: Renal stone (Ca, Uric)
+✓ Cast nephropathy (distal Extraluminal: Plasmacytoma
+tubule)
+High globulinemia
+✓ TLS (acute uric a
+✓ Pseudo HypoNa
+nephropathy) Plasma cell infiltration
+✓ NAGMA
+Rosner MH, et al. N Engl J Med 2017;376:1770-81
+
+=== Page 20 ===
+Renal disease Manifestation
+borrowMOU Patha
+- AKI 50%, NS 10% led
+Myeloma cast nephropathy (40-63%)
+woundriou
+min's - Upro dipstick ≠ Upro 24 hr (overflow)
+(LC cast nephropathy or Myeloma Kidney)
+- HyperCa in renal failure + hyperPO
+God
+115NOUN Light chain + Uromodulin (THP) deposit at 4
+- Unexplained progressive AKD/CKD
+MM distal tubule
+- Disproportion of anemia and renal failure
+ไตวายมากกก albuminuria นอ้ ย
+- Bone pain, osteolytic lesion BUT ALP
+LM: Eosinophilic fractured cast
+- Low anion gap (IgG myeloma)
+(pale stain PAS) + giant cell reaction
+and
+- SFLC (K:λ) > 500 mg/L
+indirnial
+Light chain proximal tubulopathy (40%) - pRTA ± Fanconi syndrome ± AKI/CKD
+The 610 2
+Odximan
+Amyloidosis (7-30%) nine tngyyw.tt
+- NS 60-70%, AKI 3% gg
+AL, AH type
+- Extra-renal: fatigue, wt loss, purpura,
+LC (94%; lambda:kappa=3:1), HC
+Kidney hepatomegaly, macroglossia, shoulder pad
+ไตไม่คอ่ ยวาย Proteinuria เยอะมากกก
+sign, autonomic neuropathy, HFpEF
+Pathology: apple-green birefringent by
+(restrictive cardiomyopathy)
+congo red
+r
+Monoclonal Ig deposition disease - AKI 56%, (CKD 44%), GN, NS 20-40%
+noinMON
+(MIDD) (20%) (kappa 75%) ns AU - Proteinuria 1.8-2.4 g/day
+LCDD 70%, HCDD 20%, LHCDD 10% - Extra-renal: cardiomegaly, hepatomegaly
+
+=== Page 21 ===
+****Combined NS + Nephritic****
+Nephrotic syndrome
+1. IgAN c MCD 2. MPGN (LN, Cryo, PIGN)
+3. FSGS 4. Deposition disease M200
+wrissaldi't
+Onset key Hematuria
+002Nd kahlan
+timeline
+MCD
+Abrupt (1°), insidious (2°) +/-
+FSGS
+Abrupt (1°), insidious (2°) +++ (> 50%)
+MN
+Abrupt (2°), insidious (1°) ++ (30-50%)
++/-
+DN
+Insidious
+from ruptured
+microaneurysm
+Deposition dz
+Insidious, Age ≈ 60 yr +/-
+
+=== Page 22 ===
+Cr rising in nephrotic syndrome
+✓Volume depletion: Hypoalbuminemia, diuretic
+Pre-renal ✓NSAIDs
+✓Sepsis
+key I
+AKI in NS: บวมกอ่ น ✓ Nephrito-nephrotic disease: FSGS, MPGN
+่ Glomerular ✓ IRGN, Anti-GBM on top DN/MN
+เหนือย หรอื ปัสสาวะ
+✓ Chronic progressive NS to CGN
+ลดลง
+Tubular ✓ Ischemic ATN
+Renal
+Vascular ✓ RVT
+✓ NSAIDs (AIN with MCD), diuretic, PPI
+Interstitium
+✓ Nephrosarca
+Post-renal
+--------------
+
+=== Page 23 ===
+Renal vein thrombosis
+Cause
+✓ Loss of anticoagulation protein: NS, SLE, DN
+✓ Tumor thrombus: RCC, lymphoma
+✓ Renal sepsis (thrombophlebitis)
+Cardinal features Yinod 1TunisonTroad
+✓ Triad: flank pain + hematuria + renal failure
+Complication: PE, renal atrophy, renal papillary
+necrosis
+Screening: doppler U/S
+Risk of hypercoagulable state
+Gold standard Ix for dx: CT venography
+✓ Serum Alb < 2-2.5 g/dL
+Treatment: anticoagulant and underlying
++ BISCUIT/Family Hx
+disease
+
+=== Page 24 ===
+Glomerular disease
+MCD MN FSGS
+Nephrotic syndrome
+DN Deposition dz
+Classical: LN, Cryoglobulinemia
+IC Alternative: IRGN, C3GN, IgAN
+Lectin: IgAN
+Nephritic syndrome
+Anti-GBM
+Pauci-immune (ANCA +,-)
+
+=== Page 25 ===
+Nephritic syndrome
+Age 15-45 yr
+LN Class III/IV: Nephritis, Class V: NS
+ANA 90-95%, dsDNA 75%, Sm 25-30%
+Classical
+Assoc HCV > HBV, IE, CNT, CLL,
+Cryoglob
+Immune lymphoma, solid organ tumor
+complex IRGN
+Alternative
+IgAN
+C3 glomerulopathy
+Pauci-immune
+ANCA positive or negative
+Anti-GBM
+or Goodpasture syndrome
+
+=== Page 26 ===
+ISN/RPS Classification 2004
+Treatment
+Class Pathology Clinical
+Class I → Extra-renal manifestation
+I Minimal mesangial Minimal renal S&S, normal
+2A
+SCr
+II Mesangial proliferative
+Class II
+Focal proliferative HT, active sediment, nephrotic
+UPCI < 1 g → Extra-renal
+III
+(< 50% of glomeruli) UPCI 25-33%, ↑Cr 25%
+on UPCI > 3 g → Pred 1 MKD/CNI as
+f
+HT, active sediment, nephrotic
+Diffuse proliferative MCD
+IV
+UPCI 50%, ↑Cr > 25%, low C3/C4,
+(≥ 50% of glomeruli)
+dsDNA Ab
+ThickeyIs Nephrotic UPCI 60%,↑Cr < 25%,
+V Membranous
+uncommon HT, normal-low C3/C4
+VI Sclerosis Chronic ↑Cr
+IF: Full house
+IgM, IgG, IgA, C1q, C3
+
+=== Page 27 ===
+Treatment of LN Class I/II
+TXT
+Pathoriosanion
+Good response to steroid monotherapy
+x
+(CR at median time of 4 weeks)
+Tx as MI
+No optimal duration
+Maintenance
+mm
+Low-dose steroid + MPAA, Aza, CNI
+esp. Hx of relapse disease
+
+=== Page 28 ===
+Induction Rx of LN III/IV
+LYCY
+MosoiDose
+inder
+2 3
+MMF
+1 7 main
+
+=== Page 29 ===
+Maintenance Rx of LN III/IV
+Stop steroid after CR ≥ 12 months
+MMFtstli
+Duration
+Induction + Maintenance
+should be ≥ 36 months
+i.is
+
+=== Page 30 ===
+Treatment of LN Class V
+Prefer: MMF > CY > CNI/Ritux/Aza
+
+=== Page 31 ===
+Definition of response in LN
+YdiuwwOlFsssn
+0
+
+=== Page 32 ===
+ISN/RPS Classification 2004
+Treatment
+Class Pathology Clinical
+Class I → Extra-renal manifestation
+I Minimal mesangial Minimal renal S&S, normal
+SCr
+II Mesangial proliferative
+Class II
+Focal proliferative HT, active sediment, nephrotic
+UPCI < 1 g → Extra-renal
+III
+(< 50% of glomeruli) UPCI 25-33%, ↑Cr 25%
+UPCI > 3 g → Pred 1 MKD/CNI as
+HT, active sediment, nephrotic
+Diffuse proliferative MCD
+IV
+UPCI 50%, ↑Cr > 25%, low C3/C4,
+(≥ 50% of glomeruli)
+dsDNA Ab Class III, IV
+Nephrotic UPCI 60%,↑Cr < 25%, Induction → Maintenance
+V Membranous
+uncommon HT, normal-low C3/C4
+VI Sclerosis Chronic ↑Cr Class V
+Non-nephrotic: RAASi + extra-renal
+Nephrotic: Pred 0.5 MKD + ISD
+Class VI
+Supportive Rx
+
+=== Page 33 ===
+Cryoglobulin: protein that precipitated from serum or plasma on cold exposure
+Cryoglobulinemia
+Hemot
+✓ Type I (Monoclonal IgM/IgG, 10-15%): MM, CLL, Waldenstrom
+✓ Type II (Monoclonal IgM + Polyclonal IgG, 50-60%): HCV > HBV, Sjogren, B-lymphoma,
+Type
+solid organ tumor Infx
+✓ Type III (Polyclonal IgM and IgG, 25-30%): Infect (IE, HCV,HBV,HIV), SLE, RA
+Melzer’s triad (purpura, arthralgia, weakness) 25-30%
+- Palpable purpura (75-95%), RP (20-30%), distal ulcer/necrosis (10-25%), migratory
+Clinical
+arthralgia (40-80%), peripheral neuropathy (20-75%), Nephritonephrotic feature
+(25-50%)
+- Type I: hyperviscosity, thrombosis, Type II/III: asymptomatic (not assoc with cold)
+✓ Cryoglobulin > 0.05 g/L , Cryocrit ≥ 2 %
+LAB
+✓ Rheumatoid factor positive, Low C3 (50%), Low C4 (75%)
+✓ Abnormal LFT with hepatosplenomegaly (5-70%)
+For HCV + active mixed cryoglobulinemia + RPGN (± NS)
+Treat
+- D C AA + IVMP + Rituximab (> CY) ± Plasma exchange
+
+=== Page 34 ===
+c
+Nephritic syndrome
+Class III/IV: Nephritis
+LN Class V: NS
+ANA 90-95%, dsDNA 75%, Sm 25-30%
+Classical
+Assoc HCV > HBV, IE, CNT, CLL,
+Cryoglob
+Immune lymphoma, solid organ tumor
+complex PIGN Within 1-3 wks after URI/GI infection
+Within 3-5 days after URI/GI infection
+Alternative
+IgAN May be still fever
+Recurrent episode
+C3 glomerulopathy
+Pauci-immune
+ANCA positive or negative
+Anti-GBM
+or Goodpasture syndrome
+
+=== Page 35 ===
+Hematuria
+Glomerular RBC: ≥ 3/HPF
+1. RBC cast
+Color: smoky brown, cola
+2. Dysmorphic RBC
+No clots
+> 50% distorted microcytic RBC
+Proteiuria > 500 mg/day
+> 5% of acanthocyte
+Dysmorphic RBC/RBC cast
+rare
+mfg
+Glomerular ✓ her
+IgAN/PIGN > ANCA >> LN
+✓
+hematuria forol Alport’s syndrome (XR-AS 85%)
+raream
+✓
+Non-glomerular Tumor: CA bladder, RCC, AML
+✓
+Stone
+hematuria
+✓
+Infection: hemorrhagic cystitis, pyelonephritis
+✓
+Color: red/pink + Clots Cystic kidney: ADPKD
+Themost
+✓
+Proteinuria < 500 mg/day Papillary necrosis
+✓
+No dysmorphic RBC/RBC cast Vascular: RVT > Renal infarction, coagulopathy
+
+=== Page 36 ===
+Asymptomatic hematuria
+onto
+Thin basement membrane disease
+✓ AD, mostly thought to be carrier of Alport’s
+✓ Micro hematuria (with loin pain), less renal insufficiency, UPCI < 1.5 g
+✓ Bx: GBM thickness < 250 nm
+Indsion No r
+Alport’s syndrome TowñiYo
+010
+ooh
+asi muy
+✓ X-recessive > AR/AD, COL4A5
+✓ Recurrent gross hematuria, ESRD at age 16-35 yr
+✓ SNHL, ant lenticonus > dot & fleck retinopathy
+IgA nephropathy OWN Y
+✓ Macro hematuria 40-50% with recurrent
+✓ Micro hematuria 30-40% with synpharyngitis
+✓ NS 5-10%
+✓ Secondary: Cirrhosis, AS, IBD, HIV/HeBV, NHL/HL, Psoriasis
+C
+
+=== Page 37 ===
+c
+Keep SBP < 120 mmHg
+RAAS blockage 3 months
+Cautions of steroid
+(gross hematuria: hydration 2 weeks)
+everythy
+opit.ir
+Treatment of
+IgA nephropathy
+Steroid x 6 months
+
+=== Page 38 ===
+c
+Post-infectious GN
+✓ Clinical cium IgA
+Resolution
+Pharyngitis 7-21 d, Skin infect 14-30 d
+✓ HT/ Edema: 2wk
+Hematuria 100% (70% microscopic, 30-50% gross hematuria)
+✓ Low C3: 6-12 wk
+Abrupt onset of edema (nephrotic-range 5-20%), HT 50-90%
+✓ Hematuria: 6-12 mo
+Oliguria (50%), Cr >2 (20%, 60% in age > 55 yr), RPGN < 5%
+✓ Proteinuria: years
+✓ LAB
+• Low C3 (> 90%), mild low C4, RTA type IV (renin deficiency)
+r
+• ASO in URI (30%), Anti-DNAse B in skin infect (70%), RF 30-40%, MPO-ANCA 10%
+• Patho: MPGN (Lobular pattern), IF (Starry sky, Garland, Mesangial)
+✓ Treatment
+ai fullblameTuriabe n
+o UPCI > 1 g/day > 6 mo: ACEI/ARB
+onary
+o BP control: Diuretics (preferred)
+o Con-comittant with Strep infect: Penicillin, Erythromycin for prevent spread
+nephritogenic Ag to others
+o Crescentic RPGN: IVMP 0.5-1 g/day then prednisolone 0.5 MKD tape in 2-6 months
+
+=== Page 39 ===
+1. ATN Pseudo-RPGN
+RPGN ✓ Age: 50-60 yrs, M:F = 2:1
+2. AIN
+✓ Prodromal illness: URI, flu-like
+✓ Cr rising in weeks to months + 3. TTP/HUS
+Clinical Crescent > 50% 4. Malignant HT
+5. RAS, RVT
+Non-specific: malaise, lethargy > 90 %
+6. Atheroembolic renal disease
+Edema 60-70 %
+7. Scleroderma renal crisis
+HT 10-20 %
+Oliguria > 60 % 8. Deposition disease
+Macroscopic hematuria 20-30 %
+9. UTO
+Nephrotic syndrome 10-30 %
+10. Renal papillary necrosis
+Acute nephritic syndrome 10-20 %
+11. Chronic GN
+LAB Microscopic hematuria 100 %
+Proteinuria 100 % (> 3 g: 10-30 %)
+Renal failure 100 % (eGFR < 20: 30 %)
+Immune complex 10-15 %
+ANCA 80 %
+Anti-GBM Ab 30 %
+
+=== Page 40 ===
+RPGN
+Clinical
+Non-specific: malaise, lethargy > 90 %
+Edema 60-70 %
+HT 10-20 %
+Oliguria > 60 %
+Macroscopic hematuria 20-30 %
+Nephrotic syndrome 10-30 %
+Acute nephritic syndrome 10-20 %
+LAB Microscopic hematuria 100 %
+Proteinuria 100 % (> 3 g: 10-30 %)
+Renal failure 100 % (eGFR < 20: 30 %)
+Immune complex 10-15 %
+ANCA 80 %
+Anti-GBM Ab 30 %
+
+=== Page 41 ===
+Pulmonary-Renal Syndrome
+ANCA-associated small vessel vasculitis (GPA > MPO > EGPA, Drug-induced)
+Goodpasture syndrome
+Immune complex vasculitis → SLE with LN, Cryo, HSP, MCTD
+True
+APS with vasculitis → Pulmonary embolism
+TMA
+SRC
+Infection at both kidneys and lungs or other sepsis
+• Bacteria: Leptospirosis, Rickettsia, Mycoplasma, TB
+• Virus: Hantavirus, CMV
+• IE
+Paraquat poisoning
+AKI with pulmonary edema/uremic hemoptysis
+1° renal disease NS with PE/RVT
+ISD in renal disease → pneumonia
+Mimics
+Pneumonia with pre-renal azotemia, CRS type I
+1° lung disease Malignant HTN
+CA lung with MPGN/MN
+
+=== Page 42 ===
+Types of RPGN
+Linear IgG
+cresent
+Anti-GBM disease, Goodpasture’s syn,
+Type I: Anti-GBM antibody
+Post-KT (Alport’s)
+(< 15%)
+Normal complement: IgAN/HSP
+Type II: Immune complex
+Low complement: LN, Cryoglob, PIGN,
+(40-45%)
+MPGN I
+ANCA-pos: GPA, EGPA, MPA, renal-limited
+Type III: ANCA
+ANCA-neg GN
+(40-45%)
+Type IV: Double Ab Anti-GBM + ANCA
+
+=== Page 43 ===
+Comprehensive Clinical Nephrology, 5thed.
+Clin J Am Soc Nephrol. 2017;12:1680
+Type III: ANCA
+Disease Pulmonary Renal Granuloma Key points
+Young-middle age pts
+Granulomatosis with
+90%
+Upper Resp: nasal crust, saddle
+polyangiitis 80% +
+(+ENT) nose, recurrent sinusitis
+(GPA = Wegener’s)
+Lung nodule/infiltrate/cavity
+Microscopic polyangiitis Age 50-60 yrs
+50% 90% -
+(MPA) Non-granuloma, less neuro S&S
+Age 30-40 yrs, Eo > 500-1000
+Eosinophilic granulomatosis Late-onset asthma
+with polyangiitis 70% 45% + More mononeuritis multiplex
+(EGPA = Churg-Strauss) More cardiac: coronary arteritis,
+myocarditis
+
+=== Page 44 ===
+Drug-induced ANCA
+x
+Type III: ANCA - Cocaine (in levamisole), PTU, MMI, Hydralazine,
+Allopurinol, D-penicillamine, Sulfasalazine, Phenytoin
+- c-ANCA 10%, p-ANCA 90%, high titer
+Disease Pulmonary Renal Granuloma ANCA
+Granulomatosis with
+90% c-ANCA 75%, p-ANCA
+polyangiitis 80% +
+(+cE-ANTN) CA = PR3-ANCA 20%, Neg-ANCA 5%
+(GPA = Wegener’s)
+p-ANCA = MPO-ANCA
+c-ANCA 30%, p-ANCA
+Microscopic polyangiitis
+50% 90% -
+(MPA) 60%, Neg-ANCA 10%
+Eosinophilic granulomatosis
+c-ANCA 5%, p-ANCA
+with polyangiitis 70% 45% +
+45%, Neg-ANCA 50%
+(EGPA = Churg-Strauss)
+Renal-limited vasculitis: c-ANCA 10%, p-ANCA 80%, Negative-ANCA 10%
+ANCA negative GN (10-30%): age 40 yr, poor prognosis
+
+=== Page 45 ===
+Treatment of ANCA
+
+=== Page 46 ===
+Induction Rx of ANCA
+c
+
+=== Page 47 ===
+Induction Rx of ANCA
+Stop ISD
+After 3 months in patients on
+dialysis and do not have any
+extrarenal manifestation
+see
+Sadek
+dild
+140260 Draft
+
+=== Page 48 ===
+Induction Rx of ANCA
+1. SCr > 3.4 (5.7) mg/dL with
+dialysis or rapidly increasing SCr
+Iii
+2. DAH with hypoxemia
+3. Overlap with anti-GBM
+5% ANCA pts had anti-GBM +ve
+32% anti-GBM pts had ANCA +ve
+
+=== Page 49 ===
+Maintenance Rx of ANCA
+CY → Aza + pred
+Ritux → Ritux
+Ritux + no pred
+Duration
+o
+18 mo - 4 yr
+
+=== Page 50 ===
+Treatment of Anti-GBM
+for
+C/I for ISD, CY, PE
+Yonatan
+Nomaintaincner
+✓ Dialysis-dependent Danish
+pigs
+✓ 100% crescent or > 50% GS
+AND No pulmonary hemorrhage
+No maintenance Rx
+
+=== Page 51 ===
+Supportive treatment for glomerular disease
+1. Low salt diet (Na < 2 g/d)
+B: BMI > 35
+2. Restrict pro 0.8-1.0 g/kg/d
+I: Immobilization (prolonged)
+3. TC 35 kcal/kg/day
+S: Sx (recent abdo/ortho Sx)
+4. Keep BP < 130/80 mmHg
+C: CHF-NY Class III-IV
+5. ACEI/ARB (Goal: UPCI < 1) U: UPCI > 10
+6. Diuretic for volume overload I: ---
+If on Pred > 2.5 MKD x > 3 mo.
+T: Thromboemobolism (history)
+7. No need for statin
+- CaCO 1-1.2 g/day
+3
+Fam: Family Hx of thromboembolism
+- Vit D 600-800 IU/day
+8. Stop smoking
+9. Pneumococcal/ Influenza vaccine
+10.Risk of Hypercoagulable state: Alb < 2-2.5 g/dL + BISCUIT/Fam
+
+=== Page 52 ===
+Specific treatment for glomerular disease
+MCD/FSGS
+Pred 1 MKD at least 4-16 wk tape over 6 months → CY/CNI
+Failed RAASi > 6 months (UPCI > 3.5 g or decrease < 50%)
+MN
+→ steroid alternate with CY or CNI for 6 months
+Amyloidosis
+CMT +/- stem cell transplantation
+IgAN
+RAASi ≥ 3 mo + UPCI > 1 g + GFR > 50 → Prednisolone 6 mo
+PSGN
+Diuretic for control BP, supportive care
+LN
+Depend on classification of LN
+ANCA
+IVCY + steroid ± plasmapheresis
+Anti-GBM
+
+=== Page 53 ===
+66-year-old man with unknown U/D 2
+Occupation: Farmer
+Chief complaint: ออ่ นเพลยี 2 สปั ดาห ์
+Present illness
+่ ้
+2 สปั ดาหก์ อ่ น ออ่ นเพลยี เบอื อาหาร กนิ ไดน้ อ้ ย ไม่มไี ข ้ ปวดจกุ แน่นทอ้ ง น าหนักลด 3
+กก ใน 2 สปั ดาห ์
+1 สปั ดาหก์ อ่ น ยงั ออ่ นเพลยี อย ู่ ปัสสาวะออกนอ้ ยลง ไม่บวม นอนราบได ้ ไม่มแี น่น
+่
+หนา้ อก ไม่มไี อ ไม่มเี จ็บคอ ไม่มผี นื หรอื ปวดขอ้ อจุ จาระปกติ
+RPGN
+Past illness
+ANCA
+Smoking 20 pack-year
+SLE LN Handger
+No alcohol use
+No IVDU
+No Family Hx of kidney disease or malignancy
+
+=== Page 54 ===
+2
+Physical examination
+V/S: BT 37.7c BP 189/85 mmHg PR 92 bpm RR 16 tpm
+BP 4 extremities:
+Rt arm 176/85, Lt arm 170/79, Rt leg 202/97, Lt leg 234/86
+mmHg
+GA: Alert, mild pale, no jaundice
+Thyroid: not enlarged
+Heart&Lungs: WNL
+Abdomen: Soft, not tender, liver and spleen can’t be palpated
+Ext: No edema, no rash
+Neuro: CN – intact, Motor gr V, all
+
+=== Page 55 ===
+61-year-old woman with U/D: HT (well-controlled) 3
+Occupation: แม่บา้ น
+Chief complaint: ออ่ นเพลยี 2 สปั ดาห ์
+Present illness
+3 mo PTA : มอี าการมอื บวมสองขา้ ง บวมแคบ่ รเิ วณมอื ไม่มเี ทา้ บวม ไม่มปี ัสสาวะเป็ น
+่ ้ ่ ้
+ฟอง ปวดมอื เล็กนอ้ ย ไม่มไี ข ้ รว่ มกบั รสู ้ กึ มอี าหารเหนือยง่ายขนึ เบอื อาหาร น าหนัก
+่
+ลดลง 8 kg in 5 mo. มาตรวจท ี OPD ไดเ้ จาะเลอื ดและไดย้ ากลบั มารบั ประทาน
+่ ่ ้
+2 mo PTA : อาการปวดมอื มอื บวม ลดลง เรมิ มอี าการเหนือยมากขนึ มไี ขไ้ อ เสมหะสี
+้
+เขยี ว ได ้ Admit dx Pneumonia รกั ษาตวั ในรพ. 5 วนั อาการดขี นึ แพทยใ์ หก้ ลบั บา้ น
+่ ้
+3 วนั PTA : มไี ข ้ ไอ เสมหะสเี ขยี ว พรอ้ มกบั มอี าหารเหนือยมากขนึ ขาบวมสองขา้ ง ตงึ
+่
+ทมี อื สองขา้ ง ใบหนา้ คอ ปัสสาวะออกเท่าๆเดมิ ไม่มปี ัสสาวะเป็ นฟอง นอนราบได ้ ไม่
+้ ่ ่ ่ ้
+ขาดยา ไม่ไดซ้ อื ยาอนื ๆมาทาน ทบี า้ นไม่มใี ครเป็ นไขห้ วดั อาการไอเหนือยเป็ นมากขนึ จงึ
+มารพ.
+Past illness
+No smoking, alcohol use, IVDU, Family Hx of kidney disease or malignancy
+
+=== Page 56 ===
+3
+Physical examination
+V/S: BT 38c BP 150/80 mmHg PR 110 bpm RR 24 tpm
+GA: Alert, mild pale, no jaundice
+HEENT: Thining lips, microstomia
+Thyroid: not enlarged
+Heart: Normal S1S2, no murmur, no loud P2
+Lungs: Fine crepitation at both lower lungs
+Abdomen: Soft, not tender, liver and spleen can’t be palpated
+Skin: Generalized skin thickening include both hand, arm, face and
+trunk, no Raynaud, no periuncal edema, +ve digital pitting scar at
+index finger, no acrolysis, no arthritis
+Neuro: CN – intact, Motor gr V, all
+
+=== Page 57 ===
+Scleroderma and The Kidney
+✓ Volume depletion: diuretic, malabsorption
+Pre-renal
+✓ Severe pulmonary hypertension
+✓ Renal vasoconstriction: NSAID
+✓ p-ANCA (most common)
+✓ Overlapping with SLE
+Glomerular
+✓ MN (D-penicillamine)
+✓ MCD (NSAID)
+Renal
+✓ Ischemic ATN
+Tubular
+✓ Toxic ATN: NSAID
+Bar
+Vascular ✓ Scleroderma renal crisis
+Risk factor Criteria diagnosis
+Thai: Pred > 15 mg/d > 2 wks, digital gangrene, 1. New onset HT: BP > 150/85 mmHg
+serum alb < 3, CVS: CHF, pericardial eff. 2. GFR decline > 10%
+International: early diffuse skin, tendon friction Treatment
+rub, anti-RNA polymerase III - ACEI → Keep normal BP in 72 hrs
+
+=== Page 58 ===
+AKI in liver disease
+✓ Volume depletion: HypoAlb, diuretic, GI bleed, SBP
+✓ Hepatorenal syndrome
+Pre-renal
+✓ Abdominal compartment syndrome (IAP > 20 mmHg)
+✓ Renal artery stenosis: PAN (HBV)
+✓ MN (HBV)
+✓ MPGN (HCV)
+Glomerular
+✓ IgAN (liver cirrhosis)
+✓ Cryoglobulinemia
+✓ Ischemic ATN
+Renal Tubular ✓ Intrinsic toxic ATN: Bile cast nephropathy, rhabdomyolysis
+✓ Extrinsic toxic ATN: TDF, CI-AKI
+Vascular ✓ Septic emboli (liver abscess)
+✓ AIN: PPI, diuretic, NSAIDs
+Interstitium
+✓ Infect: Lepto
+
+=== Page 59 ===
+AKI in IE
+✓ Volume depletion: Overdiuresis Onset: several
+Pre-renal ✓ CHF months after
+✓ Renal infarction (from septic emboli): acute, unilateral flank pain cure
+Onset: near
+✓ IRGN (33% but less subepi hump 14%) → Staph 56%
+peak of
+Glomerular ✓ Crescentic GN (m/c in Bx: Pauci 53%)
+severity before
+✓ Renal cortical necrosis
+ATB
+✓ Ischemic ATN
+Renal Tubular
+✓ Toxic ATN: Aminoglycoside (onset: 5-7 days after ATB)
+Vascular ✓ Septic emboli (microvascular)
+Infare
+Onset: > 10 ✓ Drug: Diuretic, Penicillin, ACEI Loaddo
+Interstitium
+days after ATB ✓ IE rare an
+
+=== Page 60 ===
+HIV and The Kidney
+Pre-renal ✓ Volume depletion: N/V, diarrhea, loss of appetite
+✓ Podocytopathy: HIVAN, FSGS (NOS), MCD, Diffuse
+mesangial proliferation
+Renal Glomerular ✓ HIV-IC: IC-GN, Lupus-like, IgAN, MN, MPGN, PIGN,
+Fibrillary/Immuno, Cryoglobulinemia, Mesangial
+proliferative GN Mulm
+No HEVAN
+Lactic a: ddI, d4T, INH,
+✓ Ischemic ATN
+AZT (Not LMV) Tubular
+✓ Toxic: TDF, IDV, ATV,Ampho B, Acyclovir, Pentamidine
+dRTA: Ampho B
+Fanconi: TDF, ddI, ABC
+Vascular ✓ TMA, Arteriosclerosis
+RTA IV: Pentamidine,
+Bactrim
+Nephro DI: ddI, Ampho ✓ AIN: IDV, ATV, Bactrim (Sulfa), ABC (HLA B*5701), direct renal
+Interstitium parenchymal infect (CMV, Parvo, HSV, TB, Fungus)
+B
+✓ IRIS, DILS (hyperimmune react to HIV)
+Papillary necrosis: IDV
+✓ Intraluminal: Renal stone (IDV, ATV, Nelfinavir, EFV), Crystal (IDV, ATV,
+Post-renal Acyclovir, Bactrim, Pentamidine)
+✓ Extraluminal: Mass (Tumor/LN)
+
+=== Page 61 ===
+Topic
+Glomerular disease Wrap-up
+HT in the young
+Electrolyte disorder
+
+=== Page 62 ===
+Glomerular disease
+ปัสสาวะมเี ลอื ดปน/ฟอง
+ปัสสาวะออกนอ้ ยลง
+ปวดหวั
+บวม
+
+=== Page 63 ===
+บวม
+Localized edema Generalized edema
+Skin & soft tissue: cellulitis, NF, myositis, hematoma
+(increased vascular perm)
+Lymphatic obstruction: tumor, filariasis,
+lymphadenopathy (non pitting edema)
+Venous: DVT, CVI, IVC obstruction
+Bone: fracture
+
+=== Page 64 ===
+บวม Generalized edema
+Timeline
+หวั ใจ ไต ตบั Hypoalbumin
+• Pulmonary • Edema before • Ascites before • Edema esp. at
+edema pulmonary edema loose CNT area
+won
+EY
+before/with edema • Less likely (puffy eyelid,
+edema (NS, AKI/CKD) pulmonary face, genitalia)
+(Lt-HF)
+• Pulmonary
+• Edema before edema, HT, • Less likely
+pulmonary edema
+JVP engorged pulmonary
+edema (Rt-HF) before/with
+edema, HT,
+edema
+JVP engorged
+Diffuse apex
+(nephritits)
+
+=== Page 65 ===
+บวม Generalized edema
+หวั ใจ ไต ตบั Hypoalbumin
+ปัสสาวะนอ้ ย ปัสสาวะมฟี อง/เลอื ดปน
+ตา/หนา้ บวม HT Anemia
+้
+ปัสสาวะกลางคนื > 2 ครงั
+
+=== Page 66 ===
+บวม
+หวั ใจ ไต ตบั Hypoalbumin
+Cirrhosis
+ทอ้ งโต ขาบวม Portal HT
+Rt-side HF
+Hypothyroid, Scleredema
+Systemic disease
+(non-pitting edema)
+I
+divide
+IVC thrombosis/obstruction
+5
+earlymorn02
+
+=== Page 67 ===
+บวม
+หวั ใจ ไต ตบั Hypoalbumin
+Drugs:
+NSAIDs,
+Rt-side HF i
+amlodipine, TZD,
+Estrogen
+Hypothyroid, Scleredema
+IVC thrombosis/obstruction
+
+=== Page 68 ===
+DDx in glomerular disease
+Age < 15 yr Age 15-40 yr Age > 40 yr
+1. MCD/IgM 1. FSGS 1. MN
+2. FSGS 2. MCD/IgM 2. MCD/IgM
+3. LN 3. LN 3. DN/2°FSGS
+4. PIGN/IgAN 4. PIGN/IgAN 4. LN, ANCA
+5. Hereditary 5. MN 5. PIGN/IgAN
+nephritis 6. DN Esp. age > 50 yr 6. Deposition
+7. Hereditary 7. Malig-related
+nephritis GN
+Infect: HBV, HCV, HIV, Strep
+
+=== Page 69 ===
+Nephrotic
+MN MCD
+Amyloid
+DKD LN V
+FSGS
+Insidious C3G Acute
+MGRS
+Cryo
+IgAN
+GN
+PSGN
+LN III/IV
+TMA
+(IRGN)
+MY
+IgA
+ANCA
+Anti
+GBM
+Im
+Nephritic
+Adaptive FSGS: insidious onset of proteinuria (less likely NS)
+C3G: G3 glomerulopathy; IRGN: infection-related GN; MGRS: monoclonal gammopathy of renal significance
+This slide shows common presentation of glomerular disease Adapted from Dr Ali PoyanMehr
+
+=== Page 70 ===
+Glomerular disease
+HT in the young
+Electrolyte disorder
+Thrombosis
+SMV
+SMA
+omedline
+
+=== Page 72 ===
+Pool
+Nephrology
+long case
+for R3
+2014-2017
+Courtesy of Solos J.
+
+=== Page 73 ===
+Abdominal bruit
+T12-L2
+Renal bruit
+RAS, Healthy, AAA, Coarctation of aorta,
+Kidney hemangioma
+
+=== Page 74 ===
+CVA
+percussion
+rib
+up
+
+=== Page 75 ===
+Bimanual palpation
+YMdU8 4min72YN
+lien Dullness
+
+=== Page 76 ===
+ปวดหวั HT in the young
+Primary VS Secondary
+Tension
+Migraine Intracranial VS Paracranial
+Eye, Ear, Nose, TMJ
+Trigeminal (cluster, etc)
+Giant cell arteritis
+้
+น า
+้
+เนือ
+ICP
+เลอื ด c
+Pseudotumor cerebri
+Hypertension
+
+=== Page 77 ===
+Suspicion of Secondary Hypertension
+AHA 2017
+
+=== Page 78 ===
+Incidence of Secondary
+Hypertension according to age
+<1 – 6%
+6-14%
+2-5%
+< 1 %
+6-20%
+
+=== Page 79 ===
+Secondary HT
+Kidney Renovascular Atherosclerosis
+Endo • Renal artery stenosis FMD: TS, Marfan, NF
+PAN/TK beaded vier
+CVS
+vasculitis
+longresal
+OSA
+Drugs
+NF: neurofibromatosis; PAN: polyarteritis nodosa; TK: Takayasu arteritis; TS: tuberous sclerosis
+
+=== Page 80 ===
+Renovascular disease
+Fibromuscular dysplasia
+Characteristic Atherosclerosis
+(Marfan, TS, AS, Coarct Ao)
+Sex Female > Male Male > Female Pros
+to
+stal
+Age < 40 years old > 40 years old
+Risk of
+Uncommon
+Common
+atherosclerosis (Medial fibroplasia 85-100%)
+Renal function Normal Impaired
+Middle or Distal third Proximal one-third
+Location of RAS (Beyond 2 cm) (1-2 cm)
+Bilat 10 % Bilat 20-40%
+Treatment Angioplasty Medical = Angioplasty
+C
+Else
+in
+
+=== Page 81 ===
+drilwnn.fm
+Atherosclerotic renovascular disease
+Criteria diagnosis
+- PSV > 180 cm/sec
+- PSV Renal to Aortic
+ratio > 3.5
+- Accelerating time >
+70 msec
+Resistant HT, recurrent
+pulmonary edema, HF ACEI/ARB
+with renal fn decline
+
+=== Page 82 ===
+Fibromuscular Dysplasia
+
+=== Page 83 ===
+Fibromuscular Dysplasia
+Angioplasty
+(preferred in resistant HT) -
+0
+Cure rate 36% (14-85%)
+
+=== Page 84 ===
+Secondary HT
+Kidney Renovascular Atherosclerosis
+Endo • Renal artery stenosis FMD: TS, Marfan, NF
+PAN/TK
+CVS Renal parenchyma
+• CKD, ESKD
+Family Hx: Alport, FSGS
+OSA
+• Glomerulonephritis
+IgAN, lupus nephritis
+Drugs
+NF: neurofibromatosis; PAN: polyarteritis nodosa; TK: Takayasu arteritis; TS: tuberous sclerosis
+
+=== Page 85 ===
+Secondary HT
+Kidney Renovascular
+Work up
+Endo • Renal artery stenosis • U/S doppler
+• BUN, Cr
+CVS Renal parenchyma
+• UA
+• CKD, ESKD
+OSA
+• Glomerulonephritis
+Drugs • Cystic kidney disease: ADPKD, Tuberous sclerosis
+
+=== Page 86 ===
+ADPKD
+2/3
+Diagnostic criteria
+1. Ultrasound criteria
+2 30
+U/S negative in age < 40 yr →
+2
+can’t be rule out. 4 60
+2. Family history PKD 2 or unknown
+do
+3 40
+2
+4 60
+3. Genetic testing
+- Linkage-based analysis
+- Direct mutation: PKD 1 (large
+and difficult)
+
+=== Page 87 ===
+Clinical manifestation
+Renal Extra-renal
+✓Loss of urine concentrating ability ✓CVS: MVP (25%), pericardial eff (20%),
+Ao root dilatation (2%)
+✓Hematuria, Proteinuria
+✓GI: Hepatic cyst (m/c 80% with
+✓ESKD
+(↓eGFR 4.3 ± 8.1/yr, cyst size 5.3%/yr)
+preserved liver function & should avoid
+✓Pain, Hemorrhage
+OC), diverticulosis (20-25%), abdominal
+✓HT associated with high renal volume
+hernia (40%)
+✓UTI
+(Rx: Bactrim/FQ 4-6 wks)
+✓Neuro: Intracranial aneurysm (8%)
+✓Renal stone
+5% in negative FamHx
+(Uric (50%) > Oxalate due to hypocitraturia)
+22% in positive FamHx
+
+=== Page 88 ===
+Treatment BP control: ACEI/ARB x
+- ≤ 110/75 mmHg in age 18-49 yrs + eGFR > 60
+- ≤ 120 mmHg in age ≥ 50 yrs + eGFR < 60
+Investigation Slow eGFR decline: Tolvaptan risk for
+ni high progresen
+✓ Age > 40 yr: U/S (age 18-55, eGFR ≥ 25 + ↓GFR ≥ 3/year over 5 yrs)
+Hydration: ≥ 2 L/day
+✓ Age < 40 yr: CT or MRI
+Low Na diet
+Exclude ADPKD
+✓ Age > 40 yr: cyst ≤ 1 Yearly risk of rupture (%)
+Size (mm)
+✓ Age 16-40 yr: < 5 cysts Anterior Posterior
+Indication for MRA > CTA < 7 0 2.5
+7-12 2.6 14.5
+✓ CNS S&S (SAH) or Previous rupture
+13-24 14.5 18.4
+✓ Family Hx of ICA/SAH
+> 25 44 50
+✓ High risk occupation, Anxiety
+✓ Before major elective Sx (+ KT) Not seen :F/U 5-10 yr
+Seen : F/U 1 yr
+Clip aneurysm
+risk bleed
+10
+✓ Size (Ant cir > 12 mm, Post cir > 7 mm), Daughter sac, CNS S&S, Hx of rupture, Fam Hx of SAH
+
+=== Page 89 ===
+Bimanual palpation
+nailula
+I odor
+Hydronephron
+Don
+Less likely: Hydronephrosis
+Cyst ADPKD, VHL, renal cyst
+Malignancy
+Benign
+RCC, TCC, Lymphoma,
+Tumor
+Angiomyolipoma (TS)
+Renal Sarcoma, Metas
+Infiltrative Amyloidosis, HIVAN, Sarcoidosis
+Xanthogranulomatous/Emphysematous
+Infection
+pyelonephritis, pyelopnephritis
+Adrenal
+Adrenal carcinoma, Lymphoma
+
+=== Page 90 ===
+Secondary HT
+Kidney Cushing’s syndrome
+Work up
+• DST, UFC
+Endo 1o/2o aldosteronism
+• PAC/PRA
+CVS Pheochromocytoma
+• Urine metanephrine
+• TFT, PTH
+OSA
+Hyper/Hypothyroidism
+• Ca level
+Drugs
+Hyperparathyroidism CAH, Liddle, Licorice
+DST: dexamethasone-suppression test; UFC: urine free cortisol
+
+=== Page 91 ===
+NF-1 MEN 1
+• Autosomal dominant
+• MEN1 gene
+Cafe au lait spot • Parathyroid
+–Adenoma/hyperplasia
+• Pancreatic
+Neurofibroma
+–Gastrinoma
+–Insulinoma
+Lisch nodule
+–VIPoma
+–Glucagonoma
+• Pituitary
+–Prolactinoma
+
+=== Page 92 ===
+MEN 2A MEN 2B
+• Autosomal dominant • Autosomal dominant
+• RET gene • RET gene
+• Medullary CA thyroid • Medullary CA thyroid
+• Parathyroid • Pheochromocytoma
+–Hyperplasia • Mucosal neuroma
+• Pheochromocytoma • Gastrointestinal neuroma
+• Marfanoid habitus
+Cutaneous Lichen
+Amyloidosis (CLA)
+
+=== Page 93 ===
+VHL
+Autosomal dominant
+VHL gene, Age 20-30 yr
+CNS hemangioblastoma
+Retinal hemangioblastoma
+Renal cell CA
+Pheochromocytoma
+Pancreatic tumor
+Cystadenoma
+
+=== Page 94 ===
+Secondary HT
+✓ Age < 40 years old
+Kidney ✓ Limb claudication Alistair
+✓ Difference of SBP > 10 mmHg (Lt/Rt)
+Criteria 3/6
+✓ ↓ Brachial arterial pulse
+✓ Subclavian bruit +ve
+Endo
+✓ Angiogram: narrowing of entire aorta
+✓ ESR > 40
+1This is notcrifen lininThan
+CVS Takayasu arteritis
+Work up
+• BP 4 ext
+OSA Coarctation of aorta
+• Angiogram
+- HT in arms with delayed femoral pulse and
+low BP in legs
+Drugs
+- If origin of Lt subclavian artery is distal to • ESR (Takayasu)
+coarctation: decreased Lt brachial pulse
+
+=== Page 95 ===
+Secondary HT
+Kidney
+Endo
+CVS
+Work up
+OSA OSA, Obesity
+Polysomnogram
+Drugs
+
+=== Page 96 ===
+Secondary HT
+Kidney Drug-induced HT
+• Alcohol, caffeine
+Endo
+• Steroids
+CVS • NSAIDs
+• Cyclosporine, tacrolimus
+OSA
+• Estrogens
+(including birth pills)
+• Nasal decongestants
+Drugs
+• Herbs
+Am Fam Physician.2017;96(7):453-461.
+
+=== Page 97 ===
+Glomerular disease
+HT in the young
+Electrolyte disorder
+
+=== Page 98 ===
+Pool
+Nephrology
+long case
+for R3
+2014-2017
+Courtesy of Solos J.
+
+=== Page 99 ===
+Electrolyte disorder
+Normal acid-base
+Hypokalemia Acidosis
+Alkalosis
+HypoPO
+Bone pain 4
+HyperCa
+
+=== Page 100 ===
+distal RTA Proximal RTA
+Inherited Acquired
+ถา้ Ifosfamide
+มนั MM, Medullary cystic disease
+จะ Wilson, Sjogren’s syndrome
+✓ Familial: AD, AR ✓ Autoimmune disease พา 2o HPTH with chronic hypocalcemia
+✓ Endemic: NE in ✓ Sjogren, SLE, Thyroiditis ครอบครวั Familial
+✓ Cryoglobulinemia
+Thailand สา Cystinosis
+✓ PAN, PBC
+✓ Ehlers-Danlos วติ Vitamine D deficiency
+✓ Hypercalciuria with
+syndrome ตรี KT
+nephrocalcinosis
+✓ Hereditary ออก Outdated tetracycline
+✓ 1oHyperPTH, Vit D intox
+elliptocytosis ไป Paroxysmal nocturnal hematuria (PNH)
+✓ Medullary sponge
+✓ Southeast Asian kidney ท า Tenofovir/Topiramate/Toluene/TKI
+Ovalocytosis (SAO) ✓ Fabry’s disease, Wilson อะ Amyloidosis/Acetazolamide/AG
+✓ Sickle cell anemia ✓ Drug & toxins: Ampho B, ไร Lead/Mercury poisoning
+✓ Medullary cystic toluene, Ifosfamide, Hg,
+disease Li, analgesic, foscarnet
+✓ Marfan’s syndrome ✓ TID: UTO, KT CA inhibitor (No Fanconi syndrome)
+- Acetazolamide, Topiramate
+
+=== Page 101 ===
+RTA 1 (distal) RTA 2 (proximal) RTA 4
+HypoK HypoK HyperK
+Urine AG + Urine AG +/- Urine AG +
+Urine osmolal gap < 100 Urine osmolal gap > 100 Urine osmolal gap < 100
+Fanconi syndrome
+Renal stone (CaP)
+U-H-U-G-A-P
+- glucosuria, hypouricemia,
+Nephrocalcinosis
+hypophosphatemia
+- K-citrate - K-citrate - Prednisolone
+- NaHCO 1-2 mEq/kg/day - NaHCO 5-15 mEq/kg/day - Fludrocortisone
+3 3
+
+=== Page 102 ===
+Medullary nephrocalcinosis
+✓ Hypercalciuria with ✓ Hyperphosphaturia
+hypercalcemia • TLS
+• Primary hyperPTH • Acute phosphate nephropathy
+• Milk-Alkali syndrome ✓ Hyperoxaluria
+• Vit D therapy
+• Autosomal recessive
+• Sarcoidosis
+• Fat malabsorption
+✓ Hypercalciuria w/o
+✓ Renal papillary necrosis
+hypercalcemia
+• Assoc DM, Analgesic use
+• dRTA
+✓ Drug
+• Medullary sponge kidney
+Renal papillary necrosis
+• Acetazolamide
+• Bartter’s syndrome
+“P-O-S-T-C-A-R-D-S”
+• Amphotericin B
+• Dent’s disease, Ricket (Pyelo-Obs-Sickle-TB-Cirrhosis-
+• Triamterene
+Analgesic-Reject/RT-DM-Sys
+vasculitis)
+Dent-อา-สา-พา-milk-ไป-ox-med
+
+=== Page 103 ===
+45-year-old woman with unknown U/D 4
+Occupation: คา้ ขายของเกา่
+Chief complaint: ไข ้ 1 วนั
+Present illness
+่
+1 วนั กอ่ นมารพ ไขส้ งู หนาวสนั ปัสสาวะบอ่ ย ปัสสาวะแสบขดั ปวดเอวดา้ นขวา ไม่มี
+ปัสสาวะเป็ นฟองหรอื เป็ นเลอื ด ไม่บวม กนิ ขา้ วพอได ้ ไม่มอี าเจยี น ไม่มีถา่ ยเหลว ไม่เคย
+้
+มอี าการแบบนีมากอ่ น
+Past illness
+No Smoking
+No alcohol use
+No IVDU
+No Family Hx of kidney disease or malignancy
+
+=== Page 104 ===
+4
+Physical examination
+V/S: BT 39c BP 109/83 mmHg PR 102 bpm RR 16 tpm
+GA: Alert, mild pale, no jaundice
+Thyroid: not enlarged
+Heart&Lungs: WNL
+Abdomen: Soft, mild tender at suprapubic area, liver and spleen
+can’t be palpated
+CVA tenderness at right side
+Ext: No edema, no rash
+Neuro: CN – intact, Motor gr V, all
+
+=== Page 105 ===
+Extremity pain/edema
+Cellulitis
+Skin/Subcut/Fascia NF Nerve Neuropathy
+Abscess
+Myositis
+Muscle
+Thrombosis
+Hematoma
+Emboli
+Intra-luminal Dissection
+Arterial Vascular claudication
+Extra-luminal Lymphadenopathy
+Hematoma
+Venous
+Thrombophilia
+Lymphatic obstruction: Rt-side HF, thoracic duct injury, filariasis
+Lymphatic
+Lymphadenopathy
+Joan
+rounate
+Pathologic Fx MM
+Bone
+Periosteal reaction
+
+=== Page 106 ===
+Pathologic Fx
+Localized
+Osteomyelitis, primary bone tumor, bony
+metastasis
+Generalized Osteomalacia
+Endocrine
+GI
+Hemato
+CNT dz
+Drugs
+
+=== Page 107 ===
+Pathologic Fx
+Localized
+Osteomyelitis, primary bone tumor, bony
+metastasis
+Generalized Osteomalacia Vit D deficiency
+HypoPTH
+Endocrine
+GI
+Mineralization defect
+Abnormal bone matrix
+Hemato • CKD, OI
+Enz deficiency
+• HypoALP
+CNT dz
+Phosphate deficiency
+c Inhibitors of
+mineralization
+Drugs • Al, F, Bisphosphonate
+
+=== Page 108 ===
+Pathologic Fx
+Localized
+Osteomyelitis, primary bone tumor, bony
+metastasis
+Generalized Osteomalacia Vit D deficiency Shift into cell
+• Resp alkalosis, Refeeding
+• Hungry bone syndrome
+Endocrine
+Decreased intake/absorb
+GI • Malabsorption
+• Antacid
+Mineralization defect
+• Vit D def
+Hemato
+Renal loss
+• X-linked rickets, HHRH
+CNT dz
+Phosphate deficiency
+• Primary hyperPTH
+• Fanconi syndrome
+• TIO
+Drugs
+t
+
+=== Page 109 ===
+n'cortex
+Tumor-induced
+TmP/GFR < 2.5
+reaps and
+osteomalacia
+Proway
+rowod.mil
+EGFR
+Functional imaging
+✓ Octreotide SPECT-CT scan
+✓ DOTATATE PET/CT
+Localized imaging: MRI, CT
+TRP = 1-FE
+PO4
+core TRP:Tubularreabsorption phosphate
+TmP: Tubular maximal phosphate
+Tumor resection
+reabsorption
+
+=== Page 110 ===
+Pathologic Fx
+Localized
+Osteomyelitis, primary bone tumor, bony
+metastasis
+Generalized Osteomalacia
+HyperPTH/Thyroid
+Endocrine Cushing
+Hypogonad
+GI DM type I
+Hemato
+CNT dz
+Drugs
+
+=== Page 111 ===
+Pathologic Fx
+Localized
+Osteomyelitis, primary bone tumor, bony
+metastasis
+Generalized Osteomalacia
+Endocrine
+Cirrhosis
+Celiac disease
+GI Malabsorption
+Gastrectomy
+IBD
+Hemato
+CNT dz
+Drugs
+
+=== Page 112 ===
+Pathologic Fx
+Localized
+Osteomyelitis, primary bone tumor, bony
+metastasis
+Generalized Osteomalacia
+Endocrine
+GI
+Lymphoma/Leukemia
+MM
+Hemato
+Thalassemia
+Hemochromatosis
+CNT dz
+Drugs
+
+=== Page 113 ===
+Pathologic Fx
+Localized
+Osteomyelitis, primary bone tumor, bony
+metastasis
+Generalized Osteomalacia
+Endocrine
+GI
+Hemato
+SLE
+RA
+CNT dz
+AS
+HOA → CA lung, Hodgkin, cirrhosis
+0
+Drugs
+
+=== Page 114 ===
+Pathologic Fx
+Localized
+Osteomyelitis, primary bone tumor, bony
+metastasis
+Generalized Osteomalacia
+Endocrine
+GI
+crisis
+nor
+Hemato
+Firm
+CNT dz for
+Drugs LOVE MST
+(TZD/TDF/TKI/Thyroxine/Tamoxifen)
+
+=== Page 115 ===
+Nat Rev Dis Primers 2017 Jul 20;3:17046.
+Sethi S, et al. J Am Soc Nephrol. 2018 Jul;29(7):1810-1823.
+Diagnosis of paraproteinemia
+Tumor burden
+Smoldering MM,
+criteria
+MGUS
+or
+MBL, CLL, NHL
++
+End-organ
+Kidney lesion
+damage
+BMPC: bone marrow plasma cell
+CRAB: Ca > 11 or > 1 mg/dL UNL, Renal insuff (SCr > 2, CrCl < 40 ml/min), Anemia (Hb < 10 g/dL or
+< 2 g/dL UNL), Bone disease (lytic lesions or osteoporosis/compression Fx)
+FLC: free light chain (Involved:Uninvolved); MBL: monoclonal B cell lymphocytosis; MDE:
+Myeloma-defining event; MGRS: Monoclonal gammopathy of renal significance
+
+=== Page 116 ===
+Measurement of
+monoclonal gammopathy
+• Serum/urine protein
+For screening
+electrophoresis (SPEP/UPEP)
+- Detect SFLC ≥ 500 mg/L
+• Immunofixation electrophoresis
+(IFE)
+- Detect SFLC ≥ 150 mg/L
+• Serum free light chain ratio (SFLC):
+κ/λ ratio
+- Normal renal fn = 0.26-1.65
+- AKI/CKD = 0.37-3.17
+Highest Sen
+
+=== Page 117 ===
+Measurement of
+monoclonal gammopathy
+For screening
+• Serum/urine protein
+electrophoresis (SPEP/UPEP)
+- Detect SFLC ≥ 500 mg/L
+• Immunofixation electrophoresis
+(IFE)
+- Detect SFLC ≥ 150 mg/L
+• Serum free light chain ratio (SFLC):
+κ/λ ratio
+- Normal renal fn = 0.26-1.65
+- AKI/CKD = 0.37-3.17
+Highest Sen
+Hogan JJ, et al. Am J Kidney Dis.2019;74(6):822-836.
+
+=== Page 118 ===
+Pool
+Nephrology
+long case
+for R3
+2014-2017
+Courtesy of Solos J.
+
+=== Page 119 ===
+Cr. SarunSompornserm
+IgG lambde
+Good Luck na kub, my resident 3
+
+=== Page 120 ===
+A Amorphous pale
+matem
+eosinophiln
+chain
+Mm light
+key
+IF
+9
+Tdd Ca 0106
+normal
+SPEP
+IN
+h
+spit
+1.65
+0.16
+FLC
+sufkoo.nu
+Qiu
+SPEP SALE
+hey

@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenecteplase vs Alteplase in LVO — Evidence Review 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fira+Code:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-2: #f1f5f9;
+      --border: rgba(0,0,0,0.08);
+      --text: #0f172a;
+      --text-dim: #64748b;
+      --text-muted: #94a3b8;
+      --accent: #0369a1;
+      --accent-bg: #e0f2fe;
+      --accent-2: #0891b2;
+      --green: #059669;
+      --green-bg: #d1fae5;
+      --amber: #d97706;
+      --amber-bg: #fef3c7;
+      --rose: #be123c;
+      --rose-bg: #ffe4e6;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --font-serif: 'Instrument Serif', serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100dvh;
+    }
+
+    /* HEADER */
+    .site-header {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 60%, #0891b2 100%);
+      color: white;
+      padding: 48px 24px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 1;
+    }
+    .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .header-label {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.9);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .site-header h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: white;
+    }
+    .site-header h1 em {
+      font-style: italic;
+      color: #7dd3fc;
+    }
+    .header-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      max-width: 600px;
+    }
+    .header-meta {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .header-meta-item {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .header-meta-item strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+    /* CONTAINER */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    /* NAV TABS */
+    .nav-tabs {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248,250,252,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+    }
+    .nav-tabs-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-tabs-inner::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 14px 18px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-tab:hover { color: var(--text); }
+    .nav-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* SECTION */
+    .section { padding: 40px 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* SECTION HEADING */
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .card + .card { margin-top: 16px; }
+
+    .card--hero {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-color: #bae6fd;
+    }
+    .card--green { border-left: 3px solid var(--green); }
+    .card--amber { border-left: 3px solid var(--amber); }
+    .card--rose { border-left: 3px solid var(--rose); }
+    .card--accent { border-left: 3px solid var(--accent); }
+
+    /* GRID */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+
+    /* STAT BLOCKS */
+    .stat-block {
+      text-align: center;
+      padding: 20px 16px;
+    }
+    .stat-block__value {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-block__value .vs { font-size: 1.2rem; color: var(--text-muted); display: block; margin: 2px 0; }
+    .stat-block__value .alt { color: var(--text-dim); font-size: 1.6rem; }
+    .stat-block__label {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .stat-block__delta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: 6px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+    .stat-block__delta--up { background: var(--green-bg); color: var(--green); }
+    .stat-block__delta--neutral { background: var(--surface-2); color: var(--text-dim); }
+
+    /* COMPARE TABLE */
+    .compare-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; background: var(--surface); }
+    .compare-table thead { background: var(--surface-2); }
+    .compare-table th {
+      text-align: left;
+      padding: 12px 16px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: var(--surface-2); }
+    .compare-table .drug-tnk { font-weight: 600; color: var(--accent); }
+    .compare-table .drug-alt { font-weight: 600; color: var(--text-dim); }
+    .compare-table .num { font-family: var(--font-mono); font-size: 0.8rem; }
+    .compare-table .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge--sig { background: var(--green-bg); color: var(--green); }
+    .badge--ns { background: var(--surface-2); color: var(--text-muted); }
+    .badge--harm { background: var(--rose-bg); color: var(--rose); }
+
+    /* CALLOUT */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 20px 20px 24px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+    .callout::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 12px;
+      width: 3px;
+      border-radius: 2px;
+    }
+    .callout--green::before { background: var(--green); }
+    .callout--amber::before { background: var(--amber); }
+    .callout--blue::before { background: var(--accent); }
+    .callout--rose::before { background: var(--rose); }
+    .callout__title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .callout__body { font-size: 0.88rem; color: var(--text-dim); line-height: 1.5; }
+
+    /* TAKEAWAYS */
+    .takeaway-list { list-style: none; }
+    .takeaway-item {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .takeaway-item:last-child { border-bottom: none; }
+    .takeaway-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .takeaway-text { font-size: 0.9rem; color: var(--text); line-height: 1.5; }
+    .takeaway-text strong { font-weight: 600; }
+
+    /* SOURCE CARDS */
+    .source-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .source-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+    }
+    .source-info { flex: 1; }
+    .source-title { font-weight: 600; font-size: 0.88rem; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+    .source-meta { font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+    /* REFERENCES */
+    .ref-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.83rem;
+    }
+    .ref-item:last-child { border-bottom: none; }
+    .ref-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      width: 20px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .ref-text { color: var(--text-dim); line-height: 1.5; }
+    .ref-text strong { color: var(--text); font-weight: 500; }
+
+    /* PHARMA TABLE */
+    .pharma-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .pharma-col { background: var(--surface); padding: 20px; }
+    .pharma-col:first-child { background: #f0f9ff; }
+    .pharma-drug {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .pharma-col:first-child .pharma-drug { color: var(--accent); }
+    .pharma-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.85rem; border-bottom: 1px solid var(--border); }
+    .pharma-row:last-child { border-bottom: none; }
+    .pharma-row__label { color: var(--text-dim); }
+    .pharma-row__value { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--text); text-align: right; }
+
+    /* BRIDGE TNK HERO */
+    .bridge-card {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 1px solid #86efac;
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .bridge-card__label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--green);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .bridge-card__title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .bridge-card__journal {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .bridge-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .bridge-stat { text-align: center; }
+    .bridge-stat__val {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .bridge-stat__val .small { font-size: 1rem; color: var(--text-dim); }
+    .bridge-stat__lbl { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .bridge-result-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .bridge-result-bar__label { font-size: 0.78rem; font-weight: 500; color: var(--text-dim); width: 80px; flex-shrink: 0; }
+    .bridge-result-bar__track {
+      flex: 1;
+      height: 28px;
+      background: var(--surface-2);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bridge-result-bar__fill {
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: white;
+    }
+    .bridge-result-bar__fill--tnk { background: var(--green); }
+    .bridge-result-bar__fill--alt { background: #94a3b8; }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      margin-top: 40px;
+    }
+    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-text { font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+    /* TIMELINE BANNER */
+    .time-banner {
+      background: linear-gradient(90deg, #0c4a6e 0%, #0369a1 50%, #0891b2 100%);
+      padding: 24px;
+      color: white;
+      margin: 0;
+    }
+    .time-banner__inner { max-width: 900px; margin: 0 auto; }
+    .time-banner__title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #7dd3fc;
+    }
+    .time-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+    }
+    .time-col { background: rgba(255,255,255,0.08); padding: 16px; }
+    .time-col:first-child { background: rgba(255,255,255,0.13); }
+    .time-col__head {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+    .time-metric { margin-bottom: 10px; }
+    .time-metric__label { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-bottom: 2px; }
+    .time-metric__val { font-family: var(--font-serif); font-size: 1.3rem; color: white; }
+    .time-metric__val .vs { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .time-winner {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .pharma-grid { grid-template-columns: 1fr; }
+      .bridge-stats { grid-template-columns: 1fr 1fr; }
+      .time-split { grid-template-columns: 1fr; }
+      .compare-table { font-size: 0.8rem; }
+      .compare-table td, .compare-table th { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <span class="header-label">Evidence Review 2025</span>
+    <h1>Tenecteplase vs Alteplase in<br><em>Large Vessel Occlusion</em></h1>
+    <p class="header-sub">Thrombolysis-to-Puncture Time, Bridging Therapy, and the BRIDGE-TNK Trial: What Changed in 2025</p>
+    <div class="header-meta">
+      <span class="header-meta-item"><strong>4</strong> sources</span>
+      <span class="header-meta-item"><strong>1,003</strong> + <strong>550</strong> + <strong>1,028</strong> patients</span>
+      <span class="header-meta-item"><strong>Apr 2026</strong></span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-tabs">
+  <div class="nav-tabs-inner">
+    <a class="nav-tab active" href="#key-findings">Key Findings</a>
+    <a class="nav-tab" href="#pharmacology">Pharmacology</a>
+    <a class="nav-tab" href="#bridge-tnk">BRIDGE-TNK</a>
+    <a class="nav-tab" href="#ttp">TTP Analysis</a>
+    <a class="nav-tab" href="#meta-analysis">Meta-Analysis</a>
+    <a class="nav-tab" href="#recommendations">Recommendations</a>
+    <a class="nav-tab" href="#references">References</a>
+  </div>
+</nav>
+
+<!-- KEY FINDINGS -->
+<section class="section" id="key-findings">
+  <div class="container">
+    <span class="section-label">Overview</span>
+    <h2 class="section-heading">ความแตกต่างสำคัญ: ขึ้นกับเวลา</h2>
+
+    <div class="time-banner">
+      <div class="time-banner__inner">
+        <div class="time-banner__title">Thrombolysis-to-Puncture Time (TTP) — ตัวแปรสำคัญ</div>
+        <div class="time-split">
+          <div class="time-col">
+            <div class="time-col__head">TTP &lt; 60 นาที</div>
+            <div class="time-metric">
+              <div class="time-metric__label">Early Recanalization</div>
+              <div class="time-metric__val">TNK <span class="vs">vs</span> ALT</div>
+              <div class="time-metric__val" style="font-size:1.6rem">19% <span class="vs">vs</span> 9.1%</div>
+            </div>
+            <div class="time-metric">
+              <div class="time-metric__label">mRS 0–2 at 90d</div>
+              <div class="time-metric__val" style="font-size:1.6rem">61% <span class="vs">vs</span> 49%</div>
+            </div>
+            <span class="time-winner">✓ Tenecteplase ดีกว่าชัดเจน</span>
+          </div>
+          <div class="time-col">
+            <div class="time-col__head">TTP ≥ 60 นาที</div>
+            <div class="time-metric">
+              <div class="time-metric__label">Early Recanalization</div>
+              <div class="time-metric__val" style="font-size:1.6rem">20.8% <span class="vs">vs</span> 19.3%</div>
+            </div>
+            <div class="time-metric">
+              <div class="time-metric__label">mRS 0–2 at 90d</div>
+              <div class="time-metric__val" style="font-size:1.6rem">48% <span class="vs">vs</span> 47.5%</div>
+            </div>
+            <span class="time-winner" style="opacity:0.6">≈ ไม่ต่างกัน</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px">
+      <div class="grid-2">
+        <div class="callout callout--green">
+          <div class="callout__title">ประสิทธิภาพเหนือกว่า</div>
+          <div class="callout__body">TNK ฉีดง่าย (bolus) → ลดเวลา IVT → ไป thrombectomy เร็ว → ได้ reperfusion ดีกว่าเมื่อ TTP สั้น</div>
+        </div>
+        <div class="callout callout--blue">
+          <div class="callout__title">ความปลอดภัยเทียบเท่า</div>
+          <div class="callout__body">sICH, parenchymal hematoma type 2, และ mortality ไม่ต่างกันระหว่างสองยา</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHARMACOLOGY -->
+<section class="section" id="pharmacology">
+  <div class="container">
+    <span class="section-label">Drug Comparison</span>
+    <h2 class="section-heading">Pharmacology: ทำไม Tenecteplase จึงแตกต่าง</h2>
+
+    <div class="pharma-grid">
+      <div class="pharma-col">
+        <div class="pharma-drug">Tenecteplase</div>
+        <div class="pharma-row"><span class="pharma-row__label">Dose</span><span class="pharma-row__value">0.25 mg/kg</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Route</span><span class="pharma-row__value">Single IV bolus</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Fibrin specificity</span><span class="pharma-row__value">~10× สูงกว่า</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Half-life</span><span class="pharma-row__value">20–24 นาที</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">PAI-1 resistance</span><span class="pharma-row__value">สูง</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Infusion time</span><span class="pharma-row__value">0 นาที (bolus)</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Cost</span><span class="pharma-row__value">ต่ำกว่า</span></div>
+      </div>
+      <div class="pharma-col">
+        <div class="pharma-drug">Alteplase</div>
+        <div class="pharma-row"><span class="pharma-row__label">Dose</span><span class="pharma-row__value">0.9 mg/kg</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Route</span><span class="pharma-row__value">IV infusion 60 นาที</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Fibrin specificity</span><span class="pharma-row__value">ปานกลาง</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Half-life</span><span class="pharma-row__value">4–6 นาที</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">PAI-1 resistance</span><span class="pharma-row__value">ต่ำ</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Infusion time</span><span class="pharma-row__value">60 นาที</span></div>
+        <div class="pharma-row"><span class="pharma-row__label">Cost</span><span class="pharma-row__value">สูงกว่า</span></div>
+      </div>
+    </div>
+
+    <div class="callout callout--amber">
+      <div class="callout__title">ESO 2023 + AHA/ASA Guideline Update</div>
+      <div class="callout__body">TNK 0.25 mg/kg ได้รับการรับรองเป็น alternative ที่ปลอดภัยและมีประสิทธิภาพเทียบเท่า alteplase สำหรับ AIS ภายใน 4.5 ชั่วโมง</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE-TNK -->
+<section class="section" id="bridge-tnk">
+  <div class="container">
+    <span class="section-label">Landmark Trial</span>
+    <h2 class="section-heading">BRIDGE-TNK — ที่เปลี่ยน Standard of Care</h2>
+
+    <div class="bridge-card">
+      <div class="bridge-card__label">Phase III RCT — NEJM 2025</div>
+      <div class="bridge-card__title">Intravenous Tenecteplase before Thrombectomy in Stroke</div>
+      <div class="bridge-card__journal">N Engl J Med. 2025. doi:10.1056/NEJMoa2503867</div>
+
+      <div class="bridge-stats">
+        <div class="bridge-stat">
+          <div class="bridge-stat__val">550<span class="small">pts</span></div>
+          <div class="bridge-stat__lbl">Total patients</div>
+        </div>
+        <div class="bridge-stat">
+          <div class="bridge-stat__val">4.5<span class="small">hr</span></div>
+          <div class="bridge-stat__lbl">Time window</div>
+        </div>
+        <div class="bridge-stat">
+          <div class="bridge-stat__val">16<span class="small">min</span></div>
+          <div class="bridge-stat__lbl">Median TNK→Puncture</div>
+        </div>
+      </div>
+
+      <div class="bridge-result-bar">
+        <span class="bridge-result-bar__label">mRS 0–2</span>
+        <div class="bridge-result-bar__track">
+          <div class="bridge-result-bar__fill bridge-result-bar__fill--tnk" style="width:52.9%">52.9%</div>
+        </div>
+      </div>
+      <div class="bridge-result-bar">
+        <span class="bridge-result-bar__label">Thrombectomy alone</span>
+        <div class="bridge-result-bar__track">
+          <div class="bridge-result-bar__fill bridge-result-bar__fill--alt" style="width:44.1%">44.1%</div>
+        </div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--text-dim);margin-top:8px;font-family:var(--font-mono)">RR 1.20 (95% CI 1.01–1.43) · P = 0.04</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card card--green">
+        <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:10px">✓ ดีกว่า: Functional Independence</h3>
+        <p style="font-size:0.85rem;color:var(--text-dim)">TNK + thrombectomy ให้ mRS 0-2 ที่ 90 วัน สูงกว่าอย่างมีนัยสำคัญ (52.9% vs 44.1%)</p>
+      </div>
+      <div class="card card--green">
+        <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:10px">✓ ปลอดภัย: sICH ไม่ต่าง</h3>
+        <p style="font-size:0.85rem;color:var(--text-dim)">Symptomatic ICH และ mortality ไม่แตกต่างกันระหว่างสองกลุ่ม</p>
+      </div>
+      <div class="card card--amber">
+        <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:10px">⚠ ระวัง: Contrast Extravasation</h3>
+        <p style="font-size:0.85rem;color:var(--text-dim)">พบมากกว่าในกลุ่ม TNK (63.8% vs 50.0%) — ต้องติดตาม</p>
+      </div>
+      <div class="card card--accent">
+        <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:10px">⊕ ข้อสังเกต</h3>
+        <p style="font-size:0.85rem;color:var(--text-dim)">Median time จาก TNK ถึง puncture เพียง 16 นาที — TTP สั้นมาก สอดคล้องกับ cohort analysis</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TTP ANALYSIS -->
+<section class="section" id="ttp">
+  <div class="container">
+    <span class="section-label">Cohort Study</span>
+    <h2 class="section-heading">TTP Determines Differential Effect — Cohort ที่ใหญ่ที่สุด</h2>
+
+    <p style="font-size:0.9rem;color:var(--text-dim);margin-bottom:24px;line-height:1.6">Multicenter retrospective cohort, n = 1,003 LVO patients ได้ bridging therapy (IVT → mechanical thrombectomy). TNK 488 patients vs ALT 515 patients</p>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Outcome</th>
+            <th>TNK &lt;60 min</th>
+            <th>ALT &lt;60 min</th>
+            <th>TNK ≥60 min</th>
+            <th>ALT ≥60 min</th>
+            <th>Significant?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Early Recanalization</strong></td>
+            <td class="num drug-tnk">19.0%</td>
+            <td class="num drug-alt">9.1%</td>
+            <td class="num drug-tnk">20.8%</td>
+            <td class="num drug-alt">19.3%</td>
+            <td><span class="badge badge--sig">Yes (&lt;60)</span></td>
+          </tr>
+          <tr>
+            <td><strong>mRS 0–2 at 90d</strong></td>
+            <td class="num drug-tnk">61.0%</td>
+            <td class="num drug-alt">49.0%</td>
+            <td class="num drug-tnk">48.0%</td>
+            <td class="num drug-alt">47.5%</td>
+            <td><span class="badge badge--sig">Yes (&lt;60)</span></td>
+          </tr>
+          <tr>
+            <td><strong>sICH Risk</strong></td>
+            <td colspan="2" style="text-align:center;color:var(--text-muted)">Similar trajectory ↑</td>
+            <td colspan="2" style="text-align:center;color:var(--text-muted)">Similar trajectory ↑</td>
+            <td><span class="badge badge--ns">NS</span></td>
+          </tr>
+          <tr>
+            <td><strong>PH Type 2 Risk</strong></td>
+            <td colspan="2" style="text-align:center;color:var(--text-muted)">Similar trajectory ↑</td>
+            <td colspan="2" style="text-align:center;color:var(--text-muted)">Similar trajectory ↑</td>
+            <td><span class="badge badge--ns">NS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout--rose" style="margin-top:20px">
+      <div class="callout__title">Clinical Implication</div>
+      <div class="callout__body">เมื่อ TTP ยาวนาน ≥60 นาที ทั้งสองยามีประสิทธิภาพเทียบเท่ากัน — clot สัมผัส lytic มานานพอจนถึง equilibrium นี่คือเหตุผลว่าทำไม TNK ซึ่งฉีดเร็วกว่าจึงมี advantage เฉพาะเมื่อ TTP สั้น</div>
+    </div>
+  </div>
+</section>
+
+<!-- META-ANALYSIS -->
+<section class="section" id="meta-analysis">
+  <div class="container">
+    <span class="section-label">Systematic Review</span>
+    <h2 class="section-heading">Meta-Analysis: 5 RCTs, n = 1,028 LVO patients</h2>
+
+    <div class="card card--hero" style="margin-bottom:20px">
+      <p style="font-size:0.9rem;color:var(--text-dim);line-height:1.6;margin-bottom:16px"><strong style="color:var(--text)">Frontiers in Neurology, 2025</strong> — SR + MA of 5 RCTs comparing TNK vs ALT in AIS patients with confirmed LVO. Primary: mRS 0-1 at 90d. Secondary: mRS 0-2, early neurological improvement, successful reperfusion (eTICI ≥2b), safety outcomes.</p>
+      <div class="compare-table-wrap" style="border:none">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Outcome</th>
+              <th>Risk Ratio</th>
+              <th>95% CI</th>
+              <th>P-value</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>mRS 0–1 (Excellent)</strong></td>
+              <td class="num">RR 1.18</td>
+              <td class="num">1.00–1.40</td>
+              <td class="num">0.05</td>
+              <td><span class="badge badge--sig">Borderline sig</span></td>
+            </tr>
+            <tr>
+              <td><strong>mRS 0–2 (Good)</strong></td>
+              <td class="num">RR 1.18</td>
+              <td class="num">0.90–1.54</td>
+              <td class="num">0.23</td>
+              <td><span class="badge badge--ns">NS</span></td>
+            </tr>
+            <tr>
+              <td><strong>Early Neuro Improvement</strong></td>
+              <td class="num">RR 1.00</td>
+              <td class="num">0.57–1.77</td>
+              <td class="num">1.00</td>
+              <td><span class="badge badge--ns">NS</span></td>
+            </tr>
+            <tr>
+              <td><strong>Successful Reperfusion</strong></td>
+              <td class="num">RR 1.15</td>
+              <td class="num">0.93–1.44</td>
+              <td class="num">0.20</td>
+              <td><span class="badge badge--ns">NS</span></td>
+            </tr>
+            <tr>
+              <td><strong>Parenchymal Hematoma</strong></td>
+              <td class="num">RR 1.01</td>
+              <td class="num">0.70–1.45</td>
+              <td class="num">0.98</td>
+              <td><span class="badge badge--ns">NS</span></td>
+            </tr>
+            <tr>
+              <td><strong>Symptomatic ICH</strong></td>
+              <td class="num">RR 1.14</td>
+              <td class="num">0.62–2.10</td>
+              <td class="num">0.68</td>
+              <td><span class="badge badge--ns">NS</span></td>
+            </tr>
+            <tr>
+              <td><strong>3-Month Mortality</strong></td>
+              <td class="num">RR 1.22</td>
+              <td class="num">0.52–2.84</td>
+              <td class="num">0.65</td>
+              <td><span class="badge badge--ns">NS</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout callout--green">
+      <div class="callout__title">สรุป Meta-Analysis</div>
+      <div class="callout__body">TNK เป็น alternative ที่เทียบเท่า ALT ใน LVO โดยไม่เพิ่มความเสี่ยงด้านความปลอดภัย และมีแนวโน้มดีกว่าเล็กน้อยใน mRS 0-1 (borderline) ประโยชน์เด่นคือ ease of administration (single bolus) และ lower cost</div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="section" id="recommendations">
+  <div class="container">
+    <span class="section-label">Clinical Practice</span>
+    <h2 class="section-heading">Summary & Recommendations</h2>
+
+    <ul class="takeaway-list">
+      <li class="takeaway-item">
+        <span class="takeaway-num">1</span>
+        <div class="takeaway-text"><strong>ใน LVO ที่มี plan ทำ thrombectomy</strong> — ให้ TNK 0.25 mg/kg IV bolus แทน alteplase ถ้าทำได้ (มีหลักฐานจาก BRIDGE-TNK ว่าดีกว่า thrombectomy alone อย่างมีนัยสำคัญ)</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">2</span>
+        <div class="takeaway-text"><strong>Minimize TTP ให้น้อยกว่า 60 นาที</strong> — TNK มี advantage ชัดเจนกว่า ALT เมื่อ TTP <60 นาที (mRS 0-2: 61% vs 49%) ควรเริ่ม thrombectomy ภายใน 60 นาทีจาก thrombolysis start</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">3</span>
+        <div class="takeaway-text"><strong>Safety ไม่ต่างกัน</strong> — sICH, parenchymal hematoma type 2, และ 3-month mortality ไม่แตกต่างกันระหว่างสองยา (NNT สูงกว่า NNH)</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">4</span>
+        <div class="takeaway-text"><strong>ขนาด TNK ที่แนะนำ: 0.25 mg/kg IV bolus</strong> — ไม่ใช่ 0.4 mg/kg (ขนาดสูงกว่าไม่ได้ benefit เพิ่มขึ้นแต่อาจเพิ่มความเสี่ยง)</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">5</span>
+        <div class="takeaway-text"><strong>Guidelines รองรับแล้ว</strong> — ESO 2023 และ AHA/ASA รับรอง TNK 0.25 mg/kg เป็น alternative ที่เทียบเท่า alteplase สำหรับ AIS ภายใน 4.5 ชั่วโมง</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">6</span>
+        <div class="takeaway-text"><strong>เมื่อ TTP ≥ 60 นาที</strong> — ไม่มีความแตกต่างระหว่างสองยา อาจใช้ตาม availability และ ease of use เป็นหลัก</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="section" id="references">
+  <div class="container">
+    <span class="section-label">Sources</span>
+    <h2 class="section-heading">References</h2>
+
+    <div style="margin-bottom:20px">
+      <div class="source-item">
+        <div class="source-icon">RCT</div>
+        <div class="source-info">
+          <div class="source-title">Intravenous Tenecteplase before Thrombectomy in Stroke (BRIDGE-TNK)</div>
+          <div class="source-meta">N Engl J Med. 2025 | n=550 | Phase III RCT | doi:10.1056/NEJMoa2503867</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">Coh</div>
+        <div class="source-info">
+          <div class="source-title">Thrombolysis-to-Puncture Time Determines the Differential Effect of Tenecteplase vs Alteplase in LVO</div>
+          <div class="source-meta">Stroke. 2025 | n=1,003 | Multicenter Retrospective Cohort | doi:10.1161/STROKEAHA.125.054791</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">SR</div>
+        <div class="source-info">
+          <div class="source-title">Tenecteplase versus alteplase for IV thrombolysis of acute ischemic stroke patients with LVO: systematic review and meta-analysis</div>
+          <div class="source-meta">Front Neurol. 2025 | n=1,028 | 5 RCTs | doi:10.3389/fneur.2025.1487711</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">Coh</div>
+        <div class="source-info">
+          <div class="source-title">Association of Time to Thrombolysis With Early Reperfusion After Alteplase and Tenecteplase in Patients With LVO</div>
+          <div class="source-meta">Neurology. 2024;102(7):e209166 | doi:10.1212/WNL.0000000000209166</div>
+        </div>
+      </div>
+      <div class="source-item">
+        <div class="source-icon">Rev</div>
+        <div class="source-info">
+          <div class="source-title">Tenecteplase versus alteplase for acute stroke within 4.5 hours (ATTEST-2)</div>
+          <div class="source-meta">Lancet Neurol. 2024 | Systematic Review + RCT | doi:10.1016/S1474-4422(24)00377-6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-text">Tenecteplase vs Alteplase in LVO · Evidence Review 2025</span>
+    <span class="footer-text">Sources: NEJM, Stroke AHA/ASA, Neurology, Frontiers in Neurology, Lancet Neurology</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for nav tabs
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+      const id = tab.getAttribute('href');
+      const target = document.querySelector(id);
+      if (target) {
+        const offset = document.querySelector('.nav-tabs').offsetHeight + 16;
+        const y = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Active tab highlighting on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navTabs = document.querySelectorAll('.nav-tab');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navTabs.forEach(t => {
+          t.classList.toggle('active', t.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

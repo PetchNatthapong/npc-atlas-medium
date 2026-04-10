@@ -1,0 +1,767 @@
+=== Page 1 ===
+Outline
+Case
+Approach
+• Common problem in ID long case exam. = “Prolonged fever” (fever > 4 wks.)
+in • Approach
+Common • Classical FUO
+Infectious disease • Infective endocarditis (NVE)
+• HIV related OIs
+Problem(s)
+Nov 2023
+Case
+A 50-year-old farmer was admitted to our hospital with history of high-grade swinging temperature up to
+39°C.He had had a sore throat, which lasted for a few days accompanied by rigors, and myalgia. His general
+practitioner prescribed amoxicillin. The symptoms were persistent over four weeks.
+Fever of unknown origin (FUO) Etiology of Classic FUO (infection)
+Petersdorfand Beeson (1961)
+• Fever higher than 38.3°C (100.9°F) on several occasions, persisting without • Bacteriainfection • Fungal infection
+diagnosis for at least 3 weeks + at least 1 week’s investigation in hospital
+• Tuberculosis • Histoplasmosis
+• Revised definition: require investigation for 3 days of IPD or at least 3 OPD visits • Typhoidal and nontyphoidal • Talaromycosis
+• Revised into 4 distinct subclassesdue to changes in clinical practice salmonellosis • Zoonosis
+1. Classic (median duration of fever was 40 -44 days) • Infective endocarditis
+Hints • Rickettsioses
+2. Nosocomial (health care associated) Cause of FUO (systematic reviews) • Deep-seated infections (abscesses
+• Brucellosis
+• Infection (38%) and prostatitis)
+3. Neutropenic (immunodeficient) • Neoplasm (12%) Age > 65 • Bartonellosis
+4. HIV-related • Autoimmune (21%) • Viralinfection
+Age < 65
+• Undiagnosed (23%) • Mononucleosis-like infection (EBV,
+• Miscellaneous (7%)
+CMV, HHV-6, HHV-7)
+N EnglJ Med 2022;386:463-77.
+Medicine (Baltimore) 1961;40:1–30
+CurrClin Top Infect Dis 1991;11:35–51
+Am J Med Sci 1986;292:56–64
+
+=== Page 2 ===
+Etiology of Classic FUO Approach : History
+• Neoplasms • Miscellaneous • History taking should be attention to Hints
+• Lymphomas • Drug-induced fever • Recent travel, work environment Review of systems
+• Leukemias • Hepatitis
+• Exposure to pets and other animals
+• Renal-cell carcinoma • Deep venous thrombosis
+• Hepatocellular carcinoma • Sarcoidosis • Recent contact with people exhibiting similar symptoms
+• Metastatic cancers • Addison's disease • Past medical history
+• Atrial myxoma • Diseases of the thyroid gland • List of the patient’s medications (drug-induced fever)
+• Autoimmune disorders • Central nervous system disorders
+• Night sweats
+• Intracranial hemorrhage and strokes
+• Adult-onset Still disease
+• tuberculosis, autoimmune disorders, and hematologic malignancies
+• Polymyalgia rheumatica
+• Temporal arteritis • Weight loss
+• Systemic lupus erythematosus
+• malignancy, tuberculosis, HIV infection, or endocrine disorders
+• Inflammatory bowel disorders
+N Engl J Med 2022;386:463-77.
+Approach : Physical examination (2)
+Approach : Physical examination (1)
+Site Finding Diagnosis
+• Auscultation of the heart is important to detect the presence of a new murmur Head Sinus tenderness Sinusitis
+associated with bacterial endocarditis Temporal artery Nodules, reduced pulsations Temporal arteritis
+Oropharynx Ulceration, toothache, oral ulcer Disseminated histoplasmosis,
+• Relative bradycardia(typhoid fever, rickettsioses and Q fever) periapical abscess
+• Hepatosplenomegaly(disseminated infection, malignancy and autoimmune) Fundi or conjunctivae Choroid tubercle, petechiae, Roth spot Disseminated TB/histoplasmosis,
+endocarditis
+• Abdominal tenderness (Intraabdominal infection, aortitis and lymphadenitis) Thyroid Enlargement, tenderness Thyroiditis
+• Palpable lymph nodes(infectious or hematologic malignancy) Heart Murmur Infective or marantic endocarditis
+Abdomen Enlarged iliac crest lymph nodes, splenomegaly, Lymphoma, endocarditis, disseminated
+• Oral lesions such as ulceration (autoimmune or malignant) hepatosplenomegaly TB/histoplasmosis
+• Inflammation or infection of the joints Rectum Perirectal fluctuance/tenderness, Prostatic Abscess
+tenderness/fluctuance
+• Rashes or skin lesions (SLE, sarcoidosis, HIV and CMV) ulceration involving the right Genitalia Testicular nodule, Epididymal nodule Periarteritis nodosa
+buccal mucosa. (histoplasmosis)
+Lower extremities Deep venous tenderness Thrombosis or thrombophlebitis
+Skin and nails Petechiae, splinter hemorrhages, Vasculitis, endocarditis
+Abnormal physical findings were reported to diagnosis in 60% of FUO
+subcutaneous nodules, clubbing
+Mandell, Douglas, and Bennett’s, Principles and practice of Infectious disease, Ed 9th
+
+=== Page 3 ===
+Initial investigation Imaging studies
+• Complete blood count with • Further investigation • Computed tomography of abdomen, ultrasound imaging of gallbladder and
+differential hepatobiliary system have been used extensively to evaluate cases of FUO
+• CT of the abdomen and pelvis (highest
+• BUN/creatinine diagnostic yield) • More than 3 CT or ultrasound were performed for each FUO patient evaluated
+• Serologic studies : rule out collagen
+• Liver function tests • Diagnostic utility of imaging techniques in patients with FUO
+vascular diseases
+• Erythrocyte sedimentation rate • Nuclear imaging, bone marrow and liver • Plain-film chest radiography : 60%
+biopsies, endoscopy, venous Doppler • Chest CT : 82%
+• Urine and blood cultures imaging, MRI, other invasive studies
+• Abdominal ultrasound : 86%
+• Chest radiography
+Hints • Abdominal CT : 92%
+• Additional cultures obtained from • Liver and spleen
+affected areas • LN (necrosis)
+• Bone (OM)
+• Psoas, paraspinal
+• Aorta
+• Prostate
+Radiology. 1980 Aug;136(2):407-11
+Arch Intern Med. 2003 Mar 10;163(5):545-51 Medicine (Baltimore). 2007;86:26–38
+Clinical clues Clinical clues
+History Physical exam 1st Test Other tests History Physical exam 1st Test Other tests
+Tuberculosis • fever, chills, weight • Pulmonary: tachypnea, decreased • AFB (Sn:55%) Infective • often insidious onset; • new murmur, signs of • TTE: vegetation (63%), • Chest x-ray: enlarged
+loss, night sweats; breath sounds, crackles, dullnessto • Culture for Mycobacterium endocarditis chills, malaise, weight congestive heart failure or cardiac valve incompetence heart, edema,
+• coughing (>= 2 weeks), percussion; • Nucleic acid amplification tests loss, night sweats, peripheral emboli(splinter • Blood cultures: positive effusion, prosthetic
+hemoptysis. • extrapulmonary: findings (NAAT) arthralgia hemorrhages, Osler nodes, • Erythrocyte sedimentation valve
+• HIV infection (13%), or dependent upon site, XpertMTB/RIF Ultra • signs of HF (shortness of Janeway lesions), Roth spots rate: elevated • TEE: vegetation(90-
+immunosuppression lymphadenopathycommon • Sputum (Sn:90%, Sp:96%) breath, leg edema) or retinal hemorrhages, focal 100%), cardiac valve
+• CSF, LN, Synovial (97%) and • signs of embolic neurologic deficit incompetence,
+pleural fluid (71%) hemisensory/ motor intracardiac
+Abdominal or • recent abdominal or • guarding or rebound tenderness • CT abdomen and pelvis: deficit complication
+pelvic abscess pelvic surgery, abdominal or pelvic abscess • predisposing; history of (prosthetic valve)
+childbirth; rheumatic fever, • Cardiac CT :
+• abdominal pain usually congenital heart disease, perivalvular
+present;lack of recent dental work, • FDG-PET scan
+symptoms common in prosthetic valve, IDU, or • CRP: elevated
+elderly prior SBE, cardiac device (diagnosis and
+monitoring disease
+HIV • often asymptomatic; • diffuse lymphadenopathy • 4th-generation HIV progress)
+(Acute HIV) fever, myalgia, diarrhea, antibody/antigen test
+fatigue, rashes; (inconclusive?) Osteomyelitis • general malaise, fever, • tenderness/redness/ swelling • MRI:decreased T1 signal, • ESR: elevated
+• history of high-risk pain over affected bone over affected area, drainage increased T2 signal • Blood cultures:
+sexual activity (multiple • HIV RNAin very early(100,000- of pus through overlying skin represents marrow fat positive
+partners, unprotected, 1,000,000 copies/mL) replaced by water due to • Needle aspiration: pus
+or male-male) (false positive if <3,000) edema, exudates, or • Bone scan: focal
+• intravenous drug use ischemia. uptake
+
+=== Page 4 ===
+History Physical exam 1st Test Other tests
+Nontyphoidal • fever, chills • guarding or rebound • Blood cultures: positive • Endovascular/vasc
+salmonellosis • Intestinal ; abdominal tenderness • CTA whole aorta ular graftinfection Drug associated fever
+pain, diarrhea, nausea, • tenderness/swelling over • Risk in age > 50
+vomit (AGE) affected area • Seeding
+• Extraintestinal ; joint atherosclerotic
+pain, bone pain plaques or
+aneurysm • Frequently overlooked because of lack of localizing signsand inappropriately well
+Melioidosis • Risk factors: diabetes, • pulmonary (50%): • Blood cultures: positive
+• Clinical presentation : eosinophilia (25%), relative bradycardia (10%), rash (5%)
+CKD, thalassemia, tachypnea, consolidation, • Gram stain of sputum or
+alcoholism, chronic lung crackles purulent drainage may • May occur at any point during course of drug therapy
+immunosuppressive • hepatosplenomegaly demonstrate gram-negative
+therapy(1/3 no risk (hepatosplenic abscess 20%) bacilli.("safety pin“) • Anti-neoplastic agents (median 0.5 days, mean6days): may higher temperature than other
+factor) • skin : abscess (13-24%) • Serologic testing is not a agents
+• fever, chills • parotid (30% in children) reliable method of diagnosis • Antimicrobials agents (median 6 days, mean 7.8 days) : fever disappearing within 72 hours after
+• Productive cough • prostate may be tender and stop
+• Skin lesions boggy (20% in male) • Central nervous system agents (median 16 days, mean 18.5 days) : serotonin syndrome, NMS
+• joint pain, bone pain
+• Cardiovascular agents (median 10 days, mean 44.7 days)
+• suprapubic pain, dysuria,
+difficulty passing urine • Degree of pyrexia can vary ranging from 37.2 to 42.8°C (the most common :
+38.9 –40 °C)
+Brucellosis • animal contact or • hepatosplenomegaly (33%) • CBC : cytopenia (10-30%) • bone marrow
+ingestion of • Lymphadenopathy (10%) • blood culture (15-70%) culture: positive M • ech A a lt n e i r s a m tedthermoregulation
+unpasteurized dairy, • Serologic test (ELISAs) • Infusion related
+• fever, sweats, malaise, • MRI :SI joints (80%) and • Pharmacologic action of drugs HarrisLF, HoldsambeckHK. Drug fever : surprisinglycommonandcostly.AlaMed 1986;56:19–22
+arthralgias (80%) spinal joints (54%) • • H Id y io p s e y r n se cr n a s t i i t c iv r i e ty a c re ti a o c n tion Johns T o a n b D or H P , A Cu . D nh ru a g B -i A n . d D u r c u e g d f f e e v v e e r r . . I D n r f u e g ct I n D t i e s l C l l C in li n N P o h rt a h r A m m 19 1 8 9 6 9 ; 6 2 ; 0 1 : 0 4 : 1 8 3 5 – –9 2 1 0
+Tisdale JE, Miller DA. Drug-induced diseases:prevention, detection, and management. Bethesda,MD: American Society of Health-SystemsPharmacists,2005
+The prognosis is, however, usually favorable
+spontaneously resolves in 4 or more weeks.
+N EnglJ Med 2022;386:463-77. N EnglJ Med 2022;386:463-77.
+
+=== Page 5 ===
+Management Rate of TB Infection in Thailand (2019)
+• Negative workup (cid:131) In 2019, Thailand had an estimated tuberculosis incidence of 150 cases per
+• About 20% of patients with documented FUO never have a confirmed diagnosis.The prognosis is, 100,000 personsin the general population, (decreased from 172 in 2012).
+however, usually favorable; in most patients the fever usually spontaneously resolves in 4 or more
+(cid:131) WHO classifies Thailand as a high TB burden and TB/HIV burden country,
+weeks.
+notably because in 2019:
+• Empiric therapy and therapeutic trials
+• For most cases of FUO, treatment is withheld whenever possible until a diagnosis can be made. (cid:131) Over 13% of people with tuberculosis also had HIV.
+• Except in Seriously ill (neutropenia, severely immunocompromised, rapidly deteriorating clinical status) • There were 10,000 cases of tuberculosis and 1,900 related deaths among the 500,000 people
+that therapy cannot be withheld for further period of observation with HIV in the country.
+• Fevers secondary to malignancy or autoimmune disorders are more likely to respond to a trial of • 82% of people with TB/HIV were on ART, although it reduces the risk of active TB by 65%.
+NSAIDs than infections • 0.4% of people with HIV received tuberculosis preventive therapy, which was similar to other
+countries in Asia and the Pacific.
+J Intern Med. 2003 Mar;253(3):263-75.
+Common symptoms of pulmonary TB include current coughing(> 2 weeks), night
+sweats, weight loss, fever, and coughing up blood (called hemoptysis).
+
+=== Page 6 ===
+Clinical manifestations and host Microbiological confirmation of active TB disease
+• Influenced by degree of Immunodeficiency • “See the bugs” (smear) : 10,000organisms/mL
+• detecting TB in only 50 percent of sputum samples with TB bacteria present.
+• Severe immunocompromised: rapid progression, sepsis syndrome
+• “Grow the bugs” (culture) : 10-100organisms/mL
+and normal chest X-ray with positive sputum and culture
+• Liquid culture is the most sensitive and specific TB test, and as such it is the “gold standard”
+for TB diagnosis.Confirmatory results can take about two to six weeks.
+Clinical immunocompetent immunocompromised
+• “Multiply the bugs” (molecular) : 100-1000organisms/mL
+TST/IGRA Usually, positive Usually, negative
+• Rapid molecular tests are highly sensitive and specific for detecting and microbiologically
+Adenopathy Unusual Common
+confirming TB and can produce results in less than two hours.
+Pulmonary Upper lobe Lower and middle lobe
+• Recommended by the WHO as the initial TB diagnostic test
+Cavitation Often present (CD4>350) Typical absent
+Cannot distinguish dead or viable organism
+Extrapulmonary 10-15% of cases 50% of cases (LN)
+WHO recommendation since 2013 for the use of rapid molecular tests as the initial TB test for all
+Am Rev Respir Dis 1992;146:53-6,
+Am Rev Respir Dis 1993;148:1292-7 World Health Organization. Approaches to improve sputum smear microscopy for tuberculosis diagnosis:
+expert group meeting report. Geneva: World Health Organization; 2009
+Microscopic exam : Acid-Fast Stain Culture : most sensitive and specific test (liquid)
+• Acid-Fast Stain • Modified Acid-Fast Stain
+Solid media (~4-6 wks.) Liquid media (broth) (~2 wks.)
+• Staining of mycolic acid • Any acid-fast positive organisms
+• Löwenstein–Jensen media (LJ media) • Middlebrook 7H9: Mycobacteria
+• Positive in: • Nocardia(filamentous branching)
+Growth Indicator Tube (MGIT)
+• Any Mycobacteriumspp. • Gordonia(bacilli) • Malachite green added to inhibit
+• Tsukamurella(bacilli) other bacteria • Faster detection
+• M. leprae
+• M. tuberculosis 2-days VS 3-day AFB • Need 6 weeks to confirm negative • Cannot differentiate rapid growing
+• Non-tuberculous Mycobacteria Mycobacteriafrom others
+• Legionella spp.*esp. L.micdadei
+• Rhodococcusspp. (cocci)
+*Rogers BH, et al. N EnglJ Med. 1979;301(18):959–961.
+Bentz JS, et al. Diagn Cytopathol. 2000;22(1):45-8. Caulfield AJ, et al. J Clin TubercOther MycobactDis 2016;4:33-43.
+
+=== Page 7 ===
+Mycobacteria – current culture method
+Hints
+Specimen
+• XpertMTB/RIF Ultra (10-100organisms/mL)
+• Pulmonary (any smear) and extrapulmonary
+• Detect RR (94-99%)
+Agar Broth • MTB vs NTM
+Lowenstein-Jensen MGIT automated culture at 35°C
+at 28-30°C and 35°C Scan every 60 minutes
+Positive within 7 Negative Positive Negative
+days at 6 wks. colony morphology or PCR at 6 wks.
+Special requirement
+TB • Optimal temperature (35 (cid:3512)C-37 (cid:3512)C)
+Rapid-growing NTM susceptibility testing NTM • 28(cid:3512)C-30(cid:3512)C: M. marinum, M. haemophilum, RGM
+• 42(cid:3512)C-45(cid:3512)C: M. xenopi
+• Supplement
+• Heme/iron: M. haemophilum
+• Mycobactin J: M. genavense
+Line probe assay + susceptibility testing • Duration (6 weeks)
+• 10 to 12 weeks: M. ulceran, M. genavense, M.
+malmoense
+In adults and children with signs and symptoms of extrapulmonary TB, XpertUltra may be used in lymph node aspirate
+and lymph node biopsy as the initial diagnostic test rather than smear microscopy/culture
+Xpert MTB/RIF and Xpert MTB/RIF Ultra People with extrapulmonary TB
+MTB complex and rpoBdetection The WHO recommends using rapid molecular tests XpertMTB/RIF andXpertMTB/RIF Ultra
+for extrapulmonary TB in samples including
+Recommendation
+• cerebrospinal fluid specimens
+• initial test for TB and rifampicin resistance • lymph node aspirate (low certainty)
+• pulmonary and extrapulmonary (~50% in pleural) • lymph node biopsy
+• pleural fluid (moderate certainty, XpertMTB/RIF 50%, Ultra 71% )
+• XpertMTB/RIF Ultra is a more sensitive but less specific test(due to additional
+• urine (low certainty)
+probes capable of detecting very small concentrations)
+• synovial fluid (low certainty, XpertMTB/RIF 97%)
+• requires air-conditioned temperatures (cid:1095)(cid:3)(cid:1007)(cid:1004)°C, limiting its use closer to the point- • peritoneal fluid (low certainty)
+of-care.
+• pericardial fluid (very low certainty)
+• blood
+XpertMTB/RIF Ultra sensitivity ranges from 71% for pleural fluid to 100%
+Expert Rev Anti Infect Ther. 2012 June ; 10(6): 631–635.
+for urine, and its specificity also ranges from 71% for pleural fluid to 100%
+WHO XpertMTB/RIF Implementation manual 2014. for urine. World Health Organization. WHO consolidated guidelines on tuberculosis.
+DhedaK, et al. Respirology. 2013 Feb;18(2):217-32. Module 3: diagnosis -rapid diagnostics for tuberculosis detection.
+
+=== Page 8 ===
+Urine LAM tests to support rapid TB diagnosis among PLWHA Line probe assays (LPA)
+Disseminated TB, or TB spread throughout the body
+When TB bacteria in the kidneys shed LAM • In 2016, the WHO recommended the use of line probe assays (LPAs) as the initial DST for first-
+• The urine lipoarabinomannan (LAM) and second-line TB drugs—rather than liquid culture—because LPAs are highly accurate and
+test is a rapid point-of-care TB test rapidly produce results within one day
+for use among PLWHA. • LPAs recommended by the WHO include
+• only TB test that has been shown to • Hain’s GenoTypeMTBDRplusVersion 2.0 and Nipro’sGenoscholarNTM+MDRTB II that test for resistance to first-line
+drugs rifampicin and isoniazid
+reduce deaths. • Hain’s GenoTypeMTBDRslVersion 2.0 that tests for resistance to the fluoroquinolonesand to second line injectable
+agents, such as amikacin.
+• LAM testing uses urine as a sample,
+which is easily obtainable for
+PLWHA with advanced HIV disease
+Hints
+• disseminated infection
+• AIDS (CD4 < 100)
+Urine LAM tests detect the TB biomarker LAM, a component of the • Sn 56%, Sp93.6%
+outer cell wall of TB bacteria. • reduced mortality
+Trans R Soc Trop Med Hyg. 2016 Mar; 110(3):180–5. World Health Organization. The use of molecular line probe assays for the detection of resistance to isoniazid and rifampicin.
+World Health Organization. The use of molecular line probe assays for the detection of resistance to second-line anti-tuberculosis drugs.
+Treatment monitoring HOW to Treat TB
+World Health Organization. Companion handbook to the WHO guidelines for the programmatic management of drug-resistant tuberculosis.
+Geneva: World Health Organization; 2014. https://apps.who.int/iris/bitstream/handle/10665/130918/9789241548809_eng.pdf.
+
+=== Page 9 ===
+Cardiovascular Infections
+• Endocarditis and Intravascular Infections
+• Prosthetic Valve Endocarditis
+• Infections of Nonvalvular Cardiovascular Devices
+• Myocarditis and Pericarditis
+(Update ESC 2023) • Mediastinitis
+Infective endocarditis
+(NVE)
+Microbiology of Definite endocarditis in ICE*
+Clinical manifestations
+(2,781 patients)
+• Acute (BT 39.4°–40°C)
+• (cid:628)-Hemolytic streptococci, S. aureus, and pneumococci +/-predisposing heart valve
+• Staphylococcus lugdunensisorenterococci(occasionally)
+• Subacute(low grade fever)
+• viridansstreptococci, enterococci, CoNS, and the HACEK
+group
+Immune complex deposition : GN
+• S. aureus (occasionally) Peripheral signs
+• Indolent
+• CNIE; Bartonella species, T. whipplei, C. burnetii, or M.
+chimaera
+Hints Hints (Thailand)
+• S. aureus bacteremia (SAB)
+• GBS
+• SAB > IE (10%) need echo.
+• SAB > metastatic infections (10–15%) • S. suis
+• Salmonella
+
+=== Page 10 ===
+Microbiology of Definite endocarditis in EURO-ENDO*
+Total Prosthesis+ Repair Native PM/ICD
+(n =3116) (n = 939) (n =1764) (n = 308)
+Positive Blood culture 2461/3116 (79.0%) 747/939 (79.6%) 1383/1764 (78.4%) 233/308 (75.6%)
+MSSA 595 / 2461 (24.2%) 134 / 747 (17.9%) 336 / 1383 (24.3%) 92 / 233 (39.5%)
+MRSA 177 / 2461 (7.2%) 35 / 747 (4.7%) 116 / 1383 (8.4%) 16 / 233 (6.9%)
+MSCoNS 163 / 2461 (6.6%) 61 / 747 (8.2%) 68 / 1383 (4.9%) 28 / 233 (12.0%)
+MRCoNS 150 / 2461 (6.1%) 76 / 747 (10.2%) 56 / 1383 (4.0%) 16 / 233 (6.9%)
+Viridansgroup Streptococcus 304 / 2461 (12.4%) 76 / 747 (10.2%) 209 / 1383 (15.1%) 6 / 233 (2.6%)
+Enterococcus 390 / 2461 (15.8%) 162 / 747 (21.7%) 185 / 1383 (13.4%) 31 / 233 (13.3%)
+Streptococcus gallolyticus 162 / 2461 (6.6%) 45 / 747 (6.0%) 105 / 1383 (7.6%) 9 / 233 (3.9%)
+Gram negativebacilli 86 / 2461 (3.5%) 18 / 747 (2.4%) 50 / 1383 (3.6%) 13 / 233 (5.6%)
+• Classical signs are less frequently observed but may still be observed in severe infections caused by S. aureus Coxiella burnetii(IgG anti phase I) 26 / 3116 (0.8%) 10 / 939 (1.1%) 15 / 1764 (0.9%) 0 / 308 (0.0%)
+and in cases of subacute endocarditis (mainly caused by Streptococcusspp.)
+• Vascular and immunological phenomena : splinter hemorrhages, Roth spots, and GN remain common
+EurHeart J 2019;40:3222–3232 EurHeart J 2019;40:3222–3232
+Epidemiological clue Indication for echocardiographic in bacteremia
+Epidemiological feature Common microorganism
+• Incidence of IE
+IDU S. aureus, CONS, (cid:628)-Hemolytic streptococci, Fungi, Aerobic Gram-negative bacilli • E. faecalis(12–17%)
+(Pseudomonas aeruginosa) and Polymicrobial
+• S. aureus(8-14%)
+Indwelling cardiovascular medical S. aureus, CONS, Fungi, Aerobic Gram-negative bacilli and Corynebacteriumsp • non-(cid:628)-hemolytic streptococci(7%)
+devices
+Poor dental health, dental VGS, Nutritionally variant streptococci, Abiotrophiadefectiva, Granulicatellasp,
+procedures Gemellaspand HACEK organisms • S. aureus bacteremia is associated
+with a high prevalence of IE and a resultant high
+Alcoholism, cirrhosis Bartonellasp, Aeromonassp, Listeriasp, S. pneumoniaeand (cid:628)-Hemolytic streptococci risk for mortality (25%), echocardiographic
+evaluation
+(cid:28)(cid:258)(cid:396)(cid:367)(cid:455)(cid:3)(cid:894)(cid:1095)(cid:1005)(cid:3)(cid:455)(cid:895)(cid:3)(cid:393)(cid:396)(cid:381)(cid:400)(cid:410)(cid:346)(cid:286)(cid:410)(cid:349)(cid:272)(cid:3)(cid:448)(cid:258)(cid:367)(cid:448)(cid:286)(cid:3) Coagulase-negative staphylococci, S. aureus, Aerobic Gram-negative bacilli, Fungi,
+placement Corynebacteriumsp, Legionellasp
+Dog or cat exposure Bartonellasp, Pasteurellasp, Capnocytophagasp
+Contact with contaminated milk or Brucellasp, Coxiella burnetii, Erysipelothrixsp
+infected farm animals
+AIDS Salmonellasp
+Gastrointestinal lesions S. gallolyticus, Enterococcussp, Clostridium septicum
+Circulation. 2015 Oct 13;132(15):1435-86. Clin Infect Dis 66:693, 2018
+
+=== Page 11 ===
+Characteristics with lower risk of IE in SAB Streptococcussp. Groups matter?
+• Absence of permanent intracardiac device
+• Sterile F/U blood cultures within 4 days
+• No hemodialysis dependence
+• Nosocomial acquisition
+• Absence of secondary foci of infection
+• No clinical signs of infective endocarditis
+JAMA. 2014;312:1330-41
+Top reasons for culture negative IE (5-15%)
+(33-50%)
+Hints (Extended culture)
+
+=== Page 12 ===
+Antimicrobial Therapy
+Pathogen Antimicrobial Duration
+oral streptococci and S. gallolyticus penicillin G, amoxicillin, or ceftriaxone 4 (in NVE) or 6 weeks (in
+group PVE)
+penicillin G, amoxicillin, or ceftriaxone for 4 Hints
+weeks in combination with gentamicin for 2 • HF
+week (resistant to penicillin) • Cardiogenic shock
+• Uncontrolled infection
+methicillin-susceptible cloxacillin or cefazolin 4–6 weeks • Emboli
+staphylococci • Mechanical complication
+methicillin-resistant staphylococci vancomycin 4–6 weeks
+non-HLAR Enterococcus spp combination of ampicillin or amoxicillin with 6 weeks (same in HLAR)
+ceftriaxone
+or with gentamicin for 2 weeks
+Empirical ampicillin in combination with ceftriaxone or Depend on pathogen
+with (flu)cloxacillin
+Recommendations for Antibiotic Prophylaxis in Patients
+Undergoing Dental Procedures at Increased Risk for IE
+Recommendation indication (individuals at high and intermediate risk) Prophylactic antibiotics regimen
+(single dose 30-60 min before procedure)
+Patients with previous IE
+No allergy to penicillin or ampicillin
+Patients with surgically implanted prosthetic valves and with any material used
+for surgical cardiac valve repair • Amoxicillin : 2g orally
+• Ampicillin : 2g IM or IV
+Patients with transcatheter implanted aortic and pulmonary valvular prostheses
+• Cefazolin or ceftriaxone : 1g IM or IV
+Patients with
+• Untreated cyanotic CHD Allergy to penicillin or ampicillin
+• Treated with surgery or transcatheter procedures with post-operative • Cephalexin : 2g orally
+palliative shunts, conduits, other prostheses • Azithromycin or clarithromycin : 500mg
+• After surgical repair in absence of residual defects or valve prostheses, orally
+antibiotic prophylaxis only for the first 6 months after procedure • Doxycycline : 100mg orally
+• Cefazolin or ceftriaxone : 1g IM or IV
+Patients with ventricular assist devices
+Should be considered in patients with transcatheter mitral and tricuspid valve Antibiotic prophylaxis is recommended in dental
+extractions, oral surgery procedures, procedures
+repair requiring manipulation of gingival or periapical region of
+May be considered in recipients of heart transplant teeth
+Invasive diagnostic or therapeutic procedure of
+Not recommended in other patients at low risk for IE respiratory, GI/GU tract, skin, musculoskeletal systems
+2023 ESC Guidelines for the management of endocarditis
+
+=== Page 13 ===
+Need MIC for penicillin
+
+=== Page 15 ===
+HIV related OIs
+HIV related FUO : Etiology Opportunistic infections (OIs)
+• Most cases of FUO in HIV-infected patients are the result of Bacteria Fungus Mycobacterium Virus Parasites
+• Salmonella • Cryptococcus • TB • CMV • Toxoplasma
+opportunistic infections
+• Rhodococcosis • Histoplasma • MAC • JCvirus • Cryptosporidium
+HIV IN A STUDY CONDUCTED IN BRASIL (1989-1997), ON 55 PATIENTS
+• Etiology
+• Talaromyces • HHV-8 • Cyclospora
+• Infection (88%) -OIs • PCP • Cystoisospora
+• Neoplasm (8%) -NHL • Microsporidium
+• Miscellaneous (4%)
+CD4cell count(cells/mm3) OIs
+Case (2) <50 • MAC, PCNSL, CMV,cryptosporidium
+He had travelled to Phuket recently and recollected <100 • Toxoplasma, PML,Talaromyces,Histoplasma
+being bitten by mosquitoes. He had history of
+recreational drug use and multiple sexual contact, and <200 • Cryptococcus,PCP Hints
+he was not taking any regular medication. • Oral candidiasis
+Any • SY, TB, bacterial infection
+• Oral hairy leukoplakia
+Anti HIV (ELISA 4thgen.) : Reactive • Pruritic papulareruption
+EurJ Intern Med 2009;20: 474–7
+
+=== Page 16 ===
+Important OIs in immunocompromised patients OIs Screening
+• CNS presentation • GI presentation • CXR (all cases) Markers of immunosuppression
+• Mass or Mass-like • Chronic diarrhea
+• Toxoplasmosis, TB, Cryptococcomaand • Mycobacteria (TB and MAC) • If CD4 <100 cells/mm3
+PCNSL • Fungi (Yeast and dimorphic) • Serum cryptococcal Ag (CrAg)
+• Chronic meningitis • C. neoformans
+• TB, Cryptococcal • H. capsulatum • Indirect ophthalmoscope for CMV
+• Pulmonary presentation • CMV
+• Protozoa (no systemic S/S)
+• Chronic cough Oral candidiasis
+• Lymphoma
+• Nocardia spp. • Disseminated presentation Serum CrAgscreening
+• Rhodococcusequi –High risk case (CD4 <100 cells/mm3) AND
+• Mycobacteria (TB, NTM) • Prolonged fever –High prevalent area i.e., South Africa and Asia
+• Fungi (Yeast and dimorphic fungi) Antifungal primary prophylaxis
+• Dyspnea on exertion For each disease: –Lack of survival benefit
+• PCP, CMV • Clinical Manifestations –No routine recommendation
+• Diagnosis cannot be readily scraped
+• Treatment Recommendations Serum CrAgdetection before symptomatic
+• Monitoring and Adverse Events meninigitisdevelop median 22 d (5-234 d) Oral hairy leukoplakia
+• Management of Treatment Failure N EnglJ Med. 1987;316:61–66.
+Meningitis : CSF Findings
+Chronic meningitis
+CSF profile Cryptococcal TB meningitis Aseptic meningitis
+meningitis (HIV, PML, CMV,
+Cryptococcal meningitis TB meningitis
+Syphilis)
+• Fever, headache (frontal) • Fever, headache (occipital)
+Opening pressure Very high High (Late) or normal Normal
+• Visual disturbance (IICP) • Altered mental status
+• Hearing loss • CN neuropathy (basal arachnoiditis)
+(cid:894)(cid:1096)(cid:1006)(cid:1009)(cid:3)(cid:272)(cid:373)(cid:3)(cid:44)2O in 60% to 80%)
+• Stiff neck • Stroke like (vasculitis) Protein (cid:94)(cid:367)(cid:349)(cid:336)(cid:346)(cid:410)(cid:367)(cid:455)(cid:3)(cid:1112)(cid:3)(cid:381)(cid:396)(cid:3)(cid:374)(cid:381)(cid:396)(cid:373)(cid:258)(cid:367) (cid:94)(cid:367)(cid:349)(cid:336)(cid:346)(cid:410)(cid:367)(cid:455)(cid:3)(cid:1112)(cid:3)(cid:410)(cid:381)(cid:3)(cid:448)(cid:286)(cid:396)(cid:455)(cid:3)(cid:346)(cid:349)(cid:336)(cid:346) (cid:94)(cid:367)(cid:349)(cid:336)(cid:346)(cid:410)(cid:367)(cid:455)(cid:3)(cid:1112)(cid:3)(cid:381)(cid:396)
+• CN neuropathy (CN6) • Hydrocephalus (Late) normal
+• Seizure (uncommon) • Other site of TB (Pulmonary, LN,
+• Other site : Pulmonary Disseminated) Cell count (cid:94)(cid:367)(cid:349)(cid:336)(cid:346)(cid:410)(cid:367)(cid:455)(cid:3)(cid:1112)(cid:3)(cid:381)(cid:396)(cid:3)(cid:374)(cid:381)(cid:396)(cid:373)(cid:258)(cid:367)(cid:3)(cid:381)(cid:396)(cid:3) (cid:1112)(cid:1112)(cid:894)(cid:367)(cid:455)(cid:373)(cid:393)(cid:346)(cid:381)(cid:272)(cid:455)(cid:410)(cid:286)(cid:400)(cid:3) (cid:94)(cid:367)(cid:349)(cid:336)(cid:346)(cid:410)(cid:367)(cid:455)(cid:3)(cid:1112)(cid:3)(cid:381)(cid:396)
+Imaging Imaging no WBC (low CD4, Poor predominate) normal
+prog) (Early PMN**) (PMN : CMV radiculitis)
+• Gelatinous pseudocysts (T2 hyperintensity) • Basal meningeal enhancement (50%)
+Microscopy India ink stain +/-
+• Leptomeningeal enhancement • Hydrocephalus (60-80%)
+• Hydrocephalus • Vasculitis or infarction
+Serology and Culture 55% of H/C +/-(17%)
+perivascular spaces in the basal ganglia (gelatinous pseudocysts-do not enhance)
+enhancing basal exudates in the perichiasmalregion 95% of CSF culture XpertMTB/RIF 85%
+CrAgSn,Sp99%
+Int J TubercLung Dis. 2015 Oct; 19(10): 1209–1215.
+
+=== Page 17 ===
+Cryptococcosis Management of ICP
+Meningoencephalitisis most frequent Cutaneous manifestations Management of ICP
+manifestation • Occur in 10%-15% of cases
+• Check pressure after initial normal pressure
+• Clinical features: headache, fever, • Papules, pustules, nodules, ulcers, or
+stiffness of neck, cranial nerve palsies & draining sinuses • Keep pressure < 20 mmH O
+papilledema • Cellulitis with necrotizing vasculitis is 2
+• Neck stiffness, photophobia, or other reported in patients who undergo organ • Daily lumbar puncture keep pressure < 20
+classic meningeal signs and symptoms in transplantation mmH2O or ½ of initial pressure
+25-35% of cases • Umbilicated papules in patients with
+After “CNS and lung” infection, AIDS • Persistent ICP, consult for lumbar drain or
+shunting
+• Next most involved organs Include skin,
+prostate, and bone
+Hints : DDX Manosuthi, et al. Int J of STD & AIDS 2008; 19: 268–271.
+1. Viral infection : Molluscum contagiosum
+2. Fungal infection
+1. Cryptococcus neoformans
+2. Histoplasma capsulatum
+3. Talaromycesmarneffei
+Treatment of Cryptococcosis CMV disease (CNS)
+Ventriculoencephalitis Polyradiculopathy
+• More acute course • Progressive lower extremity weakness
+(~GBS),pain, spasticity, areflexia, urinary
+• Focal neurologic signs, CN palsy,
+retention & hypoesthesia
+nystagmus
+In a prespecified superiority analysis, mortality risk was
+significantly lower in the liposomal amphotericin B group • CSF finding: PMN pleocytosis and low
+• Rapid progression to death
+compared with the control group glucose level
+Fewer participants experienced grade 3 or 4 adverse events • MRI/CT: periventricular enhancement
+(Renal, anemia)
+Diagnosis
+• CSF PCR for CMV or VL
+• Pathology
+Treatment early with GCV and foscarnet
+• No clinical trials, but found some poor respond with GCV alone
+"owl eye" morphology
+
+=== Page 18 ===
+Clues : imaging characteristics Pulmonary opportunistic infections
+• The immune dysregulation associated with HIV results in an increased
+incidence of respiratory infection at all CD4 T-cell counts.
+• Early reports of the dramatic increased risk of PCP in advanced HIV disease
+have tended to overshadow the finding that other respiratory pathogens
+• The widespread use of prophylaxisagainst opportunistic infections
+together with HAARThas reduced the riskof life-threatening
+infection
+• It has not returned to the backgroundlevels present in HIV-sero
+negative populations
+BHIVA Guideline 2011
+Thakur KT, Wilson MR. Continuum 2018;24
+HIV-related respiratory disease Relevant factors include;
+Hints : TMS/SMX prophylaxis
+• PCP (reduced mortality)
+• Toxoplasmosis
+• Nocardiosis
+• Bacterial infection (Salmonella, Listeria, S. aureus)
+1. Patient use of effective OI prophylaxis or HAART
+2. Recent discharge from hospital or current hospital admission 45 days
+(nosocomial infections)
+3. Country/place of residence and travel history
+4. History of active injecting drug use
+• since these individuals are at increased risk of bacterial pneumonia and TB
+5. Level of host immunity (CD4)
+CD4 > 200
+• M. tuberculosis 6. Neutropenia
+CD4 = 50-200 (usually <100)
+• P. jerovecii, C. neoformans, dimorphic fungi, Nocardia spp., M. kansasii, R. equi, KS (HHV-8) 7. Use of prolonged courses of immune modulators (e.g., corticosteroids).
+CD4 < 50
+• M. avium complex, cytomegalovirus
+HIV Medicine (2011), 12 (Suppl. 2), 25–42 HIV Medicine (2011), 12 (Suppl. 2), 25–42
+
+=== Page 19 ===
+Rhodococcosis
+• Intracellular small Gram-positive cocci or bacilli Immunocompromised, serious infection: at least 2from
+the following
+• weakly AFB pos, mAFBpos
+1. Carbapenems:Imipenem 500 mg iv q 6 hrs. or
+• Zoonosis vancomycin1 g iv q 12 hrs.
+• CD4 <100 cells/mm3 2. 1 of the drug listed under primary regimen
+• Necrotizing granulomatous reaction • Rifampicin, FQs, aminoglycoside, linezolid or
+macrolide
+Duration of treatment
+Clinical spectrums: common to relapse • Intensive phase
+• Pulmonary (80%) • 2-3 wks., 8 wks. for brain abscess
+• Subacute pneumonia (H/C pos 50%) • Maintenance
+• CXR: TB-like disease; cavity (single or multiple, thick • (cid:1096)(cid:1010)(cid:3)(cid:373)(cid:381)(cid:374)(cid:410)(cid:346)(cid:400)(cid:853)(cid:3)(cid:437)(cid:374)(cid:410)(cid:349)(cid:367)(cid:3)(cid:18)(cid:876)(cid:94)(cid:3)(cid:374)(cid:286)(cid:336)(cid:258)(cid:410)(cid:349)(cid:448)(cid:286)(cid:3)(cid:258)(cid:374)(cid:282)(cid:3)(cid:396)(cid:286)(cid:400)(cid:381)(cid:367)(cid:448)(cid:286)(cid:282)(cid:3)(cid:272)(cid:367)(cid:349)(cid:374)(cid:349)(cid:272)(cid:258)(cid:367)
+wall, air-fluid level), nodules, infiltration, effusion (UL)
+• Complications:lung abscess, empyema,
+pneumothorax, mediastinitis
+• Extrapulmonary (20%)
+• Disseminated disease to pulmonary disease:brain or
+internal organ abscess (late phase)
+• Localized disease : direct inoculum
+Eur Respir J. 2012;39(3):730-45
+Nocardiosis Diarrhea in HIV-infected patients
+• Aerobe Actinomycetes, short chain mycolic acid Acute Chronic(> 4wks)
+• Nocardia appear as gram-positive, beaded, weakly acid- Bacteria Mycobacteria Fungus
+fast, branching rods. • Salmonella (NTS) • TB • Histoplama
+• Localized disease • Shigella • MAC • Talaromyces
+• Subacute or indolent infection with suppuration • Campylobacter • Microsporidia
+• Productiveor nonproductive cough, dyspnea, hemoptysis, • C.difficile
+and fever,
+• CXR: mass-like with cavity ±effusion Enteric viruses Virus
+• CNS • Adenovirus • CMV
+• SSTIs: Mycetoma, nodular lymphangitis 1. lobar or multilobarconsolidation Parasites
+• abscess formation cavitation in
+• Disseminated disease • Cryptosporidium
+30%
+• Therapy and Follow-Up 2. solitary lung massesand/ornodules • Cyclospora cayatanensis
+• Trimethoprim-sulfamethoxazole (TMP-SMX) is the mainstay 3. reticulonodular infiltrates9 • Giardia lamblia
+of treatment 4. mediastinal or hilar lymphadenopathy • Cystoisospora belli
+isnota feature of nocardiosis
+Combination antimicrobial therapy Nonspecific : pleural thickening , pleural
+• A m t o l r e e a s th t a tw n o o n a e g e s n it t e s o is f r in ec fe o c m ti m on e n an d d ed s e fo v r e r im e p m u u lm no o c n o a m ry p i r n o v m ol is v e e d m h e o n s t t o s, r t i h so o l s a e t e w d i t C h N S effusion
+disease.
+Recommended regimens
+• Include amikacin and imipenem or meropenem, or amikacin and TMP-SMX.
+
+=== Page 20 ===
+Intraluminal lesion in HIV-infected patients
+Disseminated presentation
+Common lesion : Terminalileum
+• Prolonged fever (unrecognized fever)
+OIs Malignancy
+Virus: CMV colitis Solid malignancy: CA colon • Constitutional symptoms (BW before illness)
+Mycobacterium: TB, MAC Hematologic malignancy: lymphoma • Lymphadenopathy (localized or generalized)
+Parasites: Cryptosporidium HIV-associated: KS
+• Hepatosplenomegaly
+Fungus
+• Histoplama • Skin lesion or mucosal lesion
+• Talaromyces
+• Hematologic abnormalities (anemia or cytopenia)
+• Elevated alkaline phosphatase
+Spectrum of Histoplasma capsulatum–Induced disease (5-10%)
+Histoplasmosis and Penicilliosis
+• Cellular immunity • Most common -Disseminated infection
+• Dimorphic fungi • Prolonged fever, weight loss, skin
+Cavitary lesions were found in the upper lobes (90%)
+• Yeast at 37°C lesions, hepatosplenomegaly, 8%of clinically recognized cases
+• Mold at 25-30°C lymphadenopathy, pancytopenia • Acute–infants,
+immunocompromised
+• Subacute
+• Penicilliosis • Oral lesions: histoplasmosis (50% of • Chronic –normal
+• Talaromycesmarneffei chronic PDH) adults
+• Histoplasmosis • Adrenal gland lesions: histoplasmosis
+• Histoplasma capsulatum • Skin lesions: penicilliosis(80%)
+• Most symptoms resolve within 10 days
+• Histoplasmosis, acquired through inhalationof mycelial fragments and microconidia, is most often self-limiting but
+• Acute pulmonary infection can be accompanied by several
+can cause potentially lethal infection in patients with preexisting condition rheumatologic manifestations. • The major risk factors manifestation of histoplasmosis
+• Reservoir of H. capsulatum (soil) • Arthralgias, erythema nodosum, and erythema age older than 54 years and immunosuppression.
+multiformeare present in approximately 6% • GI (70%), adrenal (10%), CNS (5-20%) and skin (10%)
+
+=== Page 21 ===
+Diagnosis
+History Physical exam 1st Test Other tests
+• Fungal culture (Gold standard) Leishmaniasis • Associated with recent • Hepatosplenomegaly, • bone marrow or spleen Treatment VL
+(visceral travel to areas endemic lymphadenopathy, aspirations (sn70 and 96) • Preferred L-Amb
+• growth 3-6 weeks (< 7 days, 90% )
+disease) for sand flies • hyperpigmentation of face, • Culture (Novy-McNeal-Nicolle
+• 10-15% (acute), 60% (cavity)
+• HIV increased risk for VL hand, foot, media)
+• BM/Blood 50% (AIDS)
+• abdominalskin (kala azar) • PCR
+• Antigen detection (urine, blood, BAL) • Serologic tests : not
+• 90% acute PDH recommended
+• 40% cavity
+• monitor relapse Histoplasmosis • Exposure to bat excreta • pulmonary (70%) • Fungal culture (Gold
+in houses, or cavesin pneumonia, pulmonary standard)
+• Serology
+region surrounding the cavities • Antigen detection (urine,
+• retrospective diagnosis
+Ohio andMississippi • weight loss (60%) blood, BAL)
+• negative up to 50% of nucleus and kinetoplast in each amastigote.
+immunosuppressed River valleys of the • hepatomegaly (60%) • Serology
+• Histochemical identification Small (2–5 (cid:645)(cid:373)) narrow budding United States or regions • splenomegaly (40%) • negative up to 50% of
+yeastsof H. capsulatum ofCentral and South • lymphadenopathy (40%) immunosuppressed
+• GMS
+America, Africa, Asia, • Skin lesion (10%) • Histochemical identification
+• PBS 40% (acute PDH) Hints (Leishmania, southern part, Thailand)
+• HIV (risk visceral form) Australia • mucosal involvement (50%) • GMS
+• Molecular diagnosis (PCR?) • Splenomegaly • Molecular diagnosis (PCR?)
+• Cytopenia
+• Yield > Splenic > BM aspiration
+• PCR / Culture (Gold standard)
+Serum LDH levels higher than 600 IU/mL are highly likely to have disseminated histoplasmosis. • Rx L-AmB
+Elevated serum ferritin levels are strongly suggestive of histoplasmosis. Clin MicrobiolRev. 2007;20:115–132.
+Treatment of Histoplasmosis (disseminated) Mycobacterium avium complex (MAC)
+• Acquired by inhalation or ingestion
+• Colonize natural water sources, pools, and hot tubs
+• Disseminated infection in HIV-infected patients
+• Common sites: liver, Gi, spleen, and BM
+Within 1 to 2 weeks, most patients are
+symptomatically, and laboratory improved
+• MAC entry into bloodstreamleads to elevated TNF-(cid:626)(cid:3)and IL-6:
+(1) High fever, night sweats, and BW loss
+not associated with hemodynamic instability or severe illness (2) Severe anemia
+(3) GI :abdominal pain, diarrhea, intraabdominal LN, hepatosplenomegaly
+cyclodextrin oral liquid formulation
+increases absorption by 50%
+• Marked elevation of serum ALP (5%)
+• Hemoculture for mycobacteria : positive (90%)
+Thai guideline
+
+=== Page 22 ===
+Mycobacterial infection Treatment of MAC
+Tuberculosis M. avium complex
+Any CD4 CD4 < 50
+CD4 > 350 pulmonary diseases Disseminated infections
+Disseminated infections pulmonary involvement (40%)
+pulmonary involvement (81.8%)
+Extrapulmonary (CNS, LN(68.2%), Spleen (46.7%), lymph node, liver, GI,
+pleura, pericardium) bone marrow (WBC<4,000, ~100%)
+Sepsis syndrome Anemia, elevated ALP Disseminated disease (AIDS) 12 months after culture conversion, secondary prophylaxis till CD4 >100/µL for 6 months
+Atypical CXR (81.8%) Positive hemoculture (90%)
+Hints : favor azithromycin
+• Pregnancy
+• Less drug-drug interactions
+• Less side effects
+Hsieh SM, et al. AIDS. 1998;12:1301–7. • better adherence and outcomes (NTM-PD)
+WHICH REGIMEN (S)
+Prevent
+AIDS event
+•Infection : TB Mild symptom insomnia weight gain
+•CA : Lymphoma, KS
+Non-AIDS event
+Prevent transmission
+(cid:135)(cid:170)(cid:166)(cid:193)(cid:166)(cid:201)(cid:164)(cid:183) (cid:165)(cid:181)(cid:152)(cid:111)(cid:181)(cid:156)(cid:193)(cid:176)(cid:141)(cid:197)(cid:176)(cid:170)(cid:184)(cid:163)(cid:181)(cid:165)(cid:196)(cid:156)(cid:170)(cid:180)(cid:156)(cid:193)(cid:151)(cid:165)(cid:184) (cid:170)(cid:132)(cid:180)(cid:156)(cid:132)(cid:180)(cid:157)(cid:170)(cid:180)(cid:156)(cid:154)(cid:170)(cid:201)(cid:184)(cid:183)(cid:156)(cid:183)(cid:139)(cid:140)(cid:180)(cid:165)(cid:3)
+((cid:86)(cid:68)(cid:80)(cid:72)(cid:3)(cid:71)(cid:68)(cid:92)(cid:3)(cid:36)(cid:53)(cid:55)(cid:12)(cid:3)(cid:174)(cid:166)(cid:186)(cid:176)(cid:132)(cid:166)(cid:150)(cid:184)(cid:154)(cid:154)(cid:201)(cid:184) (cid:181)(cid:206)(cid:197)(cid:164)(cid:110)(cid:197)(cid:151)(cid:111)(cid:135)(cid:170)(cid:166)(cid:161)(cid:139)(cid:183) (cid:181)(cid:166)(cid:150)(cid:181)(cid:3)(cid:193)(cid:166)(cid:183)(cid:201)(cid:164)(cid:165)(cid:181)(cid:152)(cid:111)(cid:181)(cid:156)
+(cid:193)(cid:176)(cid:141)(cid:197)(cid:176)(cid:170)(cid:184)(cid:195)(cid:151)(cid:165)(cid:193)(cid:166)(cid:200)(cid:170)(cid:154)(cid:173)(cid:184)(cid:201) (cid:187)(cid:151)(cid:3)(cid:163)(cid:181)(cid:165)(cid:196)(cid:156)(cid:193)(cid:170)(cid:168)(cid:181)(cid:3)(cid:26)(cid:3)(cid:170)(cid:180)(cid:156)(cid:3)((cid:85)(cid:68)(cid:83)(cid:76)(cid:71)(cid:3)(cid:36)(cid:53)(cid:55)(cid:12)
+Neural tube defect
+
+=== Page 23 ===
+Essential side effects of ARV When to Start ARV in Ois Hints : ARV
+• 2 wks. after treatment oisexcept CNS ois4-6
+wks. (CNS IRIS)
+• NNRTI
+• NVP > EFV –SJS/TEN (NVP: Fulminant hepatitis)
+• NRTI
+• ABC –Hypersentivityreaction (HLA B*5701)
+• AZT -BM suppression (High MCV ),myopathy
+• TDF –Nephrotoxicity, osteoporosis, Fanconi syndrome
+• ddI–Pancreatitis
+• d4T, AZT –DM, insulin resistance
+• d4T, ddI–Peripheral neuropathy
+• PIs
+• IDV/ATV –Nephrolithiasis (GS : ATV/r)
+• Pis–Hyperlipidemia (LPV/r)
+• Pis–MI & CVA, Increased Bleeding in Hemophilia
+Which ARV ? (Rifampicin)
+STOP OIs Prophylaxis
+1. Asymptomatic
+2. Sustained CD4 response
+3. On ART with sustained viral suppression
+4. Completed course of treatment
+(cid:173)(cid:166)(cid:187)(cid:158)(cid:193)(cid:132)(cid:150)(cid:148)(cid:3)(cid:114)CD4(cid:196)(cid:156)(cid:132)(cid:181)(cid:166)(cid:174)(cid:165)(cid:187)(cid:151)(cid:3)(cid:83)(cid:85)(cid:76)(cid:80)(cid:68)(cid:85)(cid:92)(cid:3)(cid:194)(cid:168)(cid:179)(cid:3)(cid:86)(cid:72)(cid:70)(cid:82)(cid:81)(cid:71)(cid:68)(cid:85)(cid:92)(cid:3)(cid:83)(cid:85)(cid:82)(cid:83)(cid:75)(cid:92)(cid:79)(cid:68)(cid:91)(cid:76)(cid:86)
+
+=== Page 24 ===
+Conclusion : prolonged fever
+• Initial evaluation reveals diagnostic clues that strongly support certain diagnosis
+• High quality diagnostic workupafter reasonable amount of time (rule out self-
+limited fevers)
+• Clinical judgment should be used in deciding whether to pursue therapeutic
+challenges

@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CADASIL vs CARASAL vs CARASIL — Hereditary Cerebral Small Vessel Diseases</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fira+Code:wght@400;500&family=Bricolage+Grotesque:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-2: #f1f5f9;
+      --surface-3: #e8eef5;
+      --border: rgba(0,0,0,0.07);
+      --border-md: rgba(0,0,0,0.12);
+      --text: #0f172a;
+      --text-dim: #475569;
+      --text-muted: #94a3b8;
+      --text-faint: #cbd5e1;
+
+      --blue: #1d4ed8;
+      --blue-bg: #eff6ff;
+      --blue-border: #bfdbfe;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --green-border: #bbf7d0;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+      --rose: #9f1239;
+      --rose-bg: #fff1f2;
+      --rose-border: #fecdd3;
+      --purple: #7c3aed;
+      --purple-bg: #f5f3ff;
+      --purple-border: #ddd6fe;
+      --teal: #0f766e;
+      --teal-bg: #f0fdfa;
+      --teal-border: #99f6e4;
+
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'Fragment Mono', 'Fira Code', monospace;
+      --font-display: 'Bricolage Grotesque', sans-serif;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --radius-xs: 5px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100dvh;
+    }
+
+    /* HEADER */
+    .site-header {
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #0f4c75 100%);
+      color: white;
+      padding: 56px 24px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .site-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+    .header-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 20px;
+    }
+    .header-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #60a5fa;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .site-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: white;
+    }
+    .site-header h1 span { color: #93c5fd; }
+    .header-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .header-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .header-stat {
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 16px;
+    }
+    .header-stat__val {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #93c5fd;
+      line-height: 1;
+    }
+    .header-stat__lbl { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* CONTAINER */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    /* NAV TABS */
+    .nav-tabs {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248,250,252,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+    }
+    .nav-tabs-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-tabs-inner::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 14px 18px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-tab:hover { color: var(--text); }
+    .nav-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+    /* SECTION */
+    .section { padding: 48px 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 24px;
+      line-height: 1.25;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    /* DISEASE INTRO CARDS */
+    .disease-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 32px; }
+    .disease-card {
+      border-radius: var(--radius);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .disease-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .disease-card--cadasil { background: var(--blue-bg); border: 1px solid var(--blue-border); }
+    .disease-card--cadasil::before { background: var(--blue); }
+    .disease-card--carasal { background: var(--green-bg); border: 1px solid var(--green-border); }
+    .disease-card--carasal::before { background: var(--green); }
+    .disease-card--carasil { background: var(--amber-bg); border: 1px solid var(--amber-border); }
+    .disease-card--carasil::before { background: var(--amber); }
+
+    .disease-card__abbr {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .disease-card--cadasil .disease-card__abbr { color: var(--blue); }
+    .disease-card--carasal .disease-card__abbr { color: var(--green); }
+    .disease-card--carasil .disease-card__abbr { color: var(--amber); }
+
+    .disease-card__name {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+    .disease-card__gene {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255,255,255,0.7);
+      border-radius: var(--radius-xs);
+      padding: 3px 8px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .disease-card--cadasil .disease-card__gene { color: var(--blue); background: rgba(29,78,216,0.08); }
+    .disease-card--carasal .disease-card__gene { color: var(--green); background: rgba(21,128,61,0.08); }
+    .disease-card--carasil .disease-card__gene { color: var(--amber); background: rgba(180,83,9,0.08); }
+
+    .disease-card__detail {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+    .disease-card__detail strong {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* CALLOUT */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px 18px 24px;
+      position: relative;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .callout::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 12px;
+      width: 3px;
+      border-radius: 2px;
+    }
+    .callout--blue::before { background: var(--blue); }
+    .callout--green::before { background: var(--green); }
+    .callout--amber::before { background: var(--amber); }
+    .callout--rose::before { background: var(--rose); }
+    .callout--purple::before { background: var(--purple); }
+    .callout__title { font-weight: 600; font-size: 0.88rem; margin-bottom: 5px; color: var(--text); }
+    .callout__body { font-size: 0.85rem; color: var(--text-dim); line-height: 1.55; }
+
+    /* COMPARISON TABLE */
+    .compare-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 24px; box-shadow: var(--shadow); }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; background: var(--surface); }
+    .compare-table thead { background: #0f172a; color: white; }
+    .compare-table th {
+      text-align: left;
+      padding: 13px 16px;
+      font-weight: 600;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: rgba(255,255,255,0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      white-space: nowrap;
+    }
+    .compare-table th:first-child { color: rgba(255,255,255,0.5); font-size: 0.65rem; }
+    .compare-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: var(--surface-2); }
+    .compare-table tr:hover td { background: #eff6ff; }
+    .compare-table td:first-child {
+      font-weight: 600;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+    .compare-table .mono { font-family: var(--font-mono); font-size: 0.75rem; }
+    .compare-table .val-blue { font-family: var(--font-mono); font-size: 0.75rem; color: var(--blue); font-weight: 500; }
+    .compare-table .val-green { font-family: var(--font-mono); font-size: 0.75rem; color: var(--green); font-weight: 500; }
+    .compare-table .val-amber { font-family: var(--font-mono); font-size: 0.75rem; color: var(--amber); font-weight: 500; }
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge--yes { background: #dcfce7; color: #15803d; }
+    .badge--no { background: #fee2e2; color: #b91c1c; }
+    .badge--var { background: #fef3c7; color: #b45309; }
+
+    /* FEATURE CARDS */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .feature-card__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .feature-card__title { font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: var(--text); }
+    .feature-card__body { font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
+
+    /* GENE TABLE */
+    .gene-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .gene-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .gene-box--blue { border-top: 3px solid var(--blue); }
+    .gene-box--green { border-top: 3px solid var(--green); }
+    .gene-box--amber { border-top: 3px solid var(--amber); }
+    .gene-box__abbr { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+    .gene-box--blue .gene-box__abbr { color: var(--blue); }
+    .gene-box--green .gene-box__abbr { color: var(--green); }
+    .gene-box--amber .gene-box__abbr { color: var(--amber); }
+    .gene-box__gene { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); }
+    .gene-box__chr { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); }
+    .gene-arrow { color: var(--text-faint); font-size: 1.2rem; text-align: center; }
+    .gene-arrow--ad::after { content: '→ AD'; display: block; font-family: var(--font-mono); font-size: 0.6rem; color: var(--green); font-weight: 500; }
+    .gene-arrow--ar::after { content: '→ AR'; display: block; font-family: var(--font-mono); font-size: 0.6rem; color: var(--amber); font-weight: 500; }
+
+    /* PATHWAY CARDS */
+    .pathway-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
+    .pathway-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+    .pathway-card__title {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .pathway-card--blue .pathway-card__title { color: var(--blue); border-color: var(--blue-border); }
+    .pathway-card--green .pathway-card__title { color: var(--green); border-color: var(--green-border); }
+    .pathway-card--amber .pathway-card__title { color: var(--amber); border-color: var(--amber-border); }
+    .pathway-step {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+    .pathway-step__num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .pathway-step__text strong { color: var(--text); font-weight: 500; }
+    .pathway-step:last-child { margin-bottom: 0; }
+
+    /* TAKEAWAY */
+    .takeaway-list { list-style: none; }
+    .takeaway-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .takeaway-item:last-child { border-bottom: none; }
+    .takeaway-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--blue-bg);
+      color: var(--blue);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .takeaway-text { font-size: 0.88rem; color: var(--text); line-height: 1.5; }
+    .takeaway-text strong { font-weight: 600; }
+
+    /* SOURCE ITEMS */
+    .source-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; box-shadow: var(--shadow); }
+    .source-icon { width: 34px; height: 34px; border-radius: 7px; background: var(--blue-bg); color: var(--blue); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600; text-transform: uppercase; flex-shrink: 0; letter-spacing: 0.04em; }
+    .source-title { font-weight: 600; font-size: 0.83rem; color: var(--text); margin-bottom: 3px; line-height: 1.35; }
+    .source-meta { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* FOOTER */
+    .site-footer { background: #0f172a; color: rgba(255,255,255,0.5); padding: 32px 24px; margin-top: 40px; }
+    .footer-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-text { font-size: 0.75rem; font-family: var(--font-mono); }
+    .footer-accent { color: rgba(255,255,255,0.8); }
+
+    @media (max-width: 768px) {
+      .disease-grid { grid-template-columns: 1fr; }
+      .pathway-grid { grid-template-columns: 1fr; }
+      .gene-flow { grid-template-columns: 1fr; }
+      .gene-arrow { display: none; }
+      .compare-table { font-size: 0.77rem; }
+      .compare-table td, .compare-table th { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow">
+      <span class="header-eyebrow-dot"></span>
+      Hereditary Cerebral Small Vessel Diseases
+    </div>
+    <h1>CADASIL vs <span>CARASAL</span> vs <span>CARASIL</span></h1>
+    <p class="header-desc">Comprehensive comparison of three hereditary cerebral small vessel diseases: genetics, pathophysiology, clinical features, neuroimaging, diagnosis, and treatment — Updated 2025</p>
+    <div class="header-stats">
+      <div class="header-stat">
+        <div class="header-stat__val">3</div>
+        <div class="header-stat__lbl">Diseases</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat__val">3</div>
+        <div class="header-stat__lbl">Genes</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat__val">2</div>
+        <div class="header-stat__lbl">AD + 1 AR</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat__val">>220</div>
+        <div class="header-stat__lbl">NOTCH3 mutations</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-tabs">
+  <div class="nav-tabs-inner">
+    <a class="nav-tab active" href="#overview">Overview</a>
+    <a class="nav-tab" href="#genetics">Genetics</a>
+    <a class="nav-tab" href="#pathophysiology">Pathophysiology</a>
+    <a class="nav-tab" href="#clinical">Clinical Features</a>
+    <a class="nav-tab" href="#imaging">Neuroimaging</a>
+    <a class="nav-tab" href="#diagnosis">Diagnosis</a>
+    <a class="nav-tab" href="#treatment">Treatment</a>
+    <a class="nav-tab" href="#comparison">Comparison</a>
+    <a class="nav-tab" href="#takeaway">Take-home</a>
+    <a class="nav-tab" href="#references">References</a>
+  </div>
+</nav>
+
+<!-- SECTION: OVERVIEW -->
+<section class="section" id="overview">
+  <div class="container">
+    <span class="section-label">At a Glance</span>
+    <h2 class="section-heading">Disease Overview</h2>
+
+    <div class="disease-grid">
+      <div class="disease-card disease-card--cadasil">
+        <div class="disease-card__abbr">CADASIL</div>
+        <div class="disease-card__name">Cerebral Autosomal Dominant Arteriopathy with Subcortical Infarcts and Leukoencephalopathy</div>
+        <div class="disease-card__gene">NOTCH3 · Chr 19p13</div>
+        <div class="disease-card__detail">
+          <strong>Autosomal Dominant</strong>
+          Most common hereditary stroke & dementia cause. >220 pathogenic mutations. Characteristic GOM deposits on biopsy.
+        </div>
+      </div>
+      <div class="disease-card disease-card--carasal">
+        <div class="disease-card__abbr">CARASAL</div>
+        <div class="disease-card__name">Cathepsin A-Related Arteriopathy with Strokes and Leukoencephalopathy</div>
+        <div class="disease-card__gene">CTSA · Chr 20q13</div>
+        <div class="disease-card__detail">
+          <strong>Autosomal Dominant</strong>
+          Ultra-rare. First described 2016. Distinctive: central facial palsy, facial pain, REM sleep behavior disorder. No GOM.
+        </div>
+      </div>
+      <div class="disease-card disease-card--carasil">
+        <div class="disease-card__abbr">CARASIL</div>
+        <div class="disease-card__name">Cerebral Autosomal Recessive Arteriopathy with Subcortical Infarcts and Leukoencephalopathy</div>
+        <div class="disease-card__gene">HTRA1 · Chr 10q26</div>
+        <div class="disease-card__detail">
+          <strong>Autosomal Recessive</strong>
+          Very rare. First described 1975 in Japan. Distinctive: alopecia, spondylosis, lumbago before age 30.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--blue">
+      <div class="callout__title">💡 จำได้ง่าย — ต่างกันแค่ตัวอักษรตัวเดียว</div>
+      <div class="callout__body"><strong>D = Dominant</strong> (CADASIL, CARASAL) vs <strong>R = Recessive</strong> (CARASIL)<br>CADASIL พบบ่อยที่สุด ส่วน CARASAL มี distinctive features ที่ช่วยแยกได้ทางคลินิก และ CARASIL มี recessive inheritance ร่วมกับ alopecia และ spondylosis ที่เด่นชัด</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: GENETICS -->
+<section class="section" id="genetics">
+  <div class="container">
+    <span class="section-label">Genetic Basis</span>
+    <h2 class="section-heading">Genetics — Three Genes, Three Inheritance Patterns</h2>
+
+    <div class="gene-flow">
+      <div class="gene-box gene-box--blue">
+        <div class="gene-box__abbr">CADASIL</div>
+        <div class="gene-box__gene">NOTCH3</div>
+        <div class="gene-box__chr">Chr 19p13</div>
+        <div style="margin-top:8px;font-size:0.72rem;color:var(--blue);font-weight:500">>220 pathogenic variants</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:2px">Missense · Cysteine-altering</div>
+      </div>
+      <div class="gene-arrow gene-arrow--ad">→</div>
+      <div class="gene-box gene-box--green">
+        <div class="gene-box__abbr">CARASAL</div>
+        <div class="gene-box__gene">CTSA</div>
+        <div class="gene-box__chr">Chr 20q13</div>
+        <div style="margin-top:8px;font-size:0.72rem;color:var(--green);font-weight:500">~19 patients reported</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:2px">Cathepsin A deficiency</div>
+      </div>
+      <div class="gene-arrow gene-arrow--ar">→</div>
+      <div class="gene-box gene-box--amber">
+        <div class="gene-box__abbr">CARASIL</div>
+        <div class="gene-box__gene">HTRA1</div>
+        <div class="gene-box__chr">Chr 10q26</div>
+        <div style="margin-top:8px;font-size:0.72rem;color:var(--amber);font-weight:500">&lt;100 patients reported</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:2px">Homozygous / compound het</div>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-card__icon" style="background:#eff6ff; color:#1d4ed8; font-size:1.1rem">🧬</div>
+        <div class="feature-card__title">NOTCH3 — CADASIL</div>
+        <div class="feature-card__body">Transmembrane receptor สำคัญใน vascular smooth muscle cells มี 34 EGF-like repeats (EGFr) การกลายพันธุ์ทำให้ cysteine residues เปลี่ยนจาก 6 เป็นจำนวนคี่ → misfolding → GOM</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon" style="background:#f0fdf4; color:#15803d; font-size:1.1rem">🔬</div>
+        <div class="feature-card__title">CTSA — CARASAL</div>
+        <div class="feature-card__body">Cathepsin A ทำหน้าที่ 3 อย่าง: (1) Stabilize β-galactosidase & neuraminidase (2) Degrade endothelin-1 (3) ควบคุม TGF-β signaling การกลายพันธุ์ทำให้ ET-1 สะสม → arteriolosclerosis</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon" style="background:#fffbeb; color:#b45309; font-size:1.1rem">⚙️</div>
+        <div class="feature-card__title">HTRA1 — CARASIL</div>
+        <div class="feature-card__body">HTRA1 เป็น serine protease ที่ยับยั้ง TGF-β signaling การกลายพันธุ์ homozygous ทำให้ protease activity ลดลงมาก → TGF-β overactivity → vascular fibrosis</div>
+      </div>
+    </div>
+
+    <div class="callout callout--amber">
+      <div class="callout__title">⚠️ ข้อควรระวังในการตรวจทางพันธุกรรม</div>
+      <div class="callout__body">CADASIL ที่เป็น cysteine-sparing mutations (เช่น p.Arg61Trp, p.Arg75Pro, p.Asp80Gly, p.Arg213Lys) อาจไม่ถูกตรวจพบด้วย panel ทั่วไป — ต้องใช้ targeted NOTCH3 analysis แยก ส่วน heterozygous HTRA1 mutations อาจทำให้เกิด phenotype เบากว่า CARASIL คลาสสิกได้</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: PATHOPHYSIOLOGY -->
+<section class="section" id="pathophysiology">
+  <div class="container">
+    <span class="section-label">Mechanism</span>
+    <h2 class="section-heading">Pathophysiology — Different Pathways to Small Vessel Damage</h2>
+
+    <div class="pathway-grid">
+      <div class="pathway-card pathway-card--blue">
+        <div class="pathway-card__title">NOTCH3 → CADASIL</div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">1</span>
+          <span class="pathway-step__text">NOTCH3 mutation → cysteine residues เปลี่ยนเป็น <strong>odd number (5 หรือ 7)</strong></span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">2</span>
+          <span class="pathway-step__text">EGFr domain <strong>misfolding</strong> → NOTCH3ECD สะสมผิดปกติ</span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">3</span>
+          <span class="pathway-step__text"><strong>GOM (Granular Osmiophilic Material)</strong> สะสมในผนังหลอดเลือด</span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">4</span>
+          <span class="pathway-step__text">Vascular smooth muscle cells (<strong>VSMCs</strong>) เสื่อมสภาพ</span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">5</span>
+          <span class="pathway-step__text">Arteriolar wall หนาตัว + <strong>hypoperfusion</strong> → white matter degeneration + lacunar infarcts</span>
+        </div>
+      </div>
+
+      <div class="pathway-card pathway-card--green">
+        <div class="pathway-card__title">CTSA → CARASAL</div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">1</span>
+          <span class="pathway-step__text">CTSA mutation → <strong>Cathepsin A function ลดลง</strong></span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">2</span>
+          <span class="pathway-step__text"><strong>Endothelin-1 (ET-1)</strong> สะสมมากขึ้น (ไม่ถูก degrade ปกติ)</span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">3</span>
+          <span class="pathway-step__text"><strong>TGF-β dysregulation</strong> + lysosomal enzyme instability</span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">4</span>
+          <span class="pathway-step__text"><strong>Severe arteriolosclerosis</strong> ของ small cerebral arteries</span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">5</span>
+          <span class="pathway-step__text"><strong>Secondary leukoencephalopathy</strong> → stroke + cognitive decline</span>
+        </div>
+      </div>
+
+      <div class="pathway-card pathway-card--amber">
+        <div class="pathway-card__title">HTRA1 → CARASIL</div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">1</span>
+          <span class="pathway-step__text">HTRA1 mutation (homozygous) → <strong>HTRA1 protease activity ลดลงอย่างมาก</strong></span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">2</span>
+          <span class="pathway-step__text"><strong>Loss of TGF-β inhibition</strong></span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">3</span>
+          <span class="pathway-step__text"><strong>TGF-β overactivity</strong> → ทำให้ผนังหลอดเลือดเสียโครงสร้าง</span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">4</span>
+          <span class="pathway-step__text"><strong>Arterial wall degeneration & fibrosis</strong></span>
+        </div>
+        <div class="pathway-step">
+          <span class="pathway-step__num">5</span>
+          <span class="pathway-step__text">Small vessel disease → <strong>subcortical infarcts</strong> + progressive neurological decline</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--purple">
+      <div class="callout__title">🔍 ค้นพบใหม่: NOTCH3 มีผลกระทบมากกว่าที่คิด</div>
+      <div class="callout__body">นอกจาก small vessels, NOTCH3 mutations ยังพบว่าทำให้เกิด <strong>large intracranial artery anomalies, coronary artery disease</strong> และ <strong>metabolic abnormalities</strong> — บ่งชี้ว่า NOTCH3 มีผลต่อระบบหลอดเลือดทั้งร่างกาย ไม่ใช่แค่สมองเท่านั้น อาจต้องเปลี่ยน concept ของ CADASIL ในอนาคต</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: CLINICAL -->
+<section class="section" id="clinical">
+  <div class="container">
+    <span class="section-label">Clinical Presentation</span>
+    <h2 class="section-heading">Clinical Features — Where They Overlap and Where They Differ</h2>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th style="color:#93c5fd !important">CADASIL</th>
+            <th style="color:#4ade80 !important">CARASAL</th>
+            <th style="color:#fbbf24 !important">CARASIL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Onset age</td>
+            <td class="val-blue">30s–50s</td>
+            <td class="val-green">40s–50s</td>
+            <td class="val-amber">20s–40s</td>
+          </tr>
+          <tr>
+            <td>Inheritance</td>
+            <td class="val-blue">Autosomal Dominant</td>
+            <td class="val-green">Autosomal Dominant</td>
+            <td class="val-amber">Autosomal Recessive</td>
+          </tr>
+          <tr>
+            <td>Migraine with aura</td>
+            <td><span class="badge badge--yes">Very common</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+            <td><span class="badge badge--var">Less common</span></td>
+          </tr>
+          <tr>
+            <td>Ischemic stroke / TIA</td>
+            <td><span class="badge badge--yes">Very common</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+          </tr>
+          <tr>
+            <td>Cognitive decline</td>
+            <td><span class="badge badge--yes">Very common</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+          </tr>
+          <tr>
+            <td>Mood / psychiatric</td>
+            <td><span class="badge badge--yes">Common (apathy, depression)</span></td>
+            <td><span class="badge badge--yes">Behavioral disinhibition</span></td>
+            <td><span class="badge badge--yes">Depression, emotional lability</span></td>
+          </tr>
+          <tr>
+            <td>Gait disturbance</td>
+            <td><span class="badge badge--yes">Common</span></td>
+            <td><span class="badge badge--var">Reported</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+          </tr>
+          <tr>
+            <td style="color:#b91c1c !important">Central facial palsy</td>
+            <td><span class="badge badge--no">Not typical</span></td>
+            <td><span class="badge badge--yes" style="background:#dcfce7;color:#15803d">Distinctive feature!</span></td>
+            <td><span class="badge badge--no">Not typical</span></td>
+          </tr>
+          <tr>
+            <td style="color:#b91c1c !important">Facial pain / Trigeminal</td>
+            <td><span class="badge badge--no">Not typical</span></td>
+            <td><span class="badge badge--yes" style="background:#dcfce7;color:#15803d">Distinctive feature!</span></td>
+            <td><span class="badge badge--no">Not typical</span></td>
+          </tr>
+          <tr>
+            <td style="color:#b91c1c !important">REM sleep behavior disorder</td>
+            <td><span class="badge badge--no">Not typical</span></td>
+            <td><span class="badge badge--yes" style="background:#dcfce7;color:#15803d">Distinctive feature!</span></td>
+            <td><span class="badge badge--no">Not typical</span></td>
+          </tr>
+          <tr>
+            <td style="color:#b91c1c !important">Alopecia (ผมร่วง)</td>
+            <td><span class="badge badge--no">Not typical</span></td>
+            <td><span class="badge badge--no">Not typical</span></td>
+            <td><span class="badge badge--yes" style="background:#fef3c7;color:#b45309">Distinctive feature!</span></td>
+          </tr>
+          <tr>
+            <td style="color:#b91c1c !important">Spondylosis / Lumbago</td>
+            <td><span class="badge badge--no">Not typical</span></td>
+            <td><span class="badge badge--no">Not typical</span></td>
+            <td><span class="badge badge--yes" style="background:#fef3c7;color:#b45309">Distinctive feature!</span></td>
+          </tr>
+          <tr>
+            <td>Seizures</td>
+            <td><span class="badge badge--var">Possible</span></td>
+            <td><span class="badge badge--no">Not reported</span></td>
+            <td><span class="badge badge--var">Possible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card" style="border-left:3px solid #1d4ed8">
+        <div class="feature-card__title">🎯 CADASIL — Clinical clue สำคัญ</div>
+        <div class="feature-card__body">Migraine with aura มักเป็นอาการนำในคนอายุน้อย ตามด้วย lacunar strokes ซ้ำๆ และ cognitive decline ภายใน 10-15 ปี มักมี positive family history เพราะเป็น autosomal dominant</div>
+      </div>
+      <div class="feature-card" style="border-left:3px solid #15803d">
+        <div class="feature-card__title">🎯 CARASAL — Clinical clues สำคัญ</div>
+        <div class="feature-card__body">นึกถึงเมื่อผู้ป่วย middle-aged มี stroke ร่วมกับ <strong>central facial palsy</strong>, <strong>trigeminal neuralgia</strong>, และ <strong>REM sleep behavior disorder</strong> (พูด/ลงมือขณะนอน) โดยเฉพาะเมื่อไม่มีปัจจัยเสี่ยงทั่วไป</div>
+      </div>
+      <div class="feature-card" style="border-left:3px solid #b45309">
+        <div class="feature-card__title">🎯 CARASIL — Clinical clues สำคัญ</div>
+        <div class="feature-card__body">นึกถึงเมื่อผู้ป่วยอายุน้อย (<30 ปี) มี alopecia หรือ spondylosis ร่วมกับ stroke และ leukoencephalopathy บริบุคคลอื่นในครอบครัวอาจไม่มีอาการ (recessive inheritance)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: IMAGING -->
+<section class="section" id="imaging">
+  <div class="container">
+    <span class="section-label">Neuroimaging</span>
+    <h2 class="section-heading">MRI Findings — Overlapping but Distinguishable</h2>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>MRI Finding</th>
+            <th style="color:#93c5fd !important">CADASIL</th>
+            <th style="color:#4ade80 !important">CARASAL</th>
+            <th style="color:#fbbf24 !important">CARASIL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>White matter hyperintensities</td>
+            <td><span class="badge badge--yes">Diffuse, early</span></td>
+            <td><span class="badge badge--yes">Severe, broad</span></td>
+            <td><span class="badge badge--yes">Diffuse</span></td>
+          </tr>
+          <tr>
+            <td>Subcortical lacunar infarcts</td>
+            <td><span class="badge badge--yes">Multiple, recurrent</span></td>
+            <td><span class="badge badge--yes">Present</span></td>
+            <td><span class="badge badge--yes">Present</span></td>
+          </tr>
+          <tr>
+            <td style="color:#1d4ed8 !important">Temporal pole involvement</td>
+            <td><span class="badge badge--yes" style="background:#dcfce7;color:#15803d">Characteristic & specific!</span></td>
+            <td><span class="badge badge--no">Absent / minimal</span></td>
+            <td><span class="badge badge--no">Not prominent</span></td>
+          </tr>
+          <tr>
+            <td style="color:#1d4ed8 !important">External capsule lesions</td>
+            <td><span class="badge badge--yes" style="background:#dcfce7;color:#15803d">Characteristic</span></td>
+            <td><span class="badge badge--var">Variable</span></td>
+            <td><span class="badge badge--var">Variable</span></td>
+          </tr>
+          <tr>
+            <td>Brainstem involvement</td>
+            <td><span class="badge badge--yes">Periventricular</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+          </tr>
+          <tr>
+            <td>Basal ganglia</td>
+            <td><span class="badge badge--yes">Common</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+          </tr>
+          <tr>
+            <td>Corpus callosum</td>
+            <td><span class="badge badge--yes">Common</span></td>
+            <td><span class="badge badge--var">Less prominent</span></td>
+            <td><span class="badge badge--yes">Common</span></td>
+          </tr>
+          <tr>
+            <td>Cerebral microbleeds</td>
+            <td><span class="badge badge--yes">30-70% of patients</span></td>
+            <td><span class="badge badge--yes">More than CADASIL</span></td>
+            <td><span class="badge badge--yes">Present</span></td>
+          </tr>
+          <tr>
+            <td>Brain atrophy</td>
+            <td><span class="badge badge--yes">Early, frontotemporal</span></td>
+            <td><span class="badge badge--yes">Reported</span></td>
+            <td><span class="badge badge--yes">Reported</span></td>
+          </tr>
+          <tr>
+            <td style="color:#1d4ed8 !important">GOM on skin biopsy</td>
+            <td><span class="badge badge--yes" style="background:#dcfce7;color:#15803d">Hallmark feature ✓</span></td>
+            <td><span class="badge badge--no">Absent ✗</span></td>
+            <td><span class="badge badge--no">Absent ✗</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout--blue">
+      <div class="callout__title">🔬 จุดที่ช่วยแยก CADASIL จาก CARASAL ใน MRI</div>
+      <div class="callout__body"><strong>Temporal pole hyperintensities</strong> และ <strong>external capsule lesions</strong> เป็นลักษณะที่ค่อนข้างจำเพาะต่อ CADASIL หากพบในผู้ป่วยที่ไม่มีปัจจัยเสี่ยงควรส่งตรวจทางพันธุกรรม ส่วน CARASAL มักมี microbleeds มากกว่าและมี brainstem involvement ชัดเจนกว่า</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: DIAGNOSIS -->
+<section class="section" id="diagnosis">
+  <div class="container">
+    <span class="section-label">Diagnosis</span>
+    <h2 class="section-heading">Diagnostic Approach</h2>
+
+    <div class="feature-grid">
+      <div class="feature-card" style="border-top:3px solid #1d4ed8">
+        <div class="feature-card__title">Step 1 — Clinical Suspicion</div>
+        <div class="feature-card__body">นึกถึง hereditary cSVD ในผู้ป่วยอายุน้อย (<55 ปี) ที่มี stroke, cognitive decline, migraine with aura โดยไม่มีปัจจัยเสี่ยงทั่วไป หรือมี family history ของ similar symptoms</div>
+      </div>
+      <div class="feature-card" style="border-top:3px solid #7c3aed">
+        <div class="feature-card__title">Step 2 — MRI Brain</div>
+        <div class="feature-card__body">MRI ช่วยเห็น white matter hyperintensities, lacunar infarcts, microbleeds และ distribution ที่ช่วยแยก CADASIL (temporal pole) จาก CARASAL/CARASIL ควรทำ susceptibility-weighted imaging (SWI) ด้วยเพื่อดู microbleeds</div>
+      </div>
+      <div class="feature-card" style="border-top:3px solid #15803d">
+        <div class="feature-card__title">Step 3 — Genetic Testing</div>
+        <div class="feature-card__body"><strong>Gold standard</strong> สำหรับ definitive diagnosis ควรส่ง targeted genetic testing สำหรับ <strong>NOTCH3, CTSA, และ HTRA1</strong> พร้อมกัน เพราะ phenotype คล้ายกันมาก</div>
+      </div>
+    </div>
+
+    <div class="callout callout--green">
+      <div class="callout__title">🧪 Skin Biopsy — ยังมีบทบาทไหม?</div>
+      <div class="callout__body">Skin biopsy สามารถตรวจหา <strong>GOM deposits</strong> ซึ่งเป็น <strong>hallmark ของ CADASIL</strong> — ช่วยยืนยัน diagnosis ได้เมื่อ genetic testing ยังไม่ชัดเจน หรือเมื่อสงสัย cysteine-sparing mutation ที่อาจไม่ถูก detect ด้วย panel ทั่วไป สำหรับ CARASAL และ CARASIL ไม่พบ GOM บน biopsy</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: TREATMENT -->
+<section class="section" id="treatment">
+  <div class="container">
+    <span class="section-label">Treatment</span>
+    <h2 class="section-heading">Treatment — No Disease-Modifying Therapy Yet</h2>
+
+    <div class="feature-grid">
+      <div class="feature-card" style="border-left:3px solid #1d4ed8">
+        <div class="feature-card__title">Current Standard — CADASIL</div>
+        <div class="feature-card__body">• <strong>Antiplatelet</strong> (aspirin, clopidogrel) ลดความเสี่ยง stroke<br>• <strong>Statins</strong> ควบคุม cardiovascular risk<br>• <strong>ควบคุมความดัน</strong>อย่างจริงจัง<br>• ไม่สูบบุหรี่, ออกกำลังสม่ำเสมอ<br><span style="color:#b91c1c">⚠️ หลีกเลี่ยง anticoagulants และ thrombolytics</span> — เพิ่มความเสี่ยงเลือดออกเมื่อมี microbleeds</div>
+      </div>
+      <div class="feature-card" style="border-left:3px solid #15803d">
+        <div class="feature-card__title">Current Standard — CARASAL</div>
+        <div class="feature-card__body">• <strong>Symptomatic treatment</strong> ตามอาการ<br>• <strong>Stroke prevention</strong> — antiplatelet agents<br>• ควบคุม cardiovascular risk factors อย่างจริงจัง<br>• รักษาอาการทางจิต (depression, behavioral changes)<br>• ยังไม่มี specific disease-modifying therapy</div>
+      </div>
+      <div class="feature-card" style="border-left:3px solid #b45309">
+        <div class="feature-card__title">Current Standard — CARASIL</div>
+        <div class="feature-card__body">• <strong>Glucocorticoids</strong> — อาจช่วยในระยะ active inflammation (มี case reports ที่ response ดี)<br>• <strong>Immunosuppressives</strong> — azathioprine, methotrexate (ใช้บ้างใน literature)<br>• <strong>Antiplatelet</strong> — stroke prevention<br>• Heterozygous carriers ควรติดตามอย่างใกล้ชิด</div>
+      </div>
+    </div>
+
+    <div class="callout callout--purple">
+      <div class="callout__title">🚀 Emerging Therapies for CADASIL (2025)</div>
+      <div class="callout__body">
+        <table style="width:100%;font-size:0.82rem;border-collapse:collapse;margin-top:8px">
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:5px 8px;font-weight:600;color:var(--purple)">CRISPR/Cas9 Gene Editing</td>
+            <td style="padding:5px 8px;color:var(--text-dim)">กำลังพัฒนา — แก้ไข NOTCH3 mutation ที่ต้นเหตุ</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:5px 8px;font-weight:600;color:var(--purple)">Antisense Oligonucleotides (ASOs)</td>
+            <td style="padding:5px 8px;color:var(--text-dim)">ลด NOTCH3ECD accumulation — อยู่ในขั้นตอนวิจัย</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:5px 8px;font-weight:600;color:var(--purple)">NOTCH3 Antibody Therapy</td>
+            <td style="padding:5px 8px;color:var(--text-dim)">กำจัด GOM deposits จากผนังหลอดเลือด</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:5px 8px;font-weight:600;color:var(--purple)">Mesenchymal Stem Cell Therapy</td>
+            <td style="padding:5px 8px;color:var(--text-dim)">ซ่อมแซม VSMCs ที่เสียหาย</td>
+          </tr>
+          <tr>
+            <td style="padding:5px 8px;font-weight:600;color:var(--purple)">TGF-β Targeted Therapy</td>
+            <td style="padding:5px 8px;color:var(--text-dim)">ลด vascular fibrosis — อาจใช้ได้กับทั้ง CADASIL และ CARASAL</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: COMPARISON -->
+<section class="section" id="comparison">
+  <div class="container">
+    <span class="section-label">Summary Table</span>
+    <h2 class="section-heading">Complete Comparison — All Key Points</h2>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th style="color:#93c5fd !important">CADASIL</th>
+            <th style="color:#4ade80 !important">CARASAL</th>
+            <th style="color:#fbbf24 !important">CARASIL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gene</td>
+            <td class="val-blue mono">NOTCH3</td>
+            <td class="val-green mono">CTSA</td>
+            <td class="val-amber mono">HTRA1</td>
+          </tr>
+          <tr>
+            <td>Chromosome</td>
+            <td class="val-blue mono">19p13</td>
+            <td class="val-green mono">20q13</td>
+            <td class="val-amber mono">10q26</td>
+          </tr>
+          <tr>
+            <td>Inheritance</td>
+            <td class="val-blue">Autosomal Dominant</td>
+            <td class="val-green">Autosomal Dominant</td>
+            <td class="val-amber">Autosomal Recessive</td>
+          </tr>
+          <tr>
+            <td>Prevalence</td>
+            <td class="val-blue">0.8–5 / 100,000</td>
+            <td class="val-green">~19 ราย (ultra-rare)</td>
+            <td class="val-amber">&lt;100 ราย (rare)</td>
+          </tr>
+          <tr>
+            <td>First described</td>
+            <td class="val-blue">1977</td>
+            <td class="val-green">2016</td>
+            <td class="val-amber">1975 (Japan)</td>
+          </tr>
+          <tr>
+            <td>Onset</td>
+            <td class="val-blue">30s–50s</td>
+            <td class="val-green">40s–50s</td>
+            <td class="val-amber">20s–40s</td>
+          </tr>
+          <tr>
+            <td>GOM on biopsy</td>
+            <td><span class="badge badge--yes">Yes — hallmark</span></td>
+            <td><span class="badge badge--no">No</span></td>
+            <td><span class="badge badge--no">No</span></td>
+          </tr>
+          <tr>
+            <td>Most distinctive feature</td>
+            <td class="val-blue">Migraine with aura + temporal pole MRI</td>
+            <td class="val-green">Central facial palsy + REM sleep disorder</td>
+            <td class="val-amber">Alopecia + spondylosis + lumbago</td>
+          </tr>
+          <tr>
+            <td>Ethnicity</td>
+            <td class="val-blue">ทุก ethnicity</td>
+            <td class="val-green">Dutch (mostly)</td>
+            <td class="val-amber">East Asian (Japanese, Chinese)</td>
+          </tr>
+          <tr>
+            <td>Specific treatment</td>
+            <td><span class="badge badge--no">None yet (emerging)</span></td>
+            <td><span class="badge badge--no">None yet</span></td>
+            <td><span class="badge badge--no">None yet</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: TAKEAWAY -->
+<section class="section" id="takeaway">
+  <div class="container">
+    <span class="section-label">Key Points</span>
+    <h2 class="section-heading">10 Take-home Points</h2>
+
+    <ul class="takeaway-list">
+      <li class="takeaway-item">
+        <span class="takeaway-num">1</span>
+        <div class="takeaway-text"><strong>จำ D=Domniant, R=Recessive</strong> — ตัวอักษรตัวเดียวเปลี่ยน inheritance pattern ทั้งหมด ส่วน CADASIL กับ CARASAL ต่างกันที่โปรตีน (NOTCH3 vs CTSA) แม้ inheritance เหมือนกัน</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">2</span>
+        <div class="takeaway-text"><strong>CADASIL พบบ่อยที่สุด</strong> — เป็น most common hereditary cause of stroke & dementia ทั่วโลก (0.8-5/100,000) มี >220 pathogenic mutations ใน NOTCH3</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">3</span>
+        <div class="takeaway-text"><strong>GOM จำเพาะสำหรับ CADASIL</strong> — Granular Osmiophilic Material พบได้ใน skin biopsy เป็น hallmark feature ที่ช่วยยืนยัน diagnosis แยกจาก CARASAL และ CARASIL ซึ่งไม่มี GOM</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">4</span>
+        <div class="takeaway-text"><strong>CARASAL มี distinctive triad</strong> — Central facial palsy + trigeminal neuralgia/facial pain + REM sleep behavior disorder ผู้ป่วยอาจไม่มีปัจจัยเสี่ยง stroke ทั่วไป</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">5</span>
+        <div class="takeaway-text"><strong>CARASIL มี alopecia และ spondylosis ก่อนวัย</strong> — ผมร่วงและกระดูกสันหลังเสื่อมในคนอายุน้อย (<30 ปี) ร่วมกับ leukoencephalopathy เป็น clinical clue ที่สำคัญ ควรส่งตรวจ HTRA1</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">6</span>
+        <div class="takeaway-text"><strong>Temporal pole MRI ช่วยแยก CADASIL</strong> — Hyperintensities ที่ temporal pole และ external capsule ค่อนข้างจำเพาะต่อ CADASIL หากไม่มีปัจจัยเสี่ยงควรส่ง genetic testing</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">7</span>
+        <div class="takeaway-text"><strong>Genetic testing คือ gold standard</strong> — ควรตรวจ NOTCH3, CTSA, HTRA1 พร้อมกันเมื่อสงสัย hereditary cSVD ระวัง cysteine-sparing mutations ที่อาจไม่ถูกตรวจพบด้วย panel ทั่วไป</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">8</span>
+        <div class="takeaway-text"><strong>Migraine with aura มักเป็นอาการนำของ CADASIL</strong> — อาจเกิดก่อน stroke หลายปี ผู้ป่วยอายุน้อยที่มี migraine with aura ควรถามประวัติครอบครัวและพิจารณา MRI ถ้าสงสัย</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">9</span>
+        <div class="takeaway-text"><strong>NOTCH3 mutations อาจมีผลต่อ large arteries ด้วย</strong> — ไม่ใช่แค่ small vessels แต่ยังพบ intracranial artery anomalies, coronary artery disease, และ metabolic abnormalities อาจต้องตรวจสอบหลอดเลือดทั้งร่างกายใน CADASIL patients</div>
+      </li>
+      <li class="takeaway-item">
+        <span class="takeaway-num">10</span>
+        <div class="takeaway-text"><strong>No specific disease-modifying treatment สำหรับทั้ง 3 ภาวะ</strong> — ปัจจุบันเป็น supportive care + risk factor modification สำหรับ CARASAL และ CARASIL แต่ CADASIL มี emerging therapies หลายตัวใน pipeline รวมถึง CRISPR, ASOs, และ stem cell therapy ที่กำลังพัฒนา</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION: REFERENCES -->
+<section class="section" id="references">
+  <div class="container">
+    <span class="section-label">Sources</span>
+    <h2 class="section-heading">References</h2>
+
+    <div class="source-item">
+      <div class="source-icon">Neu</div>
+      <div>
+        <div class="source-title">Neurology Genetics, 2025 — Expanding the Clinicoradiologic Phenotype of the CTSA-Associated Small Vessel Disease CARASAL: A Comparison With CADASIL</div>
+        <div class="source-meta">doi: 10.1212/NXG.0000000000200358</div>
+      </div>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">Fron</div>
+      <div>
+        <div class="source-title">Frontiers in Neurology, 2025 — CADASIL or NOTCH3 mutation spectrum diseases? Genotype-phenotype heterogeneity in >220 mutations</div>
+        <div class="source-meta">doi: 10.3389/fneur.2025.1662012</div>
+      </div>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">Nucl</div>
+      <div>
+        <div class="source-title">The Nucleus, 2025 — CADASIL: Emerging Therapeutic Approaches (CRISPR, ASOs, stem cell, TGF-β)</div>
+        <div class="source-meta">doi: 10.1007/s13237-025-00598-3</div>
+      </div>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">Gene</div>
+      <div>
+        <div class="source-title">NCBI GeneReviews — HTRA1 Disorder (CARASIL)</div>
+        <div class="source-meta">https://www.ncbi.nlm.nih.gov/books/NBK32533/</div>
+      </div>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">Acta</div>
+      <div>
+        <div class="source-title">Acta Neurologica Belgica, 2019 — Update on CARASAL: Phenotype, Genotype, Pathogenesis, Diagnosis and Treatment</div>
+        <div class="source-meta">doi: 10.1007/s13760-019-01158-8</div>
+      </div>
+    </div>
+    <div class="source-item">
+      <div class="source-icon">NEJM</div>
+      <div>
+        <div class="source-title">N Engl J Med, 2009 — Association of HTRA1 Mutations and Familial Ischemic Cerebral Small-Vessel Disease</div>
+        <div class="source-meta">doi: 10.1056/NEJMoa0801560</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-text">CADASIL vs CARASAL vs CARASIL — Hereditary cSVD Comparison 2026</span>
+    <span class="footer-text"><span class="footer-accent">Sources:</span> Neurology Genetics, Frontiers in Neurology, The Nucleus, GeneReviews, Acta Neurologica Belgica, NEJM</span>
+  </div>
+</footer>
+
+<script>
+  // Nav smooth scroll + active
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+      const id = tab.getAttribute('href');
+      const target = document.querySelector(id);
+      if (target) {
+        const offset = document.querySelector('.nav-tabs').offsetHeight + 16;
+        const y = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+  const sections = document.querySelectorAll('section[id]');
+  const navTabs = document.querySelectorAll('.nav-tab');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navTabs.forEach(t => t.classList.toggle('active', t.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

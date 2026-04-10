@@ -36,6 +36,17 @@
             "size": "741.0 KB"
           }
         }
+      },
+      "LECTURES": {
+        "type": "dir",
+        "children": {
+          "P015-017-Cardio-Update-CVM82-2-9-59.pdf": {
+            "type": "file",
+            "ftype": "pdf",
+            "path": "MEDICINE/CARDIOLOGY/LECTURES/P015-017-Cardio-Update-CVM82-2-9-59.pdf",
+            "size": "115.4 KB"
+          }
+        }
       }
     }
   },
