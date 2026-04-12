@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Long QT Syndrome — Visual Guide for Cardiologists</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--surface:#f4f7fb;--surface2:#e8edf5;--border:rgba(0,0,0,.07);--text:#1a1d27;--dim:#5a6072;--muted:#8890a4;--accent:#2563eb;--accent-bg:rgba(37,99,235,.1);--accent-border:rgba(37,99,235,.3);--red:#dc2626;--red-bg:rgba(220,38,38,.08);--green:#16a34a;--green-bg:rgba(22,163,74,.08);--amber:#d97706;--amber-bg:rgba(217,119,6,.08);--teal:#0d9488;--teal-bg:rgba(13,148,136,.08);--font:'DM Sans',sans-serif;--mono:'Fira Code',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:15px}
+a{color:var(--accent)}
+.container{max-width:960px;margin:0 auto;padding:24px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:4px}
+h2{font-size:1.35rem;font-weight:600;margin:36px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+h3{font-size:1.1rem;font-weight:600;margin:24px 0 10px;color:var(--accent)}
+.subtitle{color:var(--dim);font-size:.95rem;margin-bottom:28px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin:14px 0}
+.card-accent{border-left:4px solid var(--accent)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:10px 0}
+th{background:var(--accent);color:#fff;font-weight:600;padding:8px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:nth-child(even){background:var(--surface)}
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.78rem;font-weight:600}
+.badge-red{background:var(--red-bg);color:var(--red)}
+.badge-green{background:var(--green-bg);color:var(--green)}
+.badge-amber{background:var(--amber-bg);color:var(--amber)}
+.badge-teal{background:var(--teal-bg);color:var(--teal)}
+.badge-blue{background:var(--accent-bg);color:var(--accent)}
+.stat-row{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0}
+.stat{flex:1;min-width:120px;background:var(--surface);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border)}
+.stat .num{font-size:1.5rem;font-weight:700;color:var(--accent)}
+.stat .label{font-size:.78rem;color:var(--dim);margin-top:2px}
+.highlight{background:var(--amber-bg);border:1px solid var(--amber);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.danger{background:var(--red-bg);border:1px solid var(--red);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.tip{background:var(--green-bg);border:1px solid var(--green);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.ecg-demo{background:#111;color:#0f0;font-family:var(--mono);padding:16px;border-radius:8px;font-size:.82rem;overflow-x:auto;margin:10px 0}
+.section-label{display:inline-block;background:var(--accent);color:#fff;padding:3px 12px;border-radius:6px;font-size:.78rem;font-weight:600;margin-bottom:8px;letter-spacing:.5px}
+ul{padding-left:20px;margin:6px 0}
+li{margin:4px 0}
+.ft{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:.78rem;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HERO -->
+<span class="section-label">CARDIOLOGY REVIEW</span>
+<h1>🫀 Long QT Syndrome</h1>
+<p class="subtitle">Comprehensive Visual Guide — Types, Diagnostic Criteria & Clinical Approach | April 2026</p>
+
+<div class="stat-row">
+  <div class="stat"><div class="num">1:2,000</div><div class="label">Prevalence</div></div>
+  <div class="stat"><div class="num">17+</div><div class="label">Genetic Subtypes</div></div>
+  <div class="stat"><div class="num">>50%</div><div class="label">15-yr mortality untreated</div></div>
+  <div class="stat"><div class="num">&lt;1%</div><div class="label">20-yr mortality treated</div></div>
+</div>
+
+<!-- CLASSIFICATION -->
+<h2>1. Classification Overview</h2>
+
+<div class="grid-2">
+<div class="card card-accent">
+<h3>🔴 Congenital LQTS</h3>
+<ul>
+<li><strong>Romano-Ward</strong> (AD) — cardiac only; LQT1-6, 9-17</li>
+<li><strong>Jervell & Lange-Nielsen</strong> (AR) — LQTS + deafness; KCNQ1/KCNE1 biallelic</li>
+<li><strong>Andersen-Tawil</strong> (AD) — LQT7; periodic paralysis + dysmorphism</li>
+<li><strong>Timothy syndrome</strong> (AD) — LQT8; syndactyly, ASD, autism</li>
+</ul>
+</div>
+<div class="card card-accent">
+<h3>🟡 Acquired LQTS</h3>
+<ul>
+<li><strong>Drugs:</strong> Class Ia/III antiarrhythmics, macrolides, fluoroquinolones, antipsychotics, methadone</li>
+<li><strong>Electrolytes:</strong> Hypokalemia, hypomagnesemia, hypocalcemia</li>
+<li><strong>Metabolic:</strong> Hypothyroidism, hypothermia</li>
+<li><strong>Bradycardia</strong> — pauses promote TdP</li>
+</ul>
+</div>
+</div>
+
+<!-- THE BIG THREE -->
+<h2>2. The Big Three Genotypes (≥90% of cases)</h2>
+
+<table>
+<tr><th>Type</th><th>Gene</th><th>Channel</th><th>Prevalence</th><th>Triggers</th><th>T-wave Morphology</th></tr>
+<tr>
+  <td><span class="badge badge-teal">LQT1</span></td>
+  <td>KCNQ1</td>
+  <td>IKs ↓ (loss of function)</td>
+  <td>30–35%</td>
+  <td><strong>Exercise</strong> (swimming), emotional stress</td>
+  <td>Broad-based, smooth T</td>
+</tr>
+<tr>
+  <td><span class="badge badge-blue">LQT2</span></td>
+  <td>KCNH2 (hERG)</td>
+  <td>IKr ↓ (loss of function)</td>
+  <td>25–30%</td>
+  <td><strong>Auditory</strong> stimuli, emotional stress, postpartum</td>
+  <td>Low-amplitude, notched/bifid T</td>
+</tr>
+<tr>
+  <td><span class="badge badge-red">LQT3</span></td>
+  <td>SCN5A</td>
+  <td>Late INa ↑ (gain of function)</td>
+  <td>5–10%</td>
+  <td><strong>Rest/sleep</strong>, bradycardia</td>
+  <td>Late-onset T, long ST segment</td>
+</tr>
+</table>
+
+<div class="highlight">
+⚡ <strong>Clinical memory aid:</strong> LQT1 = <strong>S</strong>wimming/Sympathetic → LQT2 = <strong>A</strong>larm/Auditory → LQT3 = <strong>R</strong>est/sleep → <strong>S.A.R.</strong>
+</div>
+
+<!-- ALL TYPES TABLE -->
+<h2>3. Complete LQT Subtype Reference (LQT1–17)</h2>
+
+<table>
+<tr><th>LQT</th><th>Gene</th><th>Protein/Current</th><th>Key Feature</th></tr>
+<tr><td>1</td><td>KCNQ1</td><td>IKs α-subunit</td><td>Most common; exercise triggers</td></tr>
+<tr><td>2</td><td>KCNH2</td><td>IKr (hERG)</td><td>Auditory triggers; notched T</td></tr>
+<tr><td>3</td><td>SCN5A</td><td>Late INa ↑</td><td>Rest/sleep triggers; mexiletine responsive</td></tr>
+<tr><td>4</td><td>ANK2</td><td>Ankyrin-B</td><td>Sinus dysfunction, AF</td></tr>
+<tr><td>5</td><td>KCNE1</td><td>IKs β-subunit (minK)</td><td>Biallelic → JLN + deafness</td></tr>
+<tr><td>6</td><td>KCNE2</td><td>IKr β-subunit (MiRP1)</td><td>Drug-sensitive QT↑</td></tr>
+<tr><td>7</td><td>KCNJ2</td><td>IK1 (Kir2.1)</td><td><strong>Andersen-Tawil</strong>; periodic paralysis, U waves</td></tr>
+<tr><td>8</td><td>CACNA1C</td><td>ICa-L (Cav1.2)</td><td><strong>Timothy syndrome</strong>; syndactyly, autism, QT>500ms</td></tr>
+<tr><td>9</td><td>CAV3</td><td>Caveolin-3</td><td>SIDS association</td></tr>
+<tr><td>10</td><td>SCN4B</td><td>NaV β4 subunit</td><td>Late INa ↑</td></tr>
+<tr><td>11</td><td>AKAP9</td><td>Yotiao (IKs regulation)</td><td>Rare</td></tr>
+<tr><td>12</td><td>SNTA1</td><td>α1-syntrophin</td><td>SCN5A targeting</td></tr>
+<tr><td>13</td><td>KCNJ5</td><td>IK(ACh) (Kir3.4)</td><td>AF association</td></tr>
+<tr><td>14</td><td><strong>CALM1</strong></td><td>Calmodulin</td><td>Infantile severe LQTS; seizures</td></tr>
+<tr><td>15</td><td><strong>CALM2</strong></td><td>Calmodulin</td><td>Infantile severe LQTS</td></tr>
+<tr><td>16</td><td><strong>CALM3</strong></td><td>Calmodulin</td><td>Infantile severe LQTS</td></tr>
+<tr><td>17</td><td>TRDN</td><td>Triadin</td><td>AR; pediatric cardiac arrest</td></tr>
+</table>
+
+<!-- SCHWARTZ SCORE -->
+<h2>4. Diagnostic Criteria: Schwartz Score</h2>
+
+<div class="card">
+<table>
+<tr><th>Criterion</th><th>Points</th></tr>
+<tr><td>QTc ≥480 ms</td><td><span class="badge badge-red">3</span></td></tr>
+<tr><td>QTc 460–479 ms</td><td><span class="badge badge-amber">2</span></td></tr>
+<tr><td>QTc 450–459 ms (males)</td><td><span class="badge badge-teal">1</span></td></tr>
+<tr><td>Torsades de pointes</td><td><span class="badge badge-red">2</span></td></tr>
+<tr><td>T-wave alternans</td><td><span class="badge badge-teal">1</span></td></tr>
+<tr><td>Notched T waves (3 leads)</td><td><span class="badge badge-teal">1</span></td></tr>
+<tr><td>Low heart rate for age (children)</td><td><span class="badge badge-teal">0.5</span></td></tr>
+<tr><td>Syncope <em>with</em> stress</td><td><span class="badge badge-amber">2</span></td></tr>
+<tr><td>Syncope <em>without</em> stress</td><td><span class="badge badge-teal">1</span></td></tr>
+<tr><td>Congenital deafness</td><td><span class="badge badge-teal">0.5</span></td></tr>
+<tr><td>Family history of LQTS</td><td><span class="badge badge-teal">1</span></td></tr>
+<tr><td>Family history of SCD &lt;30 yr</td><td><span class="badge badge-teal">0.5</span></td></tr>
+</table>
+</div>
+
+<div class="grid-2">
+<div class="danger">
+<strong>≥3.5 points → HIGH PROBABILITY</strong> → Diagnose LQTS
+</div>
+<div class="highlight">
+<strong>1.5–3 points → INTERMEDIATE</strong> → Provocative testing needed
+</div>
+</div>
+
+<!-- QTc CUTOFFS -->
+<h2>5. QTc Diagnostic Thresholds (2023 HRS/ACC/AHA)</h2>
+
+<table>
+<tr><th>QTc (ms)</th><th>Classification</th><th>Action</th></tr>
+<tr><td>≥500</td><td><span class="badge badge-red">DEFINITE LQTS</span></td><td>Treat regardless of symptoms</td></tr>
+<tr><td>480–499</td><td><span class="badge badge-amber">HIGH PROBABILITY</span></td><td>Treat if symptoms/family hx</td></tr>
+<tr><td>460–479</td><td><span class="badge badge-amber">BORDERLINE</span></td><td>Exercise test, epinephrine challenge</td></tr>
+<tr><td>&lt;460</td><td><span class="badge badge-green">NORMAL RANGE</span></td><td>Does NOT exclude concealed LQTS!</td></tr>
+</table>
+
+<div class="danger">
+⚠️ <strong>~25–35% of genotype-positive patients have QTc &lt;460 ms at rest.</strong> Never dismiss LQTS based on a single normal ECG.
+</div>
+
+<!-- PROVOCATIVE TESTS -->
+<h2>6. Provocative Testing</h2>
+
+<h3>Exercise Stress Test</h3>
+<div class="card">
+<table>
+<tr><th>Genotype</th><th>Exercise Response</th><th>Key Finding</th></tr>
+<tr><td>LQT1</td><td>Poor QT shortening</td><td>Flat QT-HR slope (IKs can't upregulate)</td></tr>
+<tr><td>LQT2</td><td>Normal during, ↑↑ in recovery</td><td>Prominent recovery QTc prolongation</td></tr>
+<tr><td>LQT3</td><td>Excessive QT shortening</td><td>"Normal" response; risk at rest</td></tr>
+</table>
+<div class="tip">
+✅ <strong>Recovery QTc >480 ms</strong> at 1–4 min post-exercise is the single most useful ECG metric for concealed LQTS.
+</div>
+</div>
+
+<h3>Epinephrine Challenge</h3>
+<div class="card">
+<table>
+<tr><th>Response</th><th>Suggests</th><th>Mechanism</th></tr>
+<tr><td>Paradoxical QTc↑ ≥30 ms (low-dose)</td><td><span class="badge badge-teal">LQT1</span></td><td>IKs cannot respond to β-stimulation</td></tr>
+<tr><td>Transient QTc↑ then normalizes</td><td><span class="badge badge-blue">LQT2</span></td><td>Transient IKr suppression by PKA</td></tr>
+<tr><td>Minimal QTc change</td><td><span class="badge badge-red">LQT3</span></td><td>Late INa not β-adrenergically mediated</td></tr>
+</table>
+</div>
+
+<!-- RISK STRAT -->
+<h2>7. Risk Stratification: 1-2-3-LQTS-Risk</h2>
+
+<div class="card card-accent">
+<div class="grid-2">
+<div>
+<strong>1️⃣ QTc Duration</strong><br>
+Every 10 ms ↑ → ~15% ↑ risk<br>
+<span class="badge badge-red">QTc ≥500 = HIGH RISK</span>
+</div>
+<div>
+<strong>2️⃣ Syncope / Cardiac Arrest History</strong><br>
+Strongest predictor of future events<br>
+<span class="badge badge-red">Prior CA → highest risk</span>
+</div>
+<div>
+<strong>3️⃣ Genotype</strong><br>
+Risk hierarchy: LQT2 ≥ LQT3 > LQT1<br>
+(at comparable QTc)
+</div>
+<div>
+<strong>Other Modifiers</strong><br>
+Female sex (LQT2), postpartum, compound heterozygosity, BB non-compliance
+</div>
+</div>
+</div>
+
+<table>
+<tr><th>Risk</th><th>Features</th><th>Management</th></tr>
+<tr><td><span class="badge badge-green">Low</span></td><td>QTc &lt;480, no syncope, LQT1</td><td>Beta-blocker alone</td></tr>
+<tr><td><span class="badge badge-amber">Intermediate</span></td><td>QTc 480–500, syncope on BB</td><td>BB ± LCSD</td></tr>
+<tr><td><span class="badge badge-red">High</span></td><td>QTc ≥500, CA, recurrent syncope</td><td>BB + ICD ± LCSD</td></tr>
+</table>
+
+<!-- MANAGEMENT -->
+<h2>8. Management Essentials</h2>
+
+<h3>Beta-Blockers</h3>
+<div class="danger">
+❌ <strong>AVOID METOPROLOL</strong> — significantly higher event rates vs nadolol/propranolol (Chockalingam et al., JACC 2012)
+</div>
+
+<table>
+<tr><th>Drug</th><th>Rank</th><th>Notes</th></tr>
+<tr><td><strong>Nadolol</strong></td><td><span class="badge badge-green">1st line ★</span></td><td>Long half-life; best evidence</td></tr>
+<tr><td><strong>Propranolol</strong></td><td><span class="badge badge-green">1st line ★</span></td><td>Multiple daily doses needed</td></tr>
+<tr><td>Atenolol</td><td><span class="badge badge-amber">Alternative</span></td><td>Once daily</td></tr>
+<tr><td>Metoprolol</td><td><span class="badge badge-red">NOT preferred</span></td><td>Higher recurrence</td></tr>
+</table>
+
+<h3>Genotype-Specific Therapy</h3>
+<table>
+<tr><th>Genotype</th><th>Specific Approach</th></tr>
+<tr><td>LQT1</td><td>BB excellent; avoid strenuous exercise (esp. swimming)</td></tr>
+<tr><td>LQT2</td><td>BB + K⁺ supplementation; avoid sudden loud noises</td></tr>
+<tr><td>LQT3</td><td>Mexiletine or ranolazine (late INa blockers); ICD more often</td></tr>
+<tr><td>LQT7 (ATS)</td><td>BB for QT; acetazolamide for paralysis</td></tr>
+<tr><td>LQT8 (TS)</td><td>Verapamil; high ICD rate</td></tr>
+</table>
+
+<div class="tip">
+✅ <strong>LCSD</strong> (Left Cardiac Sympathetic Denervation) — for BB-refractory symptoms, ICD storm, or BB intolerance. Removes lower stellate ganglion + T2-T4. Reduces arrhythmic events ~90%.
+</div>
+
+<!-- TAKE HOME -->
+<h2>9. Take-Home Points</h2>
+
+<div class="card card-accent">
+<ol>
+<li><strong>LQTS is the most common inherited cardiac channelopathy.</strong> Think of it in any young person with unexplained syncope, seizures, or family SCD.</li>
+<li><strong>Schwartz ≥3.5 = diagnose.</strong> But concealed LQTS exists — use provocative testing.</li>
+<li><strong>LQT1/2/3 = 90%+ of cases.</strong> Triggers: S.A.R. = Swimming, Alarm, Rest.</li>
+<li><strong>Nadolol/Propranolol > Metoprolol.</strong> Not all beta-blockers are equal.</li>
+<li><strong>QTc ≥500 ms = high risk.</strong> Every 10 ms adds ~15% arrhythmic risk.</li>
+<li><strong>Genetic testing changes management.</strong> Cascade testing saves lives.</li>
+<li><strong>Recovery QTc >480 ms on exercise test</strong> = single most useful metric for concealed LQTS.</li>
+<li><strong>Epinephrine paradoxical QTc prolongation</strong> = pathognomonic for LQT1.</li>
+</ol>
+</div>
+
+<!-- REFERENCES -->
+<h2>Key References</h2>
+<div class="card" style="font-size:.82rem">
+<ol>
+<li>Adler A, et al. <em>Circulation.</em> 2020;141:418–428. doi:10.1161/CIRCULATIONAHA.119.043132</li>
+<li>Giudicessi JR, Ackerman MJ. <em>Curr Probl Cardiol.</em> 2013;38:417–455.</li>
+<li>Mazzanti A, et al. <em>Europace.</em> 2022;24:614–619.</li>
+<li>Chockalingam P, et al. <em>JACC.</em> 2012;60:2092–2099.</li>
+<li>Al-Khatib SM, et al. 2023 HRS/ACC/AHA Guidelines. <em>Heart Rhythm.</em> 2023.</li>
+<li>Priori SG, et al. 2015 ESC Guidelines. <em>Eur Heart J.</em> 2015;36:2793–2867.</li>
+<li>Kutyifa V, et al. <em>Ann Noninvasive Electrocardiol.</em> 2018;23:e12537.</li>
+<li>Bains S, et al. <em>JACC.</em> 2023;81:477–486.</li>
+</ol>
+</div>
+
+<div class="ft">
+Long QT Syndrome — Visual Guide | Compiled April 2026 | For educational purposes only
+</div>
+</div>
+</body>
+</html>
