@@ -1,65 +1,66 @@
 {
-  "ClawHub": {
+  "Allergy-Immunology": {
     "type": "dir",
-    "count": 71
+    "count": 0
   },
-  "FOR CLAUDE": {
+  "Cardiology": {
     "type": "dir",
-    "count": 385
+    "count": 43
   },
-  "IMBR": {
-    "type": "dir",
-    "count": 103
-  },
-  "Knowledge": {
+  "Critical-Care": {
     "type": "dir",
     "count": 17
   },
-  "NPC-Profile.md": {
-    "type": "file",
-    "ftype": "md",
-    "path": "NPC-Profile.md",
-    "date": "31 Mar 2026",
-    "size": "1.8 KB"
-  },
-  "README.md": {
-    "type": "file",
-    "ftype": "md",
-    "path": "README.md",
-    "date": "29 Mar 2026",
-    "size": "1.9 KB"
-  },
-  "REGULATION.md": {
-    "type": "file",
-    "ftype": "md",
-    "path": "REGULATION.md",
-    "date": "31 Mar 2026",
-    "size": "2.6 KB"
-  },
-  "SOUL-main.md": {
-    "type": "file",
-    "ftype": "md",
-    "path": "SOUL-main.md",
-    "date": "29 Mar 2026",
-    "size": "2.7 KB"
-  },
-  "Setup": {
+  "DERMATOLGY": {
     "type": "dir",
-    "count": 5
+    "count": 0
   },
-  "outputs": {
+  "Endocrinology": {
     "type": "dir",
-    "count": 4370
+    "count": 0
   },
-  "scripts": {
+  "Gastroenterology": {
+    "type": "dir",
+    "count": 4
+  },
+  "Genetics": {
+    "type": "dir",
+    "count": 0
+  },
+  "High-Yield ": {
+    "type": "dir",
+    "count": 2
+  },
+  "Infectious-Disease": {
+    "type": "dir",
+    "count": 10
+  },
+  "Nephrology": {
+    "type": "dir",
+    "count": 0
+  },
+  "Neurology": {
+    "type": "dir",
+    "count": 28
+  },
+  "Nutrition": {
+    "type": "dir",
+    "count": 0
+  },
+  "Oncology": {
     "type": "dir",
     "count": 1
   },
-  "shopping-list.md": {
-    "type": "file",
-    "ftype": "md",
-    "path": "shopping-list.md",
-    "date": "4d ago",
-    "size": "672 B"
+  "Pulmonology": {
+    "type": "dir",
+    "count": 0
+  },
+  "Rheumatology": {
+    "type": "dir",
+    "count": 3
+  },
+  "Toxicology": {
+    "type": "dir",
+    "count": 0
   }
 }
