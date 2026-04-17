@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oncology — Board Review | Internal Medicine Subspecialty Series</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #00695C;
+            --light-bg: #E0F2F1;
+            --dark-gray: #333;
+            --light-gray: #f5f5f5;
+            --accent-orange: #FF8C42;
+            --accent-amber: #FFF3E0;
+            --success-green: #4CAF50;
+            --warning-red: #d32f2f;
+            --trial-gold: #f59e0b;
+            --drug-blue: #1e40af;
+        }
+        body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: var(--dark-gray); background-color: #fff; }
+        body.dark-mode { background-color: #1a1a1a; color: #e0e0e0; }
+        header { background-color: var(--primary); color: white; padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; justify-content: space-between; align-items: center; }
+        .header-title { font-size: 26px; font-weight: bold; }
+        .header-controls { display: flex; gap: 15px; align-items: center; }
+        .search-bar { padding: 8px 12px; border: none; border-radius: 4px; width: 260px; font-size: 14px; }
+        .dark-mode-toggle { background-color: rgba(255,255,255,0.2); border: 1px solid white; color: white; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .dark-mode-toggle:hover { background-color: rgba(255,255,255,0.35); }
+        .container { display: flex; min-height: calc(100vh - 80px); }
+        .sidebar { width: 260px; background-color: var(--light-gray); padding: 20px; position: sticky; top: 60px; max-height: calc(100vh - 60px); overflow-y: auto; border-right: 1px solid #ddd; flex-shrink: 0; }
+        body.dark-mode .sidebar { background-color: #2a2a2a; border-right-color: #444; }
+        .sidebar h3 { font-size: 12px; color: var(--primary); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; }
+        body.dark-mode .sidebar h3 { color: #80cbc4; }
+        .nav-link { display: block; padding: 9px 12px; margin-bottom: 4px; background-color: white; border-left: 3px solid transparent; cursor: pointer; border-radius: 3px; transition: all 0.2s; font-size: 13px; line-height: 1.4; }
+        body.dark-mode .nav-link { background-color: #333; color: #e0e0e0; }
+        .nav-link:hover { background-color: var(--light-bg); border-left-color: var(--primary); }
+        .nav-link.active { background-color: var(--primary); color: white; border-left-color: var(--accent-orange); font-weight: 600; }
+        .progress-tracker { background-color: white; padding: 14px; border-radius: 6px; margin-top: 20px; font-size: 12px; }
+        body.dark-mode .progress-tracker { background-color: #333; }
+        .progress-bar { background-color: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden; margin: 8px 0; }
+        .progress-fill { background: linear-gradient(90deg, #00695C, #26A69A); height: 100%; width: 0%; transition: width 0.4s; }
+        .main-content { flex: 1; padding: 40px 48px; max-width: 1020px; }
+        .section { display: none; margin-bottom: 40px; }
+        .section.active { display: block; animation: fadeIn 0.25s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        .section-title { font-size: 30px; color: var(--primary); margin-bottom: 20px; border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+        body.dark-mode .section-title { color: #80cbc4; border-bottom-color: #80cbc4; }
+        .subsection { margin: 22px 0; border-radius: 4px; }
+        .subsection-title { font-size: 19px; font-weight: 600; color: var(--primary); cursor: pointer; padding: 10px 14px; display: flex; align-items: center; gap: 10px; user-select: none; border-radius: 4px; transition: background 0.15s, color 0.15s; border-left: 3px solid var(--primary); background: linear-gradient(90deg, #E0F7F4, #fff); }
+        .subsection-title:hover { background: linear-gradient(90deg, #B2DFDB, #E0F7F4); color: #004D40; }
+        body.dark-mode .subsection-title { color: #80cbc4; background: linear-gradient(90deg, #1a2e2b, #252525); border-left-color: #80cbc4; }
+        body.dark-mode .subsection-title:hover { background: linear-gradient(90deg, #1a3a35, #2a2a2a); }
+        .toggle-icon { font-size: 14px; flex-shrink: 0; transition: transform 0.2s; color: var(--accent-orange); }
+        .subsection-content { overflow: hidden; max-height: 9999px; transition: max-height 0.35s ease, opacity 0.25s ease; opacity: 1; padding: 12px 20px 16px 24px; border-left: 2px solid #B2DFDB; margin-left: 14px; }
+        .subsection-content.collapsed { max-height: 0 !important; opacity: 0; padding-top: 0; padding-bottom: 0; }
+        body.dark-mode .subsection-content { border-left-color: #2d4a45; }
+        p { margin: 10px 0; line-height: 1.75; }
+        ul { margin: 10px 0 10px 18px; }
+        li { margin-bottom: 6px; line-height: 1.65; }
+        strong { font-weight: 700; }
+        strong.drug-name { color: var(--drug-blue); }
+        body.dark-mode strong.drug-name { color: #93c5fd; }
+        mark.trial-mark { background: linear-gradient(120deg, #fef3c7 0%, #fde68a 100%); color: #92400e; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+        body.dark-mode mark.trial-mark { background: #78350f; color: #fde68a; }
+        u.key-val { text-decoration: underline; text-decoration-color: var(--warning-red); text-decoration-thickness: 2px; font-weight: 600; color: var(--warning-red); }
+        body.dark-mode u.key-val { color: #ef9a9a; text-decoration-color: #ef9a9a; }
+        em { font-style: italic; color: var(--accent-orange); }
+        .clinical-pearl { border-left: 5px solid var(--accent-orange); background: linear-gradient(135deg, #FFF8F0, #FFF3E0); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 14.5px; }
+        body.dark-mode .clinical-pearl { background: #3d2a0f; border-left-color: #ffb74d; }
+        .clinical-pearl strong { color: var(--accent-orange); }
+        .high-yield { border-top: 4px solid var(--primary); border-left: 4px solid var(--primary); background: linear-gradient(135deg, #E0F7F4, #B2DFDB); padding: 16px 20px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+        body.dark-mode .high-yield { background: #1a2f2b; border-color: #80cbc4; }
+        .high-yield-title { font-weight: 700; color: var(--primary); margin-bottom: 10px; font-size: 15px; }
+        body.dark-mode .high-yield-title { color: #80cbc4; }
+        .high-yield ul { margin: 0; padding-left: 18px; }
+        .high-yield li { margin-bottom: 5px; font-size: 14px; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; border-radius: 4px; overflow: hidden; }
+        th { background-color: var(--primary); color: white; padding: 11px 13px; text-align: left; font-weight: 600; }
+        td { padding: 9px 12px; border: 1px solid #ddd; vertical-align: top; }
+        body.dark-mode td { border-color: #444; }
+        tr.even td { background-color: #f9fbfd; }
+        tr.odd td { background-color: #fff; }
+        body.dark-mode tr.even td { background-color: #2a2a2a; }
+        body.dark-mode tr.odd td { background-color: #222; }
+        tr:hover td { background-color: #E0F2F1; }
+        body.dark-mode tr:hover td { background-color: #1a302c; }
+        .reference-box { border-left: 5px solid #2E7D32; background: linear-gradient(135deg, #F1F8E9, #E8F5E9); padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; }
+        body.dark-mode .reference-box { background: #1a3a20; border-left-color: #81C784; }
+        .reference-box h4 { color: #1B5E20; margin-bottom: 12px; font-size: 15px; }
+        body.dark-mode .reference-box h4 { color: #C8E6C9; }
+        .reference-box ul { list-style: none; padding-left: 0; margin: 0; }
+        .reference-box li { margin-bottom: 8px; font-size: 13px; line-height: 1.6; }
+        .ref-guideline { color: #1B5E20; font-weight: 700; }
+        body.dark-mode .ref-guideline { color: #81C784; }
+        .ref-trial { color: #0D47A1; font-weight: 700; }
+        body.dark-mode .ref-trial { color: #42A5F5; }
+        .question { background-color: var(--light-gray); padding: 20px; margin: 15px 0; border-radius: 6px; border-left: 5px solid var(--primary); }
+        body.dark-mode .question { background-color: #2a2a2a; border-left-color: #80cbc4; }
+        .question-text { font-weight: 600; margin-bottom: 14px; font-size: 15px; }
+        .show-answer-btn { background-color: var(--primary); color: white; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; }
+        .show-answer-btn:hover { background-color: #004D40; }
+        .answer-content { background-color: #2E7D32; color: white; padding: 15px; margin-top: 12px; border-radius: 4px; display: none; }
+        .answer-content.show { display: block; }
+        .explanation { margin-top: 8px; line-height: 1.65; }
+        .search-highlight { background-color: #FFEB3B; padding: 1px 3px; border-radius: 2px; }
+        body.dark-mode .search-highlight { background-color: #f59e0b; color: #000; }
+        @media print { .sidebar, header { display: none; } .section { display: block !important; } .subsection-content { max-height: none !important; opacity: 1 !important; } table { font-size: 11px; } }
+        #menuBtn { display: none; background: none; border: none; color: white; font-size: 26px; cursor: pointer; padding: 4px 10px; line-height: 1; margin-right: 8px; }
+        #sidebarOverlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 999; }
+        #backToTop { display: none; position: fixed; bottom: max(20px, env(safe-area-inset-bottom, 20px)); right: 20px; width: 44px; height: 44px; background: var(--primary); color: white; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 800; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; border-radius: 4px; }
+        .table-wrap table { margin: 0; }
+        .subnav-container { margin: 2px 0 8px 12px; border-left: 2px solid #B2DFDB; display: none; animation: subnavIn 0.18s ease; }
+        @keyframes subnavIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+        .subnav-container.visible { display: block; }
+        body.dark-mode .subnav-container { border-left-color: #2d5a52; }
+        .subnav-link { display: flex; align-items: flex-start; gap: 6px; padding: 5px 8px 5px 10px; font-size: 12px; color: #556; cursor: pointer; border-radius: 0 3px 3px 0; transition: background 0.15s, color 0.15s; line-height: 1.35; border-left: 2px solid transparent; margin-left: -2px; }
+        .subnav-link::before { content: '›'; font-size: 14px; color: #bbb; flex-shrink: 0; transition: color 0.15s; }
+        body.dark-mode .subnav-link { color: #9ab; }
+        body.dark-mode .subnav-link::before { color: #556; }
+        .subnav-link:hover { background: var(--light-bg); color: var(--primary); }
+        .subnav-link:hover::before { color: var(--primary); }
+        .subnav-link.active { color: var(--primary); font-weight: 700; background: linear-gradient(90deg,#E0F7F4,transparent); border-left: 2px solid var(--primary); }
+        .subnav-link.active::before { color: var(--primary); }
+        body.dark-mode .subnav-link.active { color: #80cbc4; background: linear-gradient(90deg,#1a2e2b,transparent); border-left-color: #80cbc4; }
+        @media (max-width: 768px) {
+            #menuBtn { display: inline-block; }
+            #backToTop { display: block; }
+            .sidebar { position: fixed; top: 0; left: 0; width: 82vw; max-width: 320px; height: 100vh; max-height: 100vh; z-index: 1000; transform: translateX(-110%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); border-right: 1px solid #ddd; padding: 60px 16px 24px; overflow-y: auto; }
+            .sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.18); }
+            #sidebarOverlay.open { display: block; }
+            .container { flex-direction: column; }
+            .main-content { padding: 16px 14px 80px; max-width: 100%; }
+            .section-title { font-size: 21px; margin-bottom: 14px; }
+            .subsection-title { font-size: 15px; padding: 12px 10px; }
+            table { font-size: 12.5px; display: block; overflow-x: auto; }
+            .nav-link { padding: 12px 10px; font-size: 13px; min-height: 44px; display: flex; align-items: center; }
+        }
+        @media (max-width: 400px) { .main-content { padding: 12px 10px 80px; } .section-title { font-size: 18px; } .subsection-title { font-size: 14px; } }
+        h2.subsec-h2 { margin-top: 32px; padding: 12px 18px; color: #004D40; border-left: 4px solid #00695C; background: linear-gradient(135deg, #E0F2F1, #B2DFDB); font-size: 1.35em; border-radius: 4px; font-weight: 700; }
+        body.dark-mode h2.subsec-h2 { color: #80cbc4; background: linear-gradient(135deg, #1a2e2b, #232323); border-left-color: #80cbc4; }
+    </style>
+</head>
+<body>
+<header>
+    <button id="menuBtn" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
+    <div class="header-title">&#x1F9EC; Oncology &#x2014; Board Review</div>
+    <div class="header-controls">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search content...">
+        <button id="darkModeToggle" class="dark-mode-toggle">&#x1F319; Dark Mode</button>
+    </div>
+</header>
+<div class="container">
+    <div id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
+        <h3>&#x1F4CB; Sections</h3>
+        <div id="navLinks"></div>
+        <div class="progress-tracker">
+            <div style="font-weight:700;margin-bottom:8px;">&#x1F4CA; Progress</div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div id="progressText" style="color:#555;">0 of 7 sections read</div>
+        </div>
+    </aside>
+    <main class="main-content">
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 1 — PRINCIPLES OF ONCOLOGY
+═══════════════════════════════════════════════════════════════ -->
+<section id="section-1" class="section active">
+<h1 class="section-title">1. Principles of Oncology</h1>
+<p>This section provides the foundational framework for understanding cancer biology, staging, systemic therapy principles, and supportive care — forming the bedrock upon which all subspecialty oncology knowledge rests. Content is written at mixed IM + Oncology Fellow level incorporating 2025 ESMO, ASCO, and NCCN guidelines.</p>
+
+<h2 class="subsec-h2">1.1 Cancer Biology &amp; Hallmarks of Cancer</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>1.1 Hallmarks of Cancer (Hanahan &amp; Weinberg)</span></div>
+  <div class="subsection-content">
+    <p>Hanahan and Weinberg's seminal framework describes cancer as a multi-step acquisition of biological capabilities. The 2022 update adds four emerging hallmarks.</p>
+    <table>
+      <thead><tr><th>Hallmark</th><th>Mechanism</th><th>Therapeutic Target Example</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Sustaining proliferative signaling</td><td>Oncogene activation (RAS, EGFR, HER2); autocrine/paracrine growth factor loops</td><td>EGFR TKIs, HER2 mAbs, RAS inhibitors (sotorasib)</td></tr>
+        <tr class="odd"><td>Evading growth suppressors</td><td>TP53 loss, Rb pathway inactivation, CDKN2A deletion</td><td>CDK4/6 inhibitors (palbociclib), MDM2 inhibitors</td></tr>
+        <tr class="even"><td>Resisting cell death (apoptosis)</td><td>BCL-2 overexpression, survivin, loss of PUMA/NOXA</td><td>Venetoclax (BCL-2 inhibitor) in CLL/AML</td></tr>
+        <tr class="odd"><td>Enabling replicative immortality</td><td>Telomerase (hTERT) activation; telomere maintenance</td><td>Telomerase inhibitors (investigational)</td></tr>
+        <tr class="even"><td>Inducing angiogenesis</td><td>VEGF/VEGFR upregulation; HIF-1α in hypoxia</td><td>Bevacizumab (anti-VEGF), ramucirumab (anti-VEGFR2)</td></tr>
+        <tr class="odd"><td>Activating invasion &amp; metastasis</td><td>Epithelial-mesenchymal transition (EMT); MMP upregulation; E-cadherin loss</td><td>Anti-MMP agents (largely failed); CDH1 tumor suppressor</td></tr>
+        <tr class="even"><td>Reprogramming energy metabolism</td><td>Warburg effect (aerobic glycolysis); glutamine addiction; IDH1/2 mutations</td><td>IDH1/2 inhibitors (ivosidenib, enasidenib) in AML</td></tr>
+        <tr class="odd"><td>Evading immune destruction</td><td>PD-L1 upregulation; MHC I loss; CTLA-4 exploitation; Tregs</td><td>Anti-PD-1/PD-L1, anti-CTLA-4 checkpoint inhibitors</td></tr>
+        <tr class="even"><td><em>Emerging:</em> Unlocking phenotypic plasticity</td><td>Epigenetic reprogramming; cell state transitions; metastatic niches</td><td>EZH2 inhibitors (tazemetostat), DNMT inhibitors</td></tr>
+        <tr class="odd"><td><em>Emerging:</em> Nonmutational epigenetic reprogramming</td><td>Histone modifications, methylation patterns driving malignancy without somatic mutation</td><td>HDAC inhibitors, BET inhibitors (SMARCA4-deficient tumors)</td></tr>
+        <tr class="even"><td><em>Emerging:</em> Polymorphic microbiomes</td><td>Tumor microbiome influences immune evasion and drug metabolism</td><td>Fecal microbiota transplant (FMT) to enhance ICI response</td></tr>
+        <tr class="odd"><td><em>Emerging:</em> Senescent cells</td><td>SASP (senescence-associated secretory phenotype) promotes tumor microenvironment</td><td>Senolytics (investigational)</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> The Warburg effect (aerobic glycolysis) is exploited in FDG-PET imaging — cancer cells show high FDG uptake. However, well-differentiated tumors (e.g., hepatocellular carcinoma, carcinoid) may be FDG-<em>negative</em>. Always correlate with anatomic imaging.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>1.2 Oncogenes &amp; Tumor Suppressor Genes</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Gene</th><th>Type</th><th>Function/Alteration</th><th>Associated Cancers</th><th>Targeted Therapy</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>KRAS</td><td>Proto-oncogene</td><td>G12C/D/V mutations → constitutive RAS-MAPK activation</td><td>NSCLC (13%), CRC (45%), Pancreatic (90%)</td><td>Sotorasib, adagrasib (G12C only)</td></tr>
+        <tr class="odd"><td>EGFR</td><td>Proto-oncogene</td><td>Exon 19 del, L858R, exon 20 ins → constitutive EGFR signaling</td><td>NSCLC (East Asian: 40-50%; Western: 15%)</td><td>Osimertinib (3G TKI), erlotinib, gefitinib</td></tr>
+        <tr class="even"><td>HER2 (ERBB2)</td><td>Proto-oncogene</td><td>Amplification → overexpression; mutations (exon 20)</td><td>Breast (20%), Gastric (15-20%), NSCLC (3%)</td><td>Trastuzumab, pertuzumab, T-DXd (trastuzumab deruxtecan)</td></tr>
+        <tr class="odd"><td>ALK</td><td>Proto-oncogene</td><td>EML4-ALK fusion → constitutive ALK kinase</td><td>NSCLC (5%), ALCL, neuroblastoma</td><td>Alectinib, brigatinib, lorlatinib</td></tr>
+        <tr class="even"><td>BRAF</td><td>Proto-oncogene</td><td>V600E mutation → constitutive MAPK signaling</td><td>Melanoma (50%), CRC (10%), NSCLC (3%), Thyroid (45%)</td><td>Vemurafenib, dabrafenib + trametinib (MEK)</td></tr>
+        <tr class="odd"><td>BCR-ABL</td><td>Proto-oncogene</td><td>t(9;22) Philadelphia chromosome → constitutive kinase</td><td>CML, ALL</td><td>Imatinib, dasatinib, ponatinib</td></tr>
+        <tr class="even"><td>MYC</td><td>Proto-oncogene</td><td>Amplification → transcription factor driving proliferation</td><td>Burkitt lymphoma, breast, SCLC</td><td>BET inhibitors (investigational); AURKA inhibitors</td></tr>
+        <tr class="odd"><td>TP53</td><td>Tumor suppressor</td><td>Mutations → loss of G1/S checkpoint; dominant negative; LOH</td><td>50% of all cancers (most common)</td><td>APR-246 (eprenetapopt) p53 reactivator; MDM2 inhibitors</td></tr>
+        <tr class="even"><td>RB1</td><td>Tumor suppressor</td><td>Deletion/mutation → loss of cell cycle brake at G1/S</td><td>Retinoblastoma, small cell lung, osteosarcoma</td><td>CDK4/6 inhibitors partially restore pathway</td></tr>
+        <tr class="odd"><td>BRCA1/2</td><td>Tumor suppressor</td><td>Mutations → defective HR-DNA repair → genomic instability</td><td>Breast (BRCA1: 70%, BRCA2: 70%), Ovarian, Pancreatic, Prostate</td><td>PARP inhibitors (olaparib, niraparib, rucaparib)</td></tr>
+        <tr class="even"><td>APC</td><td>Tumor suppressor</td><td>Mutations → constitutive Wnt/β-catenin signaling</td><td>CRC (80%), FAP</td><td>Wnt inhibitors (investigational)</td></tr>
+        <tr class="odd"><td>VHL</td><td>Tumor suppressor</td><td>Mutations → HIF-α stabilization → VEGF overproduction</td><td>Renal cell carcinoma (clear cell), hemangioblastoma</td><td>Anti-VEGF agents; HIF-2α inhibitors (belzutifan)</td></tr>
+        <tr class="even"><td>PTEN</td><td>Tumor suppressor</td><td>Loss → constitutive PI3K/AKT/mTOR activation</td><td>Endometrial, Prostate, GBM, Breast</td><td>PI3K inhibitors, mTOR inhibitors (everolimus)</td></tr>
+      </tbody>
+    </table>
+    <div class="high-yield"><div class="high-yield-title">&#x26A1; High-Yield: Two-Hit Hypothesis (Knudson)</div>
+      <ul>
+        <li><strong>Sporadic cancer:</strong> Both alleles of a tumor suppressor gene must be inactivated by somatic mutations (two somatic hits)</li>
+        <li><strong>Hereditary cancer:</strong> One germline mutation (inherited hit) + one somatic mutation = sufficient for tumor development → earlier onset, multiple tumors</li>
+        <li><strong>Classic examples:</strong> RB1 (retinoblastoma), TP53 (Li-Fraumeni), BRCA1/2 (hereditary breast/ovarian), APC (FAP)</li>
+        <li><strong>Haploinsufficiency exception:</strong> Some tumor suppressors (e.g., PTEN) are inactivated by single-hit loss of one allele</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>1.3 Staging Systems &amp; Performance Status</span></div>
+  <div class="subsection-content">
+    <p>The <strong>TNM staging system</strong> (AJCC/UICC 8th edition) is the universal language of cancer staging. Understanding the staging principles determines curability and treatment intent.</p>
+    <table>
+      <thead><tr><th>Component</th><th>Descriptor</th><th>Definitions</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>T (Tumor)</td><td>Tx, T0, Tis, T1-T4</td><td>Tx=not assessed; T0=no primary; Tis=in situ; T1-4=size/extent of primary</td></tr>
+        <tr class="odd"><td>N (Nodes)</td><td>Nx, N0, N1-N3</td><td>Nx=not assessed; N0=no nodal involvement; N1-3=increasing regional nodal spread</td></tr>
+        <tr class="even"><td>M (Metastasis)</td><td>Mx, M0, M1a-M1c</td><td>M0=no distant metastasis; M1=distant metastasis (sub-categorized by site in some tumors)</td></tr>
+        <tr class="odd"><td>Stage I</td><td>Localized</td><td>T1-2, N0, M0 (generally); potentially curable with local therapy</td></tr>
+        <tr class="even"><td>Stage II</td><td>Locally advanced</td><td>Larger primary or limited regional spread; potentially curable</td></tr>
+        <tr class="odd"><td>Stage III</td><td>Regional spread</td><td>Significant nodal involvement; may need multimodal therapy; potentially curable in some sites</td></tr>
+        <tr class="even"><td>Stage IV</td><td>Metastatic</td><td>Distant metastases; generally not curable (exceptions: germ cell tumors, some oligometastatic disease)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Performance Status (PS)</strong> — a critical prognostic factor in all cancers. Defines functional ability and tolerance to systemic therapy.</p>
+    <table>
+      <thead><tr><th>ECOG PS</th><th>Karnofsky (KPS)</th><th>Description</th><th>Clinical Implication</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>PS 0</td><td>KPS 100</td><td>Fully active; no restriction</td><td>Full-dose chemotherapy/immunotherapy eligible</td></tr>
+        <tr class="odd"><td>PS 1</td><td>KPS 80-90</td><td>Restricted in strenuous activity; ambulatory; light work</td><td>Standard therapy; most trials eligible</td></tr>
+        <tr class="even"><td>PS 2</td><td>KPS 60-70</td><td>Ambulatory &gt;50% waking hours; self-care; no work</td><td>Selected systemic therapy; dose reductions; consider clinical trial</td></tr>
+        <tr class="odd"><td>PS 3</td><td>KPS 40-50</td><td>Limited self-care; confined to bed/chair &gt;50% waking hours</td><td>Supportive/palliative care; single-agent or low-toxicity regimen only</td></tr>
+        <tr class="even"><td>PS 4</td><td>KPS 20-30</td><td>Completely disabled; no self-care</td><td>Comfort/palliative care only; cytotoxic agents generally contraindicated</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> ECOG PS is the single most important predictor of chemotherapy tolerance and survival in solid tumors. Most landmark trials exclude PS ≥2-3. Reassess PS at every visit — acute illness can transiently worsen PS, and true PS should reflect <em>baseline functional status</em>, not illness-related decline.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>1.4 Hereditary Cancer Syndromes</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Syndrome</th><th>Gene</th><th>Cancers</th><th>Surveillance</th><th>Risk Reduction</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Hereditary Breast &amp; Ovarian Cancer (HBOC)</td><td>BRCA1, BRCA2</td><td>Breast (70%), Ovarian (40% BRCA1; 20% BRCA2), Pancreatic, Prostate</td><td>Annual MRI + mammogram from age 25-30; risk-reducing salpingo-oophorectomy by 35-40</td><td>RRSO reduces ovarian Ca risk 80%; mastectomy reduces breast Ca risk 90%</td></tr>
+        <tr class="odd"><td>Lynch Syndrome (HNPCC)</td><td>MLH1, MSH2, MSH6, PMS2</td><td>CRC (80%), Endometrial (60%), Ovarian, Gastric, Urothelial, Sebaceous tumors</td><td>Colonoscopy q1-2y from age 20-25; endometrial sampling q1-2y</td><td>ASA 600mg daily (CAPP2 trial): reduces CRC risk 63%</td></tr>
+        <tr class="even"><td>Familial Adenomatous Polyposis (FAP)</td><td>APC</td><td>CRC (100% by age 40 if untreated), gastric, duodenal (ampullary), desmoid tumors</td><td>Sigmoidoscopy annually from age 10-12; prophylactic colectomy</td><td>Prophylactic colectomy by late teens/early 20s</td></tr>
+        <tr class="odd"><td>Li-Fraumeni Syndrome</td><td>TP53</td><td>Osteosarcoma, rhabdomyosarcoma, brain tumors, adrenocortical Ca, premenopausal breast Ca</td><td>WHOLE-BODY MRI annually; breast MRI from age 20-25; avoid radiation</td><td>No proven chemoprevention; avoid unnecessary irradiation</td></tr>
+        <tr class="even"><td>Von Hippel-Lindau (VHL)</td><td>VHL</td><td>Clear cell RCC (70%), hemangioblastoma (CNS, retina), pheochromocytoma, pancreatic NETs</td><td>Annual MRI brain/spine/abdomen; ophthalmologic exam; urine catecholamines</td><td>Belzutifan (HIF-2α inhibitor) — FDA approved for VHL-associated RCC</td></tr>
+        <tr class="odd"><td>MEN1 (Multiple Endocrine Neoplasia 1)</td><td>MEN1</td><td>Parathyroid adenoma (95%), Pituitary adenoma (30%), Pancreatic NETs (gastrinoma, insulinoma)</td><td>Annual biochemical screening (Ca, PTH, prolactin, fasting glucose); MRI every 3-5y</td><td>Parathyroidectomy for hyperparathyroidism; proton pump inhibitor for gastrinoma</td></tr>
+        <tr class="even"><td>MEN2A</td><td>RET (codon 634)</td><td>Medullary thyroid Ca (100%), Pheochromocytoma (50%), Parathyroid adenoma (20%)</td><td>Annual calcitonin; urine catecholamines; parathyroid function</td><td>Prophylactic thyroidectomy by age 5 (MEN2A) or infancy (MEN2B)</td></tr>
+        <tr class="odd"><td>Cowden Syndrome</td><td>PTEN</td><td>Breast (85% lifetime), Thyroid (follicular), Endometrial, CRC; Lhermitte-Duclos disease (cerebellar)</td><td>Annual breast MRI + mammogram; thyroid US; colonoscopy q5y</td><td>Risk-reducing mastectomy in selected patients</td></tr>
+        <tr class="even"><td>Peutz-Jeghers Syndrome</td><td>STK11</td><td>GI hamartomas → CRC, gastric, pancreatic; breast, ovarian (sex cord tumors); mucocutaneous pigmentation</td><td>Colonoscopy q3y; upper endoscopy q2-3y; pancreatic MRI q1-2y</td><td>Periodic polypectomy; monitoring for GI and extra-GI malignancies</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> Lynch Syndrome is the <em>most common</em> hereditary colorectal cancer syndrome (accounts for 3% of all CRC). Screen ALL CRC tumors for MMR/MSI by immunohistochemistry or PCR. MSI-high tumors have better prognosis with surgery alone in stage II CRC AND exceptional response to PD-1 inhibitors in the metastatic setting (pembrolizumab first-line).</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>1.5 Systemic Therapy Overview</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Drug Class</th><th>Mechanism</th><th>Key Agents</th><th>Toxicity Profile</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Alkylating agents</td><td>DNA cross-linking → replication block; not cell-cycle specific</td><td>Cyclophosphamide, ifosfamide, carboplatin, cisplatin, temozolomide</td><td>Myelosuppression, nephrotoxicity (cisplatin), hemorrhagic cystitis (cyclophosphamide/ifosfamide → use MESNA), secondary leukemia</td></tr>
+        <tr class="odd"><td>Antimetabolites</td><td>Inhibit nucleotide synthesis or incorporate into DNA/RNA; S-phase specific</td><td>5-FU (capecitabine), methotrexate, gemcitabine, pemetrexed, cytarabine, fludarabine</td><td>Mucositis, myelosuppression, palmar-plantar erythrodysesthesia (capecitabine), DPD deficiency (5-FU fatal toxicity)</td></tr>
+        <tr class="even"><td>Taxanes</td><td>Microtubule stabilization → mitotic arrest; M-phase specific</td><td>Paclitaxel, docetaxel, nab-paclitaxel, cabazitaxel</td><td>Peripheral neuropathy, myelosuppression, alopecia, hypersensitivity (paclitaxel → premedicate with dexamethasone + H1/H2 blockers)</td></tr>
+        <tr class="odd"><td>Vinca alkaloids</td><td>Microtubule depolymerization → mitotic arrest; M-phase specific</td><td>Vincristine, vinorelbine, vinblastine</td><td>Peripheral neuropathy (vincristine: neurotoxicity &gt; myelosuppression), SIADH (vincristine), constipation</td></tr>
+        <tr class="even"><td>Anthracyclines</td><td>Topoisomerase II inhibition + free radical DNA damage + intercalation</td><td>Doxorubicin, epirubicin, daunorubicin, idarubicin</td><td>Cardiotoxicity (dose-dependent; doxorubicin max 450-550 mg/m²; track LVEF), myelosuppression, mucositis, alopecia, red urine (reassure patient)</td></tr>
+        <tr class="odd"><td>Topoisomerase I inhibitors</td><td>Stabilize topoisomerase I-DNA complex → single-strand breaks</td><td>Irinotecan, topotecan</td><td>Diarrhea (acute: cholinergic → atropine; delayed: loperamide), myelosuppression; UGT1A1*28 polymorphism increases irinotecan toxicity</td></tr>
+        <tr class="even"><td>EGFR TKIs</td><td>Competitive inhibition of EGFR ATP-binding site → block RAS-MAPK/PI3K-AKT</td><td>Osimertinib (3G), erlotinib, gefitinib (1G), afatinib (2G)</td><td>Acneiform rash (severity correlates with efficacy — paradoxically), diarrhea, paronychia, QTc prolongation (osimertinib)</td></tr>
+        <tr class="odd"><td>ALK/ROS1 TKIs</td><td>Inhibit ALK/ROS1 kinase fusion proteins</td><td>Alectinib, brigatinib, lorlatinib (3G), crizotinib (1G)</td><td>Hepatotoxicity, edema, bradycardia (alectinib), CNS effects (lorlatinib: mood changes, hyperlipidemia), visual effects (crizotinib)</td></tr>
+        <tr class="even"><td>Anti-VEGF/VEGFR</td><td>Block VEGF-mediated angiogenesis</td><td>Bevacizumab (mAb), ramucirumab, sorafenib, sunitinib, lenvatinib, axitinib, cabozantinib</td><td>Hypertension (monitor BP), proteinuria, wound healing impairment (hold ≥4-6 weeks pre-surgery), arterial thromboembolism, GI perforation, fistula formation</td></tr>
+        <tr class="odd"><td>CDK4/6 inhibitors</td><td>Block cyclin D-CDK4/6 → prevent Rb phosphorylation → G1 arrest</td><td>Palbociclib, ribociclib, abemaciclib</td><td>Neutropenia (palbociclib/ribociclib ≫ abemaciclib), diarrhea (abemaciclib), QTc prolongation (ribociclib — monitor ECG), hepatotoxicity</td></tr>
+        <tr class="even"><td>PARP inhibitors</td><td>Inhibit PARP → synthetic lethality in BRCA-deficient tumors (HRD)</td><td>Olaparib, niraparib, rucaparib, talazoparib</td><td>Anemia/myelosuppression, fatigue, nausea, MDS/AML (rare; class effect), thrombocytopenia (niraparib)</td></tr>
+        <tr class="odd"><td>Checkpoint inhibitors</td><td>Block PD-1/PD-L1/CTLA-4 → restore anti-tumor T-cell response</td><td>Pembrolizumab, nivolumab (PD-1); atezolizumab, durvalumab (PD-L1); ipilimumab (CTLA-4)</td><td>Immune-related adverse events (irAEs) — see Section 6; thyroiditis, pneumonitis, colitis, hepatitis, myocarditis</td></tr>
+        <tr class="even"><td>Antibody-drug conjugates (ADCs)</td><td>mAb carries cytotoxic payload to antigen-expressing tumor cells; bystander effect</td><td>T-DM1, T-DXd (trastuzumab deruxtecan), enfortumab vedotin, sacituzumab govitecan</td><td>ILD/pneumonitis (T-DXd: 10-15%; requires prompt dose reduction/cessation), peripheral neuropathy (EV), myelosuppression</td></tr>
+      </tbody>
+    </table>
+    <div class="high-yield"><div class="high-yield-title">&#x26A1; High-Yield: DPD Deficiency &amp; 5-FU Toxicity</div>
+      <ul>
+        <li>Dihydropyrimidine dehydrogenase (DPD) metabolizes 5-FU and capecitabine; deficiency (DPYD variants) → severe/fatal toxicity</li>
+        <li>Prevalence: ~3-5% partial deficiency; ~0.1-0.5% complete deficiency</li>
+        <li>DPYD genotyping (DPYD*2A, *13, c.2846A>T, HapB3) recommended before starting 5-FU/capecitabine (EMA mandate since 2020)</li>
+        <li>Antidote for 5-FU toxicity: Uridine triacetate (Vistogard) — give within 96 hours of overdose or severe toxicity</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>1.6 Molecular Diagnostics &amp; Biomarkers</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Biomarker</th><th>Method</th><th>Clinical Significance</th><th>Tumor Types</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>MSI / MMR (Microsatellite Instability / Mismatch Repair)</td><td>PCR (MSI) or IHC (MMR protein loss); tumor tissue</td><td>MSI-H/dMMR = Lynch syndrome screening + pembrolizumab eligibility (agnostic approval); stage II CRC — avoid 5-FU monotherapy (no benefit); better prognosis surgery-alone stage II</td><td>CRC, endometrial, gastric, any solid tumor</td></tr>
+        <tr class="odd"><td>TMB (Tumor Mutational Burden)</td><td>Next-generation sequencing (NGS); ≥10 mut/Mb = high</td><td>TMB-high = pembrolizumab eligibility (FDA agnostic approval); best correlation in NSCLC, urothelial, skin cancers; weak correlation in some GI tumors</td><td>Agnostic (any solid tumor)</td></tr>
+        <tr class="even"><td>PD-L1 (22C3 assay)</td><td>IHC; TPS (tumor proportion score) or CPS (combined positive score)</td><td>TPS ≥50% → pembrolizumab monotherapy 1L NSCLC; CPS ≥10 → pembrolizumab in gastric, cervical, TNBC, esophageal</td><td>NSCLC, gastric, HNSCC, cervical, TNBC</td></tr>
+        <tr class="odd"><td>HER2</td><td>IHC (0, 1+, 2+, 3+) + FISH/ISH for 2+ cases; also NGS for mutations</td><td>3+ or 2+ amplified = HER2-positive (trastuzumab-based); HER2-low (IHC 1+ or 2+ FISH-negative) = T-DXd eligible in breast Ca; HER2 mutations (exon 20) in NSCLC → trastuzumab deruxtecan</td><td>Breast, gastric, NSCLC, CRC, biliary</td></tr>
+        <tr class="even"><td>NTRK fusion</td><td>NGS, FISH, or IHC (pan-TRK)</td><td>Larotrectinib, entrectinib — tissue-agnostic TRK inhibitors; ORR ~75%; highly effective regardless of histology; rare (~1% of solid tumors)</td><td>Agnostic (infantile fibrosarcoma, salivary gland, NSCLC, CRC, thyroid)</td></tr>
+        <tr class="odd"><td>RET fusion/mutation</td><td>NGS; FISH</td><td>Selpercatinib, pralsetinib — highly selective RET inhibitors; ORR 85% in NSCLC RET fusion; also RET-mutant medullary thyroid Ca</td><td>NSCLC (2%), medullary thyroid Ca, PTC</td></tr>
+        <tr class="even"><td>MET amplification / exon 14 skipping</td><td>NGS (RNA sequencing preferred for exon 14 skipping)</td><td>Capmatinib, tepotinib — MET TKIs; METex14 skipping ORR ~68%; high MET amplification (gene copy number ≥10) also responds</td><td>NSCLC (3-4% METex14)</td></tr>
+        <tr class="odd"><td>FGFR2 fusion</td><td>NGS, FISH</td><td>Pemigatinib, futibatinib — FGFR1-3 inhibitors; intrahepatic cholangiocarcinoma with FGFR2 fusion (~15%); toxicities: hyperphosphatemia, dry eye</td><td>Intrahepatic cholangiocarcinoma, urothelial</td></tr>
+        <tr class="even"><td>IDH1/IDH2 mutation</td><td>NGS; Sanger sequencing</td><td>IDH1 R132H → ivosidenib; IDH2 R140Q/R172K → enasidenib; tazavetostat (EZH2) for IDH-mutant follicular lymphoma; IDH1/2 mutations in CCA predict ivsidenib benefit (<mark class="trial-mark">ClarIDHy trial</mark>)</td><td>AML, Intrahepatic CCA (~20%), Glioma</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> <strong>Liquid biopsy</strong> (circulating tumor DNA/ctDNA) is increasingly used for EGFR T790M resistance mutation detection in NSCLC (plasma EGFR), therapy monitoring, MRD (minimal residual disease) assessment, and early cancer detection (multi-cancer early detection tests like Galleri). Sensitivity is lower than tissue biopsy but can detect disease even when tissue biopsy is not feasible.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>1.7 Supportive &amp; Palliative Care</span></div>
+  <div class="subsection-content">
+    <p>Supportive care is integral to oncology — not "giving up." Early palliative care integration (Temel NEJM 2010 — the MSKCC NSCLC study) demonstrated <strong>improved survival, QoL, and fewer aggressive end-of-life interventions</strong> when palliative care was integrated early.</p>
+    <table>
+      <thead><tr><th>Issue</th><th>Management</th><th>Key Points</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Cancer-related pain</td><td>WHO analgesic ladder: Paracetamol/NSAIDs → weak opioids → strong opioids (morphine, oxycodone, fentanyl patch); adjuvants (gabapentin, TCAs, steroids)</td><td>Always prescribe laxative with opioids; rotate opioids for tolerance/side effects; consider palliative RT for bone pain</td></tr>
+        <tr class="odd"><td>Chemotherapy-induced nausea/vomiting (CINV)</td><td>Highly emetogenic: 5-HT3 antagonist + NK1 antagonist + dexamethasone ± olanzapine; Moderately: 5-HT3 + dexamethasone; Low: dexamethasone alone</td><td>Anticipatory CINV: lorazepam; delayed CINV: NK1 antagonists (aprepitant) most important; olanzapine 10mg is highly effective for breakthrough CINV</td></tr>
+        <tr class="even"><td>Febrile neutropenia prophylaxis</td><td>G-CSF (filgrastim, pegfilgrastim) if febrile neutropenia risk ≥20%; fluoroquinolone prophylaxis in high-risk (ANC expected &lt;100 for &gt;7 days)</td><td>Pegfilgrastim given day 2 or day 4 post-chemo (not same day); G-CSF reduces duration/severity of neutropenia but evidence for survival benefit limited to high-risk regimens</td></tr>
+        <tr class="odd"><td>Cancer-associated thrombosis (VTE)</td><td>LMWH preferred over warfarin (CLOT trial); DOACs (rivaroxaban, apixaban) now preferred in many settings (SELECT-D, Caravaggio trials) — avoid if high bleeding risk (GI/GU tumors)</td><td>Do NOT use DOACs in GI tumors with luminal involvement (high GI bleeding risk); therapeutic LMWH remains gold standard for brain tumors + GI cancer with bleeding risk</td></tr>
+        <tr class="even"><td>Cancer cachexia</td><td>Nutritional counseling; mirtazapine or megestrol acetate for appetite stimulation; ghrelin receptor agonists (anamorelin — approved in Japan); corticosteroids for short-term appetite boost only</td><td>No treatment reverses true cachexia; parenteral nutrition rarely beneficial in advanced cancer; focus on QoL and symptom burden</td></tr>
+        <tr class="odd"><td>Bone metastases / skeletal complications</td><td>Bisphosphonates (zoledronic acid q3-4 weeks); denosumab (anti-RANKL, superior in CRPC); orthopedic consultation for impending fracture; RT for pain/cord compression</td><td>Monitor calcium/phosphate; dental exam before bisphosphonate (osteonecrosis of jaw risk); hydrate before zoledronic acid infusion; denosumab — no dose adjustment for renal failure (unlike zoledronic acid)</td></tr>
+      </tbody>
+    </table>
+    <div class="reference-box"><h4>&#x1F4DA; Key References — Principles</h4>
+      <ul>
+        <li><span class="ref-trial">Temel JS et al. NEJM 2010</span> — Early palliative care integration in metastatic NSCLC: improved survival (11.6 vs 8.9 months), better QoL, less aggressive EOL care</li>
+        <li><span class="ref-guideline">NCCN Supportive Care Guidelines 2025</span> — Antiemesis, G-CSF use, VTE, pain management</li>
+        <li><span class="ref-trial">Caravaggio Trial (NEJM 2020)</span> — Apixaban non-inferior to dalteparin for cancer-associated VTE with similar bleeding rates</li>
+        <li><span class="ref-guideline">ESMO Hereditary Cancer Guidelines 2024</span> — BRCA/Lynch/other hereditary syndromes management</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>&#x2753; Practice Questions — Principles of Oncology</span></div>
+  <div class="subsection-content">
+    <div class="question">
+      <div class="question-text">Q1. A 45-year-old woman with metastatic colorectal cancer has her tumor tested. The tumor is MSI-high. Which of the following statements is MOST accurate regarding her treatment?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Pembrolizumab is the preferred first-line treatment over FOLFOX/FOLFIRI</strong><div class="explanation">MSI-H/dMMR CRC: The KEYNOTE-177 trial demonstrated pembrolizumab monotherapy superior to chemotherapy as first-line treatment in MSI-H metastatic CRC (PFS 16.5 vs 8.2 months, ORR 43.8% vs 33.1%). MSI-H also has implications for Lynch syndrome screening (germline testing recommended), and historically a better prognosis in early-stage disease. Stage II CRC with MSI-H does NOT benefit from adjuvant 5-FU.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q2. A patient receiving 5-FU/capecitabine-based chemotherapy develops severe diarrhea, mucositis, and myelosuppression after cycle 1, despite standard dosing. Which genetic variant is most likely responsible?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: DPYD*2A variant (dihydropyrimidine dehydrogenase deficiency)</strong><div class="explanation">DPD is the rate-limiting enzyme in 5-FU catabolism. DPYD variants (especially *2A: c.1905+1G>A splice site variant) reduce DPD activity, leading to 5-FU accumulation and severe/fatal toxicity. Management: discontinue fluoropyrimidine, supportive care, consider uridine triacetate (antidote). Pre-screening with DPYD genotyping is now recommended (EMA mandate). Complete DPD deficiency is rare (0.1%) but partial deficiency in 3-5%.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q3. Which cancer syndrome is characterized by mucocutaneous pigmentation, GI hamartomatous polyps, and significantly increased risk of pancreatic cancer?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Peutz-Jeghers Syndrome (STK11/LKB1 mutation)</strong><div class="explanation">Peutz-Jeghers: autosomal dominant; STK11/LKB1 germline mutation; hallmark = perioral and buccal mucocutaneous pigmentation (fade after puberty) + GI hamartomatous polyps. Lifetime cancer risks: CRC 39%, gastric 29%, pancreatic 11-36%, breast 45-50%, ovarian (sex cord tumors), lung 15%. Pancreatic cancer risk is particularly elevated — annual pancreatic MRI/EUS from age 30. Contrast with FAP (APC gene, adenomatous polyps, 100% CRC risk) and Lynch (MMR genes, microsatellite instability).</div></div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 2 — LUNG CANCER
+═══════════════════════════════════════════════════════════════ -->
+<section id="section-2" class="section">
+<h1 class="section-title">2. Lung Cancer</h1>
+<p>Lung cancer is the leading cause of cancer-related mortality worldwide, accounting for ~18% of cancer deaths. Treatment has been transformed by molecular profiling and immunotherapy, shifting from a histology-based to a <strong>biomarker-driven</strong> approach. This section covers NSCLC and SCLC based on NCCN 2025 and ESMO 2024 guidelines.</p>
+
+<h2 class="subsec-h2">2.1 Classification &amp; Epidemiology</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>2.1 Histologic Classification &amp; Epidemiology</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Type</th><th>Frequency</th><th>Location</th><th>Association</th><th>Molecular Features</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Adenocarcinoma</td><td>40%</td><td>Peripheral; subpleural</td><td>Non-smokers, women, East Asian; BAC (now lepidic) pattern</td><td>EGFR (40-50% Asians; 15% Western), ALK (5%), KRAS (30%), ROS1, BRAF, RET, NTRK, MET</td></tr>
+        <tr class="odd"><td>Squamous cell carcinoma</td><td>25-30%</td><td>Central/hilar; perihilar mass + post-obstructive collapse</td><td>Heavy smokers; men; cavitation</td><td>FGFR1 amplification; SOX2; DDR2; PDGFRA; PDL1 high (~30%); KRAS rare</td></tr>
+        <tr class="even"><td>Large cell carcinoma</td><td>10%</td><td>Peripheral; large bulky mass</td><td>Smokers; diagnosis of exclusion after IHC</td><td>Heterogeneous; SMARCA4-deficient large cell (aggressive variant)</td></tr>
+        <tr class="odd"><td>Small cell lung cancer (SCLC)</td><td>15%</td><td>Central; hilar mass with mediastinal widening</td><td>Heavy smokers; near 100% association; rapid doubling time</td><td>RB1 loss (100%), TP53 mutation (>90%); DLL3 overexpression; ASCL1, NEUROD1 subtypes</td></tr>
+        <tr class="even"><td>Carcinoid (NETs)</td><td>1-2%</td><td>Central or peripheral</td><td>Non-smokers; somatostatin receptor positive</td><td>Low Ki-67 (typical &lt;2%; atypical 2-20%); MEN1 mutations; SSR2/5 expression</td></tr>
+      </tbody>
+    </table>
+    <div class="high-yield"><div class="high-yield-title">&#x26A1; High-Yield: Key Epidemiology</div>
+      <ul>
+        <li>Worldwide: 2.2 million new cases/year; #1 cancer killer (1.8 million deaths/year)</li>
+        <li>Smokers risk: 20x higher than never-smokers; cumulative risk with pack-years exposure</li>
+        <li>Never-smoker lung cancer: ~15-20% of lung cancers; higher frequency of EGFR/ALK/ROS1 alterations; adenocarcinoma histology</li>
+        <li>Radon: second leading cause of lung cancer (after smoking); primary cause in never-smokers in some regions</li>
+        <li>Low-dose CT screening: annual LDCT for age 50-80, ≥20 pack-years, current smoker or quit &lt;15 years (USPSTF 2021; NELSON trial showed 24% mortality reduction in men)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2 class="subsec-h2">2.2 NSCLC — Staging &amp; Workup</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>2.2 Staging &amp; Required Workup</span></div>
+  <div class="subsection-content">
+    <p>All newly diagnosed NSCLC requires comprehensive staging and biomarker testing before treatment decisions.</p>
+    <table>
+      <thead><tr><th>Stage</th><th>Description</th><th>5-Year Survival</th><th>Treatment Intent</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>I (T1-2, N0)</td><td>Localized; no nodal involvement</td><td>70-90%</td><td>Curative: surgery (lobectomy) or SBRT if inoperable</td></tr>
+        <tr class="odd"><td>II (T1-2 N1; T3 N0)</td><td>Local spread or hilar nodes</td><td>50-60%</td><td>Curative: surgery + adjuvant chemotherapy (± osimertinib for EGFR+)</td></tr>
+        <tr class="even"><td>IIIA (T1-2 N2; T3 N1; T4 N0-1)</td><td>Ipsilateral mediastinal nodes; locally advanced</td><td>25-35%</td><td>Curative intent: concurrent chemoradiation → durvalumab maintenance (PACIFIC)</td></tr>
+        <tr class="odd"><td>IIIB-C (N2 bulky; N3; T4 N2-3)</td><td>Contralateral/supraclavicular nodes; unresectable</td><td>10-20%</td><td>Concurrent chemoradiation → durvalumab maintenance</td></tr>
+        <tr class="even"><td>IV (M1a-M1c)</td><td>Contralateral lung/pleura (M1a); extra-thoracic (M1b); multiple (M1c)</td><td>&lt;10% (5-year)</td><td>Systemic therapy; median OS now 18-24+ months with targeted/ICI in biomarker-selected pts</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Mandatory biomarker testing (NCCN 2025 — all stage IIIB-IV NSCLC):</strong></p>
+    <ul>
+      <li>EGFR mutation (Exon 18-21); ALK fusion; ROS1 fusion; BRAF V600E; KRAS G12C; MET exon14 skipping + MET amplification; RET fusion; NTRK1/2/3 fusion; PD-L1 TPS (22C3 clone)</li>
+      <li>Preferred: Comprehensive NGS panel (tissue or plasma ctDNA) — avoids sequential testing, conserves tissue, faster turnaround</li>
+      <li>Plasma ctDNA: use when tissue unavailable or insufficient; lower sensitivity for fusions (prefer tissue RNA-based NGS)</li>
+      <li>PD-L1 22C3 IHC: required for immunotherapy eligibility; report TPS (&lt;1%, 1-49%, ≥50%)</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="subsec-h2">2.3 NSCLC — Targeted Therapy (Oncogene-Addicted)</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>2.3 EGFR-Mutant NSCLC</span></div>
+  <div class="subsection-content">
+    <p>EGFR mutations occur in ~15% Western / ~40-50% East Asian adenocarcinoma patients. Osimertinib (3rd-generation TKI) is standard first-line therapy based on <mark class="trial-mark">FLAURA</mark> trial.</p>
+    <table>
+      <thead><tr><th>Mutation</th><th>Frequency</th><th>TKI</th><th>Key Trial</th><th>mPFS (months)</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Exon 19 deletion (Del19)</td><td>45% of EGFR+</td><td><strong class="drug-name">Osimertinib</strong> (preferred 1L)</td><td>FLAURA (NEJM 2018)</td><td>18.9 vs 10.2 (1G TKI); OS 38.6 vs 31.8 mo</td></tr>
+        <tr class="odd"><td>L858R point mutation</td><td>40% of EGFR+</td><td><strong class="drug-name">Osimertinib</strong> (preferred 1L)</td><td>FLAURA2 (osimertinib + chemo): PFS 25.5 vs 16.7 mo (2024)</td><td>Superior to 1G/2G TKIs</td></tr>
+        <tr class="even"><td>T790M (acquired resistance)</td><td>60% of acquired resistance to 1G/2G TKIs</td><td><strong class="drug-name">Osimertinib</strong> (2L after 1G/2G)</td><td>AURA3 (NEJM 2017)</td><td>10.1 vs 4.4 (chemo); ORR 71%</td></tr>
+        <tr class="odd"><td>Exon 20 insertion</td><td>5-10% of EGFR+</td><td><strong class="drug-name">Amivantamab</strong> + <strong class="drug-name">lazertinib</strong>; <strong class="drug-name">mobocertinib</strong></td><td>PAPILLON trial (amivantamab+chemo 1L) 2023</td><td>Resistant to standard TKIs; PFS 11.4 vs 6.7 mo</td></tr>
+        <tr class="even"><td>Uncommon mutations (G719X, S768I, L861Q)</td><td>5% of EGFR+</td><td><strong class="drug-name">Afatinib</strong> (2G) preferred; osimertinib</td><td>LUX-Lung 2/3/6 pooled analysis</td><td>ORR 66% with afatinib for uncommon mutations</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> EGFR TKIs are CONTRAINDICATED with strong CYP3A4 inducers (rifampicin, phenytoin, carbamazepine) — reduce osimertinib exposure significantly. As a neurologist seeing lung cancer patients on seizure medications, <strong>always check for CYP3A4 interactions</strong>. Switch to non-enzyme-inducing ASMs (levetiracetam, lacosamide) if possible in patients on EGFR TKIs.</div>
+    <p><strong>Adjuvant Osimertinib:</strong> <mark class="trial-mark">ADAURA trial</mark> — osimertinib 3 years after curative resection for stage IB-IIIA EGFR-mutant NSCLC: DFS 65.8% vs 26.2% at 4 years (HR 0.27). OS benefit confirmed in stage II-IIIA (2023 update). Now standard of care.</p>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>2.4 ALK/ROS1/BRAF/RET/MET/KRAS-Driven NSCLC</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Driver</th><th>Freq</th><th>Preferred 1L Agent</th><th>Key Trial</th><th>ORR / mPFS</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>ALK fusion (EML4-ALK)</td><td>5%</td><td><strong class="drug-name">Alectinib</strong></td><td>ALEX (NEJM 2017)</td><td>82%; 34.8 mo vs 10.9 (crizotinib)</td><td>Superior CNS penetration; alectinib &gt; brigatinib &gt; lorlatinib (3G for resistance)</td></tr>
+        <tr class="odd"><td>ROS1 fusion</td><td>2%</td><td><strong class="drug-name">Entrectinib</strong> or <strong class="drug-name">crizotinib</strong></td><td>STARTRK-2; Profile 1001</td><td>ORR 72-77%</td><td>Entrectinib has CNS activity; repotrectinib for acquired resistance (ROS1 G2032R)</td></tr>
+        <tr class="even"><td>BRAF V600E</td><td>3%</td><td><strong class="drug-name">Dabrafenib + trametinib</strong></td><td>BRF113928 (JCO 2017)</td><td>ORR 64%; mPFS 10.9 mo</td><td>Combination BRAF+MEK inhibition required (monotherapy less effective in NSCLC than melanoma)</td></tr>
+        <tr class="odd"><td>RET fusion</td><td>2%</td><td><strong class="drug-name">Selpercatinib</strong></td><td>LIBRETTO-001 (NEJM 2020)</td><td>ORR 85% (tx-naive); mPFS 22 mo</td><td>Superior CNS penetration; QTc prolongation — monitor ECG; hypertension common</td></tr>
+        <tr class="even"><td>MET exon14 skipping</td><td>3-4%</td><td><strong class="drug-name">Capmatinib</strong> or <strong class="drug-name">tepotinib</strong></td><td>GEOMETRY mono-1 (NEJM 2020)</td><td>ORR 68% (tx-naive); mPFS 12.4 mo</td><td>More common in elderly women, never-smokers; peripheral edema, nausea; high MET amp (≥10 copies) also responds</td></tr>
+        <tr class="odd"><td>KRAS G12C</td><td>13%</td><td><strong class="drug-name">Sotorasib</strong> or <strong class="drug-name">adagrasib</strong> (2L)</td><td>CodeBreaK100 (NEJM 2021); KRYSTAL-1</td><td>Sotorasib: ORR 37%, mPFS 6.8 mo</td><td>First-in-class for KRAS (historically "undruggable"); 1L combinations under study (sotorasib+panitumumab for CRC); KRAS G12D/V inhibitors in development</td></tr>
+        <tr class="even"><td>NTRK fusion</td><td>&lt;1%</td><td><strong class="drug-name">Larotrectinib</strong> or <strong class="drug-name">entrectinib</strong></td><td>NAVIGATE/SCOUT/TRIDENT-1</td><td>ORR 75-78% across tumor types</td><td>Tissue-agnostic FDA approval; seek in all histologies; NTRK resistance: LOXO-195 (selitrectinib)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h2 class="subsec-h2">2.4 NSCLC — Immunotherapy (Non-Oncogene-Addicted)</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>2.5 First-Line Immunotherapy Strategies in Metastatic NSCLC</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>PD-L1 TPS</th><th>Regimen</th><th>Trial</th><th>Outcome</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>TPS ≥50% (squamous or non-squamous)</td><td><strong class="drug-name">Pembrolizumab</strong> monotherapy</td><td>KEYNOTE-024 (NEJM 2016)</td><td>mPFS 10.3 vs 6.0 mo; mOS 26.3 vs 13.4 mo</td><td>Only use if no EGFR/ALK/ROS1/BRAF mutations</td></tr>
+        <tr class="odd"><td>TPS 1-49% (non-squamous)</td><td><strong class="drug-name">Pembrolizumab + carboplatin/pemetrexed</strong></td><td>KEYNOTE-189 (NEJM 2018)</td><td>mOS 22.0 vs 10.6 mo; OS benefit across all PD-L1 subgroups</td><td>Pemetrexed maintenance continuation; standard of care</td></tr>
+        <tr class="even"><td>TPS 1-49% (squamous)</td><td><strong class="drug-name">Pembrolizumab + carboplatin + paclitaxel/nab-paclitaxel</strong></td><td>KEYNOTE-407 (NEJM 2018)</td><td>mOS 17.1 vs 11.6 mo</td><td>Standard for squamous regardless of PD-L1</td></tr>
+        <tr class="odd"><td>Any PD-L1</td><td><strong class="drug-name">Nivolumab + ipilimumab</strong> ± chemotherapy</td><td>CheckMate 9LA / 227</td><td>mOS 15.6 vs 10.9 mo; durable responses</td><td>Dual checkpoint; higher irAE rate; good for TMB-high; 2-year OS benefit significant</td></tr>
+        <tr class="even"><td>TPS ≥50%, no driver</td><td><strong class="drug-name">Cemiplimab</strong> monotherapy</td><td>EMPOWER-Lung 1</td><td>mOS 22.1 vs 14.3 mo</td><td>Alternative PD-1 inhibitor; FDA approved 2021</td></tr>
+        <tr class="odd"><td>Any (EGFR/ALK wildtype)</td><td><strong class="drug-name">Atezolizumab + bev + carboplatin + paclitaxel</strong> (ABCP)</td><td>IMpower150 (JCO 2019)</td><td>mOS 19.2 vs 14.7 mo</td><td>Uniquely benefits EGFR/ALK+ pts who failed TKI; includes bevacizumab (anti-VEGF)</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> <u class="key-val">NEVER give PD-1/PD-L1 inhibitors to patients with active EGFR or ALK mutations as first-line therapy.</u> Checkpoint inhibitors show poor efficacy (low TMB, immunologically "cold" tumors) in oncogene-driven NSCLC. More importantly, combination with EGFR TKIs (e.g., osimertinib + durvalumab) increases severe pneumonitis risk (CAURAL trial was stopped early). Always establish EGFR/ALK/ROS1 status BEFORE starting immunotherapy.</div>
+    <p><strong>Stage III — Unresectable NSCLC:</strong> <mark class="trial-mark">PACIFIC Trial</mark> (NEJM 2017) — Concurrent chemoradiation (cisplatin/etoposide or carboplatin/paclitaxel) → <strong class="drug-name">durvalumab</strong> (anti-PD-L1) consolidation for up to 12 months in patients without progression. mOS 47.5 vs 29.1 months. Now standard of care. Benefit seen regardless of PD-L1 status (though higher benefit in PD-L1 ≥25%).</p>
+  </div>
+</div>
+
+<h2 class="subsec-h2">2.5 Small Cell Lung Cancer (SCLC)</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>2.6 SCLC — Staging, Treatment, &amp; Paraneoplastic Syndromes</span></div>
+  <div class="subsection-content">
+    <p>SCLC uses a simplified staging: <strong>Limited disease (LD)</strong> = confined to hemithorax (can fit in RT port) vs <strong>Extensive disease (ED)</strong> = beyond. ~65% present with ED.</p>
+    <table>
+      <thead><tr><th>Stage</th><th>Treatment</th><th>Key Regimen</th><th>Median Survival</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Limited disease (LD)</td><td>Concurrent chemoradiation (curative intent)</td><td>Cisplatin + etoposide + concurrent thoracic RT (45 Gy in 3 fractions BID or 60-70 Gy once daily) → PCI (prophylactic cranial irradiation)</td><td>20-24 months; 5-year OS ~25%</td></tr>
+        <tr class="odd"><td>Extensive disease (ED)</td><td>Platinum-etoposide + atezolizumab (or durvalumab) — immunotherapy added per IMpower133/CASPIAN</td><td>Carboplatin + etoposide + <strong class="drug-name">atezolizumab</strong> × 4 cycles → atezolizumab maintenance</td><td>12.3 vs 10.3 months (IMpower133); modest but significant</td></tr>
+        <tr class="even"><td>ED — 2nd line</td><td>Chemotherapy; lurbinectedin; DLL3-targeted therapy</td><td><strong class="drug-name">Lurbinectedin</strong> (FDA approved 2020); topotecan; irinotecan/cisplatin</td><td>5-6 months; poor prognosis</td></tr>
+        <tr class="odd"><td>Prophylactic Cranial Irradiation (PCI)</td><td>Standard for LD after CR; controversial in ED (EORTC 08993 vs UMIN000001603)</td><td>25 Gy in 10 fractions; hippocampal-avoidance PCI reduces cognitive side effects</td><td>Reduces brain mets risk; OS benefit debated in ED (Japanese trial: MRI surveillance alone may be equivalent)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>SCLC Paraneoplastic Syndromes</strong> — important intersection with neurology:</p>
+    <table>
+      <thead><tr><th>Syndrome</th><th>Antibody</th><th>Manifestation</th><th>Management</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Lambert-Eaton Myasthenic Syndrome (LEMS)</td><td>Anti-VGCC (voltage-gated Ca²⁺ channel)</td><td>Proximal weakness, hyporeflexia (improves with repeated use — opposite of MG), autonomic dysfunction (dry mouth, constipation), aching; rare ocular involvement</td><td>Treat SCLC; <strong class="drug-name">amifampridine</strong> (3,4-DAP) enhances ACh release; IVIG; plasma exchange; immunosuppression</td></tr>
+        <tr class="odd"><td>Paraneoplastic encephalomyelitis/limbic encephalitis</td><td>Anti-Hu (ANNA-1); anti-CV2/CRMP5</td><td>Limbic encephalitis (personality change, memory loss, seizures), cerebellar degeneration, sensory neuropathy, autonomic neuropathy</td><td>Treat SCLC; immunotherapy (IVIG, steroids, plasma exchange); poor neurologic recovery even with tumor control</td></tr>
+        <tr class="even"><td>Subacute sensory neuropathy</td><td>Anti-Hu</td><td>Asymmetric sensory loss; painful; ataxia; pseudoathetosis; precedes diagnosis in 60% of cases</td><td>SCLC treatment; pain management; rarely reversible</td></tr>
+        <tr class="odd"><td>SIADH</td><td>Ectopic ADH secretion</td><td>Hyponatremia (most common oncologic cause of hyponatremia); headache, confusion, seizures if severe</td><td>Fluid restriction; salt tablets; tolvaptan if refractory; treat underlying SCLC</td></tr>
+        <tr class="even"><td>Ectopic ACTH syndrome</td><td>Ectopic CRH/ACTH</td><td>Cushing syndrome: rapid onset; severe hypokalemia, metabolic alkalosis, hyperglycemia; prominent hypertension; hyperpigmentation</td><td>Ketoconazole, metyrapone for cortisol excess; treat SCLC; bilateral adrenalectomy if refractory</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> LEMS vs Myasthenia Gravis — key distinguishing features for the neurologist-oncologist interface: LEMS = <em>proximal weakness + hyporeflexia that IMPROVES with repeated muscle use</em> (post-tetanic potentiation) + autonomic features. VGCC antibodies &gt;90% sensitive. SCLC found in ~50-60% of LEMS. Check thoracic CT if LEMS diagnosed. Anti-VGCC can be negative in non-paraneoplastic LEMS.</div>
+    <div class="reference-box"><h4>&#x1F4DA; Key Trials — Lung Cancer</h4>
+      <ul>
+        <li><span class="ref-trial">FLAURA (NEJM 2018)</span> — Osimertinib vs 1G TKI 1L EGFR-mutant NSCLC: PFS 18.9 vs 10.2 mo; OS 38.6 vs 31.8 mo</li>
+        <li><span class="ref-trial">ADAURA (NEJM 2020)</span> — Adjuvant osimertinib after resection stage IB-IIIA EGFR+: DFS HR 0.27; OS benefit confirmed 2023</li>
+        <li><span class="ref-trial">KEYNOTE-024 (NEJM 2016)</span> — Pembrolizumab vs chemo in PD-L1 ≥50% 1L NSCLC: OS benefit landmark trial</li>
+        <li><span class="ref-trial">PACIFIC (NEJM 2017)</span> — Durvalumab after cCRT in unresectable stage III: OS 47.5 vs 29.1 mo; practice-changing</li>
+        <li><span class="ref-trial">IMpower133 (NEJM 2018)</span> — Atezolizumab + carbo/etoposide in ES-SCLC: OS 12.3 vs 10.3 mo</li>
+        <li><span class="ref-guideline">NCCN NSCLC Guidelines v4.2025</span> — Comprehensive molecular testing, staging, treatment algorithms</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>&#x2753; Practice Questions — Lung Cancer</span></div>
+  <div class="subsection-content">
+    <div class="question">
+      <div class="question-text">Q1. A 62-year-old never-smoking East Asian woman presents with metastatic lung adenocarcinoma. NGS shows EGFR exon 19 deletion. PD-L1 TPS is 60%. What is the most appropriate first-line treatment?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Osimertinib (third-generation EGFR TKI) monotherapy</strong><div class="explanation">In EGFR-mutant NSCLC, targeted therapy (osimertinib) always takes priority over immunotherapy, regardless of PD-L1 expression. FLAURA trial established osimertinib as standard 1L therapy (PFS 18.9 mo; OS 38.6 mo). PD-L1 expression is NOT an indication for pembrolizumab in EGFR-mutant patients — combination with TKIs increases severe pneumonitis, and pembrolizumab monotherapy is inferior in oncogene-driven disease. FLAURA2 added chemotherapy to osimertinib (PFS 25.5 mo) for selected patients with high burden of disease.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q2. A 55-year-old man with limited-stage SCLC achieves complete remission after 6 cycles of cisplatin/etoposide + concurrent radiotherapy. What is the recommended next step?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Prophylactic cranial irradiation (PCI) 25 Gy/10 fractions</strong><div class="explanation">PCI remains standard of care for LD-SCLC achieving CR/good PR after chemoradiation. Reduces brain metastasis risk from ~60% to ~33% and improves 3-year OS (20.7% vs 13.3% — Auperin meta-analysis 1999). Hippocampal-avoidant PCI reduces neurocognitive toxicity. For ED-SCLC, MRI surveillance every 3 months (rather than PCI) is now an acceptable alternative based on the Japanese trial (Takahashi NEJM 2017) — though Western practice still varies.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 3 — GI CANCERS
+═══════════════════════════════════════════════════════════════ -->
+<section id="section-3" class="section">
+<h1 class="section-title">3. GI Cancers</h1>
+<p>Gastrointestinal cancers collectively represent the most common cause of cancer death globally. Molecular profiling has transformed management, particularly in CRC (MSI/RAS/BRAF), gastric cancer (HER2/PD-L1), and cholangiocarcinoma (FGFR2/IDH1). Content follows ESMO 2024 and NCCN 2025 guidelines.</p>
+
+<h2 class="subsec-h2">3.1 Colorectal Cancer (CRC)</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>3.1 CRC Epidemiology, Screening &amp; Molecular Pathways</span></div>
+  <div class="subsection-content">
+    <p>CRC is the 3rd most common cancer and 2nd leading cause of cancer death worldwide. Incidence is rising in young adults (&lt;50 years) — "early-onset CRC." Screening reduces mortality by detecting adenomas (precancerous) and early-stage disease.</p>
+    <table>
+      <thead><tr><th>Molecular Pathway</th><th>Frequency</th><th>Features</th><th>Clinical Implication</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Chromosomal instability (CIN) pathway</td><td>65-70%</td><td>APC → KRAS → TP53 sequential mutations; aneuploidy; adenoma-carcinoma sequence; 10-15 year progression</td><td>Standard chemotherapy + targeted therapy (anti-EGFR or anti-VEGF); KRAS/NRAS/BRAF testing required</td></tr>
+        <tr class="odd"><td>Microsatellite instability (MSI) / Mismatch Repair Deficient (dMMR)</td><td>15%</td><td>MLH1 promoter hypermethylation (sporadic, 85%) or Lynch syndrome (15%); RIGHT-sided predominance; mucinous; Crohn-like reaction; TILs (tumor-infiltrating lymphocytes)</td><td>Better prognosis stage II; NO benefit from 5-FU alone (stage II adjuvant); first-line pembrolizumab in metastatic (KEYNOTE-177)</td></tr>
+        <tr class="even"><td>BRAF V600E mutation (in CRC)</td><td>10%</td><td>Often MSI-H; associated with MLH1 methylation (not Lynch); right-sided; poor prognosis in MSS BRAF-mutant metastatic CRC</td><td>BEACON trial: BRAF V600E+ mCRC → encorafenib + cetuximab (ORR 26%; OS 9.3 vs 5.9 mo)</td></tr>
+        <tr class="odd"><td>CpG island methylator phenotype (CIMP)</td><td>15-20%</td><td>Epigenetic silencing (including MLH1 in BRAF V600E); associated with serrated polyps</td><td>Serrated adenoma → cancer pathway; right-sided; sessile serrated polyps on colonoscopy</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Screening (Average Risk — starting age 45, USPSTF 2021):</strong> Annual FIT (fecal immunochemical test) or colonoscopy every 10 years or CT colonography every 5 years. High-risk: colonoscopy starting 10 years before youngest affected relative or age 40 (whichever earlier); every 5 years if Lynch syndrome.</p>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> Universal tumor testing (MMR IHC or MSI-PCR) on ALL newly diagnosed CRC — regardless of age/family history — is recommended by NCCN, ASCO, and ESMO. This detects Lynch syndrome AND identifies MSI-H patients eligible for pembrolizumab. If MLH1 loss on IHC: test for BRAF V600E mutation (if positive → sporadic methylation, not Lynch) and MLH1 promoter methylation.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>3.2 Metastatic CRC — Treatment by Molecular Subtype</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Molecular Subtype</th><th>1st Line Regimen</th><th>Key Trial</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>RAS/BRAF wildtype (WT), left-sided</td><td>FOLFOX or FOLFIRI + <strong class="drug-name">cetuximab</strong> or <strong class="drug-name">panitumumab</strong> (anti-EGFR)</td><td>CRYSTAL, OPUS, PRIME</td><td>Left-sided tumors derive significantly more benefit from anti-EGFR; primary tumor side is a crucial biomarker</td></tr>
+        <tr class="odd"><td>RAS/BRAF wildtype, right-sided</td><td>FOLFOX or FOLFIRI + <strong class="drug-name">bevacizumab</strong></td><td>CALGB 80405 (sidedness analysis)</td><td>Right-sided: anti-EGFR inferior; bevacizumab preferred; consider aggressive approach if oligometastatic</td></tr>
+        <tr class="even"><td>RAS mutant (KRAS or NRAS)</td><td>FOLFOX or FOLFIRI + <strong class="drug-name">bevacizumab</strong></td><td>PRIME, FIRE-3</td><td>Anti-EGFR (cetuximab/panitumumab) CONTRAINDICATED in any RAS mutation — no benefit + potential harm; bevacizumab preferred backbone</td></tr>
+        <tr class="odd"><td>BRAF V600E mutant, MSS</td><td>FOLFOXIRI + bevacizumab (1L); → encorafenib + cetuximab (2L+)</td><td>BEACON CRC (NEJM 2019)</td><td>BRAF V600E in MSS mCRC = extremely poor prognosis (~5 mo without treatment); BEACON: encorafenib+cetuximab ORR 26%, OS 9.3 vs 5.9 mo vs chemo</td></tr>
+        <tr class="even"><td>MSI-H / dMMR (any RAS/BRAF)</td><td><strong class="drug-name">Pembrolizumab</strong> monotherapy</td><td>KEYNOTE-177 (NEJM 2020)</td><td>PFS 16.5 vs 8.2 mo vs chemo; 2-year PFS 48% vs 19%; OS HR 0.72 (trending). Standard 1L for MSI-H mCRC regardless of BRAF status</td></tr>
+        <tr class="odd"><td>HER2-amplified (3%)</td><td><strong class="drug-name">Trastuzumab + pertuzumab</strong> or <strong class="drug-name">trastuzumab deruxtecan</strong> (T-DXd) (2L+)</td><td>MyPathway; DESTINY-CRC01</td><td>HER2 amplification by NGS/FISH; T-DXd showed ORR 45% in HER2+ mCRC (2L+); HER2 testing now standard in RAS/BRAF WT</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Adjuvant Therapy:</strong></p>
+    <ul>
+      <li><strong>Stage II (MSS, low risk):</strong> Surveillance alone; 5-FU-based chemo in high-risk features (T4, &lt;12 LN examined, perforation, poor differentiation, LVI, PNI). MSI-H stage II: NO benefit from adjuvant 5-FU (IMPACT/pooled data)</li>
+      <li><strong>Stage II (MSS, high risk) / Stage III:</strong> CAPOX × 3 months or mFOLFOX6 × 6 months. IDEA trial: 3 months CAPOX non-inferior to 6 months in low-risk stage III (T1-3, N1); 6 months preferred for high-risk (T4 or N2)</li>
+      <li><strong>Rectal cancer:</strong> Total neoadjuvant therapy (TNT): FOLFOX/CAPOX × 4-6 cycles + long-course CRT (45-50.4 Gy) → surgery; OR short-course RT (25 Gy/5f) + FOLFOX → surgery (RAPIDO trial). Watch and wait for cCR (complete clinical response) in selected patients</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="subsec-h2">3.2 Gastric &amp; Gastroesophageal Junction (GEJ) Cancer</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>3.3 Gastric Cancer — HER2, PD-L1, &amp; Systemic Therapy</span></div>
+  <div class="subsection-content">
+    <p>Gastric cancer has high global incidence (East Asia, Eastern Europe) and typically presents at advanced stage. H. pylori is the main risk factor; EBV-associated gastric cancer (9%) is a distinct molecular subtype.</p>
+    <p><strong>Required biomarkers in metastatic gastric/GEJ cancer:</strong> HER2 (IHC/FISH), PD-L1 CPS (22C3), dMMR/MSI-H, FGFR2b (bemarituzumab), CLDN18.2 (zolbetuximab)</p>
+    <table>
+      <thead><tr><th>Biomarker</th><th>Frequency</th><th>Therapy</th><th>Key Trial</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>HER2-positive (IHC 3+ or 2+/FISH+)</td><td>15-20%</td><td><strong class="drug-name">Trastuzumab</strong> + <strong class="drug-name">pembrolizumab</strong> + <strong class="drug-name">FluOx</strong> (XELOX/FOLFOX)</td><td>ToGA (NEJM 2010); KEYNOTE-811 (JCO 2023)</td><td>KEYNOTE-811: ORR 74% vs 52%; PFS 10 vs 7.2 mo. Triple combination now standard 1L HER2+ gastric</td></tr>
+        <tr class="odd"><td>HER2-positive, 2L after trastuzumab</td><td></td><td><strong class="drug-name">Trastuzumab deruxtecan (T-DXd)</strong></td><td>DESTINY-Gastric01 (NEJM 2021)</td><td>ORR 51% vs 14%; OS 12.5 vs 8.4 mo; ILD risk (10-15%)</td></tr>
+        <tr class="even"><td>PD-L1 CPS ≥5 (HER2-negative)</td><td>~50%</td><td><strong class="drug-name">Nivolumab</strong> + FOLFOX/CAPOX</td><td>CheckMate 649 (NEJM 2021)</td><td>CPS ≥5: OS 14.4 vs 11.1 mo; CPS ≥1: OS 13.8 vs 11.6 mo; OS benefit across all CPS ≥1</td></tr>
+        <tr class="odd"><td>PD-L1 CPS ≥10 (HER2-negative)</td><td>~35%</td><td><strong class="drug-name">Pembrolizumab</strong> + chemo</td><td>KEYNOTE-590 / KEYNOTE-859</td><td>OS benefit in CPS ≥10 (12.3 vs 10.8 mo); alternative to nivolumab-based regimen</td></tr>
+        <tr class="even"><td>dMMR/MSI-H (any HER2)</td><td>5-8%</td><td><strong class="drug-name">Pembrolizumab</strong> monotherapy (1L)</td><td>KEYNOTE-158</td><td>ORR 57.1% in MSI-H gastric; durable responses; consider mono if MSI-H regardless of HER2</td></tr>
+        <tr class="odd"><td>CLDN18.2 ≥2+ in ≥75% cells</td><td>~38%</td><td><strong class="drug-name">Zolbetuximab</strong> + CAPOX or mFOLFOX6</td><td>SPOTLIGHT; GLOW (2023)</td><td>PFS 10.6 vs 8.7 mo; OS 18.2 vs 15.5 mo; HER2-negative, CLDN18.2-positive; FDA approved 2024</td></tr>
+        <tr class="even"><td>FGFR2b overexpression</td><td>~30%</td><td><strong class="drug-name">Bemarituzumab</strong> + mFOLFOX6 (investigational)</td><td>FIGHT (JCO 2022)</td><td>PFS 9.5 vs 7.4 mo; OS trend; Phase III ongoing</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> In HER2-positive gastric cancer after trastuzumab-based 1L therapy, T-DXd (trastuzumab deruxtecan) showed dramatic activity (ORR 51%) in DESTINY-Gastric01. Key toxicity: interstitial lung disease/pneumonitis (~10-15%). ILD is the most feared T-DXd toxicity — any new respiratory symptoms → chest CT → grade and manage accordingly (hold/discontinue based on severity). Steroid-responsive in early grades.</div>
+  </div>
+</div>
+
+<h2 class="subsec-h2">3.3 Pancreatic Cancer</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>3.4 Pancreatic Adenocarcinoma — Workup &amp; Treatment</span></div>
+  <div class="subsection-content">
+    <p>Pancreatic ductal adenocarcinoma (PDAC) has the worst prognosis of major cancers (5-year OS ~11%). Over 80% present at unresectable or metastatic stage. <strong>KRAS mutations occur in ~90%</strong> (most frequently G12D, G12V — not yet targeted clinically). Early detection is the critical challenge.</p>
+    <table>
+      <thead><tr><th>Stage</th><th>Definition</th><th>Treatment</th><th>Median OS</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Resectable</td><td>No arterial contact; &lt;180° SMV/PV involvement; no distant metastasis</td><td>Neoadjuvant FOLFIRINOX × 4-6 cycles → surgery (Whipple/distal) → adjuvant <strong class="drug-name">mFOLFIRINOX</strong> × 6 months or gemcitabine + capecitabine (ESPAC-4)</td><td>24-36 months (resected with adjuvant chemo)</td></tr>
+        <tr class="odd"><td>Borderline resectable</td><td>Abutment of SMA/celiac (&lt;180°); &gt;180° SMV/PV involvement; no distant mets</td><td>Neoadjuvant FOLFIRINOX × 6 months → reassess → surgery if response → adjuvant chemo</td><td>20-25 months if R0 achieved</td></tr>
+        <tr class="even"><td>Locally advanced (LAPC)</td><td>Encasement of SMA/celiac (&gt;180°); unreconstructible PV; no distant mets</td><td>FOLFIRINOX × 6 months → SBRT/EBRT (if no progression) → maintenance; rare conversion to surgery; <strong class="drug-name">nab-paclitaxel + gemcitabine</strong> alternative</td><td>12-18 months with combined modality</td></tr>
+        <tr class="odd"><td>Metastatic</td><td>Liver (most common), peritoneal, lung; CA 19-9 monitoring</td><td><strong>1L:</strong> FOLFIRINOX (PS 0-1) or nab-paclitaxel + gemcitabine (PS 0-2); <strong>2L:</strong> NANOLIPOSOMAL irinotecan + 5-FU/LV (NAPOLI-1)</td><td>8-12 months (1L); 6-7 months (2L)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Germline testing — mandatory in ALL pancreatic cancer patients:</strong></p>
+    <ul>
+      <li>BRCA1/2 germline mutations: ~7-8% of PDAC → maintenance olaparib after platinum-based chemo (<mark class="trial-mark">POLO trial NEJM 2019</mark>): PFS 7.4 vs 3.8 months</li>
+      <li>PALB2, ATM, CHEK2 — also HRD pathway; emerging evidence for PARP inhibition</li>
+      <li>Lynch syndrome (MLH1/MSH2/MSH6/PMS2): 1% of PDAC; MSI-H → pembrolizumab</li>
+      <li>CDKN2A (familial atypical mole-malignant melanoma, FAMMM): 8% lifetime risk pancreatic Ca; surveillance with EUS/MRI-MRCP annually from age 40 or 10 years before earliest diagnosis</li>
+    </ul>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> CA 19-9 is <strong>NOT</strong> a diagnostic biomarker — it is a monitoring biomarker. Up to 10% of the population is Lewis-antigen negative (Le[a-b-] blood group) and cannot produce CA 19-9, giving false-negative values even with advanced disease. CA 19-9 can also be elevated in biliary obstruction without malignancy. Use for monitoring response to treatment and surveillance, not for diagnosis.</div>
+  </div>
+</div>
+
+<h2 class="subsec-h2">3.4 Cholangiocarcinoma (CCA)</h2>
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>3.5 Cholangiocarcinoma — Molecular Profiling &amp; Treatment</span></div>
+  <div class="subsection-content">
+    <p>CCA is classified as intrahepatic (iCCA, ~25%), perihilar/hilar (Klatskin tumor, ~50%), and distal (&lt;25%). iCCA has distinct molecular alterations (FGFR2, IDH1/2, ARID1A) making it uniquely targetable.</p>
+    <table>
+      <thead><tr><th>Molecular Alteration</th><th>Frequency</th><th>Targeted Agent</th><th>Trial</th><th>ORR / mPFS</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>FGFR2 fusion/rearrangement</td><td>~15-20% iCCA</td><td><strong class="drug-name">Pemigatinib</strong> (FDA approved); <strong class="drug-name">futibatinib</strong> (FDA approved); infigratinib</td><td>FIGHT-202 (JCO 2020); FOENIX-CCA2 (JCO 2022)</td><td>Pemigatinib: ORR 37%; mPFS 6.9 mo. Futibatinib: ORR 42%; mPFS 9 mo</td></tr>
+        <tr class="odd"><td>IDH1 mutation (R132H/C/G/L/S)</td><td>~13% iCCA</td><td><strong class="drug-name">Ivosidenib</strong> (FDA approved)</td><td>ClarIDHy (NEJM 2020)</td><td>PFS 2.7 vs 1.4 mo (modest but durable); OS 10.3 vs 7.5 mo; suitable for well-tolerated maintenance</td></tr>
+        <tr class="even"><td>BRAF V600E</td><td>~5% iCCA</td><td><strong class="drug-name">Dabrafenib + trametinib</strong></td><td>ROAR basket trial (JCO 2022)</td><td>ORR 47%; mPFS 9 mo; FDA approved tissue-agnostic for BRAF V600E solid tumors</td></tr>
+        <tr class="odd"><td>HER2 amplification/overexpression</td><td>~5% (GBC &gt;iCCA)</td><td><strong class="drug-name">Trastuzumab + pertuzumab</strong>; zanidatamab (investigational)</td><td>MyPathway basket; HERIZON-BTC-01</td><td>ORR ~30%; ongoing phase III trials</td></tr>
+        <tr class="even"><td>NTRK fusion</td><td>&lt;1%</td><td><strong class="drug-name">Larotrectinib</strong> or <strong class="drug-name">entrectinib</strong></td><td>NAVIGATE/SCOUT/TRIDENT</td><td>ORR ~75% tissue-agnostic</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Systemic Therapy — Biliary Tract Cancer (BTC):</strong></p>
+    <ul>
+      <li><strong>1L standard:</strong> Gemcitabine + cisplatin + <strong class="drug-name">durvalumab</strong> (<mark class="trial-mark">TOPAZ-1 trial NEJM 2022</mark>: OS 12.8 vs 11.5 mo; HR 0.80; 24-month OS 24.9% vs 10.4%) — this is now the new standard 1L for advanced BTC</li>
+      <li>Alternatively: Gemcitabine + cisplatin + <strong class="drug-name">pembrolizumab</strong> (KEYNOTE-966: similar benefit)</li>
+      <li><strong>2L:</strong> FOLFOX (ABC-06 trial: OS 6.2 vs 5.3 mo); or molecular-matched therapy based on NGS</li>
+      <li>Comprehensive NGS at diagnosis mandatory to identify targetable alterations (FGFR2, IDH1, BRAF, HER2, NTRK, RET, MSI-H)</li>
+    </ul>
+    <div class="reference-box"><h4>&#x1F4DA; Key Trials — GI Cancers</h4>
+      <ul>
+        <li><span class="ref-trial">KEYNOTE-177 (NEJM 2020)</span> — Pembrolizumab vs chemo 1L MSI-H mCRC: PFS 16.5 vs 8.2 mo; PFS2 benefit; practice-changing</li>
+        <li><span class="ref-trial">BEACON CRC (NEJM 2019)</span> — Encorafenib + cetuximab in BRAF V600E mCRC: OS 9.3 vs 5.9 mo vs control</li>
+        <li><span class="ref-trial">CheckMate 649 (NEJM 2021)</span> — Nivolumab + FOLFOX in CPS≥5 gastric: OS 14.4 vs 11.1 mo</li>
+        <li><span class="ref-trial">KEYNOTE-811 (JCO 2023)</span> — Trastuzumab + pembrolizumab + chemo in HER2+ gastric: ORR 74%</li>
+        <li><span class="ref-trial">POLO (NEJM 2019)</span> — Olaparib maintenance in BRCA-mutant pancreatic Ca after platinum 1L: PFS 7.4 vs 3.8 mo</li>
+        <li><span class="ref-trial">TOPAZ-1 (NEJM 2022)</span> — Durvalumab + gemcitabine/cisplatin in advanced BTC: OS 12.8 vs 11.5 mo; new standard of care</li>
+        <li><span class="ref-trial">FIGHT-202 (JCO 2020)</span> — Pemigatinib in FGFR2-fusion iCCA: ORR 37%; first targeted therapy for biliary cancer</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>&#x2753; Practice Questions — GI Cancers</span></div>
+  <div class="subsection-content">
+    <div class="question">
+      <div class="question-text">Q1. A 58-year-old man with metastatic CRC has KRAS exon 2 wild-type, NRAS wild-type, BRAF wild-type tumor. His primary tumor was in the sigmoid colon (left-sided). Which is the best first-line regimen?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: FOLFOX (or FOLFIRI) + cetuximab or panitumumab (anti-EGFR therapy)</strong><div class="explanation">Left-sided, all-RAS/BRAF wildtype mCRC = anti-EGFR is superior to anti-VEGF. CALGB 80405 and FIRE-3 trials established this paradigm. Anti-EGFR (cetuximab/panitumumab) + FOLFOX is preferred 1L for left-sided WT tumors (OS up to 35 months with cetuximab+FOLFIRI in FIRE-3 left-sided subgroup). If right-sided: bevacizumab preferred. If RAS mutant: NEVER use anti-EGFR. Also check HER2 amplification in all WT patients.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q2. A 55-year-old woman with intrahepatic cholangiocarcinoma progresses on gemcitabine + cisplatin + durvalumab. NGS reveals FGFR2-BICC1 fusion. What is the most appropriate next step?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Pemigatinib or futibatinib (FGFR2 inhibitor)</strong><div class="explanation">FGFR2 fusions/rearrangements occur in ~15-20% of intrahepatic CCA. Pemigatinib (FIGHT-202: ORR 37%) and futibatinib (FOENIX-CCA2: ORR 42%) are both FDA-approved for FGFR2 fusion-positive biliary tract cancer after prior therapy. Key toxicities: hyperphosphatemia (monitor serum phosphate; dietary phosphate restriction, sevelamer), dry eye/keratopathy (ophthalmology monitoring required), nail changes, stomatitis. FGFR2 inhibitors are highly effective in this molecularly-selected population.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 4 — HEPATOCELLULAR CARCINOMA (HCC)
+═══════════════════════════════════════════════════════════════ -->
+<section id="section-4" class="section">
+<h1 class="section-title">4. Hepatocellular Carcinoma (HCC)</h1>
+<p>HCC is the most common primary liver cancer and the 4th leading cause of cancer-related death worldwide. It almost exclusively arises in the setting of chronic liver disease. Multidisciplinary management integrating hepatology, interventional radiology, surgery, and oncology is essential. Treatment decisions are governed by liver function (Child-Pugh/ALBI), tumor burden, and performance status — the BCLC staging system.</p>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>4.1 Epidemiology, Risk Factors &amp; Prevention</span></div>
+  <div class="subsection-content">
+    <p>HCC accounts for 75-85% of primary liver cancers. Globally, 906,000 new cases/year. Southeast Asia and Sub-Saharan Africa have the highest incidence (HBV-driven). In the West, HCV cirrhosis and NASH cirrhosis are increasingly predominant.</p>
+    <table>
+      <thead><tr><th>Risk Factor</th><th>Contribution</th><th>Relative Risk</th><th>Prevention / Intervention</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Chronic HBV infection</td><td>55% of HCC worldwide; dominant in Asia/Africa</td><td>RR 15-30× (HBeAg+: 60×)</td><td>HBV vaccination (prevents 60-70% of HCC in endemic areas); antiviral therapy (entecavir, tenofovir) reduces HCC risk 50-80%</td></tr>
+        <tr class="odd"><td>Chronic HCV infection</td><td>25% of HCC; dominant in Japan, Egypt, Western countries</td><td>RR 15-20×</td><td>DAA (direct-acting antivirals) achieve SVR 95%+ → reduces HCC risk 70-80% but does not eliminate; continue surveillance even after SVR in cirrhosis</td></tr>
+        <tr class="even"><td>Alcoholic liver disease / cirrhosis</td><td>20% of HCC in Western countries</td><td>RR 5×</td><td>Abstinence from alcohol; nutritional support; manage portal hypertension</td></tr>
+        <tr class="odd"><td>NASH/MAFLD cirrhosis</td><td>Fastest growing HCC etiology in West; HCC can arise in non-cirrhotic NASH</td><td>RR 3-5× in cirrhosis</td><td>Weight loss; metabolic syndrome management; NASH cirrhosis: highest challenge for early detection (no clear serology)</td></tr>
+        <tr class="even"><td>Aflatoxin B1 (dietary)</td><td>Synergistic with HBV; sub-Saharan Africa; TP53 R249S mutation</td><td>RR 3× (HBV alone); up to 60× (HBV + aflatoxin)</td><td>Food storage improvements; aflatoxin vaccination strategies</td></tr>
+        <tr class="odd"><td>Hereditary hemochromatosis</td><td>Iron overload → cirrhosis → HCC; HFE gene (C282Y/H63D)</td><td>HCC risk ~200× vs general population in affected cirrhosis</td><td>Phlebotomy to maintain normal ferritin; iron chelation; prevents cirrhosis progression</td></tr>
+        <tr class="even"><td>Primary biliary cholangitis (PBC) / PSC</td><td>~5% of HCC; less common than viral etiologies</td><td>Elevated in biliary cirrhosis</td><td>Surveillance per cirrhosis guidelines regardless of etiology</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>4.2 Surveillance &amp; Diagnosis</span></div>
+  <div class="subsection-content">
+    <p><strong>Surveillance:</strong> All patients with cirrhosis (Child-Pugh A-B) AND high-risk non-cirrhotic HBV carriers (Asian men &gt;40y, Asian women &gt;50y, family history, African-Americans &gt;20y) should undergo ultrasound ± AFP every 6 months. Surveillance detects early-stage HCC — the curative window.</p>
+    <table>
+      <thead><tr><th>Imaging System</th><th>Description</th><th>LI-RADS Categories</th><th>Clinical Action</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>LI-RADS (Liver Imaging Reporting and Data System)</td><td>Standardized CT/MRI classification for HCC in at-risk patients; AASLD endorsed</td><td>LR-1: definitely benign; LR-2: probably benign; LR-3: intermediate; LR-4: probably HCC; <strong>LR-5: definitely HCC (≥20mm: arterial enhancement + washout)</strong>; LR-M: probably/definitely malignant not HCC-specific; LR-TIV: tumor in vein</td><td>LR-5 → treat as HCC without biopsy in appropriate clinical context; LR-3/4 → close follow-up or biopsy; LR-M → consider biopsy</td></tr>
+        <tr class="odd"><td>Diagnostic criteria (non-invasive)</td><td>AASLD/EASL: For nodule ≥1cm in cirrhosis</td><td>Contrast-enhanced CT or MRI: arterial phase hyperenhancement (APHE) + washout appearance in portal/delayed phase → diagnostic for HCC</td><td>No biopsy required if imaging criteria met in high-risk patient with cirrhosis</td></tr>
+        <tr class="even"><td>AFP (Alpha-fetoprotein)</td><td>Serum biomarker; most widely used</td><td>Normal: &lt;20 ng/mL; AFP &gt;400 ng/mL: highly suggestive (Sp ~95%) but insensitive (Sn ~40%)</td><td>AFP used in conjunction with US for surveillance; AFP-L3% and DCP (des-gamma-carboxyprothrombin) additional biomarkers</td></tr>
+        <tr class="odd"><td>MRI superiority over CT</td><td>Better tissue characterization; hepatobiliary phase (gadoxetate disodium/Primovist)</td><td>HBP hypointensity + APHE + washout = near 100% specificity for HCC; better sensitivity for small lesions (&lt;2 cm)</td><td>Preferred modality in equivocal CT; gadoxetate MRI for surgical planning</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> HCC is the only solid tumor where diagnosis can be made <strong>non-invasively</strong> by imaging alone in appropriate clinical contexts (cirrhosis + LR-5 criteria). Biopsy is reserved for: (1) non-diagnostic imaging in cirrhosis, (2) non-cirrhotic liver with LR-M lesion, (3) clinical trial enrollment requiring histologic confirmation. Do not biopsy LR-5 lesions being referred for curative resection if classical imaging features are present — risk of needle-track seeding.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>4.3 Staging Systems — BCLC, Child-Pugh, ALBI</span></div>
+  <div class="subsection-content">
+    <p>Multiple staging systems exist, but <strong>BCLC (Barcelona Clinic Liver Cancer)</strong> is the most widely endorsed (EASL/AASLD) because it integrates liver function, tumor characteristics, and performance status to guide treatment.</p>
+    <table>
+      <thead><tr><th>BCLC Stage</th><th>Tumor Characteristics</th><th>Liver Function</th><th>Performance Status</th><th>Treatment</th><th>Median OS</th></tr></thead>
+      <tbody>
+        <tr class="even"><td><strong>0 — Very Early</strong></td><td>Single ≤2 cm; no vascular invasion, no satellites</td><td>Child-Pugh A; Normal bilirubin; no portal hypertension</td><td>PS 0</td><td>Resection (preferred) or ablation (RFA/MWA)</td><td>&gt;60-70 months; curative</td></tr>
+        <tr class="odd"><td><strong>A — Early</strong></td><td>Single &gt;2 cm or 3 nodules all ≤3 cm; no vascular invasion</td><td>Child-Pugh A-B</td><td>PS 0</td><td>Resection, ablation, or transplantation (Milan criteria)</td><td>50-70 months; curative intent</td></tr>
+        <tr class="even"><td><strong>B — Intermediate</strong></td><td>Multinodular; beyond Milan; no vascular invasion; no extrahepatic spread</td><td>Child-Pugh A-B; preserved function</td><td>PS 0</td><td>TACE (transarterial chemoembolization); TARE/Y-90 for select cases</td><td>20-26 months</td></tr>
+        <tr class="odd"><td><strong>C — Advanced</strong></td><td>Vascular invasion (PV thrombus) or extrahepatic spread (lymph nodes, lung, bone)</td><td>Child-Pugh A-B</td><td>PS 1-2</td><td>Systemic therapy (1L: atezolizumab + bevacizumab or durvalumab + tremelimumab; 2L: sorafenib or lenvatinib if not used 1L)</td><td>14-19 months (with modern systemic therapy)</td></tr>
+        <tr class="even"><td><strong>D — Terminal</strong></td><td>Any tumor</td><td>Child-Pugh C; decompensated cirrhosis</td><td>PS 3-4</td><td>Best supportive care; palliative/hospice</td><td>3-4 months</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Milan Criteria (for liver transplantation):</strong> Single tumor ≤5 cm OR ≤3 tumors each ≤3 cm; no vascular invasion; no extrahepatic spread → 5-year OS post-transplant ~70-75%, recurrence &lt;15%. Extended criteria (UCSF: single ≤6.5 cm or ≤3 nodules ≤4.5 cm each, total ≤8 cm) also acceptable in some centers.</p>
+    <table>
+      <thead><tr><th>Liver Function Score</th><th>Parameters</th><th>Cutoffs</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Child-Pugh Score</td><td>Bilirubin, albumin, PT/INR, ascites, encephalopathy (5 parameters)</td><td>A: 5-6 pts (best); B: 7-9 pts; C: ≥10 pts (worst)</td><td>Standard for clinical decision-making; most widely used; surgical candidacy; systemic therapy eligibility</td></tr>
+        <tr class="odd"><td>ALBI Score (Albumin-Bilirubin)</td><td>Log₁₀(bilirubin μmol/L × 0.66) + albumin g/L × (−0.085)</td><td>Grade 1: ≤−2.60; Grade 2: −2.60 to −1.39; Grade 3: &gt;−1.39</td><td>More objective than Child-Pugh (no subjective parameters); better prognostic discrimination within Child-Pugh A; increasingly used in clinical trials</td></tr>
+        <tr class="even"><td>MELD Score</td><td>3.78×Ln(bilirubin mg/dL) + 11.2×Ln(INR) + 9.57×Ln(creatinine mg/dL) + 6.43</td><td>&lt;10: low; 10-19: moderate; ≥20: high</td><td>Primarily for liver transplant allocation (waitlist priority); MELD-Na incorporates serum sodium</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>4.4 Locoregional Therapies (LRT)</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Modality</th><th>Indication</th><th>Mechanism</th><th>Local Control / OS</th><th>Contraindications</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Radiofrequency Ablation (RFA) / Microwave Ablation (MWA)</td><td>BCLC 0-A; single ≤3 cm (RFA); ≤5 cm (MWA)</td><td>Thermal energy → coagulation necrosis; MWA = faster, better for larger lesions near vessels</td><td>CR rate 80-90% for ≤3 cm; equivalent to resection for BCLC 0 very early HCC; 5-year OS ~50%</td><td>Adjacent to major bile duct (&lt;1 cm); pacemaker (RFA); poor coagulation; ascites</td></tr>
+        <tr class="odd"><td>TACE (Trans-Arterial Chemoembolization)</td><td>BCLC B (intermediate); downstaging to transplant</td><td>Intra-arterial chemotherapy (doxorubicin/cisplatin) + Lipiodol + embolic particles → ischemia + local drug delivery; DEB-TACE: drug-eluting beads</td><td>mOS ~20-26 months; superior to best supportive care (TACE-1/2 RCTs)</td><td>Main portal vein thrombosis; Child-Pugh C; bilirubin &gt;3 mg/dL; ECOG PS &gt;2; extensive bilobar disease</td></tr>
+        <tr class="even"><td>TARE / Y-90 SIRT (Trans-Arterial Radioembolization)</td><td>BCLC B (alternative to TACE); segmental HCC; portal vein thrombosis (unique advantage)</td><td>Intra-arterial microspheres loaded with yttrium-90 (β-emitter) → internal radiation + limited ischemia</td><td>mOS similar to TACE in intermediate HCC; can be used with portal vein thrombosis (advantage over TACE); downstaging to transplant/resection</td><td>Hepatopulmonary shunting &gt;20% (lung dose &gt;30 Gy); bilirubin &gt;2 mg/dL; extensive extrahepatic disease</td></tr>
+        <tr class="odd"><td>SBRT (Stereotactic Body Radiation Therapy)</td><td>BCLC 0-A (non-operative); large tumors &gt;5 cm; portal vein thrombus; bridge to transplant</td><td>High-dose conformal external beam radiotherapy (30-54 Gy in 3-5 fractions) → lethal DNA damage</td><td>Local control ~80-90% at 2 years; OS competitive with ablation/TACE in select patients; growing evidence for portal vein thrombus</td><td>Previous abdominal RT; extensive involvement; poor liver function (Child-Pugh B8-C)</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> <strong>TACE + systemic therapy combination</strong> — key development: The <mark class="trial-mark">LAUNCH trial (ESMO 2022)</mark> showed lenvatinib + TACE superior to TACE alone in intermediate-advanced HCC (mOS 17.8 vs 11.5 mo). Additionally, <mark class="trial-mark">EMERALD-1 (JCO 2024)</mark> demonstrated durvalumab + bevacizumab as maintenance after cTACE significantly improved PFS vs placebo (15.0 vs 8.2 mo) — the first positive locoregional + systemic combination trial. This combination is rapidly becoming standard for intermediate HCC.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>4.5 Systemic Therapy for Advanced HCC (BCLC C)</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Regimen</th><th>Line</th><th>Trial</th><th>mOS</th><th>Key Notes</th></tr></thead>
+      <tbody>
+        <tr class="even"><td><strong class="drug-name">Atezolizumab + Bevacizumab</strong> (atezo-bev)</td><td>1st line preferred</td><td>IMbrave150 (NEJM 2020)</td><td>19.2 vs 13.4 mo (sorafenib); ORR 30%</td><td>Standard 1L in Child-Pugh A, PS 0-1; CONTRAINDICATED: active variceal bleeding, untreated esophageal varices (endoscope before starting bev), high bleeding risk; requires HBV/HCV treatment</td></tr>
+        <tr class="odd"><td><strong class="drug-name">Durvalumab + Tremelimumab</strong> (STRIDE regimen)</td><td>1st line alternative</td><td>HIMALAYA (NEJM 2022)</td><td>16.4 vs 13.8 mo (sorafenib); ORR 20.1%</td><td>Single priming dose tremelimumab (anti-CTLA-4) + durvalumab maintenance; OS HR 0.78; SUBSTITUTE when bev contraindicated (bleeding risk); active autoimmune disease caution</td></tr>
+        <tr class="even"><td><strong class="drug-name">Lenvatinib</strong></td><td>1st line (alternative)</td><td>REFLECT (Lancet 2018)</td><td>13.6 vs 12.3 mo (sorafenib); non-inferior</td><td>ORR 40% (highest for a targeted agent); use if immunotherapy contraindicated (autoimmune disease, transplant); Child-Pugh A only; hypertension, proteinuria, hypothyroidism, fatigue prominent toxicities</td></tr>
+        <tr class="odd"><td><strong class="drug-name">Sorafenib</strong></td><td>1st line (historical standard); 2nd line if lenvatinib used 1L</td><td>SHARP (NEJM 2008)</td><td>10.7 vs 7.9 mo (placebo); first positive systemic therapy trial in HCC</td><td>Multikinase inhibitor (VEGFR, PDGFR, RAF); key toxicities: hand-foot skin reaction (HFSR), diarrhea, hypertension, fatigue; now 2nd/3rd line only given superior 1L options</td></tr>
+        <tr class="even"><td><strong class="drug-name">Regorafenib</strong></td><td>2nd line (after sorafenib)</td><td>RESORCE (Lancet 2017)</td><td>10.6 vs 7.8 mo</td><td>ONLY for patients who tolerated sorafenib; similar toxicity profile to sorafenib (HFSR, diarrhea, hypertension, fatigue, hepatotoxicity)</td></tr>
+        <tr class="odd"><td><strong class="drug-name">Cabozantinib</strong></td><td>2nd-3rd line</td><td>CELESTIAL (NEJM 2018)</td><td>10.2 vs 8.0 mo</td><td>Multikinase (VEGFR, MET, AXL, RET); unique MET/AXL inhibition may overcome resistance mechanisms; effective after sorafenib ± 1 other agent</td></tr>
+        <tr class="even"><td><strong class="drug-name">Ramucirumab</strong></td><td>2nd line (AFP ≥400 ng/mL)</td><td>REACH-2 (Lancet Oncol 2019)</td><td>8.5 vs 7.3 mo</td><td>VEGFR-2 mAb; ONLY effective in AFP ≥400 ng/mL; first biomarker-selected 2L trial in HCC</td></tr>
+        <tr class="odd"><td><strong class="drug-name">Nivolumab + Ipilimumab</strong></td><td>2nd line (after sorafenib)</td><td>CheckMate 040 (JCO 2020)</td><td>mOS 22.8 mo (arm A: 3mg+1mg); ORR 32%</td><td>FDA approved 2020 (accelerated); durable responses (22% OS rate at 24 mo); higher irAE rate with dual ICI; liver biopsy if hepatitis irAE (to distinguish from tumor progression)</td></tr>
+      </tbody>
+    </table>
+    <div class="high-yield"><div class="high-yield-title">&#x26A1; High-Yield: HCC Management Pearls for Internists</div>
+      <ul>
+        <li><strong>Atezo-bev = 1L standard</strong> but requires gastroscopy first (treat varices before bevacizumab) — plan ahead with GI</li>
+        <li><strong>HBV reactivation:</strong> All patients receiving immunosuppressive therapy/chemotherapy with HBsAg+ or HBcAb+ — start prophylactic antiviral (entecavir or tenofovir) BEFORE treatment; continue for 6-12 months after completion</li>
+        <li><strong>HCV treatment:</strong> SVR achieved with DAAs — continue surveillance with 6-monthly US+AFP even post-SVR in cirrhosis (risk persists)</li>
+        <li><strong>Liver transplant evaluation:</strong> HCC within Milan criteria → PRIORITIZE transplant listing; bridging therapy (TACE/ablation) while on waitlist; AFP &gt;1000 ng/mL at listing = worse post-transplant outcomes; AFP trajectory matters</li>
+        <li><strong>Child-Pugh C patients:</strong> Essentially no systemic therapy proven safe and effective; focus on palliative care and liver disease management (± transplant if eligible)</li>
+      </ul>
+    </div>
+    <div class="reference-box"><h4>&#x1F4DA; Key Trials — HCC</h4>
+      <ul>
+        <li><span class="ref-trial">IMbrave150 (NEJM 2020)</span> — Atezo-bev vs sorafenib 1L advanced HCC: OS 19.2 vs 13.4 mo; ORR 30% vs 11%; practice-changing</li>
+        <li><span class="ref-trial">HIMALAYA (NEJM 2022)</span> — STRIDE (durvalumab + tremelimumab) vs sorafenib: OS 16.4 vs 13.8 mo; HR 0.78</li>
+        <li><span class="ref-trial">REFLECT (Lancet 2018)</span> — Lenvatinib non-inferior to sorafenib 1L: OS 13.6 vs 12.3 mo; ORR 40%</li>
+        <li><span class="ref-trial">RESORCE (Lancet 2017)</span> — Regorafenib after sorafenib: OS 10.6 vs 7.8 mo; requires sorafenib tolerance</li>
+        <li><span class="ref-trial">REACH-2 (Lancet Oncol 2019)</span> — Ramucirumab in AFP ≥400 ng/mL 2L HCC: OS 8.5 vs 7.3 mo; first biomarker-selected HCC trial</li>
+        <li><span class="ref-guideline">EASL Clinical Practice Guidelines 2025 — HCC</span> — Surveillance, diagnosis, staging, treatment algorithm</li>
+        <li><span class="ref-guideline">AASLD HCC Guidance 2023</span> — Liver transplant criteria, LI-RADS application, surveillance recommendations</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>&#x2753; Practice Questions — HCC</span></div>
+  <div class="subsection-content">
+    <div class="question">
+      <div class="question-text">Q1. A 58-year-old man with HCV cirrhosis (Child-Pugh A, ECOG PS 0) is found to have a single 4 cm LR-5 lesion in segment 6 with no vascular invasion or extrahepatic spread. He has no esophageal varices on recent endoscopy. What is the MOST appropriate first step?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Surgical resection (preferred) or proceed to liver transplant evaluation (BCLC A)</strong><div class="explanation">BCLC A (single nodule, preserved liver function, PS 0) → curative intent. Surgical resection is preferred if adequate functional liver reserve (ICGR15 &lt;20%, future liver remnant adequate). Liver transplant evaluation is ideal if the patient has significant portal hypertension or marginal hepatic reserve (within Milan criteria). This patient has no varices (no portal hypertension) and Child-Pugh A → resection is preferred. Ablation (RFA) is an alternative if &lt;3 cm or surgically unfit. The LR-5 designation (arterial enhancement + washout) confirms HCC diagnosis without biopsy. Do NOT start systemic therapy for localized, resectable disease.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q2. A 65-year-old man with HBV-associated HCC (BCLC C — portal vein thrombosis, 2 liver lesions, Child-Pugh A, PS 1) is started on atezolizumab + bevacizumab. Three weeks later he presents with hematemesis. What was the critical pre-treatment step that was missed?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Upper endoscopy to evaluate and treat esophageal varices BEFORE starting bevacizumab</strong><div class="explanation">Bevacizumab (anti-VEGF) inhibits VEGF-mediated vascular healing and is CONTRAINDICATED in patients with untreated esophageal varices at high risk of bleeding. In cirrhotic patients with portal hypertension (as in this case — HBV cirrhosis), variceal bleeding risk is significant. NCCN/EASL guidelines mandate upper endoscopy BEFORE starting atezo-bev. If high-risk varices found: prophylactic band ligation or non-selective beta-blockers (propranolol/carvedilol) → then start atezo-bev. If patient bleeds on bevacizumab: discontinue permanently. Consider STRIDE regimen (durvalumab + tremelimumab) as alternative when bevacizumab is contraindicated.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q3. A 52-year-old woman with NASH cirrhosis and HCC has AFP levels of 650 ng/mL. She responds to 2 cycles of TACE with 60% tumor necrosis on MRI. She is on the liver transplant waitlist (within Milan criteria). What is the primary concern regarding her transplant candidacy?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: AFP level &gt;1000 ng/mL at time of transplant evaluation predicts poor post-transplant outcomes (HCC recurrence)</strong><div class="explanation">AFP trajectory and absolute level at time of transplant are critical predictors of post-transplant HCC recurrence. AFP &gt;1000 ng/mL at listing (or persistently elevated despite treatment) is a relative contraindication to transplant in many centers (associated with 2× higher recurrence risk). AFP decline after treatment (e.g., TACE): if AFP normalizes or drops significantly → favorable. This patient's AFP of 650 is concerning but not prohibitive. Key: monitor AFP trajectory with bridging therapy. If AFP rises despite bridging → suggests aggressive biology → reconsider transplant or wait for more tumor control. Patients with AFP &gt;1000 at transplant have 5-year survival ~40% vs ~65% with AFP &lt;200.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 5 — BREAST CANCER
+═══════════════════════════════════════════════════════════════ -->
+<section id="section-5" class="section">
+<h1 class="section-title">5. Breast Cancer</h1>
+<p>Breast cancer is the most common cancer worldwide (2.3 million cases/year) and the leading cause of cancer death in women globally. Management is driven by molecular subtypes — HR+/HER2−, HER2+, and TNBC — each with distinct biology and therapeutic targets. This section covers systemic therapy based on NCCN 2025, ESMO 2024, and San Antonio Breast Cancer Symposium 2024 updates.</p>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>5.1 Molecular Subtypes &amp; Clinical Classification</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Subtype</th><th>Definition (IHC)</th><th>Frequency</th><th>Prognosis</th><th>Treatment Backbone</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Luminal A (HR+/HER2−, low grade)</td><td>ER+, PR+, HER2−, Ki-67 &lt;14%, low genomic risk</td><td>40-50%</td><td>Best; low recurrence risk; late recurrence &gt;5y is key challenge</td><td>Endocrine therapy alone (AI ± CDK4/6i in metastatic); no chemo if low genomic risk (Oncotype DX RS &lt;26)</td></tr>
+        <tr class="odd"><td>Luminal B (HR+/HER2−, high grade)</td><td>ER+, PR+/−, HER2−, Ki-67 ≥20% or high genomic risk</td><td>20-30%</td><td>Intermediate; higher recurrence risk in first 5 years</td><td>Endocrine therapy + CDK4/6 inhibitor (metastatic); chemotherapy if high genomic risk (Oncotype DX RS ≥26)</td></tr>
+        <tr class="even"><td>HER2-enriched (HER2+, HR−)</td><td>HER2 3+ by IHC or 2+/FISH amplified; ER−, PR−</td><td>10%</td><td>Intermediate-poor (historically); dramatically improved with targeted therapy</td><td>Trastuzumab + pertuzumab + taxane (metastatic); dual HER2 blockade + chemo (neoadjuvant)</td></tr>
+        <tr class="odd"><td>Luminal HER2 (HER2+, HR+)</td><td>ER/PR+, HER2+</td><td>10%</td><td>Intermediate; endocrine resistance common in metastatic</td><td>Anti-HER2 + endocrine therapy (maintenance); chemo + dual HER2 blockade (neoadjuvant)</td></tr>
+        <tr class="even"><td>Triple-negative (TNBC)</td><td>ER−, PR−, HER2−; IHC/FISH (1% false-negative by IHC → confirm)</td><td>15-20%</td><td>Worst prognosis; mostly early relapse (within 3 years); basal-like biology</td><td>Chemo (carboplatin/taxane backbone); add pembrolizumab (early + metastatic); PARP inhibitor (BRCA1/2 mutant)</td></tr>
+        <tr class="odd"><td>HER2-Low (new category)</td><td>IHC 1+ OR IHC 2+/FISH non-amplified (may be HR+ or HR−)</td><td>~55% of all BC</td><td>Intermediate</td><td>T-DXd (trastuzumab deruxtecan) — DESTINY-Breast04; dramatically expanded HER2-targeted eligibility</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> <strong>HER2-Low</strong> is a new actionable category (DESTINY-Breast04, NEJM 2022). T-DXd showed OS 23.4 vs 16.8 months in HER2-low BC (HR+ and TNBC-low populations). This means ~55% of all breast cancers are now potential T-DXd candidates. Key toxicity: interstitial lung disease (ILD, 12.1%) — any pulmonary symptoms → hold T-DXd → chest CT → grade-based management. Grade ≥2 ILD → permanently discontinue T-DXd.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>5.2 Genomic Testing in Early Breast Cancer</span></div>
+  <div class="subsection-content">
+    <p>Genomic assays identify which early HR+/HER2− patients truly benefit from chemotherapy in addition to endocrine therapy. They are NOT used in HER2+ or TNBC (all receive chemotherapy).</p>
+    <table>
+      <thead><tr><th>Assay</th><th>Genes</th><th>Score / Range</th><th>Clinical Use / Key Trials</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Oncotype DX (21-gene RS)</td><td>16 cancer + 5 reference genes; measures proliferation, invasion, HER2, ER modules</td><td>RS 0-100; Low &lt;18; Intermediate 18-30; High ≥31</td><td>TAILORx: RS &lt;26 → endocrine therapy alone (non-inferior to chemo+ET in premenopausal N0 ≤50y exception: RS 16-25 benefits from chemo). Standard for Stage I-IIA HR+/HER2−/N0</td></tr>
+        <tr class="odd"><td>Mammaprint (70-gene)</td><td>70-gene expression profile; identifies "genomic risk" (low vs high)</td><td>Binary: Low risk vs High risk genomic score</td><td>MINDACT: Genomic Low risk + Clinical High risk → chemotherapy safely omitted in ~46% (10-year DMFS 95.9% without chemo). FDA-cleared for N0-N1 HR+/HER2− patients</td></tr>
+        <tr class="even"><td>Prosigna (PAM50 ROR)</td><td>50-gene subtype classifier; risk of recurrence (ROR) score</td><td>ROR 0-100: Low/Intermediate/High; assigns intrinsic subtypes</td><td>Node-positive HR+ patients; useful for extended adjuvant endocrine therapy decisions (10 years vs 5 years)</td></tr>
+        <tr class="odd"><td>EndoPredict (12-gene)</td><td>12-gene including proliferation and ER pathway</td><td>EPclin score: low vs high risk</td><td>Predicts late distant metastasis (years 5-15); guides extended endocrine therapy decisions; most useful for premenopausal patients</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>5.3 HR+ Breast Cancer — Endocrine Therapy &amp; CDK4/6 Inhibitors</span></div>
+  <div class="subsection-content">
+    <p>Endocrine therapy is the cornerstone of HR+ breast cancer management. CDK4/6 inhibitors have revolutionized metastatic HR+/HER2− disease (now standard 1L) and are being incorporated into early disease.</p>
+    <table>
+      <thead><tr><th>Agent</th><th>Class</th><th>Indication</th><th>Key Trial</th><th>Toxicity</th></tr></thead>
+      <tbody>
+        <tr class="even"><td><strong class="drug-name">Tamoxifen</strong></td><td>SERM (ER modulator)</td><td>Pre- and postmenopausal; adjuvant (5-10y); metastatic; DCIS prevention</td><td>ATLAS trial: 10y tamoxifen reduces recurrence 3.7% absolute; mortality benefit continues after cessation</td><td>VTE (DVT/PE) ×2.5-3×; endometrial cancer (×2-3× with 5y use); hot flashes; vaginal discharge; cataracts; contraindicated in thrombophilia</td></tr>
+        <tr class="odd"><td><strong class="drug-name">Aromatase Inhibitors (AI)</strong> (anastrozole, letrozole, exemestane)</td><td>Inhibit peripheral estrogen synthesis (post-menopausal only)</td><td>Postmenopausal adjuvant (preferred over tamoxifen); metastatic HR+</td><td>BIG 1-98, ATAC: AIs superior to tamoxifen in post-menopausal (DFS benefit); 10-year treatment superior to 5 years (MA.17)</td><td>Arthralgia/arthritis (20-30%; manage with exercise, NSAIDs); osteoporosis (DEXA monitoring; bisphosphonate if T-score &lt;-2); hot flashes; no VTE risk; no endometrial cancer</td></tr>
+        <tr class="even"><td><strong class="drug-name">Fulvestrant</strong></td><td>SERD (ER degrader) — pure ER antagonist; no agonist effect</td><td>Metastatic HR+/HER2−; post-AI progression; combined with CDK4/6i or PI3Ki</td><td>FALCON: fulvestrant superior to anastrozole in AI-naive metastatic HR+ (PFS 16.6 vs 13.8 mo)</td><td>Injection site reactions (IM injection); hot flashes; less bone loss than AI; no VTE</td></tr>
+        <tr class="odd"><td><strong class="drug-name">Palbociclib</strong></td><td>CDK4/6 inhibitor; 28-day cycle (21 days on, 7 days off)</td><td>Metastatic HR+/HER2− 1L + AI; 2L + fulvestrant</td><td>PALOMA-2: palbociclib+letrozole vs letrozole: PFS 27.6 vs 14.5 mo (1L)</td><td>Neutropenia (predominantly; dose-reduction common; less diarrhea); fatigue; alopecia (mild); no significant QTc</td></tr>
+        <tr class="even"><td><strong class="drug-name">Ribociclib</strong></td><td>CDK4/6 inhibitor; 28-day cycle (21 on, 7 off)</td><td>Metastatic HR+/HER2− 1L + AI (premenopausal and postmenopausal); OS benefit demonstrated</td><td>MONALEESA-7 (pre): OS 58.7 vs 48.0 mo; MONALEESA-2 (post): OS 63.9 vs 51.4 mo</td><td>Neutropenia; QTc prolongation (baseline ECG required; monitoring; avoid other QTc-prolonging drugs); hepatotoxicity; diarrhea (less than abemaciclib)</td></tr>
+        <tr class="odd"><td><strong class="drug-name">Abemaciclib</strong></td><td>CDK4/6 inhibitor; continuous dosing (BID)</td><td>Metastatic HR+/HER2− 1L + AI; 2L + fulvestrant; adjuvant high-risk early HR+ (monarchE)</td><td>MONARCH-3 (1L); MONARCH-2 (2L); monarchE: adjuvant high-risk N+ HR+ disease (IDFS 30.4% RRR at 4y)</td><td>Diarrhea (most prominent; loperamide prophylaxis); neutropenia (less severe than others); VTE risk; hepatotoxicity (LFT monitoring); alopecia; interstitial pneumonitis (rare)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Second-line HR+ metastatic after CDK4/6 inhibitor progression:</strong></p>
+    <ul>
+      <li><strong>PIK3CA-mutant:</strong> <strong class="drug-name">Alpelisib</strong> (PI3Kα inhibitor) + fulvestrant (<mark class="trial-mark">SOLAR-1 trial</mark>: PFS 11.0 vs 5.7 mo) — monitor hyperglycemia (RASH + hyperglycemia = class effects)</li>
+      <li><strong>ESR1-mutant (acquired resistance to AI):</strong> <strong class="drug-name">Elacestrant</strong> (oral SERD) (<mark class="trial-mark">EMERALD trial NEJM 2023</mark>: PFS 3.8 vs 1.9 mo; significant improvement especially in ESR1-mutant cohort)</li>
+      <li><strong>AKT-mutant/PTEN-loss:</strong> Capivasertib + fulvestrant (CAPItello-291: PFS 7.2 vs 3.6 mo; FDA approved 2023)</li>
+      <li><strong>mTOR pathway:</strong> Everolimus + exemestane (BOLERO-2: PFS 10.6 vs 4.1 mo; less used now given newer options)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>5.4 HER2+ Breast Cancer</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Setting</th><th>Regimen</th><th>Key Trial</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Metastatic 1L</td><td><strong class="drug-name">Pertuzumab + trastuzumab + docetaxel</strong> (THP)</td><td>CLEOPATRA (NEJM 2012)</td><td>mOS 56.5 vs 40.8 mo; pertuzumab added 16 months of survival — landmark trial; LVEF monitoring q3mo</td></tr>
+        <tr class="odd"><td>Metastatic 2L (T-DM1)</td><td><strong class="drug-name">Trastuzumab emtansine (T-DM1)</strong></td><td>EMILIA (NEJM 2012)</td><td>OS 30.9 vs 25.1 mo after trastuzumab+taxane; thrombocytopenia (key toxicity); hepatotoxicity; now largely replaced by T-DXd in 2L</td></tr>
+        <tr class="even"><td>Metastatic 2L (preferred current)</td><td><strong class="drug-name">Trastuzumab deruxtecan (T-DXd)</strong></td><td>DESTINY-Breast03 (NEJM 2022)</td><td>mPFS 28.8 vs 6.8 mo (vs T-DM1); ORR 79%; <strong>new standard 2L HER2+ mBC</strong>; ILD risk (10-15%); practice-changing</td></tr>
+        <tr class="odd"><td>Metastatic 3L (with brain mets)</td><td><strong class="drug-name">Tucatinib + trastuzumab + capecitabine</strong></td><td>HER2CLIMB (NEJM 2020)</td><td>OS 21.9 vs 17.4 mo; CNS response rate 47%; <strong>highly active in brain metastases</strong> — unique advantage; diarrhea, hepatotoxicity key toxicities; also FDA approved post T-DXd</td></tr>
+        <tr class="even"><td>Neoadjuvant (early HER2+, any stage II-III)</td><td><strong class="drug-name">Docetaxel + carboplatin + trastuzumab + pertuzumab</strong> (TCHP)</td><td>NeoSphere, TRYPHAENA</td><td>pCR rate 57-62% with TCHP; pCR = excellent prognosis (event-free survival); pathologic non-response → adjuvant T-DM1 (KATHERINE trial)</td></tr>
+        <tr class="odd"><td>Adjuvant (early HER2+)</td><td>Adjuvant <strong class="drug-name">trastuzumab</strong> ± <strong class="drug-name">pertuzumab</strong> × 1 year; T-DM1 if residual disease after neoadjuvant</td><td>HERA, APHINITY, KATHERINE</td><td>KATHERINE: T-DM1 vs trastuzumab after neoadjuvant non-pCR: iDFS HR 0.50 (50% reduction in recurrence risk); extended neratinib 1 year after trastuzumab for high-risk</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> HER2+ brain metastases are common (~30-50% lifetime risk). Tucatinib-based regimen (HER2CLIMB) has the best evidence for active CNS disease in HER2+ mBC. Lapatinib + capecitabine (historical option) is now less preferred. T-DXd also shows CNS activity (DESTINY-Breast12 brain mets cohort: ORR 51.5% in active brain mets). <strong>Always assess CNS disease status</strong> in HER2+ patients — brain imaging (MRI) at baseline in metastatic disease and with neurological symptoms.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>5.5 Triple-Negative Breast Cancer (TNBC)</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Setting</th><th>Regimen</th><th>Key Trial</th><th>Outcome</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Early TNBC (neoadjuvant)</td><td><strong class="drug-name">Pembrolizumab + carboplatin/paclitaxel → AC</strong> → adjuvant pembrolizumab × 9 cycles</td><td>KEYNOTE-522 (NEJM 2022)</td><td>pCR 64.8% vs 51.2%; EFS HR 0.63; practice-changing</td><td>Immunotherapy regardless of PD-L1; irAEs including endocrinopathies (monitor TFTs, cortisol, glucose throughout and after); add to all early TNBC (stage II-III)</td></tr>
+        <tr class="odd"><td>Early TNBC (adjuvant — non-pCR)</td><td><strong class="drug-name">Capecitabine</strong> × 8 cycles</td><td>CREATE-X (NEJM 2017)</td><td>5-year DFS 74.1% vs 67.6%; especially effective in TNBC (DFS HR 0.58)</td><td>Add capecitabine if residual disease after neoadjuvant; olaparib if BRCA1/2 mutant (OlympiA trial below)</td></tr>
+        <tr class="even"><td>Early TNBC (adjuvant — BRCA1/2 mutant)</td><td><strong class="drug-name">Olaparib</strong> × 1 year after standard chemo</td><td>OlympiA (NEJM 2021)</td><td>iDFS HR 0.58; OS HR 0.68 (4-year OS 87.5% vs 83.2%)</td><td>BRCA1/2 germline mutation + HER2− breast Ca (HR+ or TNBC); 1 year adjuvant; myelosuppression, nausea, fatigue; MDS/AML rare</td></tr>
+        <tr class="odd"><td>Metastatic TNBC 1L (PD-L1 CPS ≥10)</td><td><strong class="drug-name">Pembrolizumab + chemotherapy</strong> (nab-paclitaxel or paclitaxel or gemcitabine+carboplatin)</td><td>KEYNOTE-522 (mTNBC arm) / KEYNOTE-355 (NEJM 2022)</td><td>PFS 9.7 vs 5.6 mo; OS 23.0 vs 16.1 mo (CPS ≥10)</td><td>PD-L1 testing (CPS ≥10 = pembrolizumab benefit in 1L metastatic); atezolizumab + nab-paclitaxel was withdrawn after IMpassion130 overall OS not met (atezolizumab now not approved in TNBC)</td></tr>
+        <tr class="even"><td>Metastatic TNBC (BRCA1/2 mutant)</td><td><strong class="drug-name">Olaparib</strong> or <strong class="drug-name">talazoparib</strong> monotherapy</td><td>OlympiAD (NEJM 2017); EMBRACA (NEJM 2018)</td><td>OlympiAD: PFS 7.0 vs 4.2 mo; ORR 59.9% vs 28.8%</td><td>Superior to single-agent chemotherapy in BRCA-mutant HER2− mBC; thrombocytopenia (talazoparib: higher PARP trapping); no significant OS benefit in metastatic (OS benefit in adjuvant)</td></tr>
+        <tr class="odd"><td>Metastatic TNBC 2L+ (HER2-low)</td><td><strong class="drug-name">T-DXd (trastuzumab deruxtecan)</strong></td><td>DESTINY-Breast04 (NEJM 2022)</td><td>mPFS 9.9 vs 5.1 mo; OS 23.4 vs 16.8 mo; ORR 52.3%</td><td>For HER2-low (IHC 1+ or 2+/ISH−) TNBC; ILD/pneumonitis 12% (dose reduction/hold protocols critical); breakthrough therapy for HER2-low</td></tr>
+        <tr class="even"><td>Metastatic TNBC 2L+ (any PD-L1)</td><td><strong class="drug-name">Sacituzumab govitecan</strong> (SG)</td><td>ASCENT (NEJM 2021)</td><td>mPFS 5.6 vs 1.7 mo; OS 12.1 vs 6.7 mo</td><td>Trop-2 ADC (camptothecin payload); key toxicities: severe diarrhea (G3-4: 10%; loperamide essential), neutropenia, UGT1A1*28 homozygous patients → higher SN-38 toxicity (dose reduce); alopecia</td></tr>
+      </tbody>
+    </table>
+    <div class="reference-box"><h4>&#x1F4DA; Key Trials — Breast Cancer</h4>
+      <ul>
+        <li><span class="ref-trial">KEYNOTE-522 (NEJM 2022)</span> — Pembrolizumab + chemo → adj pembro in early TNBC: pCR 64.8%; EFS benefit; new standard of care</li>
+        <li><span class="ref-trial">DESTINY-Breast03 (NEJM 2022)</span> — T-DXd vs T-DM1 in HER2+ mBC 2L: PFS 28.8 vs 6.8 mo; practice-changing</li>
+        <li><span class="ref-trial">DESTINY-Breast04 (NEJM 2022)</span> — T-DXd in HER2-low mBC: OS 23.4 vs 16.8 mo; new actionable category</li>
+        <li><span class="ref-trial">OlympiA (NEJM 2021)</span> — Adjuvant olaparib in BRCA-mutant HER2− early BC: iDFS HR 0.58; OS benefit confirmed</li>
+        <li><span class="ref-trial">MONALEESA-7 (NEJM 2018)</span> — Ribociclib + ET in premenopausal HR+/HER2−: OS 58.7 vs 48.0 mo; first CDK4/6i OS benefit in premenopausal</li>
+        <li><span class="ref-trial">HER2CLIMB (NEJM 2020)</span> — Tucatinib + trastuzumab + capecitabine in HER2+ mBC with brain mets: OS 21.9 vs 17.4 mo; CNS response 47%</li>
+        <li><span class="ref-trial">ASCENT (NEJM 2021)</span> — Sacituzumab govitecan vs chemo in 2L+ TNBC: OS 12.1 vs 6.7 mo; ORR 35%</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>&#x2753; Practice Questions — Breast Cancer</span></div>
+  <div class="subsection-content">
+    <div class="question">
+      <div class="question-text">Q1. A 48-year-old premenopausal woman with ER+/PR+/HER2− stage II breast cancer completes neoadjuvant chemotherapy and surgery. Residual disease of 2 cm is found in the breast. BRCA1 germline mutation is confirmed. What is the best adjuvant systemic therapy plan?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Olaparib × 1 year (per OlympiA) + endocrine therapy (tamoxifen or AI + ovarian suppression)</strong><div class="explanation">OlympiA trial (NEJM 2021): Germline BRCA1/2-mutant HER2-negative (HR+ or TNBC) early breast cancer with high-risk features (residual disease, node-positive, etc.) → adjuvant olaparib × 1 year significantly improves iDFS (HR 0.58) and OS (HR 0.68). This is applicable to both HR+ and TNBC patients. Additionally, as an HR+ premenopausal patient, endocrine therapy (ovarian suppression + AI or tamoxifen) should be given for ≥5 years. The high-risk residual disease also supports consideration of extended endocrine therapy (10 years). Note: capecitabine (CREATE-X) is for TNBC non-pCR specifically, not HR+.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q2. A 62-year-old woman with HR+/HER2− metastatic breast cancer develops bone and liver metastases while on palbociclib + letrozole (2 years). Next-generation sequencing of ctDNA reveals an ESR1 Y537S mutation. What is the preferred next-line therapy?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Elacestrant (oral SERD) monotherapy or fulvestrant-based combination</strong><div class="explanation">ESR1 mutations (Y537S, D538G) are the most common acquired resistance mechanism to aromatase inhibitors + CDK4/6 inhibitors, found in 20-40% of patients after CDK4/6i progression. Elacestrant (EMERALD trial, NEJM 2023) is an oral selective estrogen receptor degrader (SERD) that outperforms standard-of-care endocrine therapy in ESR1-mutant patients: PFS 3.8 vs 1.9 months (HR 0.55 in ESR1-mutant subgroup). It is FDA approved for ESR1-mutant HR+/HER2− mBC post-CDK4/6i. Alternative: capivasertib + fulvestrant if PIK3CA/AKT/PTEN pathway also altered (CAPItello-291). Fulvestrant + everolimus is less effective in ESR1-mutant disease (fulvestrant degradation of mutant ER is less effective).</div></div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 6 — IMMUNO-ONCOLOGY & TOXICITY (irAEs)
+═══════════════════════════════════════════════════════════════ -->
+<section id="section-6" class="section">
+<h1 class="section-title">6. Immuno-Oncology &amp; Immune-Related Adverse Events (irAEs)</h1>
+<p>Immune checkpoint inhibitors (ICIs) have transformed oncology but produce a unique spectrum of inflammatory toxicities — immune-related adverse events (irAEs) — affecting virtually every organ system. Recognition and graded management of irAEs is critical for any physician caring for oncology patients. This section covers ICI mechanisms, irAE grading (CTCAE v5.0), and organ-specific management based on SITC/ESMO/NCCN 2024 guidelines.</p>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>6.1 ICI Mechanisms &amp; Classes</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Target</th><th>Agents</th><th>Mechanism</th><th>Approved Tumors (Selected)</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>PD-1 (Programmed Death-1)</td><td><strong class="drug-name">Pembrolizumab</strong>, <strong class="drug-name">Nivolumab</strong>, <strong class="drug-name">Cemiplimab</strong>, <strong class="drug-name">Dostarlimab</strong></td><td>Block PD-1 on T cells → prevent PD-L1/PD-L2 (on tumor/APC) from suppressing T-cell activation; restore effector T-cell killing</td><td>NSCLC, melanoma, gastric, HNSCC, cervical, TMB-H/MSI-H (agnostic), urothelial, HCC, TNBC, RCC, lymphoma, etc.</td></tr>
+        <tr class="odd"><td>PD-L1 (Programmed Death Ligand-1)</td><td><strong class="drug-name">Atezolizumab</strong>, <strong class="drug-name">Durvalumab</strong>, <strong class="drug-name">Avelumab</strong></td><td>Block PD-L1 on tumor/APC → prevent engagement with PD-1 on T cells; preserve PD-L2:PD-1 interaction (potentially fewer irAEs with PD-L1 inhibitors vs PD-1 inhibitors — less confirmed)</td><td>NSCLC (atezolizumab, durvalumab), stage III NSCLC (durvalumab — PACIFIC), BTC (durvalumab), urothelial (avelumab maintenance), Merkel cell Ca (avelumab)</td></tr>
+        <tr class="even"><td>CTLA-4 (Cytotoxic T-Lymphocyte Antigen-4)</td><td><strong class="drug-name">Ipilimumab</strong>, <strong class="drug-name">Tremelimumab</strong></td><td>Block CTLA-4 on regulatory T cells (Tregs) and activated T cells → prevent CTLA-4 from outcompeting CD28 for B7 ligands on APC → amplified T-cell priming/activation in lymph node</td><td>Melanoma (ipilimumab + nivolumab), NSCLC (ipilimumab + nivolumab), HCC (tremelimumab STRIDE), RCC, MSI-H CRC</td></tr>
+        <tr class="odd"><td>LAG-3 (Lymphocyte Activation Gene-3)</td><td><strong class="drug-name">Relatlimab</strong> (+ nivolumab; Opdualag)</td><td>LAG-3 on exhausted T cells → blocks MHC II-mediated inhibitory signaling; combined with PD-1 for synergistic T-cell reinvigoration</td><td>Melanoma (relatlimab + nivolumab: RELATIVITY-047; mPFS 10.1 vs 4.6 mo vs nivolumab monotherapy)</td></tr>
+        <tr class="even"><td>TIGIT (T cell Ig and ITIM domain)</td><td><strong class="drug-name">Tiragolumab</strong> + atezolizumab (investigational)</td><td>TIGIT on T cells → blocks CD155/CD112 on tumor cells/APC → inhibitory signaling; combination with PD-L1 to enhance response</td><td>NSCLC (SKYSCRAPER trials; mixed results); ongoing development in multiple tumors</td></tr>
+      </tbody>
+    </table>
+    <div class="high-yield"><div class="high-yield-title">&#x26A1; High-Yield: irAE General Principles</div>
+      <ul>
+        <li><strong>Timing:</strong> Most irAEs occur within weeks-months of ICI start; endocrine irAEs can be delayed (months to years); irAEs can occur even after ICI discontinuation (immune memory)</li>
+        <li><strong>Anti-CTLA-4 vs Anti-PD-1/L1:</strong> Ipilimumab causes more severe/early GI irAEs; PD-1/L1 cause more endocrine/pulmonary irAEs; combination = additive irAE risk (50% any grade, 20% grade 3-4)</li>
+        <li><strong>Re-challenge:</strong> After grade 1-2 irAE resolution and steroid taper → may rechallenge (with close monitoring); grade 3-4 irAEs → generally permanently discontinue ICI</li>
+        <li><strong>Infection mimics:</strong> Always exclude infection before starting steroids; irAE colitis can mimic C. diff; irAE pneumonitis mimics PCP/viral pneumonia</li>
+        <li><strong>Steroid dosing:</strong> Grade 2 → prednisone 0.5-1 mg/kg/day; Grade 3-4 → methylprednisolone 1-2 mg/kg/day IV; life-threatening (myocarditis, pneumonitis, encephalitis) → methylprednisolone 1-2 g/day IV "pulse" × 3 days</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>6.2 Endocrine irAEs</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Endocrine irAE</th><th>Incidence</th><th>Presentation</th><th>Diagnosis</th><th>Management</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Immune thyroiditis → Hypothyroidism</td><td>PD-1: 5-10%; Combination: 20%</td><td>Initially: thyrotoxicosis phase (painless, transient); then hypothyroidism (fatigue, cold intolerance, weight gain, constipation, bradycardia)</td><td>TSH (elevated in hypothyroidism; suppressed in thyrotoxic phase); free T4; anti-TPO/TG antibodies (may be positive)</td><td>Thyrotoxic phase: monitor; beta-blocker for symptoms; NO steroids (autoimmune destruction not granulomatous). Hypothyroidism: levothyroxine (start low, titrate; continue ICI — do NOT hold for thyroid irAE alone)</td></tr>
+        <tr class="odd"><td>Hypophysitis (pituitary inflammation)</td><td>CTLA-4: 8-13%; PD-1: &lt;1%; Combination: 8%</td><td>Headache (frontal/temporal), visual field defects (bitemporal hemianopsia — compression of chiasm), fatigue, weight loss, nausea; secondary adrenal insufficiency (most dangerous: hypotension, hyponatremia)</td><td>MRI pituitary (enlargement → "snowman" shape); AM cortisol, ACTH, TSH, free T4, LH, FSH, testosterone/estradiol, GH/IGF-1; Cortisol stimulation test</td><td>Secondary AI: hydrocortisone replacement (URGENT; 20-30 mg/day in divided doses; sick-day rule); central hypothyroidism: levothyroxine AFTER hydrocortisone started; high-dose steroids (1-2 mg/kg) for mass effect; HOLD ICI until secondary AI stabilized; hypophysitis RARELY reverses → usually permanent hormone deficiency</td></tr>
+        <tr class="even"><td>Primary Adrenal Insufficiency</td><td>Rare; &lt;1% (ICI alone); higher with combination</td><td>Fatigue, nausea, vomiting, abdominal pain, hyperpigmentation (ACTH elevated), hyponatremia, hyperkalemia, hypotension; Addisonian crisis life-threatening</td><td>AM cortisol &lt;3 μg/dL (diagnostic); ACTH stimulation test (cortisol fails to rise); elevated ACTH; CT abdomen (bilateral adrenal enlargement then atrophy)</td><td>Adrenal crisis: IV hydrocortisone 100 mg bolus → 200 mg/day continuous or q6-8h; IV fluids; HOLD ICI; chronic management: hydrocortisone + fludrocortisone; <strong>PERMANENTLY discontinue ICI in grade 3-4 adrenal crisis</strong></td></tr>
+        <tr class="odd"><td>Immune-mediated Diabetes (Type 1-like)</td><td>Rare; &lt;1% (higher with anti-PD-1)</td><td>Rapid onset DKA; usually in patients without prior diabetes; abrupt presentation; C-peptide undetectable/very low; often positive anti-GAD antibodies</td><td>Glucose, DKA workup (pH, bicarbonate, ketones, anion gap); C-peptide; anti-GAD65/IA2/ZnT8 antibodies; HbA1c (may be near normal if acute onset)</td><td>DKA: IV insulin infusion + aggressive fluid/electrolyte replacement; transition to subcutaneous insulin (basal-bolus; permanent; no remission); HOLD ICI during DKA; may restart after stabilization; steroids NOT indicated (worsen hyperglycemia; do not alter ICI-induced T1D); PERMANENT insulin requirement</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl (Neurologist-Oncologist Interface):</strong> Hypophysitis causes secondary adrenal insufficiency — NOT primary. Therefore: ACTH is LOW (pituitary fails to produce ACTH → adrenals are normal but not stimulated). This is critical to distinguish from primary adrenal insufficiency (ACTH HIGH, direct adrenal gland damage). In hyponatremia on ICI: check AM cortisol first. If secondary AI → hydrocortisone replacement (NOT fludrocortisone — RAAS axis intact). Critically important: give <strong>hydrocortisone BEFORE levothyroxine</strong> in hypophysitis to avoid precipitating adrenal crisis.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>6.3 Pulmonary irAE — Pneumonitis</span></div>
+  <div class="subsection-content">
+    <p>ICI pneumonitis is a potentially life-threatening irAE. Incidence: PD-1/L1 monotherapy ~3-5%; ipilimumab alone ~2%; combination anti-PD-1 + anti-CTLA-4 ~10%.</p>
+    <table>
+      <thead><tr><th>Grade</th><th>Clinical Features</th><th>Imaging (CT Pattern)</th><th>Management</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Grade 1 (Asymptomatic)</td><td>Radiographic changes only; no symptoms; incidental finding</td><td>Ground-glass opacities (GGO); organizing pneumonia pattern; occasional reticular changes</td><td>HOLD ICI; close monitoring; repeat CT in 2-4 weeks; pulmonology consultation; resume ICI if resolves and with caution</td></tr>
+        <tr class="odd"><td>Grade 2 (Symptomatic)</td><td>New/worsening dyspnea, cough, low-grade fever; limiting instrumental ADL</td><td>GGO, consolidation, mixed organizing pneumonia pattern; bilateral</td><td>HOLD ICI permanently until resolution; prednisone 1 mg/kg/day (max 80 mg); taper over 4-6 weeks; bronchoscopy + BAL to exclude infection; resume ICI only if G1 or better and with multidisciplinary agreement</td></tr>
+        <tr class="even"><td>Grade 3 (Severe)</td><td>Severe dyspnea, hypoxemia (O₂ requirement); hospitalization required</td><td>Extensive bilateral GGO/consolidation; diffuse alveolar damage pattern in severe cases</td><td>PERMANENTLY DISCONTINUE ICI; methylprednisolone 2 mg/kg/day IV; if no improvement in 48h → add infliximab 5 mg/kg (anti-TNF-α) or MMF (mycophenolate mofetil); exclude PCP (BAL); PCP prophylaxis with high-dose steroids</td></tr>
+        <tr class="odd"><td>Grade 4 (Life-threatening)</td><td>Respiratory failure requiring mechanical ventilation/ARDS</td><td>Diffuse alveolar damage; ARDS pattern; near-complete lung involvement</td><td>PERMANENTLY DISCONTINUE ICI; methylprednisolone pulse 1-2 g/day IV × 3 days; ICU; consider IVIG, rituximab, or plasmapheresis in refractory cases; ~50% mortality in grade 4</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> ICI pneumonitis vs tumor progression in the lung: key challenge. On CT, pneumonitis = bilateral, often peripheral/lower-lobe GGO (organizing pneumonia pattern), while progression = new/growing nodules/mass. However, they can coexist. Rule: in any new respiratory symptoms on ICI → <strong>hold ICI, start work-up (CT chest + bronchoscopy if indicated), exclude infection</strong>, then treat based on grade. Do not continue ICI through suspected pneumonitis. PCP prophylaxis: prophylactic trimethoprim-sulfamethoxazole (or atovaquone/dapsone) for all patients on prednisone ≥20 mg/day for &gt;4 weeks.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>6.4 GI irAEs — Colitis &amp; Hepatitis</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>irAE</th><th>Incidence</th><th>Presentation</th><th>Diagnosis</th><th>Management</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>ICI Colitis</td><td>Anti-CTLA-4: 30-40%; Anti-PD-1: 1-3%; Combination: 15-20%</td><td>Diarrhea (watery, frequent, &gt;4 stools/day over baseline = Grade 2+); abdominal cramping; bloody stools (severe); fever; urgency</td><td>Stool C. diff + cultures/PCR (exclude infection); CT abdomen/pelvis (colonic wall thickening, pericolonic stranding); colonoscopy + biopsies (lymphocytic/neutrophilic infiltration; crypt destruction; NOT granulomatous — unlike Crohn's)</td><td>G1 (≤4 stools/day): anti-diarrheal, dietary modification, monitor. G2 (4-6 stools/day): HOLD ICI; prednisone 1 mg/kg/day; G3-4 (>7 stools/day or complications): PERMANENTLY DISCONTINUE; IV methylprednisolone 1-2 mg/kg; if no improvement in 48-72h → infliximab 5 mg/kg IV (anti-TNF-α; dramatic response in steroid-refractory colitis); avoid vedolizumab (slower onset; may use in infliximab failure or contraindication)</td></tr>
+        <tr class="odd"><td>ICI Hepatitis</td><td>Anti-PD-1: 3-5%; Anti-CTLA-4: 5-10%; Combination: 15-25%</td><td>Usually asymptomatic (detected on routine LFTs); jaundice, RUQ pain, fatigue in moderate-severe cases</td><td>LFTs (AST/ALT elevation; bilirubin); exclude other causes (viral hepatitis B/C reactivation, drug-induced, autoimmune hepatitis — ANA, anti-smooth muscle Ab, IgG); liver biopsy if diagnosis uncertain (pan-lobular hepatitis with lobular inflammation; NO granulomas — unlike sarcoidosis/drug reactions)</td><td>G1 (AST/ALT 1-3× ULN): monitor; continue ICI. G2 (3-5× ULN): HOLD ICI; prednisone 0.5-1 mg/kg/day; monitor weekly. G3-4 (>5× ULN): PERMANENTLY DISCONTINUE; IV methylprednisolone 1-2 mg/kg; if no improvement in 48h → MMF 500-1000 mg BID (preferred steroid-sparing for ICI hepatitis; NOT infliximab — hepatotoxic risk)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>6.5 Neurological &amp; Cardiac irAEs</span></div>
+  <div class="subsection-content">
+    <p>Neurological irAEs (neuro-irAEs) are rare (1-3%) but potentially devastating. Cardiac irAEs (ICI myocarditis) are uncommon (0.5-1.5%) but carry the highest case fatality rate (~25-50%) of any irAE.</p>
+    <table>
+      <thead><tr><th>irAE</th><th>Incidence</th><th>Key Features</th><th>Management</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>ICI Myocarditis</td><td>0.5-1.5%; higher with combination ICI (nivolumab + ipilimumab ~1.1%)</td><td>Chest pain, dyspnea, palpitations; syncope; new conduction abnormality (heart block); elevated troponin (most sensitive marker; ALWAYS check troponin in any ICI patient with cardiac symptoms); ECG changes (ST changes, QRS widening, heart block)</td><td>IMMEDIATELY DISCONTINUE ICI (any grade); echo (wall motion abnormality, reduced LVEF; often preserved in early myocarditis); cardiac MRI (late gadolinium enhancement); methylprednisolone 1-2 g/day IV × 3-5 days; if no improvement → add MMF, anti-thymocyte globulin (ATG), infliximab (controversial — black box warning for heart failure), IVIG, plasmapheresis; heart failure management; avoid re-challenge (typically permanently contraindicated); multidisciplinary (Cardio-Oncology)</td></tr>
+        <tr class="odd"><td>ICI Encephalitis / Limbic Encephalitis</td><td>&lt;1% overall; higher with combination; anti-NMDAR, anti-LGI1, anti-Caspr2 Ab may be detected</td><td>Subacute onset confusion, memory loss, personality change, seizures, psychosis; fever; hyponatremia (SIADH); CSF pleocytosis with normal glucose; MRI: FLAIR signal in mesial temporal lobes; EEG: diffuse slow or epileptiform activity</td><td>PERMANENTLY DISCONTINUE ICI (grade 3-4); methylprednisolone 1-2 mg/kg or pulse 1 g/day IV × 3-5 days; IVIG 2 g/kg over 2-5 days; plasma exchange; seizure management (levetiracetam, lacosamide — avoid enzyme-inducing ASMs to prevent drug interactions with oncology agents); neurology consultation (your specialty!); antiviral coverage (acyclovir IV) until HSV encephalitis excluded by CSF PCR</td></tr>
+        <tr class="even"><td>ICI-Peripheral Neuropathy / GBS-like</td><td>1-2%; axonal or demyelinating; multifocal</td><td>Ascending weakness, paresthesias, areflexia (GBS-like); or mononeuropathy multiplex; or cranial nerve palsy (facial palsy, diplopia)</td><td>HOLD (grade 2) or PERMANENTLY DISCONTINUE (grade 3-4) ICI; for GBS-like: IVIG 2 g/kg or plasma exchange; CSF: cytoalbuminous dissociation (elevated protein, no cells); NCS/EMG; pain management (gabapentin, duloxetine)</td></tr>
+        <tr class="odd"><td>ICI-Myasthenia Gravis (MG)</td><td>&lt;1%; anti-AChR Ab positive in ~60% of cases; may be new or exacerbate pre-existing subclinical MG</td><td>Ptosis, diplopia, dysarthria, dysphagia, fatigable proximal weakness; myasthenic crisis (respiratory failure) — can be precipitated rapidly; overlap with myositis common (elevated CK, myalgia)</td><td>IMMEDIATELY DISCONTINUE ICI; pyridostigmine NOT recommended (may worsen myositis component); IVIG or plasma exchange; IV steroids (cautiously — acute steroid initiation can worsen MG acutely; use slowly increasing doses); <strong>AVOID</strong> aminoglycosides, fluoroquinolones, magnesium, neuromuscular blocking agents (worsen MG); ICU monitoring for respiratory status (NIF, VC monitoring q4-6h); anti-AChR Ab, anti-MuSK Ab</td></tr>
+        <tr class="even"><td>ICI-Myositis / Inflammatory Myopathy</td><td>1-3%; often overlaps with MG</td><td>Proximal muscle weakness, myalgia, markedly elevated CK (&gt;1000 U/L in severe cases); elevated aldolase, LDH; cardiac involvement (myocarditis + myositis overlap — check troponin); dysphagia (esophageal involvement)</td><td>HOLD or PERMANENTLY DISCONTINUE based on grade; prednisolone 1-2 mg/kg/day; if refractory → IVIG, plasma exchange, azathioprine, MMF; MRI muscle (edema/inflammation); EMG; consider muscle biopsy; <strong>always check troponin and ECG</strong> in ICI myositis (myocarditis co-occurrence in ~25%)</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl (For the Neurologist):</strong> When you see a patient referred from oncology with new neurological symptoms on ICI, always consider neuro-irAEs in the differential alongside: (1) CNS metastases progression, (2) leptomeningeal disease, (3) paraneoplastic syndromes, (4) infection (viral encephalitis, PML in immunosuppressed), (5) metabolic encephalopathy. ICI myasthenia gravis + myositis overlap syndrome carries high risk of myasthenic crisis — hospitalize all suspected cases for monitoring. The combination of ptosis + elevated CK + troponin elevation = emergency (myasthenia + myositis + myocarditis triple overlap).</div>
+    <div class="reference-box"><h4>&#x1F4DA; Key Guidelines — Immuno-Oncology</h4>
+      <ul>
+        <li><span class="ref-guideline">SITC Clinical Practice Guidelines on Immunotherapy Toxicity Management 2021/2024 Update</span></li>
+        <li><span class="ref-guideline">ESMO Clinical Practice Guidelines on Toxicities of Immunotherapy 2022</span></li>
+        <li><span class="ref-guideline">NCCN Management of Immunotherapy-Related Toxicities Guidelines 2025</span></li>
+        <li><span class="ref-trial">RELATIVITY-047 (NEJM 2022)</span> — Relatlimab + nivolumab vs nivolumab in melanoma: PFS 10.1 vs 4.6 mo; LAG-3 inhibition clinical validation</li>
+        <li><span class="ref-trial">Moslehi JJ et al. Lancet 2018</span> — Fatal ICI myocarditis: high fatality rate; combination ICI most common; early recognition critical</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>&#x2753; Practice Questions — Immuno-Oncology</span></div>
+  <div class="subsection-content">
+    <div class="question">
+      <div class="question-text">Q1. A 68-year-old man with metastatic NSCLC on pembrolizumab monotherapy presents with 2 weeks of progressive dyspnea, dry cough, and low-grade fever. CXR shows bilateral infiltrates. SpO₂ 92% on room air. CT chest shows bilateral ground-glass opacities in a peribronchovascular distribution. What is the grade and management?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Grade 2-3 ICI Pneumonitis — HOLD ICI, bronchoscopy + BAL to exclude infection, start prednisone 1-2 mg/kg/day</strong><div class="explanation">This is classic ICI pneumonitis: new respiratory symptoms + bilateral GGO on CT in ICI-treated patient. O₂ requirement (SpO₂ 92%) → Grade 2-3. Management: IMMEDIATELY HOLD pembrolizumab; exclude infection (BAL for cultures, PCP, viral studies); CT-guided approach preferred. If infection excluded or grade 3 (significant hypoxia): start prednisone 1-2 mg/kg/day. If no improvement in 48h → IV methylprednisolone 2 mg/kg + consider infliximab for grade 3-4. PCP prophylaxis if steroids ≥20 mg for >4 weeks. Grade 3-4 → PERMANENTLY DISCONTINUE pembrolizumab. Grade 2 with complete resolution → may rechallenge with multidisciplinary agreement and enhanced monitoring.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q2. A 55-year-old woman on nivolumab + ipilimumab for metastatic melanoma presents with headache, fatigue, and nausea. TSH is 0.05 mU/L, free T4 is 2.8 ng/dL (elevated), AM cortisol is 3 μg/dL, ACTH is 8 pg/mL (low-normal). MRI pituitary shows a 12 mm enlarged pituitary gland. What is the diagnosis and management?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Hypophysitis with secondary adrenal insufficiency and thyrotoxicosis (early phase)</strong><div class="explanation">Hypophysitis: enlarged pituitary on MRI + headache + secondary adrenal insufficiency (low cortisol + low-normal ACTH — pituitary fails to produce ACTH) + thyrotoxicosis (transient phase of thyroiditis coexisting or hypophysitis-related TSH surge then suppression). Key steps: (1) Start HYDROCORTISONE FIRST (100 mg IV bolus, then 100 mg/day) — BEFORE any thyroid treatment — to prevent adrenal crisis; (2) Thyrotoxicosis: beta-blocker for symptoms; monitor; typically self-limiting; (3) High-dose dexamethasone (0.1 mg/kg) for 2-4 weeks for pituitary mass reduction, then taper; (4) HOLD ICI; (5) Hormone axes: monitor recovery — most patients with ICI hypophysitis never recover (permanent hormone deficiency is common). This is predominantly an anti-CTLA-4 irAE.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 7 — ONCOLOGIC EMERGENCIES
+═══════════════════════════════════════════════════════════════ -->
+<section id="section-7" class="section">
+<h1 class="section-title">7. Oncologic Emergencies</h1>
+<p>Oncologic emergencies require immediate recognition and treatment — often by internists and emergency physicians before oncology consultation. This section covers the most critical emergencies based on NCCN 2025, ESMO 2024, and evidence-based internal medicine principles. As an internist with neurology expertise, special emphasis is given to neurological oncologic emergencies.</p>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>7.1 Febrile Neutropenia</span></div>
+  <div class="subsection-content">
+    <p>Febrile neutropenia (FN) is a medical emergency. Definition: ANC &lt;500 cells/μL (or &lt;1000 with expected decline to &lt;500) + single oral temperature ≥38.3°C or ≥38.0°C sustained ≥1 hour.</p>
+    <table>
+      <thead><tr><th>Parameter</th><th>Low-Risk Features (MASCC ≥21)</th><th>High-Risk Features (MASCC &lt;21)</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>MASCC Score</td><td>Outpatient status at fever onset (5), no COPD (4), solid tumor/no fungal infection (4), no prior infection (4), not significantly dehydrated (3), age &lt;60 (2), mild-moderate symptoms (5)</td><td>Any of: AML/ALL, allogeneic HSCT, prolonged neutropenia expected &gt;7 days, inpatient at onset, mucositis grade 3-4, hepatic/renal insufficiency</td></tr>
+        <tr class="odd"><td>Management</td><td>Oral ciprofloxacin + amoxicillin-clavulanate (or monotherapy ciprofloxacin if penicillin allergic); outpatient management acceptable</td><td>IV broad-spectrum anti-pseudomonal beta-lactam: piperacillin-tazobactam OR cefepime OR meropenem; hospital admission; strict monitoring</td></tr>
+        <tr class="even"><td>Modifications</td><td>Add vancomycin if: suspected catheter infection, skin/soft tissue infection, hemodynamic instability, known MRSA colonization, positive blood culture for gram-positive pending ID</td><td>Antifungal coverage: add echinocandin (caspofungin) or voriconazole if persistent fever &gt;4 days despite antibiotics OR high-risk (AML post-induction, HSCT recipient); Empiric antifungal guided by CT chest (halo sign → aspergillosis)</td></tr>
+        <tr class="odd"><td>Duration</td><td>Until afebrile ≥48h AND ANC ≥500 (or ANC clearly trending to recovery)</td><td>Until ANC &gt;500 AND clinical resolution; may need longer in documented infections</td></tr>
+        <tr class="even"><td>G-CSF in FN</td><td>G-CSF in established FN does NOT significantly shorten hospitalization in most; reserved for high-risk (pneumonia, fungal, hemodynamic instability, expected prolonged severe neutropenia)</td><td>Therapeutic G-CSF (5 μg/kg/day filgrastim) in high-risk FN with clinical deterioration; evidence modest; prophylactic G-CSF (pegfilgrastim) prevents FN in subsequent cycles</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> BLOOD CULTURES × 2 sets (peripheral + from each CVC lumen) before antibiotics. Do not delay antibiotics &gt;1 hour from fever recognition — mortality increases 7-10% per hour in septic FN. Avoid rectal temperatures, suppositories, and IM injections in neutropenic patients (risk of perirectal abscess, infection at injection sites). Neutropenic patients can have minimal signs of infection (no pus formation, no lymphadenopathy, blunted inflammatory response).</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>7.2 Tumor Lysis Syndrome (TLS)</span></div>
+  <div class="subsection-content">
+    <p>TLS results from rapid destruction of malignant cells → release of intracellular contents (nucleic acids, phosphate, potassium) → hyperuricemia, hyperphosphatemia, hyperkalemia, hypocalcemia → AKI, arrhythmia, seizures, cardiac arrest.</p>
+    <p><strong>Cairo-Bishop Definition:</strong> Laboratory TLS = ≥2 of: Uric acid ≥8 mg/dL (or 25% increase); K ≥6 mEq/L (or 25% increase); Phosphate ≥4.5 mg/dL (or 25% increase); Calcium ≤7 mg/dL (or 25% decrease). Within 3 days before to 7 days after cytotoxic therapy.</p>
+    <p><strong>Risk stratification and prevention:</strong></p>
+    <table>
+      <thead><tr><th>Risk Level</th><th>Tumor Types</th><th>Prophylaxis</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Low Risk</td><td>Solid tumors (most); CLL, CML; indolent lymphomas; ANC &lt;50,000</td><td>IV hydration (adequate urine output 80-100 mL/hr); monitoring; NO routine allopurinol needed</td></tr>
+        <tr class="odd"><td>Intermediate Risk</td><td>DLBCL (non-Burkitt); AML (WBC 25-100K); ALCL; ALL (WBC &lt;100K)</td><td>Aggressive hydration (3 L/m² per day); <strong class="drug-name">Allopurinol</strong> (300-600 mg/day) started 24-48h BEFORE chemotherapy; urine output 80-100 mL/hr; electrolyte monitoring q6-8h</td></tr>
+        <tr class="even"><td>High Risk</td><td>Burkitt lymphoma; B-ALL (WBC &gt;100K); AML (WBC &gt;100K); bulky aggressive lymphomas; highly chemosensitive tumors</td><td>Aggressive hydration; <strong class="drug-name">Rasburicase</strong> (recombinant urate oxidase; 0.2 mg/kg/day IV × 5 days) — converts uric acid to allantoin (more soluble); <strong>CONTRAINDICATED in G6PD deficiency</strong> (risk of methemoglobinemia/hemolysis); baseline G6PD testing before rasburicase in at-risk populations (African, Asian, Mediterranean)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>TLS Treatment:</strong> Discontinue offending agents if new TLS; aggressive hydration (DO NOT add potassium or phosphate to IV fluids); allopurinol or rasburicase; treat hyperkalemia (calcium gluconate, insulin-dextrose, sodium bicarbonate, kayexalate, loop diuretics, dialysis for refractory); treat hypocalcemia only if symptomatic (tetany, arrhythmia — do not correct asymptomatic hypocalcemia as calcium-phosphate precipitation worsens AKI); dialysis for refractory AKI, severe electrolyte disturbances, anuria.</p>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>7.3 Hypercalcemia of Malignancy</span></div>
+  <div class="subsection-content">
+    <p>Hypercalcemia is the most common metabolic emergency in oncology. Affects 10-30% of cancer patients; breast cancer, myeloma, squamous cell carcinomas, renal cell Ca, lymphomas most commonly.</p>
+    <table>
+      <thead><tr><th>Mechanism</th><th>Frequency</th><th>Mediator</th><th>Associated Cancers</th><th>PTH / PTHrP</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>PTHrP-mediated (Humoral Hypercalcemia of Malignancy)</td><td>80%</td><td>PTH-related protein → binds PTH receptor → ↑ bone resorption + ↑ renal Ca reabsorption</td><td>Squamous cell Ca (lung, head/neck, esophageal), renal cell Ca, breast Ca, ovarian</td><td>PTH ↓ (suppressed); PTHrP ↑</td></tr>
+        <tr class="odd"><td>Osteolytic (local)</td><td>20%</td><td>Direct osteoclast activation by tumor cytokines (IL-1, IL-6, RANKL) at bone metastasis sites</td><td>Multiple myeloma, breast Ca (bone mets), lymphoma</td><td>PTH ↓; PTHrP ↓ or normal; bone scan/PET shows lytic lesions</td></tr>
+        <tr class="even"><td>1,25-Vit D excess (Ectopic calcitriol)</td><td>Rare</td><td>Tumor-produced 1-α-hydroxylase converts 25-OH-Vit D to calcitriol → ↑ GI Ca absorption</td><td>Lymphomas (Hodgkin, NHL), granulomatous diseases (sarcoidosis), ovarian dysgerminoma</td><td>PTH ↓; PTHrP ↓; 1,25(OH)₂D3 ↑; elevated 25-OH-Vit D in lymphoma</td></tr>
+        <tr class="odd"><td>Ectopic PTH (rare)</td><td>Very rare &lt;1%</td><td>Tumor secreting intact PTH</td><td>Small cell lung Ca, ovarian, pancreatic Ca</td><td>PTH ↑ (inappropriately normal/elevated); PTHrP ↓</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Acute Management of Malignant Hypercalcemia:</strong></p>
+    <ul>
+      <li><strong>Aggressive IV saline hydration:</strong> 200-500 mL/hour NS (goal urine output 100-150 mL/hour); rehydration is the cornerstone — dehydration perpetuates hypercalcemia</li>
+      <li><strong class="drug-name">Zoledronic acid</strong> 4 mg IV over 15-30 min (preferred for rapid and potent response; onset 24-48h; peak effect 4-7 days; duration 3-4 weeks) OR <strong class="drug-name">pamidronate</strong> 60-90 mg IV over 2-4h</li>
+      <li><strong class="drug-name">Denosumab</strong> (anti-RANKL) 120 mg SC: preferred for renal insufficiency (no dose adjustment; bisphosphonates contraindicated if GFR &lt;35); also highly effective for bisphosphonate-refractory cases</li>
+      <li><strong class="drug-name">Calcitonin</strong> 4-8 IU/kg SC/IM q6-12h: fastest acting (hours); onset 4-6h; modest effect; tachyphylaxis in 24-48h; useful as bridge while waiting for zoledronic acid effect; minimal toxicity</li>
+      <li><strong>Glucocorticoids</strong> (prednisone 40-60 mg/day): useful specifically for lymphoma-related (calcitriol-mediated) hypercalcemia; reduces 1-α-hydroxylase activity</li>
+      <li>Loop diuretics (furosemide): ONLY after adequate rehydration to prevent volume overload in patients who cannot auto-regulate; do NOT use early (worsens hypercalcemia)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>7.4 Superior Vena Cava (SVC) Syndrome</span></div>
+  <div class="subsection-content">
+    <p>SVC syndrome results from external compression or thrombosis of the SVC → impaired venous return from head, neck, and upper extremities. ~70% caused by malignancy (lung cancer, lymphoma, thymoma); ~30% by non-malignant causes (CVC thrombosis, fibrosing mediastinitis).</p>
+    <table>
+      <thead><tr><th>Feature</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Symptoms</td><td>Facial/neck swelling; arm swelling; dyspnea (especially when supine); headache; visual changes; plethora; cyanosis of face/arms; dilated chest wall collateral veins (diagnostic finding); Pemberton's sign (arm raising → worsening facial plethora)</td></tr>
+        <tr class="odd"><td>Diagnosis</td><td>CT chest with contrast (gold standard): SVC narrowing, mediastinal mass, collateral venous drainage; Doppler ultrasound if thrombosis suspected; tissue biopsy (CRITICAL — treat the underlying malignancy specifically; SVC syndrome is not always a reason to forego histologic diagnosis)</td></tr>
+        <tr class="even"><td>Emergency? When?</td><td>True emergency only if: airway compromise (stridor), cerebral edema (confusion, stupor), severe hemodynamic compromise; most SVC syndrome is NOT immediately life-threatening and allows 24-48h for diagnosis</td></tr>
+        <tr class="odd"><td>Treatment</td><td><strong>Immediate (life-threatening):</strong> Endovascular stenting (SVC stent) — fastest relief (hours); symptomatic improvement in 24-48h in ~90%. <strong>Specific anti-tumor therapy (preferred for non-life-threatening):</strong> SCLC/lymphoma → chemotherapy (rapid response in 7-14 days); NSCLC → radiation + chemotherapy; Thymoma → radiation ± surgery. Steroids (dexamethasone 16 mg/day): reduce inflammation (useful for lymphoma, thymic tumors, post-radiation edema); diuretics for symptom relief; elevate head of bed; anticoagulation if thrombus documented.</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl:</strong> Do NOT be pressured to start empiric treatment before tissue diagnosis unless the patient has true airway compromise. SCLC (most common cause of malignant SVC syndrome) is highly chemo-sensitive — but the histology guides systemic therapy choices fundamentally. Even 24-48h to obtain bronchoscopic or CT-guided biopsy (or node biopsy) is acceptable in stable SVC syndrome. Empiric radiation without diagnosis is historically discouraged except in airway emergency.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>7.5 Malignant Spinal Cord Compression (MSCC)</span></div>
+  <div class="subsection-content">
+    <p>MSCC is a true neurological emergency. Affects 5-10% of cancer patients; most common in breast, lung, prostate, myeloma, renal cell Ca (posterior element predilection). Untreated → irreversible paraplegia. <u class="key-val">Time to treatment is the most critical determinant of ambulatory outcome.</u></p>
+    <table>
+      <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Symptoms (escalating urgency)</td><td>Back/neck pain (earliest; 80-95% — often precedes neurological deficits by weeks); radiculopathy; progressive leg weakness (upper or lower motor neuron pattern); sensory level; bladder dysfunction (urinary retention → overflow incontinence); bowel dysfunction (constipation, incontinence = late/severe)</td></tr>
+        <tr class="odd"><td>Imaging</td><td>MRI whole spine with gadolinium (preferred; assess extent, epidural compression grade, leptomeningeal involvement); CT myelogram if MRI contraindicated; plain X-rays: vertebral collapse/pedicle erosion ("winking owl" sign)</td></tr>
+        <tr class="even"><td>Corticosteroids (FIRST step)</td><td>Dexamethasone 10-16 mg IV bolus → 4-16 mg PO/IV q6h; reduces spinal cord edema; give IMMEDIATELY upon clinical suspicion (do not wait for imaging); significant reduction in pain and may preserve neurological function</td></tr>
+        <tr class="odd"><td>Definitive Treatment</td><td><strong>Surgery (decompressive laminectomy ± stabilization):</strong> For patients with good performance status, radioresistant tumors, single-level compression, spinal instability, unknown primary requiring biopsy. Patchell trial (Lancet 2005): Surgery + RT superior to RT alone (ambulatory rate 84% vs 57%). <strong>Radiotherapy (EBRT or SBRT):</strong> For radiosensitive tumors (lymphoma, myeloma, SCLC), multiple levels, poor surgical candidates; SBRT for radioresistant tumors (RCC, melanoma, sarcoma) — single high-dose fraction (18-24 Gy). <strong>Systemic therapy:</strong> Chemosensitive tumors (myeloma, lymphoma, germ cell) can respond rapidly.</td></tr>
+        <tr class="even"><td>Prognosis</td><td>Ambulatory at diagnosis → 80-90% remain ambulatory post-treatment; Paraplegia for &lt;48h → ~50% regain ambulation; Paraplegia &gt;48h (especially with complete loss) → very poor functional recovery; THIS IS WHY TIME IS CRITICAL</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl (Neurologist Perspective):</strong> MSCC must be on your differential in <em>any cancer patient with new back pain</em> — even without neurological deficits (pure axial pain may be the only early symptom). Order emergent MRI spine. Key neurological signs of epidural compression: (1) Thoracic level: spastic paraparesis + sensory level; (2) Lumbar: flaccid paraparesis, absent reflexes, saddle anesthesia; (3) Conus: mixed UMN/LMN + early bladder/bowel. Bladder dysfunction = late sign → usually irreversible once present. 24-hour access to MRI spine in cancer patients with new back pain is critical infrastructure.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>7.6 Malignant Pericardial Effusion &amp; Cardiac Tamponade</span></div>
+  <div class="subsection-content">
+    <table>
+      <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Etiology</td><td>Lung cancer (most common), breast Ca, lymphoma, mesothelioma, melanoma; direct pericardial invasion or hematogenous seeding; radiation-induced pericarditis; drug-induced (anthracyclines, cyclophosphamide)</td></tr>
+        <tr class="odd"><td>Presentation</td><td>Dyspnea, chest pain, orthopnea; Beck's Triad: hypotension + JVD + muffled heart sounds (classic but often incomplete); pulsus paradoxus (&gt;10 mmHg drop in systolic BP during inspiration); Kussmaul's sign: JVD increases with inspiration (constrictive pericarditis &gt; tamponade); ECG: low voltage, electrical alternans (pathognomonic for large effusion with tamponade)</td></tr>
+        <tr class="even"><td>Diagnosis</td><td>Echo (gold standard): effusion size, chamber collapse (RA first, then RV diastolic collapse = tamponade physiology), respiratory variation in valvular flow velocities (mitral E-wave variation &gt;25% = tamponade); CT chest for mass/pericardial thickening</td></tr>
+        <tr class="odd"><td>Management</td><td><strong>Tamponade → Emergency pericardiocentesis</strong> (echo-guided preferred); pericardial drain left in for drainage until &lt;25-30 mL/24h output; fluid analysis (cytology — positive in ~80% malignant effusion; LDH, protein, pH, culture); pericardial window (surgical or balloon) for recurrence prevention; intrapericardial instillation (cisplatin, bleomycin) reduces recurrence; systemic therapy for chemosensitive tumors; IV fluid bolus as temporizing measure while preparing drainage</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>7.7 SIADH &amp; Hyponatremia in Cancer</span></div>
+  <div class="subsection-content">
+    <p>Hyponatremia is the most common electrolyte disturbance in cancer patients (~30%). Always determine: euvolemic (SIADH, hypothyroidism, adrenal insufficiency) vs hypovolemic vs hypervolemic (cirrhosis/heart failure/nephrotic syndrome).</p>
+    <table>
+      <thead><tr><th>Cancer-Related Cause</th><th>Mechanism</th><th>Key Lab</th><th>Treatment</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>SIADH (most common)</td><td>Ectopic ADH from tumor (SCLC #1), CNS disease (brain mets, leptomeningeal), pulmonary disease, drugs (vincristine, cyclophosphamide, ifosfamide, cisplatin, opioids, SSRIs)</td><td>Urine Na &gt;40 mEq/L; Urine Osm &gt;100 mOsm/kg; Serum Osm &lt;275; Euvolemic (no edema, no dehydration)</td><td>Free water restriction (1-1.5 L/day); demeclocycline; <strong class="drug-name">Tolvaptan</strong> (V2 receptor antagonist; 15-60 mg/day; rapid correction; avoid in hepatic disease); hypertonic saline (3% NaCl) for severe symptomatic hyponatremia (&lt;120 mEq/L + symptoms); correction rate: &lt;8-10 mEq/L per 24h (risk of osmotic demyelination syndrome — ODS)</td></tr>
+        <tr class="odd"><td>Secondary Adrenal Insufficiency (hypophysitis, pituitary metastasis)</td><td>Cortisol deficiency → impaired free water excretion; euvolemic hyponatremia; may be combined with SIADH</td><td>AM cortisol low; ACTH low (secondary) or high (primary); urine Na variable; confirm with ACTH stimulation test</td><td>Hydrocortisone replacement (diagnostic + therapeutic) — correct Na slowly after starting hydrocortisone; do NOT administer hypertonic saline without addressing cortisol deficiency</td></tr>
+        <tr class="even"><td>Cerebral Salt Wasting (CSW) — brain mets/SAH</td><td>CNS injury → excessive renal sodium wasting → hypovolemic hyponatremia; important to distinguish from SIADH as treatment differs</td><td>Urine Na &gt;40 mEq/L; Urine Osm elevated (same as SIADH); BUT patient is <strong>HYPOVOLEMIC</strong> (low BP, poor skin turgor, low BNP ← CSW vs high ANP/BNP ← SIADH)</td><td>Volume replacement (isotonic saline or hypertonic saline + volume); fludrocortisone (promotes sodium retention); fluid RESTRICTION is harmful (worsens volume depletion in CSW)</td></tr>
+      </tbody>
+    </table>
+    <div class="clinical-pearl"><strong>&#x1F511; Clinical Pearl (Internist + Neurologist):</strong> The critical distinction between SIADH and CSW in brain tumor/brain mets patients: BOTH have Urine Na &gt;40 + hypotonic plasma. The KEY discriminator is VOLUME STATUS. SIADH = euvolemic or mildly hypervolemic → fluid restriction. CSW = hypovolemic (orthostatic hypotension, tachycardia, poor turgor) → fluid replacement. Giving fluid restriction to CSW causes worsening hypovolemia and can precipitate cerebral vasospasm. Check clinical volume status and BNP/ANP levels. In patients with hyponatremia after neurosurgery or cranial irradiation: always think CSW vs SIADH.</div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>7.8 Hyperviscosity Syndrome</span></div>
+  <div class="subsection-content">
+    <p>Hyperviscosity syndrome occurs when abnormal proteins or cells increase blood viscosity → impaired microvascular flow → end-organ damage. Classic in Waldenström macroglobulinemia (IgM) and multiple myeloma (IgG or IgA — less common; IgM most viscous).</p>
+    <table>
+      <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr class="even"><td>Classic Triad</td><td>Bleeding (mucocutaneous: epistaxis, gingival, fundal hemorrhage); Visual changes (retinal vein engorgement → "sausage links," retinal hemorrhage, visual blurring, diplopia → fundoscopy critical); Neurological (headache, altered consciousness, stroke-like episodes, vertigo, hearing loss — "pseudo-stroke")</td></tr>
+        <tr class="odd"><td>Lab Findings</td><td>Serum viscosity &gt;4 centipoise (Cp; normal 1.4-1.8; symptoms usually &gt;3-4 Cp); M-protein (SPEP + IFE); high serum IgM (&gt;3 g/dL often symptomatic); anemia (haemodilution from high oncotic pressure); rouleaux on peripheral blood smear</td></tr>
+        <tr class="even"><td>Treatment</td><td><strong>Emergent plasmapheresis (plasma exchange)</strong> — removes paraprotein; rapidly reduces viscosity; indicated when symptomatic; repeat q24-48h until symptoms resolve; 1 plasma volume exchange reduces IgM by 50-60%; bridge to definitive treatment. <strong>Definitive:</strong> Rituximab-based regimens (Waldenström: R-CHOP, BR, ibrutinib + rituximab); bortezomib for IgG/IgA myeloma. <strong>Avoid:</strong> Red cell transfusions (worsen viscosity) until plasmapheresis initiated; IV fluids cautiously (haemodilution benefit but monitor volume status).</td></tr>
+      </tbody>
+    </table>
+    <div class="reference-box"><h4>&#x1F4DA; Key References — Oncologic Emergencies</h4>
+      <ul>
+        <li><span class="ref-guideline">NCCN Oncologic Emergencies Guidelines 2025</span> — Febrile neutropenia, TLS, MSCC, hypercalcemia, SVC syndrome</li>
+        <li><span class="ref-trial">Patchell et al. Lancet 2005</span> — Surgery + RT vs RT alone in MSCC: ambulatory rate 84% vs 57%; surgery superior</li>
+        <li><span class="ref-trial">Cairo-Bishop Criteria 2004</span> — Standard definition and grading of tumor lysis syndrome</li>
+        <li><span class="ref-guideline">ESMO Emergency Guidelines 2022</span> — Hypercalcemia, MSCC, SVC syndrome, pericardial tamponade</li>
+        <li><span class="ref-trial">MASCC Score (Klastersky JCO 2000)</span> — Risk stratification tool for febrile neutropenia</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="subsection-title" role="button" tabindex="0" aria-expanded="true"><span class="toggle-icon">&#9660;</span><span>&#x2753; Practice Questions — Oncologic Emergencies</span></div>
+  <div class="subsection-content">
+    <div class="question">
+      <div class="question-text">Q1. A 55-year-old man with AML undergoes induction chemotherapy with 7+3 (cytarabine + idarubicin). On day 2, labs show: K 6.8 mEq/L, phosphate 6.2 mg/dL, uric acid 11.2 mg/dL, Ca 6.4 mg/dL, creatinine 2.8 mg/dL (baseline 0.9). Urine output is 30 mL/hr. What is the diagnosis and most critical immediate intervention?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Tumor Lysis Syndrome with AKI — Emergent management with rasburicase + aggressive hydration ± dialysis</strong><div class="explanation">This meets laboratory TLS criteria (Cairo-Bishop): hyperuricemia 11.2 mg/dL, hyperkalemia 6.8, hyperphosphatemia 6.2, hypocalcemia 6.4 — 4/4 criteria + AKI (creatinine 3× baseline). AML induction = highest TLS risk. Management: (1) Rasburicase 0.2 mg/kg IV (rapid uric acid reduction; check G6PD first); (2) Aggressive IV NS hydration (200+ mL/hr) to target urine output 100-150 mL/hr — if oliguria persists → assess for fluid overload vs true AKI; (3) Hyperkalemia: calcium gluconate (cardiac protection), insulin-dextrose, sodium bicarbonate, kayexalate; (4) Hypocalcemia: DO NOT correct asymptomatic hypocalcemia (Ca×P product already high — precipitation will worsen); treat only if tetany/arrhythmia; (5) NEPHROLOGY CONSULTATION early — dialysis likely needed given AKI + severe electrolyte disturbances. Avoid adding K or phosphate to IV fluids.</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q2. A 67-year-old woman with metastatic breast cancer (bone mets) presents with confusion, constipation, polyuria, and nausea. Calcium is 14.8 mg/dL (corrected). She is dehydrated. PTHrP is elevated; PTH is suppressed. What is the sequence of treatment?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: (1) Aggressive IV saline hydration → (2) Zoledronic acid IV → (3) Calcitonin if rapid effect needed → Treat underlying cancer</strong><div class="explanation">Malignant hypercalcemia (PTHrP-mediated): Ca 14.8 = severe (&gt;14 mg/dL). Treatment sequence: Step 1: NS 200-500 mL/hour (expand volume, promote calciuresis — the most immediate intervention; loop diuretics ONLY after euvolemia restored). Step 2: Zoledronic acid 4 mg IV over 15-30 min (onset 24-72h; peak 4-7 days; most effective agent; hold if GFR &lt;35 → use denosumab instead). Step 3: Calcitonin 4-8 IU/kg SC q6-12h (fastest onset, hours; limited to 24-48h before tachyphylaxis; useful bridge to bisphosphonate). Step 4: Treat underlying cancer (her breast cancer is driving the hypercalcemia — systemic therapy is the definitive solution). Do NOT use furosemide until well-hydrated. Denosumab 120 mg SC if renal insufficiency present (no dose adjustment needed).</div></div>
+    </div>
+    <div class="question">
+      <div class="question-text">Q3. A 70-year-old man with metastatic prostate cancer presents with 3 days of progressive lower extremity weakness, urinary retention, and a sensory level at T10. He can still walk with assistance. MRI confirms T9 epidural compression with 50% spinal cord compromise. What is the most important first step and the most important prognostic factor?</div>
+      <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer</button>
+      <div class="answer-content"><strong>Answer: Dexamethasone immediately (16 mg IV bolus) — Neurological function at presentation is the most important prognostic factor</strong><div class="explanation">First step: Dexamethasone 16 mg IV immediately (do NOT wait for surgical or radiation consultation — start steroids NOW; reduces cord edema within hours; may prevent progression to complete paralysis). Then urgent surgical evaluation vs RT decision: Prostate cancer is generally radiosensitive → RT is appropriate in most; BUT if solitary level + ambulatory → consider Patchell study criteria (surgery + RT superior to RT alone if ambulation preservation is goal and surgical candidate). Prognostic factor: ambulatory status at start of treatment is the MOST important determinant of ambulatory outcome. He can still walk → if treated urgently, ~80-90% chance of maintaining ambulation. Complete paraplegia &gt;48h → &lt;5-10% chance of recovery. Radioresistant tumors (RCC, melanoma, sarcoma) → SBRT preferred over EBRT.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+    </main>
+</div>
+
+<script>
+// ── Section / Navigation Data ──────────────────────────────────────
+const sections = [
+    { id: 1, title: "1. Principles of Oncology", icon: "&#x1F9EC;", subsections: [
+        { id: "s1-hallmarks", label: "Hallmarks of Cancer" },
+        { id: "s1-oncogenes", label: "Oncogenes & TSGs" },
+        { id: "s1-staging", label: "Staging & Performance Status" },
+        { id: "s1-hereditary", label: "Hereditary Syndromes" },
+        { id: "s1-therapy", label: "Systemic Therapy Overview" },
+        { id: "s1-biomarkers", label: "Molecular Diagnostics" },
+        { id: "s1-supportive", label: "Supportive Care" }
+    ]},
+    { id: 2, title: "2. Lung Cancer", icon: "&#x1F7E4;", subsections: [
+        { id: "s2-classification", label: "Classification & Epidemiology" },
+        { id: "s2-staging", label: "Staging & Workup" },
+        { id: "s2-egfr", label: "EGFR-Mutant NSCLC" },
+        { id: "s2-other-drivers", label: "ALK/ROS1/KRAS/RET/MET" },
+        { id: "s2-immunotherapy", label: "Immunotherapy (PD-L1)" },
+        { id: "s2-sclc", label: "SCLC & Paraneoplastic" }
+    ]},
+    { id: 3, title: "3. GI Cancers", icon: "&#x1F7E2;", subsections: [
+        { id: "s3-crc-biology", label: "CRC Molecular Pathways" },
+        { id: "s3-crc-treatment", label: "Metastatic CRC Treatment" },
+        { id: "s3-gastric", label: "Gastric & GEJ Cancer" },
+        { id: "s3-pancreatic", label: "Pancreatic Adenocarcinoma" },
+        { id: "s3-cca", label: "Cholangiocarcinoma" }
+    ]},
+    { id: 4, title: "4. Hepatocellular Carcinoma", icon: "&#x1F7E1;", subsections: [
+        { id: "s4-epidemiology", label: "Epidemiology & Risk Factors" },
+        { id: "s4-surveillance", label: "Surveillance & Diagnosis" },
+        { id: "s4-staging", label: "BCLC Staging" },
+        { id: "s4-locoregional", label: "Locoregional Therapies" },
+        { id: "s4-systemic", label: "Systemic Therapy" }
+    ]},
+    { id: 5, title: "5. Breast Cancer", icon: "&#x1F4A0;", subsections: [
+        { id: "s5-subtypes", label: "Molecular Subtypes" },
+        { id: "s5-genomic", label: "Genomic Testing" },
+        { id: "s5-hr", label: "HR+ & CDK4/6 Inhibitors" },
+        { id: "s5-her2", label: "HER2+ Breast Cancer" },
+        { id: "s5-tnbc", label: "Triple-Negative Breast Cancer" }
+    ]},
+    { id: 6, title: "6. Immuno-Oncology & irAEs", icon: "&#x1F6E1;", subsections: [
+        { id: "s6-mechanisms", label: "ICI Mechanisms & Classes" },
+        { id: "s6-endocrine", label: "Endocrine irAEs" },
+        { id: "s6-pneumonitis", label: "Pneumonitis" },
+        { id: "s6-gi", label: "Colitis & Hepatitis" },
+        { id: "s6-neuro-cardiac", label: "Neuro & Cardiac irAEs" }
+    ]},
+    { id: 7, title: "7. Oncologic Emergencies", icon: "&#x26A0;", subsections: [
+        { id: "s7-fn", label: "Febrile Neutropenia" },
+        { id: "s7-tls", label: "Tumor Lysis Syndrome" },
+        { id: "s7-hypercalcemia", label: "Hypercalcemia" },
+        { id: "s7-svc", label: "SVC Syndrome" },
+        { id: "s7-mscc", label: "Spinal Cord Compression" },
+        { id: "s7-tamponade", label: "Pericardial Tamponade" },
+        { id: "s7-siadh", label: "SIADH & Hyponatremia" },
+        { id: "s7-hvs", label: "Hyperviscosity Syndrome" }
+    ]}
+];
+
+let readSections = new Set();
+let currentSection = 1;
+let activeSubId = null;
+
+// ── Assign IDs to .subsection elements by index within each section ─
+function assignSubsectionIds() {
+    sections.forEach(sec => {
+        const sectionEl = document.getElementById('section-' + sec.id);
+        if (!sectionEl || !sec.subsections) return;
+        const subsEls = sectionEl.querySelectorAll('.subsection');
+        sec.subsections.forEach((sub, idx) => {
+            if (subsEls[idx]) subsEls[idx].id = sub.id;
+        });
+    });
+}
+
+// ── Build Navigation with collapsible subnav ──────────────────────
+function buildNav() {
+    const container = document.getElementById('navLinks');
+    container.innerHTML = '';
+    sections.forEach(sec => {
+        // Section header link
+        const link = document.createElement('div');
+        link.className = 'nav-link' + (sec.id === currentSection ? ' active' : '');
+        link.id = 'nav-' + sec.id;
+        link.innerHTML = sec.icon + ' ' + sec.title;
+        link.onclick = (e) => {
+            e.stopPropagation();
+            if (currentSection === sec.id) {
+                // Toggle subnav when clicking active section
+                toggleSubnav(sec.id);
+            } else {
+                showSection(sec.id);
+            }
+        };
+        container.appendChild(link);
+
+        // Subnav container
+        if (sec.subsections && sec.subsections.length > 0) {
+            const subnav = document.createElement('div');
+            subnav.className = 'subnav-container' + (sec.id === currentSection ? ' visible' : '');
+            subnav.id = 'subnav-' + sec.id;
+            sec.subsections.forEach(sub => {
+                const subLink = document.createElement('span');
+                subLink.className = 'subnav-link';
+                subLink.id = 'subnav-link-' + sub.id;
+                subLink.textContent = sub.label;
+                subLink.onclick = (e) => {
+                    e.stopPropagation();
+                    scrollToSubsection(sub.id, sec.id);
+                };
+                subnav.appendChild(subLink);
+            });
+            container.appendChild(subnav);
+        }
+    });
+}
+
+// ── Toggle subnav visibility ──────────────────────────────────────
+function toggleSubnav(secId) {
+    const subnav = document.getElementById('subnav-' + secId);
+    if (subnav) subnav.classList.toggle('visible');
+}
+
+// ── Show/hide subnav for active section ──────────────────────────
+function updateSubnav(secId) {
+    sections.forEach(sec => {
+        const subnav = document.getElementById('subnav-' + sec.id);
+        if (subnav) {
+            if (sec.id === secId) subnav.classList.add('visible');
+            else subnav.classList.remove('visible');
+        }
+    });
+}
+
+// ── Scroll to a specific subsection ──────────────────────────────
+function scrollToSubsection(subId, secId) {
+    // Switch section if needed
+    if (currentSection !== secId) {
+        // Show section first, then scroll after paint
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        const sectionEl = document.getElementById('section-' + secId);
+        if (sectionEl) sectionEl.classList.add('active');
+        const navEl = document.getElementById('nav-' + secId);
+        if (navEl) navEl.classList.add('active');
+        currentSection = secId;
+        readSections.add(secId);
+        updateProgress();
+        updateSubnav(secId);
+        wrapTables();
+        // Wait for render then scroll
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => doScrollToSub(subId));
+        });
+    } else {
+        doScrollToSub(subId);
+    }
+    if (window.innerWidth <= 768) closeSidebar();
+}
+
+function doScrollToSub(subId) {
+    const el = document.getElementById(subId);
+    if (!el) return;
+    // Expand if collapsed
+    const content = el.querySelector('.subsection-content');
+    const icon = el.querySelector('.toggle-icon');
+    if (content && content.classList.contains('collapsed')) {
+        content.classList.remove('collapsed');
+        if (icon) icon.textContent = '\u25BC';
+    }
+    // Scroll with offset for sticky header
+    const headerH = document.querySelector('header') ? document.querySelector('header').offsetHeight : 64;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerH - 12;
+    window.scrollTo({ top, behavior: 'smooth' });
+    // Highlight active subnav link
+    setActiveSubnav(subId);
+}
+
+// ── Highlight active subnav link ──────────────────────────────────
+function setActiveSubnav(subId) {
+    document.querySelectorAll('.subnav-link').forEach(l => l.classList.remove('active'));
+    const link = document.getElementById('subnav-link-' + subId);
+    if (link) link.classList.add('active');
+    activeSubId = subId;
+}
+
+// ── Show Section ──────────────────────────────────────────────────
+function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const el = document.getElementById('section-' + id);
+    if (el) { el.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    const nav = document.getElementById('nav-' + id);
+    if (nav) nav.classList.add('active');
+    currentSection = id;
+    readSections.add(id);
+    updateProgress();
+    updateSubnav(id);
+    // Clear subnav active highlight
+    document.querySelectorAll('.subnav-link').forEach(l => l.classList.remove('active'));
+    activeSubId = null;
+    if (window.innerWidth <= 768) closeSidebar();
+    wrapTables();
+}
+
+// ── Scroll Spy — highlight subnav link as user scrolls ───────────
+function initScrollSpy() {
+    const headerH = document.querySelector('header') ? document.querySelector('header').offsetHeight : 64;
+    window.addEventListener('scroll', () => {
+        // Back-to-top button
+        const btn = document.getElementById('backToTop');
+        if (btn) btn.style.opacity = window.scrollY > 300 ? '1' : '0';
+        // Highlight nearest subsection
+        const sec = sections.find(s => s.id === currentSection);
+        if (!sec || !sec.subsections) return;
+        let closestId = null;
+        let closestDist = Infinity;
+        sec.subsections.forEach(sub => {
+            const el = document.getElementById(sub.id);
+            if (!el) return;
+            const rect = el.getBoundingClientRect();
+            const dist = Math.abs(rect.top - headerH - 20);
+            if (rect.top - headerH <= 60 && dist < closestDist) {
+                closestDist = dist;
+                closestId = sub.id;
+            }
+        });
+        if (closestId && closestId !== activeSubId) setActiveSubnav(closestId);
+    }, { passive: true });
+}
+
+// ── Progress ──────────────────────────────────────────────────────
+function updateProgress() {
+    const total = sections.length;
+    const read = readSections.size;
+    const pct = Math.round((read / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = read + ' of ' + total + ' sections read';
+}
+
+// ── Collapsible Subsections ───────────────────────────────────────
+function initCollapsibles() {
+    document.querySelectorAll('.subsection-title').forEach(title => {
+        const content = title.nextElementSibling;
+        const icon = title.querySelector('.toggle-icon');
+        if (content && content.classList.contains('subsection-content')) {
+            title.addEventListener('click', () => {
+                const collapsed = content.classList.toggle('collapsed');
+                if (icon) icon.textContent = collapsed ? '\u25B6' : '\u25BC';
+                title.setAttribute('aria-expanded', !collapsed);
+            });
+            title.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); title.click(); }
+            });
+        }
+    });
+}
+
+// ── Search ────────────────────────────────────────────────────────
+function initSearch() {
+    const input = document.getElementById('searchInput');
+    if (!input) return;
+    input.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        document.querySelectorAll('.search-highlight').forEach(el => { el.outerHTML = el.textContent; });
+        if (q.length < 2) return;
+        const walker = document.createTreeWalker(document.querySelector('.main-content'), NodeFilter.SHOW_TEXT, null, false);
+        const nodes = [];
+        let node;
+        while ((node = walker.nextNode())) {
+            if (node.nodeValue.toLowerCase().includes(q) && !['SCRIPT','STYLE'].includes(node.parentNode.tagName)) nodes.push(node);
+        }
+        nodes.forEach(n => {
+            const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+            const span = document.createElement('span');
+            span.innerHTML = n.nodeValue.replace(re, '<span class="search-highlight">$1</span>');
+            n.parentNode.replaceChild(span, n);
+        });
+    });
+}
+
+// ── Dark Mode ─────────────────────────────────────────────────────
+function initDarkMode() {
+    const btn = document.getElementById('darkModeToggle');
+    if (!btn) return;
+    if (localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark-mode');
+    btn.addEventListener('click', () => {
+        const dark = document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', dark);
+        btn.textContent = dark ? '\u2600\uFE0F Light Mode' : '\uD83C\uDF19 Dark Mode';
+    });
+    if (document.body.classList.contains('dark-mode')) btn.textContent = '\u2600\uFE0F Light Mode';
+}
+
+// ── Answer Buttons ────────────────────────────────────────────────
+function initAnswerButtons() {
+    document.querySelectorAll('.show-answer-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const ans = this.nextElementSibling;
+            if (!ans) return;
+            const show = ans.classList.toggle('show');
+            this.textContent = show ? 'Hide Answer' : 'Show Answer';
+        });
+    });
+}
+
+// ── Wrap Tables ───────────────────────────────────────────────────
+function wrapTables() {
+    document.querySelectorAll('table').forEach(t => {
+        if (t.parentElement.classList.contains('table-wrap')) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'table-wrap';
+        t.parentNode.insertBefore(wrap, t);
+        wrap.appendChild(t);
+    });
+}
+
+// ── Mobile Sidebar ────────────────────────────────────────────────
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : '';
+}
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// ── Init ──────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    assignSubsectionIds();
+    buildNav();
+    initCollapsibles();
+    initSearch();
+    initDarkMode();
+    initAnswerButtons();
+    initScrollSpy();
+    wrapTables();
+    readSections.add(1);
+    updateProgress();
+});
+</script>
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#x2191;</button>
+</body>
+</html>

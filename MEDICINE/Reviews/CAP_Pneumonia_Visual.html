@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAP Pneumonia — Clinical Review 2025-2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --border-strong: rgba(0,0,0,0.12);
+      --text: #0f172a;
+      --text-dim: #64748b;
+      --text-muted: #94a3b8;
+      --accent: #0891b2;
+      --accent-dim: rgba(8,145,178,0.10);
+      --accent-mid: rgba(8,145,178,0.20);
+      --accent-strong: #0e7490;
+      --teal: #0d9488;
+      --teal-dim: rgba(13,148,136,0.10);
+      --amber: #d97706;
+      --amber-dim: rgba(217,119,6,0.10);
+      --rose: #e11d48;
+      --rose-dim: rgba(225,29,72,0.10);
+      --emerald: #059669;
+      --emerald-dim: rgba(5,150,105,0.10);
+      --indigo: #4338ca;
+      --indigo-dim: rgba(67,56,202,0.10);
+      --surface-2: #f1f5f9;
+      --surface-3: #e2e8f0;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0891b2 60%, #0d9488 100%);
+      color: white;
+      padding: 64px 24px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    .header__inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .header__tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .header__title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .header__subtitle {
+      font-size: 16px;
+      opacity: 0.85;
+      font-weight: 400;
+      max-width: 600px;
+      margin-bottom: 28px;
+    }
+    .header__meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .header__badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    .header__badge svg { width: 14px; height: 14px; }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .section-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .section-lead {
+      font-size: 15px;
+      color: var(--text-dim);
+      margin-bottom: 28px;
+      max-width: 700px;
+    }
+
+    /* ─── CARDS ─── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .card-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .card-grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card-grid--3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+    .card--hero {
+      background: linear-gradient(135deg, var(--accent-dim) 0%, var(--teal-dim) 100%);
+      border-color: var(--accent-mid);
+      padding: 32px;
+    }
+    .card--warning {
+      background: var(--amber-dim);
+      border-color: rgba(217,119,6,0.2);
+      border-left: 3px solid var(--amber);
+    }
+    .card--danger {
+      background: var(--rose-dim);
+      border-color: rgba(225,29,72,0.15);
+      border-left: 3px solid var(--rose);
+    }
+    .card--success {
+      background: var(--emerald-dim);
+      border-color: rgba(5,150,105,0.15);
+      border-left: 3px solid var(--emerald);
+    }
+    .card--info {
+      background: var(--indigo-dim);
+      border-color: rgba(67,56,202,0.15);
+      border-left: 3px solid var(--indigo);
+    }
+
+    /* ─── STATS ─── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+    }
+    .stat__num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent-strong);
+      letter-spacing: -0.03em;
+      font-family: var(--font-mono);
+    }
+    .stat__unit {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+    .stat__label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* ─── TABLES ─── */
+    .table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--border); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      background: var(--bg-card);
+    }
+    thead { background: var(--surface-2); }
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border-strong);
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--surface-2); }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge--preferred {
+      background: var(--emerald-dim);
+      color: var(--emerald);
+    }
+    .badge--alternative {
+      background: var(--surface-3);
+      color: var(--text-dim);
+    }
+    .badge--caution {
+      background: var(--amber-dim);
+      color: var(--amber);
+    }
+    .badge--key {
+      background: var(--accent-dim);
+      color: var(--accent-strong);
+    }
+    .badge--update {
+      background: var(--indigo-dim);
+      color: var(--indigo);
+    }
+
+    /* ─── FLOWCHART ─── */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 16px;
+    }
+    .flow-step:last-child { padding-bottom: 0; }
+    .flow-step__num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .flow-step__content {
+      flex: 1;
+      padding-top: 4px;
+    }
+    .flow-step__title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .flow-step__desc {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .flow-connector {
+      position: absolute;
+      left: 15px;
+      top: 32px;
+      width: 2px;
+      height: calc(100% - 32px);
+      background: var(--surface-3);
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 40px 0 32px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .divider-label::before, .divider-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-strong);
+    }
+
+    /* ─── CALLOUT ─── */
+    .callout {
+      display: flex;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      margin: 20px 0;
+    }
+    .callout--warning {
+      background: var(--amber-dim);
+      border: 1px solid rgba(217,119,6,0.2);
+    }
+    .callout__icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .callout__text {
+      font-size: 13.5px;
+      color: var(--text);
+    }
+    .callout__text strong { font-weight: 600; }
+
+    /* ─── MICROBE GRID ─── */
+    .microbe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .microbe-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+    .microbe-item__name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-strong);
+      margin-bottom: 2px;
+      font-style: italic;
+    }
+    .microbe-item__freq {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ─── DRUG TABLE ─── */
+    .drug-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .drug-name { font-weight: 600; font-size: 13.5px; }
+    .drug-dose { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); }
+    .drug-note { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ─── COMPARE TABLE ─── */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .compare-col {
+      background: var(--bg-card);
+    }
+    .compare-col--old { background: var(--surface-2); }
+    .compare-header {
+      padding: 14px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      border-bottom: 2px solid var(--border-strong);
+    }
+    .compare-col--old .compare-header {
+      background: var(--surface-3);
+      color: var(--text-dim);
+    }
+    .compare-col--new .compare-header {
+      background: var(--accent-dim);
+      color: var(--accent-strong);
+    }
+    .compare-row {
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row__topic {
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+    .compare-row__val { color: var(--text); }
+    .compare-row__val--old { color: var(--text-dim); }
+    .compare-row__val--new { color: var(--emerald); font-weight: 500; }
+
+    /* ─── TAKEAWAY ─── */
+    .takeaway-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .takeaway-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+    .takeaway-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .takeaway-text {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .header { padding: 40px 20px 36px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .section { padding: 32px 0; }
+    }
+
+    /* ─── SCROLL REVEAL — CSS Animation (reliable on iOS) ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      animation: fadeUp 0.5s ease both;
+      animation-play-state: running;
+    }
+    /* Staggered delays for visual interest */
+    .reveal:nth-child(1) { animation-delay: 0.05s; }
+    .reveal:nth-child(2) { animation-delay: 0.1s; }
+    .reveal:nth-child(3) { animation-delay: 0.15s; }
+    .reveal:nth-child(4) { animation-delay: 0.2s; }
+    .reveal:nth-child(5) { animation-delay: 0.25s; }
+    .reveal:nth-child(6) { animation-delay: 0.3s; }
+    .reveal:nth-child(7) { animation-delay: 0.35s; }
+    .reveal:nth-child(8) { animation-delay: 0.4s; }
+    .reveal:nth-child(9) { animation-delay: 0.45s; }
+    .reveal:nth-child(10) { animation-delay: 0.5s; }
+    .reveal:nth-child(n+11) { animation-delay: 0.55s; }
+
+    /* ─── MOBILE: Disable animation, show immediately ─── */
+    @media (max-width: 768px) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="header">
+  <div class="header__inner">
+    <div class="header__tag">📚 Internal Medicine Board Review</div>
+    <h1 class="header__title">Community-Acquired Pneumonia<br>(CAP): Rapid Evidence Review</h1>
+    <p class="header__subtitle">Updated guidelines 2025–2026 covering diagnosis, severity scoring, empiric antibiotic therapy, duration of treatment, and prevention strategies.</p>
+    <div class="header__meta">
+      <div class="header__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+        March 2026
+      </div>
+      <div class="header__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        ATS 2025 · IDSA/ATS 2019 · UCSF IDMP · AAFP 2022
+      </div>
+      <div class="header__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Evidence-Based
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── EPIDEMIOLOGY ─── -->
+<div class="container">
+  <section class="section reveal">
+    <div class="section-label">Section 1 — Epidemiology</div>
+    <h2 class="section-title">Burden of Disease</h2>
+    <p class="section-lead">CAP is a leading cause of infectious disease mortality worldwide, with incidence rising sharply with age and comorbidities.</p>
+
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat__num">248</div>
+        <div class="stat__unit">per 100,000</div>
+        <div class="stat__label">Annual Incidence (all adults)</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">634</div>
+        <div class="stat__unit">per 100,000</div>
+        <div class="stat__label">Adults 65–79 years</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">16,430</div>
+        <div class="stat__unit">per 100,000</div>
+        <div class="stat__label">Adults ≥80 years</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">6%</div>
+        <div class="stat__unit">30-day mortality</div>
+        <div class="stat__label">Hospitalized patients</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">34%</div>
+        <div class="stat__unit">30-day mortality</div>
+        <div class="stat__label">Treatment failure</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">9×</div>
+        <div class="stat__unit">higher rate</div>
+        <div class="stat__label">COPD patients</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MICROBIOLOGY ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 2 — Microbiology</div>
+    <h2 class="section-title">Causative Organisms</h2>
+    <p class="section-lead">In 62% of hospitalized CAP cases, no pathogen is identified. Bacterial-viral co-infection is common.</p>
+
+    <div class="table-wrap" style="margin-bottom: 20px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Pathogen</th>
+            <th>Category</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><em>Streptococcus pneumoniae</em></td>
+            <td><span class="badge badge--key">Most Common</span></td>
+            <td>Leading bacterial cause</td>
+          </tr>
+          <tr>
+            <td><em>Haemophilus influenzae</em></td>
+            <td><span class="badge badge--alternative">Common</span></td>
+            <td>40% of bacterial isolates</td>
+          </tr>
+          <tr>
+            <td><em>Mycoplasma pneumoniae</em></td>
+            <td><span class="badge badge--alternative">Atypical</span></td>
+            <td>Cyclical incidence pattern</td>
+          </tr>
+          <tr>
+            <td><em>Chlamydia pneumoniae</em></td>
+            <td><span class="badge badge--alternative">Atypical</span></td>
+            <td>Common cause</td>
+          </tr>
+          <tr>
+            <td><em>Legionella</em> spp.</td>
+            <td><span class="badge badge--alternative">Atypical</span></td>
+            <td>3% of hospitalized CAP</td>
+          </tr>
+          <tr>
+            <td><em>Moraxella catarrhalis</em></td>
+            <td><span class="badge badge--alternative">Less Common</span></td>
+            <td>Often in COPD patients</td>
+          </tr>
+          <tr>
+            <td>Respiratory Viruses</td>
+            <td><span class="badge badge--caution">23%</span></td>
+            <td>Rhinovirus, influenza most common</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout--warning">
+      <div class="callout__icon">⚠️</div>
+      <div class="callout__text"><strong>Elderly patients</strong> may NOT present with fever. Altered mental status may be the only presenting sign. Maintain high clinical suspicion.</div>
+    </div>
+  </section>
+
+  <!-- ─── DIAGNOSIS ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 3 — Diagnosis</div>
+    <h2 class="section-title">Clinical & Diagnostic Approach</h2>
+    <p class="section-lead">CAP requires both clinical features AND radiographic confirmation. Lung ultrasound is now a guideline-approved alternative.</p>
+
+    <div class="flow">
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step__num">1</div>
+        <div class="flow-step__content">
+          <div class="flow-step__title">Clinical Suspicion</div>
+          <div class="flow-step__desc">Cough + fever/chills + sputum ± dyspnea ± pleuritic chest pain. Assess vital signs, mental status, oxygen saturation.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step__num">2</div>
+        <div class="flow-step__content">
+          <div class="flow-step__title">Imaging Confirmation</div>
+          <div class="flow-step__desc">
+            <span class="badge badge--key" style="margin-bottom:6px">CXR (Standard)</span>
+            <span class="badge badge--update" style="margin-bottom:6px">LUS (ATS 2025 — if trained)</span>
+            <span class="badge badge--alternative" style="margin-bottom:6px">CT (if equivocal)</span>
+            <div style="margin-top:6px; font-size:12px; color:var(--text-dim)">CXR PPV 26.9% vs CT · NPV 96.5% · LUS more accurate than CXR per meta-analysis</div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step__num">3</div>
+        <div class="flow-step__content">
+          <div class="flow-step__title">Laboratory Testing</div>
+          <div class="flow-step__desc">
+            <div style="font-size:13px; color:var(--text-dim); margin-bottom:6px"><strong>Routine:</strong> CBC (often elevated WBC), BMP as indicated</div>
+            <div style="font-size:13px; color:var(--text-dim); margin-bottom:6px"><strong>Severe CAP / MRSA risk:</strong> Sputum culture, MRSA nares, urine antigens</div>
+            <div style="font-size:13px; color:var(--text-dim)"><strong>Flu season / viral symptoms:</strong> Test for influenza + COVID-19</div>
+            <div style="margin-top:6px; font-size:12px; color:var(--text-muted)">Procalcitonin — NOT recommended (IDSA) · Urine antigen — NOT routine</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SEVERITY ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 4 — Severity Assessment</div>
+    <h2 class="section-title">CURB-65 Score</h2>
+    <p class="section-lead">Simple 5-variable tool for risk stratification. Guides outpatient vs. inpatient decision. No labs required for CRB-65.</p>
+
+    <div class="table-wrap" style="margin-bottom: 20px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th>Variable</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>C</strong>onfusion</td>
+            <td>New onset with this illness</td>
+            <td><strong>1</strong></td>
+          </tr>
+          <tr>
+            <td><strong>U</strong>rea</td>
+            <td>&gt; 7 mmol/L (BUN &gt; 19 mg/dL)</td>
+            <td><strong>1</strong></td>
+          </tr>
+          <tr>
+            <td><strong>R</strong>espiratory rate</td>
+            <td>≥ 30 breaths/min</td>
+            <td><strong>1</strong></td>
+          </tr>
+          <tr>
+            <td><strong>B</strong>lood pressure</td>
+            <td>SBP &lt; 90 mmHg or DBP ≤ 60 mmHg</td>
+            <td><strong>1</strong></td>
+          </tr>
+          <tr>
+            <td>Age ≥ <strong>65</strong></td>
+            <td>Years</td>
+            <td><strong>1</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-grid card-grid--3">
+      <div class="card card--hero">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-strong); margin-bottom:6px">Score 0–1</div>
+        <div style="font-size:22px; font-weight:700; margin-bottom:4px">Low Risk</div>
+        <div style="font-size:13px; color:var(--text-dim); margin-bottom:8px">Mortality: 0.5–5%</div>
+        <div style="font-size:12px; background:rgba(255,255,255,0.6); border-radius:6px; padding:8px; font-weight:500">🏠 Outpatient treatment</div>
+      </div>
+      <div class="card card--warning">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--amber); margin-bottom:6px">Score 2</div>
+        <div style="font-size:22px; font-weight:700; margin-bottom:4px">Moderate Risk</div>
+        <div style="font-size:13px; color:var(--text-dim); margin-bottom:8px">Mortality: ~5.1%</div>
+        <div style="font-size:12px; background:rgba(255,255,255,0.6); border-radius:6px; padding:8px; font-weight:500">🏥 Consider hospitalization</div>
+      </div>
+      <div class="card card--danger">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--rose); margin-bottom:6px">Score 3–4</div>
+        <div style="font-size:22px; font-weight:700; margin-bottom:4px">High Risk</div>
+        <div style="font-size:13px; color:var(--text-dim); margin-bottom:8px">Mortality: 18.9%</div>
+        <div style="font-size:12px; background:rgba(255,255,255,0.6); border-radius:6px; padding:8px; font-weight:500">🏨 Hospitalize · Consider ICU</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TREATMENT ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 5 — Treatment</div>
+    <h2 class="section-title">Empiric Antibiotic Therapy</h2>
+    <p class="section-lead">Start empiric antibiotics promptly. Doxycycline is now the preferred first-line agent for most outpatients. Key ATS 2025 update: shorter durations (3–5 days) are now recommended.</p>
+
+    <div class="divider-label">Outpatient — Previously Healthy</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">No comorbidities · No antibiotics in past 3 months</div>
+      <div class="table-wrap" style="border:none;">
+        <table style="border:none;">
+          <tbody>
+            <tr>
+              <td style="padding:6px 12px;"><span class="badge badge--preferred">⭐ Preferred</span></td>
+              <td style="padding:6px 12px;">
+                <div class="drug-row">
+                  <span class="drug-name">Doxycycline</span>
+                  <span class="drug-dose">100 mg PO BID</span>
+                </div>
+              </td>
+            </tr>
+            <tr style="background:var(--surface-2);">
+              <td style="padding:6px 12px;"><span class="badge badge--alternative">Alternative</span></td>
+              <td style="padding:6px 12px;">
+                <div class="drug-row">
+                  <span class="drug-name">Amoxicillin</span>
+                  <span class="drug-dose">1 g PO TID</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="divider-label">Outpatient — Comorbidities or Recent Antibiotics</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Chronic heart/lung/liver/renal disease · DM · Alcoholism · Malignancy · Asplenia · Immunosuppression · Antibiotic use in past 3 months</div>
+      <div class="table-wrap" style="border:none;">
+        <table style="border:none;">
+          <thead>
+            <tr>
+              <th style="border:none; padding:8px 12px;">Regimen</th>
+              <th style="border:none; padding:8px 12px;">Dose</th>
+              <th style="border:none; padding:8px 12px;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:8px 12px;"><span class="badge badge--preferred">⭐ Preferred</span><br><span class="drug-name">Doxycycline + Amoxicillin</span></td>
+              <td style="padding:8px 12px;"><span class="drug-dose">100 mg BID +<br>1 g TID</span></td>
+              <td style="padding:8px 12px; font-size:13px; color:var(--text-dim)">Combination therapy</td>
+            </tr>
+            <tr style="background:var(--surface-2);">
+              <td style="padding:8px 12px;"><span class="badge badge--alternative">Alternative</span><br><span class="drug-name">Doxycycline + Cefpodoxime</span></td>
+              <td style="padding:8px 12px;"><span class="drug-dose">100 mg BID +<br>200 mg BID</span></td>
+              <td style="padding:8px 12px; font-size:13px; color:var(--text-dim)">Alt combination</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 12px;"><span class="badge badge--alternative">Monotherapy</span><br><span class="drug-name">Levofloxacin</span></td>
+              <td style="padding:8px 12px;"><span class="drug-dose">750 mg PO daily</span></td>
+              <td style="padding:8px 12px; font-size:13px; color:var(--text-dim)">Contact ASP if needed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout callout--warning">
+      <div class="callout__icon">💡</div>
+      <div class="callout__text"><strong>ATS 2025 Update:</strong> For outpatients WITH comorbidities who test positive for a respiratory virus (influenza/COVID) and are clinically stable — consider <strong>NOT adding empiric antibiotics</strong> to reduce unnecessary antibiotic use.</div>
+    </div>
+
+    <div class="divider-label">Inpatient — Non-Severe CAP</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div style="font-size:13px; margin-bottom:10px;"><strong>Beta-lactam + Macrolide</strong> OR <strong>Beta-lactam + Doxycycline</strong></div>
+      <div style="font-size:13px; color:var(--text-dim);">
+        <div style="margin-bottom:6px;"><strong>Beta-lactams:</strong> Ceftriaxone, Cefotaxime, Ampicillin-sulbactam</div>
+        <div style="margin-bottom:6px;"><strong>Macrolide:</strong> Azithromycin 500 mg daily × 3 doses (atypicals); for Legionella → 7 days</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Inpatient — Severe CAP</div>
+    <div class="card card--danger">
+      <div style="font-size:13.5px; font-weight:600; margin-bottom:10px; color:var(--rose);">Combination therapy MANDATORY</div>
+      <div style="font-size:13px; margin-bottom:10px;"><strong>Beta-lactam + Macrolide</strong> or <strong>Beta-lactam + Doxycycline</strong></div>
+      <div style="border-top:1px solid rgba(225,29,72,0.2); padding-top:10px; margin-top:4px;">
+        <div style="font-size:12px; color:var(--text-dim); margin-bottom:6px;"><strong>+ MRSA coverage</strong> (if prior MRSA isolation, recent hospitalization + parenteral ABx): <strong>Vancomycin</strong> or <strong>Linezolid</strong></div>
+        <div style="font-size:12px; color:var(--text-dim);"><strong>+ Pseudomonas coverage</strong> (if prior Pseudomonas isolation, recent hospitalization + parenteral ABx): <strong>Pip-tazo, Cefepime, Ceftaz, Imipenem, Meropenem,</strong> or <strong>Aztreonam</strong></div>
+      </div>
+      <div class="callout callout--warning" style="margin-top:12px; margin-bottom:0;">
+        <div class="callout__icon">⚠️</div>
+        <div class="callout__text">Obtain cultures <strong>BEFORE</strong> escalating coverage — allows de-escalation if MRSA/Pseudomonas not confirmed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DURATION ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 6 — Duration of Therapy</div>
+    <h2 class="section-title">ATS 2025: Shorter Is Better</h2>
+    <p class="section-lead">Key paradigm shift: 3–5 days is now the standard duration for non-severe CAP achieving clinical stability. CXR abnormalities persisting up to 6 weeks are NOT a reason to extend antibiotics.</p>
+
+    <div class="card-grid card-grid--2">
+      <div class="card card--success">
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--emerald); margin-bottom:10px;">Non-Severe CAP</div>
+        <div style="font-size:32px; font-weight:700; color:var(--emerald); font-family:var(--font-mono); margin-bottom:4px;">3–5 Days</div>
+        <div style="font-size:12px; color:var(--text-dim);">Outpatient + Inpatient non-severe, after clinical stability achieved</div>
+      </div>
+      <div class="card card--warning">
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--amber); margin-bottom:10px;">Complicated / Confirmed Pathogens</div>
+        <div style="font-size:32px; font-weight:700; color:var(--amber); font-family:var(--font-mono); margin-bottom:4px;">≥7 Days</div>
+        <div style="font-size:12px; color:var(--text-dim);">MRSA, Pseudomonas, Legionella</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <div style="font-size:13px; font-weight:600; margin-bottom:10px;">Stop Antibiotics When ALL Met:</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); gap:8px;">
+        <div style="background:var(--surface-2); border-radius:6px; padding:10px; font-size:12.5px;">✅ Afebrile 48–72 hours</div>
+        <div style="background:var(--surface-2); border-radius:6px; padding:10px; font-size:12.5px;">✅ HR ≤ 100/min</div>
+        <div style="background:var(--surface-2); border-radius:6px; padding:10px; font-size:12.5px;">✅ RR ≤ 24/min</div>
+        <div style="background:var(--surface-2); border-radius:6px; padding:10px; font-size:12.5px;">✅ SBP ≥ 90 mmHg</div>
+        <div style="background:var(--surface-2); border-radius:6px; padding:10px; font-size:12.5px;">✅ O₂ sat ≥ 90%</div>
+        <div style="background:var(--surface-2); border-radius:6px; padding:10px; font-size:12.5px;">✅ Alert &amp; oriented</div>
+      </div>
+    </div>
+
+    <div class="callout callout--warning" style="margin-top:16px;">
+      <div class="callout__icon">⏱️</div>
+      <div class="callout__text">Cough and CXR abnormalities may take <strong>up to 6 weeks</strong> to resolve — this is NOT a valid reason to extend antibiotic courses.</div>
+    </div>
+  </section>
+
+  <!-- ─── CORTICOSTEROIDS ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 7 — Corticosteroids in CAP</div>
+    <h2 class="section-title">Evidence, Trials & Selection Criteria</h2>
+    <p class="section-lead">Evidence has evolved significantly — landmark trials now support specific steroid use in severe CAP with demonstrated mortality benefit for certain agents.</p>
+
+    <div class="divider-label">Landmark Trials</div>
+
+    <div class="table-wrap" style="margin-bottom:16px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Trial</th>
+            <th>Year</th>
+            <th>Agent</th>
+            <th>Key Finding</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:var(--emerald-dim);">
+            <td><strong>CAPE COD</strong> ⭐</td>
+            <td>2022</td>
+            <td>Hydrocortisone 200 mg/d IV</td>
+            <td><strong>Mortality: 6.2% vs 11.9%</strong> (p=0.006); absolute ↓5.6%. Most robust evidence</td>
+          </tr>
+          <tr>
+            <td>ESCAPe</td>
+            <td>2016</td>
+            <td>Methylprednisolone 0.5 mg/kg/d</td>
+            <td>No mortality benefit; ↓ need for mechanical ventilation</td>
+          </tr>
+          <tr>
+            <td>Santeon-CAP</td>
+            <td>2022</td>
+            <td>Dexamethasone 6 mg/d</td>
+            <td>No mortality benefit; ↓ ICU admissions in severe subgroup</td>
+          </tr>
+          <tr>
+            <td>SONIA</td>
+            <td>2024</td>
+            <td>Low-dose glucocorticoids</td>
+            <td>16% ↓ in 30-day mortality (low-resource setting)</td>
+          </tr>
+          <tr style="background:var(--accent-dim);">
+            <td><strong>Lancet Respir Med</strong> (8 RCTs)</td>
+            <td>2024</td>
+            <td>Various</td>
+            <td><strong>28% ↓ in 30-day mortality</strong> (OR 0.72)</td>
+          </tr>
+          <tr style="background:var(--accent-dim);">
+            <td><strong>BMJ Open Resp Research</strong></td>
+            <td>2024</td>
+            <td>Various (severe CAP)</td>
+            <td><strong>30% ↓ in all-cause mortality</strong> (RR 0.70)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider-label">Which Steroid? Evidence by Agent</div>
+
+    <div class="card-grid card-grid--3" style="margin-bottom:16px;">
+      <div class="card card--success" style="border-color:rgba(5,150,105,0.3);">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--emerald); margin-bottom:8px;">Hydrocortisone ⭐</div>
+        <div style="font-size:22px; font-weight:700; color:var(--emerald); margin-bottom:4px;">Mortality Benefit YES</div>
+        <div style="font-size:12px; color:var(--text-dim);">Most consistent evidence — CAPE COD RCT + meta-analyses confirm mortality reduction</div>
+      </div>
+      <div class="card card--warning" style="border-color:rgba(217,119,6,0.2);">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--amber); margin-bottom:8px;">Methylprednisolone</div>
+        <div style="font-size:16px; font-weight:700; color:var(--amber); margin-bottom:4px;">No mortality benefit</div>
+        <div style="font-size:12px; color:var(--text-dim);">ESCAPe negative for mortality; may reduce need for MV</div>
+      </div>
+      <div class="card card--warning" style="border-color:rgba(217,119,6,0.2);">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--amber); margin-bottom:8px;">Dexamethasone</div>
+        <div style="font-size:16px; font-weight:700; color:var(--amber); margin-bottom:4px;">Mortality benefit not shown</div>
+        <div style="font-size:12px; color:var(--text-dim);">Santeon-CAP negative; NMA inconclusive for mortality</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Selection Criteria — Who Should Receive Steroids?</div>
+
+    <div class="card-grid card-grid--2" style="margin-bottom:16px;">
+      <div class="card card--success">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--emerald); margin-bottom:10px;">✅ Indications — Severe CAP (ATS 2025 — conditional; SCCM 2024 — strong)</div>
+        <div style="font-size:12.5px; display:flex; flex-direction:column; gap:6px;">
+          <div style="background:rgba(5,150,105,0.06); border-radius:6px; padding:8px 10px;">• Invasive mechanical ventilation</div>
+          <div style="background:rgba(5,150,105,0.06); border-radius:6px; padding:8px 10px;">• Septic shock requiring vasopressors</div>
+          <div style="background:rgba(5,150,105,0.06); border-radius:6px; padding:8px 10px;">• HFNC with FiO₂ ≥50% + PaO₂/FiO₂ &lt;300</div>
+          <div style="background:rgba(5,150,105,0.06); border-radius:6px; padding:8px 10px;">• PSI Class V (&gt;130)</div>
+          <div style="background:rgba(5,150,105,0.06); border-radius:6px; padding:8px 10px;">• ≥3 minor criteria (RR≥30, PaO₂/FiO₂&lt;250, multilobar, confusion, BUN≥20, WBC&lt;4K, PLT&lt;100K, Temp&lt;36°C)</div>
+        </div>
+      </div>
+      <div class="card card--hero">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-strong); margin-bottom:10px;">✅ Best Response: High Inflammatory State</div>
+        <div style="font-size:28px; font-weight:700; color:var(--accent-strong); font-family:var(--font-mono); margin-bottom:4px;">CRP ≥ 200 mg/L</div>
+        <div style="font-size:12px; color:var(--text-dim); margin-bottom:10px;">Strong predictor of mortality benefit from steroids</div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-bottom:6px;">Also important:</div>
+        <div style="font-size:12px; color:var(--text-dim);">Administer within <strong>24 hours</strong> of meeting severe CAP criteria</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Contraindications & Cautions</div>
+
+    <div class="table-wrap" style="margin-bottom:16px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Situation</th>
+            <th>Recommendation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Non-severe CAP</td>
+            <td><span class="badge badge--caution">Against</span> ATS 2025 — strongly recommends NOT using</td>
+          </tr>
+          <tr style="background:var(--rose-dim);">
+            <td><strong>Influenza pneumonia</strong></td>
+            <td><span class="badge badge--caution">Avoid — ↑ mortality, impaired viral clearance</span></td>
+          </tr>
+          <tr>
+            <td>Fungal pneumonia</td>
+            <td><span class="badge badge--caution">Avoid — no benefit in observational data</span></td>
+          </tr>
+          <tr>
+            <td>High-dose short-duration (&gt;400 mg hydrocortisone equiv. &lt;3 days)</td>
+            <td><span class="badge badge--caution">Not recommended for septic shock</span></td>
+          </tr>
+          <tr>
+            <td>Uncontrolled hyperglycemia</td>
+            <td><span class="badge badge--alternative">⚠️ Monitor closely — steroids worsen glucose</span></td>
+          </tr>
+          <tr>
+            <td>GI bleeding risk</td>
+            <td><span class="badge badge--alternative">⚠️ Stress ulcer prophylaxis recommended</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider-label">Dosing Regimen</div>
+
+    <div class="card card--hero" style="margin-bottom:16px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-strong); margin-bottom:6px;">Agent</div>
+          <div style="font-size:20px; font-weight:700; color:var(--accent-strong);">IV Hydrocortisone ⭐</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">preferred (CAPE COD evidence)</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-strong); margin-bottom:6px;">Dose</div>
+          <div style="font-size:20px; font-weight:700; color:var(--accent-strong);">200 mg/day</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">50 mg IV q6h OR continuous infusion</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-strong); margin-bottom:6px;">Duration</div>
+          <div style="font-size:20px; font-weight:700; color:var(--accent-strong);">5–7 days</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Consider taper if &gt;7 days</div>
+        </div>
+      </div>
+      <div style="margin-top:12px; padding-top:10px; border-top:1px solid var(--border); font-size:12px; color:var(--text-dim); text-align:center;">
+        <strong>Alternative:</strong> Methylprednisolone 40–80 mg/day IV if hydrocortisone unavailable
+      </div>
+    </div>
+
+    <div class="callout callout--warning">
+      <div class="callout__icon">⚠️</div>
+      <div class="callout__text"><strong>SCCM 2024 Focused Update:</strong> Strongly recommends corticosteroids for adults hospitalized with <strong>severe bacterial CAP</strong>. <strong>ATS 2025:</strong> Suggests for severe CAP (conditional); strongly recommends against for non-severe CAP.</div>
+    </div>
+  </section>
+
+  <!-- ─── PREVENTION ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 8 — Prevention</div>
+    <h2 class="section-title">Pneumococcal Vaccination</h2>
+    <p class="section-lead">Updated 2022 ACIP guidelines recommend PCV20 or PCV15+PPSV23 sequence for adults ≥65 and high-risk younger adults.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Population</th>
+            <th>Vaccine Regimen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Adults ≥65 years</strong></td>
+            <td>
+              <span class="badge badge--preferred" style="margin-bottom:4px;">PCV20 alone</span> <strong>OR</strong><br>
+              <span class="badge badge--alternative">PCV15 + PPSV23</span> (≥1 year later)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Ages 19–64 with comorbidities</strong></td>
+            <td>
+              <span class="badge badge--preferred" style="margin-bottom:4px;">PCV20 alone</span> <strong>OR</strong><br>
+              <span class="badge badge--alternative">PCV15 + PPSV23</span> (≥1 year later)
+            </td>
+          </tr>
+          <tr>
+            <td>Previously received PCV13 only</td>
+            <td><span style="color:var(--text-dim); font-size:13px;">No additional PCV20/PCV15 needed</span></td>
+          </tr>
+          <tr>
+            <td>Previously received PPSV23 only</td>
+            <td><span style="color:var(--text-dim); font-size:13px;">Give PCV15 or PCV20 <strong>≥1 year after PPSV23</strong></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:16px; font-size:13px; color:var(--text-dim);">
+      <strong>Vaccine efficacy:</strong> PPSV23 reduces relative risk of CAP by 13% overall; 28% in adults ≥65 or high-risk younger adults. Annual influenza and COVID-19 vaccination recommended for all adults.
+    </div>
+  </section>
+
+  <!-- ─── 2019 vs 2025 ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 9 — Key Updates</div>
+    <h2 class="section-title">ATS 2025 vs. IDSA/ATS 2019</h2>
+    <p class="section-lead">Major changes in the 2025 ATS update that differ from the 2019 joint IDSA/ATS guidelines.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col compare-col--old">
+        <div class="compare-header">2019 IDSA/ATS</div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Duration</div>
+          <div class="compare-row__val compare-row__val--old">≥5 days</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Lung Ultrasound</div>
+          <div class="compare-row__val compare-row__val--old">Not specified</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Steroids (non-severe)</div>
+          <div class="compare-row__val compare-row__val--old">Not recommended</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Steroids (severe)</div>
+          <div class="compare-row__val compare-row__val--old">Not recommended</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Viral + outpatient w/ comorbidities</div>
+          <div class="compare-row__val compare-row__val--old">Always add antibiotics</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Doxycycline (outpatient)</div>
+          <div class="compare-row__val compare-row__val--old">Alternative agent</div>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-header">2025 ATS Update</div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Duration</div>
+          <div class="compare-row__val compare-row__val--new"><strong>3–5 days</strong> if stable</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Lung Ultrasound</div>
+          <div class="compare-row__val compare-row__val--new"><strong>Acceptable alternative</strong> to CXR/CT</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Steroids (non-severe)</div>
+          <div class="compare-row__val compare-row__val--new"><strong>Explicitly against</strong></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Steroids (severe)</div>
+          <div class="compare-row__val compare-row__val--new"><strong>Conditionally suggested</strong></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Viral + outpatient w/ comorbidities</div>
+          <div class="compare-row__val compare-row__val--new"><strong>Consider NO antibiotics</strong> if stable</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row__topic">Doxycycline (outpatient)</div>
+          <div class="compare-row__val compare-row__val--new"><strong>Preferred first-line</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SEVERE CAP ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 10 — ICU Management</div>
+    <h2 class="section-title">Severe CAP: ICU Criteria & Management</h2>
+    <p class="section-lead">10–30% of hospitalized CAP patients require ICU. Severe CAP = ≥1 major criterion OR ≥3 minor criteria (IDSA/ATS 2019, endorsed ATS 2025).</p>
+
+    <div class="divider-label">ICU Admission Criteria</div>
+
+    <div class="card-grid card-grid--2" style="margin-bottom:16px;">
+      <div class="card card--danger">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--rose); margin-bottom:10px;">Major Criteria (≥1 = ICU)</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="background:rgba(225,29,72,0.08); border-radius:6px; padding:10px 12px;">
+            <div style="font-size:13px; font-weight:600; color:var(--rose);">Septic Shock</div>
+            <div style="font-size:12px; color:var(--text-dim);">Hypotension requiring vasopressors</div>
+          </div>
+          <div style="background:rgba(225,29,72,0.08); border-radius:6px; padding:10px 12px;">
+            <div style="font-size:13px; font-weight:600; color:var(--rose);">Respiratory Failure</div>
+            <div style="font-size:12px; color:var(--text-dim);">Requiring invasive mechanical ventilation</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-bottom:10px;">Minor Criteria (≥3 = ICU)</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+          <div style="background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px;">
+            <div style="font-weight:600;">RR ≥ 30/min</div>
+          </div>
+          <div style="background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px;">
+            <div style="font-weight:600;">PaO₂/FiO₂ ≤ 250</div>
+          </div>
+          <div style="background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px;">
+            <div style="font-weight:600;">Multilobar infiltrates</div>
+          </div>
+          <div style="background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px;">
+            <div style="font-weight:600;">Confusion (new)</div>
+          </div>
+          <div style="background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px;">
+            <div style="font-weight:600;">BUN ≥ 20 mg/dL</div>
+          </div>
+          <div style="background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px;">
+            <div style="font-weight:600;">WBC < 4,000/mm³</div>
+          </div>
+          <div style="background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px;">
+            <div style="font-weight:600;">Platelets < 100K</div>
+          </div>
+          <div style="background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px;">
+            <div style="font-weight:600;">Temp < 36°C</div>
+          </div>
+        </div>
+        <div style="margin-top:8px; background:var(--surface-2); border-radius:5px; padding:7px 10px; font-size:12px; text-align:center; font-weight:600;">Hypotension requiring fluids</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Antibiotic Therapy — Severe CAP</div>
+
+    <div class="card card--danger" style="margin-bottom:16px;">
+      <div style="font-size:13px; font-weight:700; color:var(--rose); margin-bottom:10px;">Mandatory Combination Therapy</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+        <div style="background:rgba(225,29,72,0.06); border-radius:6px; padding:10px 12px; border:1px solid rgba(225,29,72,0.15);">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--rose); margin-bottom:6px;">Beta-lactam</div>
+          <div style="font-size:12px; color:var(--text);">Ceftriaxone, Cefotaxime, or Ampicillin-sulbactam</div>
+        </div>
+        <div style="background:rgba(225,29,72,0.06); border-radius:6px; padding:10px 12px; border:1px solid rgba(225,29,72,0.15);">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--rose); margin-bottom:6px;">+ Macrolide OR Doxycycline</div>
+          <div style="font-size:12px; color:var(--text);">Azithromycin 500mg daily × 3d<br>OR Doxycycline 100mg BID</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(225,29,72,0.15); padding-top:10px; margin-top:2px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px;">If MRSA Risk (prior isolation / recent hospitalization + IV antibiotics):</div>
+        <div style="font-size:12.5px; margin-bottom:6px;">Add <strong>Vancomycin</strong> or <strong>Linezolid</strong></div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px; margin-top:8px;">If Pseudomonas Risk:</div>
+        <div style="font-size:12.5px;">Add <strong>Pip-tazo, Cefepime, Ceftaz, Imipenem, Meropenem,</strong> or <strong>Aztreonam</strong></div>
+      </div>
+      <div class="callout callout--warning" style="margin-top:12px; margin-bottom:0;">
+        <div class="callout__icon">⚠️</div>
+        <div class="callout__text">Obtain <strong>blood + sputum cultures BEFORE</strong> starting antibiotics — enables targeted de-escalation when results return</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Respiratory & Hemodynamic Support</div>
+
+    <div class="card-grid card-grid--2" style="margin-bottom:16px;">
+      <div class="card">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-strong); margin-bottom:10px;">Severe Hypoxia / Respiratory Failure</div>
+        <div style="font-size:12px; color:var(--text-dim); margin-bottom:8px;">PaO₂ < 55 mmHg despite O₂, or hypercapnia with pH < 7.35 → Intubate</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:12px;"><strong>Before intubation:</strong> HFNC or NPPV may reduce need for intubation</div>
+          <div style="font-size:12px; background:var(--surface-2); border-radius:5px; padding:8px;">
+            <strong>ARDS → Lung-protective ventilation:</strong><br>
+            Tidal volume 6 mL/kg IBW<br>
+            Plateau pressure < 30 cm H₂O<br>
+            Prone positioning if PaO₂/FiO₂ < 150
+          </div>
+        </div>
+      </div>
+      <div class="card card--warning">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--amber); margin-bottom:10px;">Septic Shock — Hemodynamic Support</div>
+        <div style="font-size:12px; display:flex; flex-direction:column; gap:6px;">
+          <div style="background:rgba(217,119,6,0.06); border-radius:5px; padding:8px;">
+            <strong>1. Fluids:</strong> 30 mL/kg crystalloid bolus, then reassess
+          </div>
+          <div style="background:rgba(217,119,6,0.06); border-radius:5px; padding:8px;">
+            <strong>2. Vasopressors:</strong> Norepinephrine first-line; target MAP ≥ 65 mmHg
+          </div>
+          <div style="background:rgba(217,119,6,0.06); border-radius:5px; padding:8px;">
+            <strong>3. Steroids (ATS 2025 — conditional):</strong><br>
+            Consider if high inflammatory markers, ICU admission, or complicated respiratory failure. Give within 24h of meeting severe CAP criteria.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-label">Mortality & Complications</div>
+
+    <div class="stats-grid" style="margin-bottom:16px;">
+      <div class="stat" style="background:var(--rose-dim); border-color:rgba(225,29,72,0.2);">
+        <div class="stat__num" style="color:var(--rose);">21–55%</div>
+        <div class="stat__unit">ICU mortality</div>
+        <div class="stat__label">Severe CAP</div>
+      </div>
+      <div class="stat" style="background:var(--rose-dim); border-color:rgba(225,29,72,0.2);">
+        <div class="stat__num" style="color:var(--rose);">56%</div>
+        <div class="stat__unit">in-hospital</div>
+        <div class="stat__label">Severe CAP mortality</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num" style="color:var(--amber);">40.7%</div>
+        <div class="stat__unit">1-year</div>
+        <div class="stat__label">post-discharge mortality</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">~30%</div>
+        <div class="stat__unit">of severe CAP</div>
+        <div class="stat__label">develop ARDS</div>
+      </div>
+    </div>
+
+    <div class="card-grid card-grid--3" style="margin-bottom:16px;">
+      <div class="card" style="padding:14px 16px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-dim); margin-bottom:6px;">Complications</div>
+        <div style="font-size:12px; color:var(--text-dim); line-height:1.7;">ARDS, Empyema, Lung abscess, Septic shock, Multisystem organ failure, Cardiac complications (MI, arrhythmia)</div>
+      </div>
+      <div class="card" style="padding:14px 16px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-dim); margin-bottom:6px;">Key Pathogens</div>
+        <div style="font-size:12px; color:var(--text-dim); line-height:1.7;">S. pneumoniae (incl. DRSP), S. aureus (MRSA), Legionella, Pseudomonas, GNEB, Polymicrobial → worse prognosis</div>
+      </div>
+      <div class="card" style="padding:14px 16px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-dim); margin-bottom:6px;">Key Risk Factors</div>
+        <div style="font-size:12px; color:var(--text-dim); line-height:1.7;">Age ≥65, COPD, chronic disease, DM, alcoholism, obesity, delayed antibiotics (every hour ↑ mortality)</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Severe vs. Non-Severe CAP — Key Differences</div>
+
+    <div class="compare-grid" style="margin-bottom:0;">
+      <div class="compare-col compare-col--old">
+        <div class="compare-header">Non-Severe CAP</div>
+        <div class="compare-row"><div class="compare-row__topic">Setting</div><div class="compare-row__val compare-row__val--old">Outpatient / Ward</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Antibiotics</div><div class="compare-row__val compare-row__val--old">Doxycycline ± Amoxicillin</div></div>
+        <div class="compare-row"><div class="compare-row__topic">MRSA/ Pseudomonas</div><div class="compare-row__val compare-row__val--old">Not routine</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Steroids</div><div class="compare-row__val compare-row__val--old">Against (ATS 2025)</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Cultures</div><div class="compare-row__val compare-row__val--old">Not routine</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Duration</div><div class="compare-row__val compare-row__val--old">3–5 days if stable</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Mortality</div><div class="compare-row__val compare-row__val--old">&lt; 10%</div></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-header">Severe CAP (ICU)</div>
+        <div class="compare-row"><div class="compare-row__topic">Setting</div><div class="compare-row__val compare-row__val--new"><strong>ICU</strong></div></div>
+        <div class="compare-row"><div class="compare-row__topic">Antibiotics</div><div class="compare-row__val compare-row__val--new"><strong>Beta-lactam + Macrolide/Doxycycline</strong></div></div>
+        <div class="compare-row"><div class="compare-row__topic">MRSA/ Pseudomonas</div><div class="compare-row__val compare-row__val--new">Add if risk factors</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Steroids</div><div class="compare-row__val compare-row__val--new">Suggested if criteria met (ATS 2025)</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Cultures</div><div class="compare-row__val compare-row__val--new"><strong>Blood + sputum mandatory</strong></div></div>
+        <div class="compare-row"><div class="compare-row__topic">Duration</div><div class="compare-row__val compare-row__val--new">5–7 days minimum; longer if complicated</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Mortality</div><div class="compare-row__val compare-row__val--new"><strong>21–55% (ICU)</strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TAKE HOME POINTS ─── -->
+  <section class="section reveal">
+    <div class="section-label">Summary — Key Takeaways</div>
+    <h2 class="section-title">Clinical Pearls</h2>
+
+    <ol class="takeaway-list">
+      <li class="takeaway-item">
+        <div class="takeaway-num">1</div>
+        <div class="takeaway-text"><strong>Diagnose with clinical features + imaging.</strong> CXR is standard; lung ultrasound is now guideline-approved (ATS 2025) when operators are trained.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">2</div>
+        <div class="takeaway-text"><strong>Use CURB-65 to guide setting.</strong> Score 0–1 = outpatient; 2 = consider admission; 3–4 = hospitalize/ICU.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">3</div>
+        <div class="takeaway-text"><strong>Doxycycline is now preferred</strong> first-line for most outpatients. Combination therapy (doxycycline + amoxicillin) for those with comorbidities or recent antibiotic use.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">4</div>
+        <div class="takeaway-text"><strong>Shorten duration to 3–5 days</strong> if clinical stability achieved. Do NOT extend just because CXR or cough hasn't cleared.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">5</div>
+        <div class="takeaway-text"><strong>De-escalate promptly.</strong> Get cultures before broadening coverage. Stop MRSA/Pseudomonas coverage if not confirmed.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">6</div>
+        <div class="takeaway-text"><strong>No corticosteroids for non-severe CAP.</strong> Consider only for severe CAP (ATS 2025 conditional) or refractory septic shock.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">7</div>
+        <div class="takeaway-text"><strong>Vaccinate appropriately.</strong> PCV20 alone or PCV15 + PPSV23 for adults ≥65 and high-risk 19–64 year-olds.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">8</div>
+        <div class="takeaway-text"><strong>Severe CAP = ICU</strong> when ≥1 major criterion or ≥3 minor criteria (IDSA/ATS). 10–30% of hospitalized CAP need ICU.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">9</div>
+        <div class="takeaway-text"><strong>Severe CAP: Beta-lactam + Macrolide</strong> is mandatory first-line; add MRSA/Pseudomonas coverage only with risk factors.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">10</div>
+        <div class="takeaway-text"><strong>Time is life.</strong> Every hour delay in antibiotics increases mortality in severe CAP. ICU mortality: 21–55%.</div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ─── REFERENCES ─── -->
+  <section class="section reveal" style="padding-bottom: 48px;">
+    <div class="section-label">References</div>
+    <div style="font-size: 12.5px; color: var(--text-dim); line-height: 1.8;">
+      <div style="margin-bottom:6px;">1. Metlay JP, et al. Diagnosis and treatment of adults with community-acquired pneumonia. <em>Am J Respir Crit Care Med</em>. 2019;200(7):e45-e67. doi:10.1164/rccm.201908-1581ST</div>
+      <div style="margin-bottom:6px;">2. American Thoracic Society. Clinical Practice Guideline Updates for the Diagnosis and Management of CAP (2025). <em>Am J Respir Crit Care Med</em>. 2025.</div>
+      <div style="margin-bottom:6px;">3. UCSF IDMP. VASF Community-Acquired Pneumonia Treatment Guidelines. November 2023.</div>
+      <div style="margin-bottom:6px;">4. Ebell MH. Community-Acquired Pneumonia in Adults: Rapid Evidence Review. <em>Am Fam Physician</em>. 2022;105(6):625-630.</div>
+      <div>5. CDC. Pneumococcal Vaccination Recommendations. 2022.</div>
+    </div>
+  </section>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  IMBR Study Room — Internal Medicine Board Review · Generated March 2026 · Sources: ATS 2025, IDSA/ATS 2019, UCSF IDMP, AAFP 2022
+</footer>
+
+<!-- Scroll reveal handled by pure CSS animation (no JS dependency) -->
+</body>
+</html>

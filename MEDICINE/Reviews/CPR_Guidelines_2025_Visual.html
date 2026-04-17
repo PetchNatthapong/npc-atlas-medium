@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPR Guidelines 2025 — Rapid Evidence Review</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-2: #f1f5f9;
+      --border: rgba(0,0,0,0.08);
+      --border-strong: rgba(0,0,0,0.12);
+      --text: #0f172a;
+      --text-dim: #475569;
+      --text-muted: #94a3b8;
+      --accent: #0369a1;
+      --accent-dim: rgba(3,105,161,0.08);
+      --accent-mid: rgba(3,105,161,0.15);
+      --accent-strong: #0c4a6e;
+      --red: #dc2626;
+      --red-dim: rgba(220,38,38,0.08);
+      --green: #059669;
+      --green-dim: rgba(5,150,105,0.08);
+      --amber: #d97706;
+      --amber-dim: rgba(217,119,6,0.08);
+      --purple: #7c3aed;
+      --purple-dim: rgba(124,58,237,0.08);
+      --surface-2: #f1f5f9;
+      --surface-3: #e2e8f0;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-lg: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 60%, #0284c7 100%);
+      padding: 56px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 60%);
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    }
+    .header__inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .header__tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 18px;
+    }
+    .header__title {
+      font-size: clamp(24px, 5vw, 42px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    .header__subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      margin-bottom: 28px;
+    }
+    .header__meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .header__badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+    .header__badge svg { width: 14px; height: 14px; opacity: 0.8; }
+
+    /* ─── CONTAINER ─── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 44px 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .section-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .section-lead {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+
+    /* ─── CARDS ─── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-md);
+    }
+    .card-grid {
+      display: grid;
+      gap: 14px;
+    }
+    .card-grid--2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card-grid--3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .card-grid--4 { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+
+    .card--hero {
+      background: linear-gradient(135deg, var(--accent-dim) 0%, rgba(3,105,161,0.05) 100%);
+      border-color: var(--accent-mid);
+      padding: 28px;
+    }
+    .card--warning {
+      background: var(--amber-dim);
+      border-color: rgba(217,119,6,0.2);
+      border-left: 3px solid var(--amber);
+    }
+    .card--danger {
+      background: var(--red-dim);
+      border-color: rgba(220,38,38,0.15);
+      border-left: 3px solid var(--red);
+    }
+    .card--success {
+      background: var(--green-dim);
+      border-color: rgba(5,150,105,0.15);
+      border-left: 3px solid var(--green);
+    }
+
+    /* ─── STATS ─── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+    }
+    .stat__num {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent-strong);
+      letter-spacing: -0.03em;
+      font-family: var(--font-mono);
+    }
+    .stat__unit {
+      font-size: 10px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+    .stat__label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 5px;
+      font-weight: 500;
+    }
+
+    /* ─── TABLES ─── */
+    .table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--border); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: var(--bg-card);
+    }
+    thead { background: var(--surface-2); }
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border-strong);
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 13px;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--surface-2); }
+
+    /* ─── BADGES ─── */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .badge--new {
+      background: var(--green-dim);
+      color: var(--green);
+      border: 1px solid rgba(5,150,105,0.2);
+    }
+    .badge--changed {
+      background: var(--amber-dim);
+      color: var(--amber);
+      border: 1px solid rgba(217,119,6,0.2);
+    }
+    .badge--key {
+      background: var(--accent-dim);
+      color: var(--accent-strong);
+      border: 1px solid rgba(3,105,161,0.2);
+    }
+    .badge--danger {
+      background: var(--red-dim);
+      color: var(--red);
+      border: 1px solid rgba(220,38,38,0.2);
+    }
+    .badge--eliminated {
+      background: rgba(220,38,38,0.08);
+      color: var(--red);
+      text-decoration: line-through;
+    }
+    .badge--preferred {
+      background: var(--green-dim);
+      color: var(--green);
+    }
+
+    /* ─── COMPARE GRID ─── */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .compare-col {
+      background: var(--bg-card);
+    }
+    .compare-col--old { background: var(--surface-2); }
+    .compare-header {
+      padding: 12px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      border-bottom: 2px solid var(--border-strong);
+    }
+    .compare-col--old .compare-header {
+      background: var(--surface-3);
+      color: var(--text-muted);
+    }
+    .compare-col--new .compare-header {
+      background: var(--accent-dim);
+      color: var(--accent-strong);
+    }
+    .compare-row {
+      padding: 9px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12.5px;
+    }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row__topic {
+      font-weight: 600;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+    .compare-row__val { color: var(--text); }
+    .compare-row__val--old { color: var(--text-muted); }
+    .compare-row__val--new { color: var(--green); font-weight: 500; }
+    .compare-row__val--eliminated { color: var(--red); text-decoration: line-through; }
+
+    /* ─── DIVIDER ─── */
+    .divider-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 24px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .divider-label::before, .divider-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-strong);
+    }
+
+    /* ─── CALLOUT ─── */
+    .callout {
+      display: flex;
+      gap: 12px;
+      padding: 13px 16px;
+      border-radius: var(--radius-sm);
+      margin: 18px 0;
+      font-size: 13px;
+    }
+    .callout--warning {
+      background: var(--amber-dim);
+      border: 1px solid rgba(217,119,6,0.2);
+    }
+    .callout--info {
+      background: var(--accent-dim);
+      border: 1px solid rgba(3,105,161,0.15);
+    }
+    .callout--danger {
+      background: var(--red-dim);
+      border: 1px solid rgba(220,38,38,0.15);
+    }
+    .callout__icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .callout__text { color: var(--text); }
+    .callout__text strong { font-weight: 600; }
+
+    /* ─── STEP LIST ─── */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .step-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+    }
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid rgba(3,105,161,0.2);
+      color: var(--accent-strong);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 13px; color: var(--text); }
+    .step-text strong { font-weight: 600; }
+
+    /* ─── TAKEAWAY ─── */
+    .takeaway-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .takeaway-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+    .takeaway-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .takeaway-text { font-size: 13.5px; line-height: 1.55; color: var(--text); }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      padding: 22px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      animation: fadeUp 0.4s ease both;
+    }
+    .reveal:nth-child(1) { animation-delay: 0.05s; }
+    .reveal:nth-child(2) { animation-delay: 0.1s; }
+    .reveal:nth-child(3) { animation-delay: 0.15s; }
+    .reveal:nth-child(4) { animation-delay: 0.2s; }
+    .reveal:nth-child(5) { animation-delay: 0.25s; }
+    .reveal:nth-child(n+6) { animation-delay: 0.3s; }
+
+    @media (max-width: 768px) {
+      .reveal { opacity: 1; animation: none; }
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="header">
+  <div class="header__inner">
+    <div class="header__tag">📚 IMBR — Internal Medicine Board Review</div>
+    <h1 class="header__title">CPR Guidelines 2025<br>Evidence Review</h1>
+    <p class="header__subtitle">AHA 2025 Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care — First comprehensive update since 2020.</p>
+    <div class="header__meta">
+      <div class="header__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+        March 2026
+      </div>
+      <div class="header__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        AHA 2025 · Effective through 2030
+      </div>
+      <div class="header__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        BLS · ACLS · Post-Cardiac Arrest
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── CONTENT ─── -->
+<div class="container">
+
+  <!-- ─── OVERVIEW ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 1 — Overview</div>
+    <h2 class="section-title">What's New in 2025</h2>
+    <p class="section-lead">Major changes across BLS, ACLS, post-cardiac arrest care, systems, and ethics — first comprehensive update since 2020.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>2020</th>
+            <th>2025 Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chain of Survival</strong></td>
+            <td><span style="color:var(--text-muted)">Separate for in-hospital/out-of-hospital</span></td>
+            <td><span class="badge badge--new">New</span> <strong>Unified</strong> for all ages/settings</td>
+          </tr>
+          <tr>
+            <td><strong>Trained lay rescuer CPR</strong></td>
+            <td><span style="color:var(--text-muted)">Hands-only preferred</span></td>
+            <td><span class="badge badge--changed">Changed</span> <strong>30:2</strong> when trained and willing</td>
+          </tr>
+          <tr>
+            <td><strong>Infant two-finger compression</strong></td>
+            <td>Acceptable (single rescuer)</td>
+            <td><span class="badge badge--danger">Eliminated</span></td>
+          </tr>
+          <tr>
+            <td><strong>Infant two-thumb technique</strong></td>
+            <td><span style="color:var(--text-muted)">Preferred for 2 rescuers</span></td>
+            <td><span class="badge badge--preferred">Preferred</span> for <strong>ALL</strong> rescuers</td>
+          </tr>
+          <tr>
+            <td><strong>FBAO (adult)</strong></td>
+            <td>5 back blows <strong>OR</strong> 5 abdominal thrusts</td>
+            <td><strong>5 + 5</strong> alternating until cleared</td>
+          </tr>
+          <tr>
+            <td><strong>Women & defibrillation</strong></td>
+            <td><span style="color:var(--text-muted)">No specific guidance</span></td>
+            <td><span class="badge badge--new">New</span> Clear guidance — no delay for women</td>
+          </tr>
+          <tr>
+            <td><strong>Opioid algorithm</strong></td>
+            <td><span style="color:var(--text-muted)">Brief mention</span></td>
+            <td><span class="badge badge--new">New</span> <strong>Standalone algorithm</strong> + naloxone emphasis</td>
+          </tr>
+          <tr>
+            <td><strong>Head-up CPR</strong></td>
+            <td><span style="color:var(--text-muted)">Not recommended</span></td>
+            <td><span class="badge badge--danger">Not recommended</span> except clinical trials</td>
+          </tr>
+          <tr>
+            <td><strong>Dual sequential defibrillation</strong></td>
+            <td><span style="color:var(--text-muted)">Not addressed</span></td>
+            <td><span class="badge badge--danger">Not established</span> — not routine ACLS</td>
+          </tr>
+          <tr>
+            <td><strong>TTM duration</strong></td>
+            <td>≥24 hours</td>
+            <td><strong>≥36 hours</strong></td>
+          </tr>
+          <tr>
+            <td><strong>TTM target</strong></td>
+            <td>32–36°C routine hypothermia</td>
+            <td><strong>Prevent fever; maintain normothermia</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Neuroprognostication</strong></td>
+            <td><span style="color:var(--text-muted)">Variable timing</span></td>
+            <td><strong>≥72 hours</strong> multimodal post-ROSC/normothermia</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ─── CHAIN OF SURVIVAL ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 2 — Chain of Survival</div>
+    <h2 class="section-title">Unified Survival Chain</h2>
+    <p class="section-lead">All cardiac arrests — all ages, all settings — now follow a single unified chain of survival model.</p>
+
+    <div class="card-grid card-grid--3" style="margin-bottom: 20px;">
+      <div class="card card--hero" style="text-align:center; padding:20px;">
+        <div style="font-size:28px; margin-bottom:8px;">🆘</div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:4px;">Step 1</div>
+        <div style="font-size:14px; font-weight:600;">Recognition & Activation</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Identify + activate emergency response</div>
+      </div>
+      <div class="card card--hero" style="text-align:center; padding:20px;">
+        <div style="font-size:28px; margin-bottom:8px;">💓</div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:4px;">Step 2</div>
+        <div style="font-size:14px; font-weight:600;">Early High-Quality CPR</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">100–120/min; depth ≥2 inches</div>
+      </div>
+      <div class="card card--hero" style="text-align:center; padding:20px;">
+        <div style="font-size:28px; margin-bottom:8px;">⚡</div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:4px;">Step 3</div>
+        <div style="font-size:14px; font-weight:600;">Rapid Defibrillation</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">AED or defibrillator ASAP</div>
+      </div>
+      <div class="card card--hero" style="text-align:center; padding:20px;">
+        <div style="font-size:28px; margin-bottom:8px;">🏥</div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:4px;">Step 4</div>
+        <div style="font-size:14px; font-weight:600;">Effective Advanced Care</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">ACLS: airway, IV, meds</div>
+      </div>
+      <div class="card card--hero" style="text-align:center; padding:20px;">
+        <div style="font-size:28px; margin-bottom:8px;">🌡️</div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:4px;">Step 5</div>
+        <div style="font-size:14px; font-weight:600;">Post-Cardiac Arrest Care</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">TTM ≥36h, hemodynamic support</div>
+      </div>
+      <div class="card card--hero" style="text-align:center; padding:20px;">
+        <div style="font-size:28px; margin-bottom:8px;">🏁</div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:4px;">Step 6</div>
+        <div style="font-size:14px; font-weight:600;">Recovery & Survivorship</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Rehab, follow-up, survivorship</div>
+      </div>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">💡</div>
+      <div class="callout__text"><strong>Key emphasis 2025:</strong> Health equity & addressing CPR disparities — culturally tailored training, addressing barriers to CPR for <strong>women</strong> (fear of causing injury, inappropriate touch), expanding dispatcher-guided CPR, public access to naloxone & AEDs.</div>
+    </div>
+  </section>
+
+  <!-- ─── ADULT BLS ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 3 — Adult BLS</div>
+    <h2 class="section-title">Basic Life Support — Key Changes</h2>
+    <p class="section-lead">Core CPR mechanics unchanged: rate 100–120/min, depth ≥2 inches, minimize interruptions. Key changes in ventilation recommendations and dispatcher guidance.</p>
+
+    <div class="divider-label">Chest Compression Mechanics</div>
+
+    <div class="stats-grid" style="margin-bottom: 20px;">
+      <div class="stat">
+        <div class="stat__num">100–120</div>
+        <div class="stat__unit">per minute</div>
+        <div class="stat__label">Compression rate</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">≥2"</div>
+        <div class="stat__unit">≈5 cm</div>
+        <div class="stat__label">Depth (adult)</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">≤10s</div>
+        <div class="stat__unit">maximum</div>
+        <div class="stat__label">Interruptions</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">Firm</div>
+        <div class="stat__unit">surface</div>
+        <div class="stat__label">Patient position</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Ventilation — Key 2025 Change</div>
+
+    <div class="card-grid card-grid--3" style="margin-bottom: 18px;">
+      <div class="card" style="text-align:center; padding:18px;">
+        <div style="font-size:22px; margin-bottom:8px;">❌</div>
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin-bottom:4px;">Untrained / Unwilling</div>
+        <div style="font-size:18px; font-weight:700; color:var(--text-dim); margin-bottom:4px;">Hands-Only CPR</div>
+        <div style="font-size:11px; color:var(--text-muted);">Still acceptable option</div>
+      </div>
+      <div class="card card--hero" style="text-align:center; padding:18px; border-color:var(--accent-mid);">
+        <div style="font-size:22px; margin-bottom:8px;">✅</div>
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--accent); margin-bottom:4px;">Trained Lay Rescuer</div>
+        <div style="font-size:18px; font-weight:700; color:var(--accent); margin-bottom:4px;">30:2</div>
+        <div style="font-size:11px; color:var(--text-dim);">Compressions:Breaths — when willing and able</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px;">
+        <div style="font-size:22px; margin-bottom:8px;">👨‍⚕️</div>
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin-bottom:4px;">Healthcare Professional</div>
+        <div style="font-size:18px; font-weight:700; color:var(--text); margin-bottom:4px;">30:2</div>
+        <div style="font-size:11px; color:var(--text-dim);">Compressions:Breaths</div>
+      </div>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">🔄</div>
+      <div class="callout__text"><strong>2020 → 2025:</strong> Previously, hands-only CPR was preferred for all lay rescuers. Now, <strong>trained</strong> lay rescuers are specifically advised to provide 30:2 when willing and able.</div>
+    </div>
+
+    <div class="divider-label">Dispatcher-Guided CPR</div>
+
+    <div class="card-grid card-grid--2" style="margin-bottom: 0;">
+      <div class="card" style="text-align:center; padding:18px;">
+        <div style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin-bottom:8px;">Adult Patient</div>
+        <div style="font-size:20px; font-weight:700; color:var(--amber);">Hands-Only CPR</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Dispatcher instructs compressions only</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px;">
+        <div style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin-bottom:8px;">Child / Infant</div>
+        <div style="font-size:20px; font-weight:700; color:var(--green);">Conventional CPR</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">30:2 — includes rescue breaths</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── OPIOID OVERDOSE ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 4 — New Algorithm</div>
+    <h2 class="section-title">Opioid Overdose — New 2025 Algorithm</h2>
+    <p class="section-lead">The 2025 guidelines introduce a dedicated standalone algorithm for suspected opioid overdose with expanded naloxone recommendations.</p>
+
+    <div class="card card--danger" style="margin-bottom: 18px;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:10px;">Signs of Opioid Overdose</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <div style="background:rgba(220,38,38,0.06); border-radius:6px; padding:8px 12px; font-size:13px; font-weight:600; color:var(--text);">Unresponsive</div>
+        <div style="background:rgba(220,38,38,0.06); border-radius:6px; padding:8px 12px; font-size:13px; font-weight:600; color:var(--text);">Respiratory depression / apnea</div>
+        <div style="background:rgba(220,38,38,0.06); border-radius:6px; padding:8px 12px; font-size:13px; font-weight:600; color:var(--text);">Pinpoint pupils (miosis)</div>
+        <div style="background:rgba(220,38,38,0.06); border-radius:6px; padding:8px 12px; font-size:13px; font-weight:600; color:var(--text);">Cyanosis</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Public / Bystander Response</div>
+
+    <div class="step-list" style="margin-bottom: 18px;">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>Activate emergency response</strong> — call 1669/911 immediately</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>Administer naloxone</strong> — IM/SQ preferred by lay rescuers; repeat if no response in 2–5 min</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>Start CPR</strong> if no pulse/breathing and trained</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-text"><strong>Recovery position</strong> if breathing normally but still unresponsive</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-text"><strong>Repeat naloxone</strong> if no response in 2–5 minutes</div>
+      </div>
+    </div>
+
+    <div class="card-grid card-grid--3" style="margin-bottom: 0;">
+      <div class="card" style="padding:16px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--accent); margin-bottom:8px;">IM/SQ Preferred (Lay)</div>
+        <div style="font-size:22px; font-weight:700; color:var(--text); font-family:var(--font-mono); margin-bottom:4px;">0.4–1 mg</div>
+        <div style="font-size:11px; color:var(--text-dim);">Repeat if needed</div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--accent); margin-bottom:8px;">Auto-Injector</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:4px;">Per device instructions</div>
+        <div style="font-size:11px; color:var(--text-dim);">Also acceptable</div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--accent); margin-bottom:8px;">Nasal Spray</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:4px;">Per device instructions</div>
+        <div style="font-size:11px; color:var(--text-dim);">Also acceptable</div>
+      </div>
+    </div>
+
+    <div class="callout callout--info" style="margin-top: 18px;">
+      <div class="callout__icon">💡</div>
+      <div class="callout__text"><strong>Community naloxone distribution programs</strong> are recommended to increase public access and reduce opioid-related mortality. No contraindications in suspected opioid overdose.</div>
+    </div>
+  </section>
+
+  <!-- ─── FBAO ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 5 — FBAO</div>
+    <h2 class="section-title">Foreign Body Airway Obstruction — Updated</h2>
+
+    <div class="compare-grid" style="margin-bottom: 0;">
+      <div class="compare-col compare-col--old">
+        <div class="compare-header">2020 Recommendation</div>
+        <div class="compare-row"><div class="compare-row__topic">Conscious adult/child FBAO</div></div>
+        <div class="compare-row"><div class="compare-row__val compare-row__val--old"><strong>5 back blows</strong> OR <strong>5 abdominal thrusts</strong></div></div>
+        <div class="compare-row"><div class="compare-row__topic">Unconscious FBAO</div></div>
+        <div class="compare-row"><div class="compare-row__val compare-row__val--old">CPR + finger sweep</div></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-header">2025 Update</div>
+        <div class="compare-row"><div class="compare-row__topic">Conscious adult/child FBAO</div></div>
+        <div class="compare-row"><div class="compare-row__val compare-row__val--new"><strong>5 back blows + 5 abdominal thrusts</strong> (alternating) until cleared</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Unconscious FBAO</div></div>
+        <div class="compare-row"><div class="compare-row__val">CPR + jaw thrust; remove <strong>visible objects only</strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── INFANT CPR ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 6 — Infant CPR</div>
+    <h2 class="section-title">Major Change: Two-Finger Technique ELIMINATED</h2>
+    <p class="section-lead">The two-finger technique for infant chest compressions has been removed from the 2025 guidelines. Two-thumb encircling hands is now preferred for ALL rescuers.</p>
+
+    <div class="card-grid card-grid--3" style="margin-bottom: 18px;">
+      <div class="card card--danger" style="text-align:center; padding:18px;">
+        <div style="font-size:20px; margin-bottom:8px;">❌</div>
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--red); margin-bottom:6px;">Two-Finger</div>
+        <div style="font-size:14px; font-weight:600; text-decoration:line-through; color:var(--red);">ELIMINATED</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">No longer acceptable</div>
+      </div>
+      <div class="card card--success" style="text-align:center; padding:18px;">
+        <div style="font-size:20px; margin-bottom:8px;">✅</div>
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--green); margin-bottom:6px;">Two-Thumb Encircling</div>
+        <div style="font-size:14px; font-weight:600; color:var(--green);">Preferred — ALL Rescuers</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Higher coronary perfusion pressure</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px;">
+        <div style="font-size:20px; margin-bottom:8px;">👋</div>
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin-bottom:6px;">One-Hand (Heel)</div>
+        <div style="font-size:14px; font-weight:600; color:var(--text);">Acceptable</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Only if two-thumb not feasible</div>
+      </div>
+    </div>
+
+    <div class="stats-grid" style="margin-bottom: 0;">
+      <div class="stat">
+        <div class="stat__num">15:2</div>
+        <div class="stat__unit">ratio</div>
+        <div class="stat__label">Compressions:Breaths (single or 2 rescuers)</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">~1.5"</div>
+        <div class="stat__unit">≈4 cm</div>
+        <div class="stat__label">Compression depth (infant)</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">100–120</div>
+        <div class="stat__unit">per minute</div>
+        <div class="stat__label">Compression rate</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">2 min</div>
+        <div class="stat__unit">CPR first</div>
+        <div class="stat__label">Then call (if alone rescuer)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WOMEN ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 7 — Health Equity</div>
+    <h2 class="section-title">Women and Defibrillation — New Guidance</h2>
+    <p class="section-lead">2025 guidelines specifically address barriers that cause delays in CPR and defibrillation for women.</p>
+
+    <div class="card-grid card-grid--2" style="margin-bottom: 18px;">
+      <div class="card card--danger">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:10px;">Barriers Identified</div>
+        <div style="font-size:12.5px; color:var(--text-dim); line-height:1.8; display:flex; flex-direction:column; gap:6px;">
+          <div>• Uncertainty about removing clothing/bras for pad placement</div>
+          <div>• Misconceptions about causing injury</div>
+          <div>• Concerns about inappropriate touch</div>
+          <div>• Fear of harming the patient</div>
+          <div>• Delayed recognition of cardiac arrest in women</div>
+        </div>
+      </div>
+      <div class="card card--success">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--green); margin-bottom:10px;">2025 Recommendations</div>
+        <div style="font-size:12.5px; color:var(--text-dim); line-height:1.8; display:flex; flex-direction:column; gap:6px;">
+          <div>• <strong>Remove clothing and undergarments quickly</strong> for pad placement</div>
+          <div>• Defibrillation pads directly on skin</div>
+          <div>• <strong>Standard anterolateral pad placement</strong> — no special modification for women</div>
+          <div>• Train all rescuers to defibrillate women without hesitation</div>
+          <div>• Public education campaigns targeting CPR for women</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--warning">
+      <div class="callout__icon">⚠️</div>
+      <div class="callout__text">Do <strong>NOT</strong> delay defibrillation for women. Standard pad placement (anterolateral) applies. Remove clothing/bras quickly — no special modification needed.</div>
+    </div>
+  </section>
+
+  <!-- ─── ACLS ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 8 — ACLS</div>
+    <h2 class="section-title">Advanced Cardiovascular Life Support</h2>
+
+    <div class="divider-label">Defibrillation & Energy</div>
+
+    <div class="table-wrap" style="margin-bottom: 18px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>2020</th>
+            <th>2025 Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>First shock (biphasic)</strong></td>
+            <td style="color:var(--text-muted)">120–200 J</td>
+            <td><strong>≥200 J</strong> preferred</td>
+          </tr>
+          <tr>
+            <td><strong>AF/Flutter cardioversion</strong></td>
+            <td style="color:var(--text-muted)">100–200 J</td>
+            <td><strong>≥200 J</strong> first shock</td>
+          </tr>
+          <tr>
+            <td><strong>Dual sequential defibrillation</strong></td>
+            <td style="color:var(--text-muted)">Not addressed</td>
+            <td><span class="badge badge--danger">Not established</span> — not routine ACLS; further study needed</td>
+          </tr>
+          <tr>
+            <td><strong>Head-up CPR</strong></td>
+            <td style="color:var(--text-muted)">Not recommended</td>
+            <td><span class="badge badge--danger">Not recommended</span> except clinical trials</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider-label">Vasopressors</div>
+
+    <div class="card-grid card-grid--2" style="margin-bottom: 18px;">
+      <div class="card" style="padding:18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-strong); margin-bottom:8px;">Epinephrine</div>
+        <div style="font-size:13px; color:var(--text-dim); margin-bottom:8px;">Standard vasopressor — continue every 3–5 minutes</div>
+        <div style="font-size:12px; background:var(--surface-2); border-radius:6px; padding:8px; color:var(--text);">
+          <strong>Shockable:</strong> Defibrillation FIRST — epinephrine after initial shocks fail<br>
+          <strong>Non-shockable:</strong> Consider early initial epinephrine (especially children)
+        </div>
+      </div>
+      <div class="card" style="padding:18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--amber); margin-bottom:8px;">Vasopressin</div>
+        <div style="font-size:15px; font-weight:600; color:var(--amber); margin-bottom:8px;">No advantage over epinephrine</div>
+        <div style="font-size:12px; color:var(--text-dim);">No advantage (alone or in combination) as a substitute for epinephrine in adult cardiac arrest</div>
+      </div>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">ℹ️</div>
+      <div class="callout__text"><strong>ECPR:</strong> Selective use with formal patient selection criteria. Rapid intra-arrest transport for ECPR may be considered for <strong>limited, highly selected</strong> adult OHCA patients. Not a universal rescue therapy.</div>
+    </div>
+  </section>
+
+  <!-- ─── POST-CARDIC ─── -->
+  <section class="section reveal">
+    <div class="section-label">Section 9 — Post-Cardiac Arrest Care</div>
+    <h2 class="section-title">Targeted Temperature Management & Post-ROSC Care</h2>
+    <p class="section-lead">Major paradigm shift: from routine induction of hypothermia → actively prevent fever and maintain sustained normothermia. Duration extended to ≥36 hours.</p>
+
+    <div class="compare-grid" style="margin-bottom: 18px;">
+      <div class="compare-col compare-col--old">
+        <div class="compare-header">2020 TTM</div>
+        <div class="compare-row"><div class="compare-row__topic">Target</div><div class="compare-row__val compare-row__val--old">32–36°C (routine hypothermia)</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Duration</div><div class="compare-row__val compare-row__val--old">≥24 hours</div></div>
+        <div class="compare-row"><div class="compare-row__topic">Approach</div><div class="compare-row__val compare-row__val--old">Induce and maintain hypothermia</div></div>
+        <div class="compare-row"><div class="compare-row__topic">MAP target</div><div class="compare-row__val compare-row__val--old">≥65 mmHg</div></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-header">2025 Update</div>
+        <div class="compare-row"><div class="compare-row__topic">Target</div><div class="compare-row__val compare-row__val--new"><strong>Prevent fever; normothermia</strong></div></div>
+        <div class="compare-row"><div class="compare-row__topic">Duration</div><div class="compare-row__val compare-row__val--new"><strong>≥36 hours</strong></div></div>
+        <div class="compare-row"><div class="compare-row__topic">Approach</div><div class="compare-row__val compare-row__val--new">Continuous temperature monitoring + active control to maintain normothermia</div></div>
+        <div class="compare-row"><div class="compare-row__topic">MAP target</div><div class="compare-row__val compare-row__val--new">≥65 mmHg (unchanged)</div></div>
+      </div>
+    </div>
+
+    <div class="divider-label">Post-ROSC Hemodynamics & Evaluation</div>
+
+    <div class="card-grid card-grid--4" style="margin-bottom: 18px;">
+      <div class="stat">
+        <div class="stat__num">≥65</div>
+        <div class="stat__unit">mmHg</div>
+        <div class="stat__label">MAP target</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">94–98%</div>
+        <div class="stat__unit">SpO₂</div>
+        <div class="stat__label">Avoid hyperoxia</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">35–45</div>
+        <div class="stat__unit">mmHg</div>
+        <div class="stat__label">PaCO₂ normocapnia</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">≥72h</div>
+        <div class="stat__unit">after ROSC</div>
+        <div class="stat__label">Neuroprognostication timing</div>
+      </div>
+    </div>
+
+    <div class="divider-label">Diagnostic Testing</div>
+
+    <div class="card-grid card-grid--2" style="margin-bottom: 0;">
+      <div class="card" style="padding:16px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--green); margin-bottom:8px;">✅ Indicated</div>
+        <div style="font-size:12.5px; color:var(--text-dim); line-height:1.7;">
+          <div>• <strong>12-lead ECG</strong> — all post-ROSC patients</div>
+          <div>• <strong>Emergency coronary angiography</strong> — STEMI, shock, or instability with suspected cardiac cause</div>
+          <div>• <strong>CT/ultrasound</strong> — investigate etiology and complications</div>
+        </div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--red); margin-bottom:8px;">❌ Not Routinely Indicated</div>
+        <div style="font-size:12.5px; color:var(--text-dim); line-height:1.7;">
+          <div>• Coronary angiography for <strong>comatose non-STEMI</strong> patients — not routinely recommended</div>
+          <div>• Head-up CPR — not recommended except trials</div>
+          <div>• Dual sequential defibrillation — not established</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TAKEAWAYS ─── -->
+  <section class="section reveal" style="padding-bottom: 48px;">
+    <div class="section-label">Summary — Key Takeaways</div>
+    <h2 class="section-title">Clinical Pearls — CPR 2025</h2>
+
+    <ol class="takeaway-list">
+      <li class="takeaway-item">
+        <div class="takeaway-num">1</div>
+        <div class="takeaway-text"><strong>BLS fundamentals unchanged</strong> — 100–120/min compressions, depth ≥2 inches (adults), minimize interruptions to &lt;10 seconds.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">2</div>
+        <div class="takeaway-text"><strong>Trained lay rescuers: 30:2</strong> — not hands-only if trained and willing to provide breaths.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">3</div>
+        <div class="takeaway-text"><strong>Infant CPR: two-thumb only</strong> — two-finger technique eliminated. Two-thumb encircling hands preferred for ALL rescuers.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">4</div>
+        <div class="takeaway-text"><strong>FBAO: 5+5</strong> — alternate 5 back blows and 5 abdominal thrusts until object is expelled.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">5</div>
+        <div class="takeaway-text"><strong>Women: defibrillate without hesitation</strong> — remove clothing quickly, standard anterolateral pad placement, no special modification needed.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">6</div>
+        <div class="takeaway-text"><strong>New opioid algorithm</strong> — naloxone is critical. Administer immediately (IM/SQ preferred). Community distribution programs recommended.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">7</div>
+        <div class="takeaway-text"><strong>Head-up CPR & DSD: NOT routine</strong> — not recommended as standard ACLS. Further study needed.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">8</div>
+        <div class="takeaway-text"><strong>TTM: ≥36 hours of normothermia</strong> — prevent fever actively. Shifted from routine 32–36°C hypothermia induction.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">9</div>
+        <div class="takeaway-text"><strong>Post-ROSC MAP ≥65 mmHg</strong> — hemodynamic optimization alongside temperature control.</div>
+      </li>
+      <li class="takeaway-item">
+        <div class="takeaway-num">10</div>
+        <div class="takeaway-text"><strong>Neuroprognostication: ≥72 hours</strong> — multimodal approach. No single test is definitive. Continuous EEG recommended for children.</div>
+      </li>
+    </ol>
+  </section>
+
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  IMBR Study Room — CPR Guidelines 2025 Review · Sources: AHA 2025 Guidelines (Circulation, October 2025) · Valid through 2030
+</footer>
+
+</body>
+</html>
