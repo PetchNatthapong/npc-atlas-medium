@@ -1,0 +1,2891 @@
+{
+  "folders": {
+    "Allergy-Immunology": [],
+    "Cardiology": [
+      {
+        "name": "HOST-EXAM-Trial-2026.html",
+        "type": "html",
+        "path": "Review/Cardiology/HOST-EXAM-Trial-2026.html",
+        "mtime": 1776352998.334606,
+        "date": "2d ago",
+        "size": "9.4 KB",
+        "size_bytes": 9657,
+        "folder": "Cardiology"
+      },
+      {
+        "name": "HOST-EXAM-Trial-2026.md",
+        "type": "md",
+        "path": "Review/Cardiology/HOST-EXAM-Trial-2026.md",
+        "mtime": 1776352998.2317333,
+        "date": "2d ago",
+        "size": "2.0 KB",
+        "size_bytes": 2019,
+        "folder": "Cardiology"
+      },
+      {
+        "name": "Long-QT-Syndrome-Visual.html",
+        "type": "html",
+        "path": "Review/Cardiology/Long-QT-Syndrome-Visual.html",
+        "mtime": 1776352998.3361735,
+        "date": "2d ago",
+        "size": "19.0 KB",
+        "size_bytes": 19491,
+        "folder": "Cardiology"
+      },
+      {
+        "name": "bmj_page-1.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/bmj_page-1.png",
+        "mtime": 1776352998.303516,
+        "date": "2d ago",
+        "size": "736.8 KB",
+        "size_bytes": 754460,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "bmj_page-2.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/bmj_page-2.png",
+        "mtime": 1776352998.3092585,
+        "date": "2d ago",
+        "size": "658.1 KB",
+        "size_bytes": 673923,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "bmj_page-3.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/bmj_page-3.png",
+        "mtime": 1776352998.305728,
+        "date": "2d ago",
+        "size": "542.3 KB",
+        "size_bytes": 555353,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "bmj_page-4.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/bmj_page-4.png",
+        "mtime": 1776352998.2882235,
+        "date": "2d ago",
+        "size": "617.7 KB",
+        "size_bytes": 632498,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "bmj_page-5.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/bmj_page-5.png",
+        "mtime": 1776352998.286305,
+        "date": "2d ago",
+        "size": "451.2 KB",
+        "size_bytes": 462032,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "bmj_page-6.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/bmj_page-6.png",
+        "mtime": 1776352998.2806277,
+        "date": "2d ago",
+        "size": "830.3 KB",
+        "size_bytes": 850217,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "bmj_page-7.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/bmj_page-7.png",
+        "mtime": 1776352998.2819352,
+        "date": "2d ago",
+        "size": "520.8 KB",
+        "size_bytes": 533284,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-01.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-01.png",
+        "mtime": 1776352998.2690394,
+        "date": "2d ago",
+        "size": "361.9 KB",
+        "size_bytes": 370539,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-02.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-02.png",
+        "mtime": 1776352998.2727761,
+        "date": "2d ago",
+        "size": "657.7 KB",
+        "size_bytes": 673483,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-03.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-03.png",
+        "mtime": 1776352998.2787874,
+        "date": "2d ago",
+        "size": "350.9 KB",
+        "size_bytes": 359352,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-04.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-04.png",
+        "mtime": 1776352998.2589839,
+        "date": "2d ago",
+        "size": "393.6 KB",
+        "size_bytes": 402998,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-05.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-05.png",
+        "mtime": 1776352998.2602496,
+        "date": "2d ago",
+        "size": "479.3 KB",
+        "size_bytes": 490820,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-06.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-06.png",
+        "mtime": 1776352998.2488332,
+        "date": "2d ago",
+        "size": "393.3 KB",
+        "size_bytes": 402751,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-07.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-07.png",
+        "mtime": 1776352998.242592,
+        "date": "2d ago",
+        "size": "850.5 KB",
+        "size_bytes": 870916,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-08.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-08.png",
+        "mtime": 1776352998.2975473,
+        "date": "2d ago",
+        "size": "653.8 KB",
+        "size_bytes": 669491,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-09.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-09.png",
+        "mtime": 1776352998.2995973,
+        "date": "2d ago",
+        "size": "501.7 KB",
+        "size_bytes": 513719,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-10.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-10.png",
+        "mtime": 1776352998.257683,
+        "date": "2d ago",
+        "size": "339.8 KB",
+        "size_bytes": 347971,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-11.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-11.png",
+        "mtime": 1776352998.2634752,
+        "date": "2d ago",
+        "size": "351.8 KB",
+        "size_bytes": 360220,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-12.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-12.png",
+        "mtime": 1776352998.247294,
+        "date": "2d ago",
+        "size": "498.3 KB",
+        "size_bytes": 510308,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-13.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-13.png",
+        "mtime": 1776352998.2452955,
+        "date": "2d ago",
+        "size": "537.2 KB",
+        "size_bytes": 550075,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-14.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-14.png",
+        "mtime": 1776352998.2709157,
+        "date": "2d ago",
+        "size": "466.5 KB",
+        "size_bytes": 477716,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-15.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-15.png",
+        "mtime": 1776352998.267252,
+        "date": "2d ago",
+        "size": "478.5 KB",
+        "size_bytes": 489989,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-16.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-16.png",
+        "mtime": 1776352998.2748978,
+        "date": "2d ago",
+        "size": "591.2 KB",
+        "size_bytes": 605399,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-17.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-17.png",
+        "mtime": 1776352998.2764661,
+        "date": "2d ago",
+        "size": "613.8 KB",
+        "size_bytes": 628533,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-18.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-18.png",
+        "mtime": 1776352998.2903802,
+        "date": "2d ago",
+        "size": "622.4 KB",
+        "size_bytes": 637315,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-19.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-19.png",
+        "mtime": 1776352998.2834048,
+        "date": "2d ago",
+        "size": "618.7 KB",
+        "size_bytes": 633500,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "krahn_page-20.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/krahn_page-20.png",
+        "mtime": 1776352998.293392,
+        "date": "2d ago",
+        "size": "462.2 KB",
+        "size_bytes": 473263,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "lqt-patterns-nejm.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/lqt-patterns-nejm.png",
+        "mtime": 1776352998.2651832,
+        "date": "2d ago",
+        "size": "890.9 KB",
+        "size_bytes": 912258,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-01.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-01.png",
+        "mtime": 1776352998.3301904,
+        "date": "2d ago",
+        "size": "478.4 KB",
+        "size_bytes": 489903,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-02.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-02.png",
+        "mtime": 1776352998.331574,
+        "date": "2d ago",
+        "size": "502.8 KB",
+        "size_bytes": 514890,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-03.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-03.png",
+        "mtime": 1776352998.3335733,
+        "date": "2d ago",
+        "size": "890.9 KB",
+        "size_bytes": 912258,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-04.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-04.png",
+        "mtime": 1776352998.323554,
+        "date": "2d ago",
+        "size": "558.4 KB",
+        "size_bytes": 571823,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-05.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-05.png",
+        "mtime": 1776352998.3265908,
+        "date": "2d ago",
+        "size": "422.9 KB",
+        "size_bytes": 433020,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-06.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-06.png",
+        "mtime": 1776352998.3181913,
+        "date": "2d ago",
+        "size": "562.9 KB",
+        "size_bytes": 576456,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-07.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-07.png",
+        "mtime": 1776352998.3122747,
+        "date": "2d ago",
+        "size": "571.5 KB",
+        "size_bytes": 585225,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-08.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-08.png",
+        "mtime": 1776352998.2343037,
+        "date": "2d ago",
+        "size": "559.1 KB",
+        "size_bytes": 572521,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-09.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-09.png",
+        "mtime": 1776352998.2364717,
+        "date": "2d ago",
+        "size": "554.8 KB",
+        "size_bytes": 568099,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-10.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-10.png",
+        "mtime": 1776352998.3213012,
+        "date": "2d ago",
+        "size": "675.9 KB",
+        "size_bytes": 692087,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-11.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-11.png",
+        "mtime": 1776352998.328711,
+        "date": "2d ago",
+        "size": "700.5 KB",
+        "size_bytes": 717335,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      },
+      {
+        "name": "nejm_page-12.png",
+        "type": "other",
+        "path": "Review/Cardiology/images/nejm_page-12.png",
+        "mtime": 1776352998.3159895,
+        "date": "2d ago",
+        "size": "413.5 KB",
+        "size_bytes": 423437,
+        "folder": "Cardiology",
+        "subfolder": "images"
+      }
+    ],
+    "Critical-Care": [
+      {
+        "name": "ARDS-Guidelines-2024-2026.md",
+        "type": "md",
+        "path": "Review/Critical-Care/ARDS-Guidelines-2024-2026.md",
+        "mtime": 1776352998.353819,
+        "date": "2d ago",
+        "size": "17.4 KB",
+        "size_bytes": 17824,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "ARDS-Guidelines-2024-2026.pdf",
+        "type": "pdf",
+        "path": "Review/Critical-Care/ARDS-Guidelines-2024-2026.pdf",
+        "mtime": 1776352998.3524165,
+        "date": "2d ago",
+        "size": "107.7 KB",
+        "size_bytes": 110267,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "ARDS-Visual-2024-2026.html",
+        "type": "html",
+        "path": "Review/Critical-Care/ARDS-Visual-2024-2026.html",
+        "mtime": 1776352998.3427904,
+        "date": "2d ago",
+        "size": "31.5 KB",
+        "size_bytes": 32269,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "CPR-2025-Presentation.html",
+        "type": "html",
+        "path": "Review/Critical-Care/CPR-2025-Presentation.html",
+        "mtime": 1776352998.3439925,
+        "date": "2d ago",
+        "size": "23.4 KB",
+        "size_bytes": 23949,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "CPR_Guidelines_2025_Review.md",
+        "type": "md",
+        "path": "Review/Critical-Care/CPR_Guidelines_2025_Review.md",
+        "mtime": 1776352998.3568656,
+        "date": "2d ago",
+        "size": "14.8 KB",
+        "size_bytes": 15137,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "CPR_Guidelines_2025_Visual.html",
+        "type": "html",
+        "path": "Review/Critical-Care/CPR_Guidelines_2025_Visual.html",
+        "mtime": 1776352998.3513231,
+        "date": "2d ago",
+        "size": "47.3 KB",
+        "size_bytes": 48417,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "Neurocritical_Care_Guidelines_2026.html",
+        "type": "html",
+        "path": "Review/Critical-Care/Neurocritical_Care_Guidelines_2026.html",
+        "mtime": 1776352998.3417115,
+        "date": "2d ago",
+        "size": "22.7 KB",
+        "size_bytes": 23274,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "Neurocritical_Care_Society_Guidelines_2026.md",
+        "type": "md",
+        "path": "Review/Critical-Care/Neurocritical_Care_Society_Guidelines_2026.md",
+        "mtime": 1776352998.3547812,
+        "date": "2d ago",
+        "size": "10.1 KB",
+        "size_bytes": 10374,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "Neurocritical_Care_Society_Guidelines_2026.pdf",
+        "type": "pdf",
+        "path": "Review/Critical-Care/Neurocritical_Care_Society_Guidelines_2026.pdf",
+        "mtime": 1776352998.3404093,
+        "date": "2d ago",
+        "size": "236.6 KB",
+        "size_bytes": 242284,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "R2D2-ICU-Journal-Club-hq.pdf",
+        "type": "pdf",
+        "path": "Review/Critical-Care/R2D2-ICU-Journal-Club-hq.pdf",
+        "mtime": 1776352998.3472424,
+        "date": "2d ago",
+        "size": "201.3 KB",
+        "size_bytes": 206086,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "R2D2-ICU-Journal-Club.html",
+        "type": "html",
+        "path": "Review/Critical-Care/R2D2-ICU-Journal-Club.html",
+        "mtime": 1776352998.345001,
+        "date": "2d ago",
+        "size": "26.6 KB",
+        "size_bytes": 27242,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "R2D2-ICU-Journal-Club.pdf",
+        "type": "pdf",
+        "path": "Review/Critical-Care/R2D2-ICU-Journal-Club.pdf",
+        "mtime": 1776352998.3581953,
+        "date": "2d ago",
+        "size": "217.8 KB",
+        "size_bytes": 223067,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "Sepsis-Guidelines-2026.md",
+        "type": "md",
+        "path": "Review/Critical-Care/Sepsis-Guidelines-2026.md",
+        "mtime": 1776352998.348428,
+        "date": "2d ago",
+        "size": "21.5 KB",
+        "size_bytes": 22062,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "Tranexamic-Acid-in-Critical-Care-Visual.html",
+        "type": "html",
+        "path": "Review/Critical-Care/Tranexamic-Acid-in-Critical-Care-Visual.html",
+        "mtime": 1776352998.349767,
+        "date": "2d ago",
+        "size": "21.8 KB",
+        "size_bytes": 22302,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "Tranexamic-Acid-in-Critical-Care.html",
+        "type": "html",
+        "path": "Review/Critical-Care/Tranexamic-Acid-in-Critical-Care.html",
+        "mtime": 1776352998.3460052,
+        "date": "2d ago",
+        "size": "26.0 KB",
+        "size_bytes": 26648,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "Tranexamic-Acid-in-Critical-Care.md",
+        "type": "md",
+        "path": "Review/Critical-Care/Tranexamic-Acid-in-Critical-Care.md",
+        "mtime": 1776352998.3603306,
+        "date": "2d ago",
+        "size": "17.2 KB",
+        "size_bytes": 17616,
+        "folder": "Critical-Care"
+      },
+      {
+        "name": "sepsis-ssc-2026.html",
+        "type": "html",
+        "path": "Review/Critical-Care/sepsis-ssc-2026.html",
+        "mtime": 1776352998.3558664,
+        "date": "2d ago",
+        "size": "29.6 KB",
+        "size_bytes": 30288,
+        "folder": "Critical-Care"
+      }
+    ],
+    "DERMATOLGY": [],
+    "Endocrinology": [],
+    "Gastroenterology": [
+      {
+        "name": "Liver-Abscess-2025-Visual-LIGHT.html",
+        "type": "html",
+        "path": "Review/Gastroenterology/Liver-Abscess-2025-Visual-LIGHT.html",
+        "mtime": 1776352998.3633578,
+        "date": "2d ago",
+        "size": "30.3 KB",
+        "size_bytes": 31069,
+        "folder": "Gastroenterology"
+      },
+      {
+        "name": "Liver-Abscess-2025-Visual.html",
+        "type": "html",
+        "path": "Review/Gastroenterology/Liver-Abscess-2025-Visual.html",
+        "mtime": 1776352998.3645175,
+        "date": "2d ago",
+        "size": "30.4 KB",
+        "size_bytes": 31081,
+        "folder": "Gastroenterology"
+      },
+      {
+        "name": "Liver-Abscess-2025.md",
+        "type": "md",
+        "path": "Review/Gastroenterology/Liver-Abscess-2025.md",
+        "mtime": 1776352998.3675447,
+        "date": "2d ago",
+        "size": "16.0 KB",
+        "size_bytes": 16381,
+        "folder": "Gastroenterology"
+      },
+      {
+        "name": "Liver-Abscess-2025.pdf",
+        "type": "pdf",
+        "path": "Review/Gastroenterology/Liver-Abscess-2025.pdf",
+        "mtime": 1776352998.3662872,
+        "date": "2d ago",
+        "size": "649.7 KB",
+        "size_bytes": 665288,
+        "folder": "Gastroenterology"
+      }
+    ],
+    "Genetics": [],
+    "High-Yield ": [
+      {
+        "name": "IMBR-Disease-Overview v2.html",
+        "type": "html",
+        "path": "Review/High-Yield /IMBR-Disease-Overview v2.html",
+        "mtime": 1776352998.3774607,
+        "date": "2d ago",
+        "size": "112.3 KB",
+        "size_bytes": 115005,
+        "folder": "High-Yield "
+      },
+      {
+        "name": "IMBR-Disease-Overview.html",
+        "type": "html",
+        "path": "Review/High-Yield /IMBR-Disease-Overview.html",
+        "mtime": 1776352998.3755841,
+        "date": "2d ago",
+        "size": "1.8 MB",
+        "size_bytes": 1897260,
+        "folder": "High-Yield "
+      }
+    ],
+    "Infectious-Disease": [
+      {
+        "name": "08 ID Approach ID problems 181166 2.txt",
+        "type": "txt",
+        "path": "Review/Infectious-Disease/08 ID Approach ID problems 181166 2.txt",
+        "mtime": 1776352998.391867,
+        "date": "2d ago",
+        "size": "45.1 KB",
+        "size_bytes": 46163,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "CAP_Pneumonia_Review.md",
+        "type": "md",
+        "path": "Review/Infectious-Disease/CAP_Pneumonia_Review.md",
+        "mtime": 1776352998.3855891,
+        "date": "2d ago",
+        "size": "18.8 KB",
+        "size_bytes": 19214,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "CAP_Pneumonia_Review.pdf",
+        "type": "pdf",
+        "path": "Review/Infectious-Disease/CAP_Pneumonia_Review.pdf",
+        "mtime": 1776352998.3832395,
+        "date": "2d ago",
+        "size": "387.6 KB",
+        "size_bytes": 396852,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "CAP_Pneumonia_Visual.html",
+        "type": "html",
+        "path": "Review/Infectious-Disease/CAP_Pneumonia_Visual.html",
+        "mtime": 1776352998.3880837,
+        "date": "2d ago",
+        "size": "65.6 KB",
+        "size_bytes": 67167,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "HIV-AIDS-Management-Update-2026-Visual.html",
+        "type": "html",
+        "path": "Review/Infectious-Disease/HIV-AIDS-Management-Update-2026-Visual.html",
+        "mtime": 1776352998.3867378,
+        "date": "2d ago",
+        "size": "33.6 KB",
+        "size_bytes": 34367,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "HIV-AIDS-Management-Update-2026.md",
+        "type": "md",
+        "path": "Review/Infectious-Disease/HIV-AIDS-Management-Update-2026.md",
+        "mtime": 1776352998.380506,
+        "date": "2d ago",
+        "size": "12.0 KB",
+        "size_bytes": 12292,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "HIV-AIDS-Management-Update-2026.pdf",
+        "type": "pdf",
+        "path": "Review/Infectious-Disease/HIV-AIDS-Management-Update-2026.pdf",
+        "mtime": 1776352998.3894157,
+        "date": "2d ago",
+        "size": "113.3 KB",
+        "size_bytes": 116010,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "Pulmonary-Aspergillosis-Mucormycosis-2025.md",
+        "type": "md",
+        "path": "Review/Infectious-Disease/Pulmonary-Aspergillosis-Mucormycosis-2025.md",
+        "mtime": 1776352998.381531,
+        "date": "2d ago",
+        "size": "25.9 KB",
+        "size_bytes": 26533,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "Pulmonary-Aspergillosis-Mucormycosis-2025.pdf",
+        "type": "pdf",
+        "path": "Review/Infectious-Disease/Pulmonary-Aspergillosis-Mucormycosis-2025.pdf",
+        "mtime": 1776352998.3907156,
+        "date": "2d ago",
+        "size": "210.0 KB",
+        "size_bytes": 215074,
+        "folder": "Infectious-Disease"
+      },
+      {
+        "name": "aspergillosis-vs-mucormycosis.html",
+        "type": "html",
+        "path": "Review/Infectious-Disease/aspergillosis-vs-mucormycosis.html",
+        "mtime": 1776352998.3844013,
+        "date": "2d ago",
+        "size": "20.0 KB",
+        "size_bytes": 20501,
+        "folder": "Infectious-Disease"
+      }
+    ],
+    "Nephrology": [],
+    "Neurology": [
+      {
+        "name": "CADASIL-vs-CARASAL-2026.html",
+        "type": "html",
+        "path": "Review/Neurology/CADASIL-vs-CARASAL-2026.html",
+        "mtime": 1776352998.4112356,
+        "date": "2d ago",
+        "size": "59.1 KB",
+        "size_bytes": 60510,
+        "folder": "Neurology"
+      },
+      {
+        "name": "CADASIL-vs-CARASAL-2026.pdf",
+        "type": "pdf",
+        "path": "Review/Neurology/CADASIL-vs-CARASAL-2026.pdf",
+        "mtime": 1776352998.438926,
+        "date": "2d ago",
+        "size": "126.0 KB",
+        "size_bytes": 129000,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Candesartan-vs-Topiramate-Migraine-Review.html",
+        "type": "html",
+        "path": "Review/Neurology/Candesartan-vs-Topiramate-Migraine-Review.html",
+        "mtime": 1776352998.4439216,
+        "date": "2d ago",
+        "size": "58.9 KB",
+        "size_bytes": 60276,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Candesartan-vs-Topiramate-Migraine-Review.md",
+        "type": "md",
+        "path": "Review/Neurology/Candesartan-vs-Topiramate-Migraine-Review.md",
+        "mtime": 1776352998.410123,
+        "date": "2d ago",
+        "size": "39.1 KB",
+        "size_bytes": 40053,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Candesartan-vs-Topiramate-Migraine-Review.pdf",
+        "type": "pdf",
+        "path": "Review/Neurology/Candesartan-vs-Topiramate-Migraine-Review.pdf",
+        "mtime": 1776352998.4554367,
+        "date": "2d ago",
+        "size": "662.5 KB",
+        "size_bytes": 678405,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Candesartan-vs-Topiramate-Migraine-Visual.html",
+        "type": "html",
+        "path": "Review/Neurology/Candesartan-vs-Topiramate-Migraine-Visual.html",
+        "mtime": 1776352998.397349,
+        "date": "2d ago",
+        "size": "27.4 KB",
+        "size_bytes": 28023,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Cenobamate_Comparative_Effectiveness_2026.html",
+        "type": "html",
+        "path": "Review/Neurology/Cenobamate_Comparative_Effectiveness_2026.html",
+        "mtime": 1776352998.4487152,
+        "date": "2d ago",
+        "size": "16.5 KB",
+        "size_bytes": 16943,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Cenobamate_Comparative_Effectiveness_2026.md",
+        "type": "md",
+        "path": "Review/Neurology/Cenobamate_Comparative_Effectiveness_2026.md",
+        "mtime": 1776352998.4348495,
+        "date": "2d ago",
+        "size": "7.7 KB",
+        "size_bytes": 7868,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Cenobamate_Comparative_Effectiveness_2026_SLIDES.html",
+        "type": "html",
+        "path": "Review/Neurology/Cenobamate_Comparative_Effectiveness_2026_SLIDES.html",
+        "mtime": 1776352998.4086077,
+        "date": "2d ago",
+        "size": "29.7 KB",
+        "size_bytes": 30439,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Cenobamate_Research_2026.html",
+        "type": "html",
+        "path": "Review/Neurology/Cenobamate_Research_2026.html",
+        "mtime": 1776352998.4020317,
+        "date": "2d ago",
+        "size": "28.1 KB",
+        "size_bytes": 28799,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Cenobamate_Visual_2026.html",
+        "type": "html",
+        "path": "Review/Neurology/Cenobamate_Visual_2026.html",
+        "mtime": 1776352998.4450338,
+        "date": "2d ago",
+        "size": "21.9 KB",
+        "size_bytes": 22382,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Dementia-Biomarkers-Imaging-2026.html",
+        "type": "html",
+        "path": "Review/Neurology/Dementia-Biomarkers-Imaging-2026.html",
+        "mtime": 1776352998.4519813,
+        "date": "2d ago",
+        "size": "24.0 KB",
+        "size_bytes": 24581,
+        "folder": "Neurology"
+      },
+      {
+        "name": "EVT-Large-Core-Eligibility-Infographic.html",
+        "type": "html",
+        "path": "Review/Neurology/EVT-Large-Core-Eligibility-Infographic.html",
+        "mtime": 1776352998.4125896,
+        "date": "2d ago",
+        "size": "14.3 KB",
+        "size_bytes": 14594,
+        "folder": "Neurology"
+      },
+      {
+        "name": "EVT-Large-Core-Landmark-Trials-2026.html",
+        "type": "html",
+        "path": "Review/Neurology/EVT-Large-Core-Landmark-Trials-2026.html",
+        "mtime": 1776352998.4467952,
+        "date": "2d ago",
+        "size": "18.6 KB",
+        "size_bytes": 19055,
+        "folder": "Neurology"
+      },
+      {
+        "name": "EVT-Large-Core-Landmark-Trials-2026.md",
+        "type": "md",
+        "path": "Review/Neurology/EVT-Large-Core-Landmark-Trials-2026.md",
+        "mtime": 1776352998.441628,
+        "date": "2d ago",
+        "size": "10.8 KB",
+        "size_bytes": 11074,
+        "folder": "Neurology"
+      },
+      {
+        "name": "EVT-Large-Core-Landmark-Trials-2026.pdf",
+        "type": "pdf",
+        "path": "Review/Neurology/EVT-Large-Core-Landmark-Trials-2026.pdf",
+        "mtime": 1776352998.420389,
+        "date": "2d ago",
+        "size": "535.0 KB",
+        "size_bytes": 547807,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Epilepsy-Review-2026.md",
+        "type": "md",
+        "path": "Review/Neurology/Epilepsy-Review-2026.md",
+        "mtime": 1776352998.4071536,
+        "date": "2d ago",
+        "size": "6.2 KB",
+        "size_bytes": 6369,
+        "folder": "Neurology"
+      },
+      {
+        "name": "FXIa-Inhibitors-2026-Visual.html",
+        "type": "html",
+        "path": "Review/Neurology/FXIa-Inhibitors-2026-Visual.html",
+        "mtime": 1776352998.415942,
+        "date": "2d ago",
+        "size": "20.6 KB",
+        "size_bytes": 21109,
+        "folder": "Neurology"
+      },
+      {
+        "name": "FXIa-Inhibitors-Stroke-Prevention-2026.md",
+        "type": "md",
+        "path": "Review/Neurology/FXIa-Inhibitors-Stroke-Prevention-2026.md",
+        "mtime": 1776352998.4337149,
+        "date": "2d ago",
+        "size": "10.2 KB",
+        "size_bytes": 10453,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Intensive-BP-after-EVT-WMH-Review.html",
+        "type": "html",
+        "path": "Review/Neurology/Intensive-BP-after-EVT-WMH-Review.html",
+        "mtime": 1776352998.3985202,
+        "date": "2d ago",
+        "size": "7.8 KB",
+        "size_bytes": 7939,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Intensive-BP-after-EVT-WMH-Review.md",
+        "type": "md",
+        "path": "Review/Neurology/Intensive-BP-after-EVT-WMH-Review.md",
+        "mtime": 1776352998.4045138,
+        "date": "2d ago",
+        "size": "29.4 KB",
+        "size_bytes": 30108,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Intensive-BP-after-EVT-WMH-Review.pdf",
+        "type": "pdf",
+        "path": "Review/Neurology/Intensive-BP-after-EVT-WMH-Review.pdf",
+        "mtime": 1776352998.414472,
+        "date": "2d ago",
+        "size": "517.6 KB",
+        "size_bytes": 530040,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Neuroprognostication-AIS-ICU-2026.html",
+        "type": "html",
+        "path": "Review/Neurology/Neuroprognostication-AIS-ICU-2026.html",
+        "mtime": 1776352998.4185505,
+        "date": "2d ago",
+        "size": "50.8 KB",
+        "size_bytes": 52046,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Tavapadon-TEMPO-Review.html",
+        "type": "html",
+        "path": "Review/Neurology/Tavapadon-TEMPO-Review.html",
+        "mtime": 1776352998.4007971,
+        "date": "2d ago",
+        "size": "55.6 KB",
+        "size_bytes": 56893,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Tavapadon-TEMPO-Review.md",
+        "type": "md",
+        "path": "Review/Neurology/Tavapadon-TEMPO-Review.md",
+        "mtime": 1776352998.4296513,
+        "date": "2d ago",
+        "size": "39.0 KB",
+        "size_bytes": 39941,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Tavapadon-TEMPO-Review.pdf",
+        "type": "pdf",
+        "path": "Review/Neurology/Tavapadon-TEMPO-Review.pdf",
+        "mtime": 1776352998.425194,
+        "date": "2d ago",
+        "size": "585.3 KB",
+        "size_bytes": 599326,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Tavapadon-TEMPO-Visual.html",
+        "type": "html",
+        "path": "Review/Neurology/Tavapadon-TEMPO-Visual.html",
+        "mtime": 1776352998.4172165,
+        "date": "2d ago",
+        "size": "24.7 KB",
+        "size_bytes": 25338,
+        "folder": "Neurology"
+      },
+      {
+        "name": "Tenecteplase-vs-Alteplase-LVO-2026.html",
+        "type": "html",
+        "path": "Review/Neurology/Tenecteplase-vs-Alteplase-LVO-2026.html",
+        "mtime": 1776352998.4508386,
+        "date": "2d ago",
+        "size": "39.6 KB",
+        "size_bytes": 40594,
+        "folder": "Neurology"
+      }
+    ],
+    "Nutrition": [],
+    "Oncology": [
+      {
+        "name": "Oncology-Reference-Table.html",
+        "type": "html",
+        "path": "Review/Oncology/Oncology-Reference-Table.html",
+        "mtime": 1776352998.4579678,
+        "date": "2d ago",
+        "size": "24.8 KB",
+        "size_bytes": 25361,
+        "folder": "Oncology"
+      }
+    ],
+    "Pulmonology": [],
+    "Rheumatology": [
+      {
+        "name": "Takayasu-Arteritis-2026.html",
+        "type": "html",
+        "path": "Review/Rheumatology/Takayasu-Arteritis-2026.html",
+        "mtime": 1776352998.4608166,
+        "date": "2d ago",
+        "size": "47.8 KB",
+        "size_bytes": 48921,
+        "folder": "Rheumatology"
+      },
+      {
+        "name": "Takayasu-Arteritis-2026.md",
+        "type": "md",
+        "path": "Review/Rheumatology/Takayasu-Arteritis-2026.md",
+        "mtime": 1776352998.4628234,
+        "date": "2d ago",
+        "size": "22.3 KB",
+        "size_bytes": 22787,
+        "folder": "Rheumatology"
+      },
+      {
+        "name": "Takayasu-Arteritis-2026.pdf",
+        "type": "pdf",
+        "path": "Review/Rheumatology/Takayasu-Arteritis-2026.pdf",
+        "mtime": 1776352998.46405,
+        "date": "2d ago",
+        "size": "118.5 KB",
+        "size_bytes": 121349,
+        "folder": "Rheumatology"
+      }
+    ],
+    "Toxicology": []
+  },
+  "input": [
+    {
+      "name": "02 Glomerular Disease.pdf",
+      "type": "pdf",
+      "path": "Input/02 Glomerular Disease.pdf",
+      "mtime": 1776352997.2301478,
+      "date": "2d ago",
+      "size": "16.9 MB",
+      "size_bytes": 17712206
+    },
+    {
+      "name": "02 Glomerular Disease.txt",
+      "type": "txt",
+      "path": "Input/02 Glomerular Disease.txt",
+      "mtime": 1776352997.2319303,
+      "date": "2d ago",
+      "size": "30.6 KB",
+      "size_bytes": 31331
+    },
+    {
+      "name": "03 Interstitial Lung Disease.pdf",
+      "type": "pdf",
+      "path": "Input/03 Interstitial Lung Disease.pdf",
+      "mtime": 1776352997.2660363,
+      "date": "2d ago",
+      "size": "21.2 MB",
+      "size_bytes": 22263394
+    },
+    {
+      "name": "03 Interstitial Lung Disease.txt",
+      "type": "txt",
+      "path": "Input/03 Interstitial Lung Disease.txt",
+      "mtime": 1776352997.2681549,
+      "date": "2d ago",
+      "size": "21.3 KB",
+      "size_bytes": 21835
+    },
+    {
+      "name": "05 Rheu Vasculitis.pdf",
+      "type": "pdf",
+      "path": "Input/05 Rheu Vasculitis.pdf",
+      "mtime": 1776352997.2783349,
+      "date": "2d ago",
+      "size": "5.5 MB",
+      "size_bytes": 5766531
+    },
+    {
+      "name": "05 Rheu Vasculitis.txt",
+      "type": "txt",
+      "path": "Input/05 Rheu Vasculitis.txt",
+      "mtime": 1776352997.2806704,
+      "date": "2d ago",
+      "size": "44.2 KB",
+      "size_bytes": 45227
+    },
+    {
+      "name": "06 Adrenal Pituitary Sex.pdf",
+      "type": "pdf",
+      "path": "Input/06 Adrenal Pituitary Sex.pdf",
+      "mtime": 1776352997.3168695,
+      "date": "2d ago",
+      "size": "21.6 MB",
+      "size_bytes": 22694348
+    },
+    {
+      "name": "06 Adrenal Pituitary Sex.txt",
+      "type": "txt",
+      "path": "Input/06 Adrenal Pituitary Sex.txt",
+      "mtime": 1776352997.31967,
+      "date": "2d ago",
+      "size": "45.2 KB",
+      "size_bytes": 46322
+    },
+    {
+      "name": "07 GI Long case GI R3 2022.pdf",
+      "type": "pdf",
+      "path": "Input/07 GI Long case GI R3 2022.pdf",
+      "mtime": 1776352997.3537705,
+      "date": "2d ago",
+      "size": "10.2 MB",
+      "size_bytes": 10720171
+    },
+    {
+      "name": "07 GI Long case GI R3 2022.txt",
+      "type": "txt",
+      "path": "Input/07 GI Long case GI R3 2022.txt",
+      "mtime": 1776352997.3576624,
+      "date": "2d ago",
+      "size": "42.6 KB",
+      "size_bytes": 43615
+    },
+    {
+      "name": "08 ID Approach ID problems 181166 2.pdf",
+      "type": "pdf",
+      "path": "Input/08 ID Approach ID problems 181166 2.pdf",
+      "mtime": 1776352997.4245017,
+      "date": "2d ago",
+      "size": "39.4 MB",
+      "size_bytes": 41300856
+    },
+    {
+      "name": "10 Long Case Neuro.pdf",
+      "type": "pdf",
+      "path": "Input/10 Long Case Neuro.pdf",
+      "mtime": 1776352997.4804645,
+      "date": "2d ago",
+      "size": "32.5 MB",
+      "size_bytes": 34052247
+    },
+    {
+      "name": "10 Long Case Neuro.txt",
+      "type": "txt",
+      "path": "Input/10 Long Case Neuro.txt",
+      "mtime": 1776352997.483283,
+      "date": "2d ago",
+      "size": "27.3 KB",
+      "size_bytes": 27977
+    },
+    {
+      "name": "11 Cardiomyopathy.pdf",
+      "type": "pdf",
+      "path": "Input/11 Cardiomyopathy.pdf",
+      "mtime": 1776352997.6092184,
+      "date": "2d ago",
+      "size": "77.9 MB",
+      "size_bytes": 81715572
+    },
+    {
+      "name": "11 Cardiomyopathy.txt",
+      "type": "txt",
+      "path": "Input/11 Cardiomyopathy.txt",
+      "mtime": 1776352997.6134806,
+      "date": "2d ago",
+      "size": "29.4 KB",
+      "size_bytes": 30089
+    },
+    {
+      "name": "12 Hematology.pdf",
+      "type": "pdf",
+      "path": "Input/12 Hematology.pdf",
+      "mtime": 1776352997.621239,
+      "date": "2d ago",
+      "size": "3.7 MB",
+      "size_bytes": 3877045
+    },
+    {
+      "name": "12 Hematology.txt",
+      "type": "txt",
+      "path": "Input/12 Hematology.txt",
+      "mtime": 1776352997.624288,
+      "date": "2d ago",
+      "size": "26.9 KB",
+      "size_bytes": 27564
+    },
+    {
+      "name": "2 Problem based in internal medicine (case discussion)_compressed-pages-1.pdf",
+      "type": "pdf",
+      "path": "Input/2 Problem based in internal medicine (case discussion)_compressed-pages-1.pdf",
+      "mtime": 1776352997.7028415,
+      "date": "2d ago",
+      "size": "46.6 MB",
+      "size_bytes": 48819910
+    },
+    {
+      "name": "2 Problem based in internal medicine (case discussion)_compressed-pages-1.txt",
+      "type": "txt",
+      "path": "Input/2 Problem based in internal medicine (case discussion)_compressed-pages-1.txt",
+      "mtime": 1776352997.7043238,
+      "date": "2d ago",
+      "size": "407 B",
+      "size_bytes": 407
+    },
+    {
+      "name": "2 Problem based in internal medicine (case discussion)_compressed-pages-2.pdf",
+      "type": "pdf",
+      "path": "Input/2 Problem based in internal medicine (case discussion)_compressed-pages-2.pdf",
+      "mtime": 1776352997.7758434,
+      "date": "2d ago",
+      "size": "42.8 MB",
+      "size_bytes": 44927082
+    },
+    {
+      "name": "2 Problem based in internal medicine (case discussion)_compressed-pages-2.txt",
+      "type": "txt",
+      "path": "Input/2 Problem based in internal medicine (case discussion)_compressed-pages-2.txt",
+      "mtime": 1776352997.777229,
+      "date": "2d ago",
+      "size": "36 B",
+      "size_bytes": 36
+    },
+    {
+      "name": "Cancer screening and Palliative care 2026.pdf",
+      "type": "pdf",
+      "path": "Input/Cancer screening and Palliative care 2026.pdf",
+      "mtime": 1776352997.793866,
+      "date": "2d ago",
+      "size": "10.4 MB",
+      "size_bytes": 10925493
+    },
+    {
+      "name": "Handout Genetic Dis Adult.pdf",
+      "type": "pdf",
+      "path": "Input/Handout Genetic Dis Adult.pdf",
+      "mtime": 1776352997.8476932,
+      "date": "2d ago",
+      "size": "3.8 MB",
+      "size_bytes": 3946146
+    },
+    {
+      "name": "KKU long case board\u0e1b\u0e25\u0e32\u0e22\u0e1b\u0e35 60-\u0e27\u0e0a\u0e34\u0e23\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25.pdf",
+      "type": "pdf",
+      "path": "Input/KKU long case board\u0e1b\u0e25\u0e32\u0e22\u0e1b\u0e35 60-\u0e27\u0e0a\u0e34\u0e23\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25.pdf",
+      "mtime": 1776352997.8548558,
+      "date": "2d ago",
+      "size": "395.0 KB",
+      "size_bytes": 404472
+    },
+    {
+      "name": "Long case med 2.pdf",
+      "type": "pdf",
+      "path": "Input/Long case med 2.pdf",
+      "mtime": 1776352997.9047976,
+      "date": "2d ago",
+      "size": "13.5 MB",
+      "size_bytes": 14123303
+    },
+    {
+      "name": "Long case med 2.txt",
+      "type": "txt",
+      "path": "Input/Long case med 2.txt",
+      "mtime": 1776352997.910568,
+      "date": "2d ago",
+      "size": "38.0 KB",
+      "size_bytes": 38944
+    },
+    {
+      "name": "Long case nephro-R3 2024_slide 3.pdf",
+      "type": "pdf",
+      "path": "Input/Long case nephro-R3 2024_slide 3.pdf",
+      "mtime": 1776352997.9949768,
+      "date": "2d ago",
+      "size": "33.6 MB",
+      "size_bytes": 35230258
+    },
+    {
+      "name": "Long case nephro-R3 2024_slide 3.txt",
+      "type": "txt",
+      "path": "Input/Long case nephro-R3 2024_slide 3.txt",
+      "mtime": 1776352997.9984214,
+      "date": "2d ago",
+      "size": "45.0 KB",
+      "size_bytes": 46046
+    },
+    {
+      "name": "LongCaseEndo_internist.pdf",
+      "type": "pdf",
+      "path": "Input/LongCaseEndo_internist.pdf",
+      "mtime": 1776352998.0723152,
+      "date": "2d ago",
+      "size": "47.7 MB",
+      "size_bytes": 50015785
+    },
+    {
+      "name": "LongCaseEndo_internist.txt",
+      "type": "txt",
+      "path": "Input/LongCaseEndo_internist.txt",
+      "mtime": 1776352998.0752776,
+      "date": "2d ago",
+      "size": "40.1 KB",
+      "size_bytes": 41034
+    },
+    {
+      "name": "Practical Pearls in Internal Medicine.pdf",
+      "type": "pdf",
+      "path": "Input/Practical Pearls in Internal Medicine.pdf",
+      "mtime": 1776352998.1507087,
+      "date": "2d ago",
+      "size": "47.6 MB",
+      "size_bytes": 49951252
+    },
+    {
+      "name": "Practical Pearls in Internal Medicine.txt",
+      "type": "txt",
+      "path": "Input/Practical Pearls in Internal Medicine.txt",
+      "mtime": 1776352998.1515944,
+      "date": "2d ago",
+      "size": "0 B",
+      "size_bytes": 0
+    },
+    {
+      "name": "Reproductive and growth disorders 4-4-26 handout 2.pdf",
+      "type": "pdf",
+      "path": "Input/Reproductive and growth disorders 4-4-26 handout 2.pdf",
+      "mtime": 1776352998.1605732,
+      "date": "2d ago",
+      "size": "5.0 MB",
+      "size_bytes": 5238666
+    },
+    {
+      "name": "Reproductive and growth disorders 4-4-26 handout.pdf",
+      "type": "pdf",
+      "path": "Input/Reproductive and growth disorders 4-4-26 handout.pdf",
+      "mtime": 1776352998.2061942,
+      "date": "2d ago",
+      "size": "5.0 MB",
+      "size_bytes": 5238666
+    }
+  ],
+  "allFiles": [
+    {
+      "name": "Takayasu-Arteritis-2026.pdf",
+      "type": "pdf",
+      "path": "Review/Rheumatology/Takayasu-Arteritis-2026.pdf",
+      "mtime": 1776352998.46405,
+      "date": "2d ago",
+      "size": "118.5 KB",
+      "size_bytes": 121349,
+      "folder": "Rheumatology"
+    },
+    {
+      "name": "Takayasu-Arteritis-2026.md",
+      "type": "md",
+      "path": "Review/Rheumatology/Takayasu-Arteritis-2026.md",
+      "mtime": 1776352998.4628234,
+      "date": "2d ago",
+      "size": "22.3 KB",
+      "size_bytes": 22787,
+      "folder": "Rheumatology"
+    },
+    {
+      "name": "Takayasu-Arteritis-2026.html",
+      "type": "html",
+      "path": "Review/Rheumatology/Takayasu-Arteritis-2026.html",
+      "mtime": 1776352998.4608166,
+      "date": "2d ago",
+      "size": "47.8 KB",
+      "size_bytes": 48921,
+      "folder": "Rheumatology"
+    },
+    {
+      "name": "Oncology-Reference-Table.html",
+      "type": "html",
+      "path": "Review/Oncology/Oncology-Reference-Table.html",
+      "mtime": 1776352998.4579678,
+      "date": "2d ago",
+      "size": "24.8 KB",
+      "size_bytes": 25361,
+      "folder": "Oncology"
+    },
+    {
+      "name": "Candesartan-vs-Topiramate-Migraine-Review.pdf",
+      "type": "pdf",
+      "path": "Review/Neurology/Candesartan-vs-Topiramate-Migraine-Review.pdf",
+      "mtime": 1776352998.4554367,
+      "date": "2d ago",
+      "size": "662.5 KB",
+      "size_bytes": 678405,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Dementia-Biomarkers-Imaging-2026.html",
+      "type": "html",
+      "path": "Review/Neurology/Dementia-Biomarkers-Imaging-2026.html",
+      "mtime": 1776352998.4519813,
+      "date": "2d ago",
+      "size": "24.0 KB",
+      "size_bytes": 24581,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Tenecteplase-vs-Alteplase-LVO-2026.html",
+      "type": "html",
+      "path": "Review/Neurology/Tenecteplase-vs-Alteplase-LVO-2026.html",
+      "mtime": 1776352998.4508386,
+      "date": "2d ago",
+      "size": "39.6 KB",
+      "size_bytes": 40594,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Cenobamate_Comparative_Effectiveness_2026.html",
+      "type": "html",
+      "path": "Review/Neurology/Cenobamate_Comparative_Effectiveness_2026.html",
+      "mtime": 1776352998.4487152,
+      "date": "2d ago",
+      "size": "16.5 KB",
+      "size_bytes": 16943,
+      "folder": "Neurology"
+    },
+    {
+      "name": "EVT-Large-Core-Landmark-Trials-2026.html",
+      "type": "html",
+      "path": "Review/Neurology/EVT-Large-Core-Landmark-Trials-2026.html",
+      "mtime": 1776352998.4467952,
+      "date": "2d ago",
+      "size": "18.6 KB",
+      "size_bytes": 19055,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Cenobamate_Visual_2026.html",
+      "type": "html",
+      "path": "Review/Neurology/Cenobamate_Visual_2026.html",
+      "mtime": 1776352998.4450338,
+      "date": "2d ago",
+      "size": "21.9 KB",
+      "size_bytes": 22382,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Candesartan-vs-Topiramate-Migraine-Review.html",
+      "type": "html",
+      "path": "Review/Neurology/Candesartan-vs-Topiramate-Migraine-Review.html",
+      "mtime": 1776352998.4439216,
+      "date": "2d ago",
+      "size": "58.9 KB",
+      "size_bytes": 60276,
+      "folder": "Neurology"
+    },
+    {
+      "name": "EVT-Large-Core-Landmark-Trials-2026.md",
+      "type": "md",
+      "path": "Review/Neurology/EVT-Large-Core-Landmark-Trials-2026.md",
+      "mtime": 1776352998.441628,
+      "date": "2d ago",
+      "size": "10.8 KB",
+      "size_bytes": 11074,
+      "folder": "Neurology"
+    },
+    {
+      "name": "CADASIL-vs-CARASAL-2026.pdf",
+      "type": "pdf",
+      "path": "Review/Neurology/CADASIL-vs-CARASAL-2026.pdf",
+      "mtime": 1776352998.438926,
+      "date": "2d ago",
+      "size": "126.0 KB",
+      "size_bytes": 129000,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Cenobamate_Comparative_Effectiveness_2026.md",
+      "type": "md",
+      "path": "Review/Neurology/Cenobamate_Comparative_Effectiveness_2026.md",
+      "mtime": 1776352998.4348495,
+      "date": "2d ago",
+      "size": "7.7 KB",
+      "size_bytes": 7868,
+      "folder": "Neurology"
+    },
+    {
+      "name": "FXIa-Inhibitors-Stroke-Prevention-2026.md",
+      "type": "md",
+      "path": "Review/Neurology/FXIa-Inhibitors-Stroke-Prevention-2026.md",
+      "mtime": 1776352998.4337149,
+      "date": "2d ago",
+      "size": "10.2 KB",
+      "size_bytes": 10453,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Tavapadon-TEMPO-Review.md",
+      "type": "md",
+      "path": "Review/Neurology/Tavapadon-TEMPO-Review.md",
+      "mtime": 1776352998.4296513,
+      "date": "2d ago",
+      "size": "39.0 KB",
+      "size_bytes": 39941,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Tavapadon-TEMPO-Review.pdf",
+      "type": "pdf",
+      "path": "Review/Neurology/Tavapadon-TEMPO-Review.pdf",
+      "mtime": 1776352998.425194,
+      "date": "2d ago",
+      "size": "585.3 KB",
+      "size_bytes": 599326,
+      "folder": "Neurology"
+    },
+    {
+      "name": "EVT-Large-Core-Landmark-Trials-2026.pdf",
+      "type": "pdf",
+      "path": "Review/Neurology/EVT-Large-Core-Landmark-Trials-2026.pdf",
+      "mtime": 1776352998.420389,
+      "date": "2d ago",
+      "size": "535.0 KB",
+      "size_bytes": 547807,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Neuroprognostication-AIS-ICU-2026.html",
+      "type": "html",
+      "path": "Review/Neurology/Neuroprognostication-AIS-ICU-2026.html",
+      "mtime": 1776352998.4185505,
+      "date": "2d ago",
+      "size": "50.8 KB",
+      "size_bytes": 52046,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Tavapadon-TEMPO-Visual.html",
+      "type": "html",
+      "path": "Review/Neurology/Tavapadon-TEMPO-Visual.html",
+      "mtime": 1776352998.4172165,
+      "date": "2d ago",
+      "size": "24.7 KB",
+      "size_bytes": 25338,
+      "folder": "Neurology"
+    },
+    {
+      "name": "FXIa-Inhibitors-2026-Visual.html",
+      "type": "html",
+      "path": "Review/Neurology/FXIa-Inhibitors-2026-Visual.html",
+      "mtime": 1776352998.415942,
+      "date": "2d ago",
+      "size": "20.6 KB",
+      "size_bytes": 21109,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Intensive-BP-after-EVT-WMH-Review.pdf",
+      "type": "pdf",
+      "path": "Review/Neurology/Intensive-BP-after-EVT-WMH-Review.pdf",
+      "mtime": 1776352998.414472,
+      "date": "2d ago",
+      "size": "517.6 KB",
+      "size_bytes": 530040,
+      "folder": "Neurology"
+    },
+    {
+      "name": "EVT-Large-Core-Eligibility-Infographic.html",
+      "type": "html",
+      "path": "Review/Neurology/EVT-Large-Core-Eligibility-Infographic.html",
+      "mtime": 1776352998.4125896,
+      "date": "2d ago",
+      "size": "14.3 KB",
+      "size_bytes": 14594,
+      "folder": "Neurology"
+    },
+    {
+      "name": "CADASIL-vs-CARASAL-2026.html",
+      "type": "html",
+      "path": "Review/Neurology/CADASIL-vs-CARASAL-2026.html",
+      "mtime": 1776352998.4112356,
+      "date": "2d ago",
+      "size": "59.1 KB",
+      "size_bytes": 60510,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Candesartan-vs-Topiramate-Migraine-Review.md",
+      "type": "md",
+      "path": "Review/Neurology/Candesartan-vs-Topiramate-Migraine-Review.md",
+      "mtime": 1776352998.410123,
+      "date": "2d ago",
+      "size": "39.1 KB",
+      "size_bytes": 40053,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Cenobamate_Comparative_Effectiveness_2026_SLIDES.html",
+      "type": "html",
+      "path": "Review/Neurology/Cenobamate_Comparative_Effectiveness_2026_SLIDES.html",
+      "mtime": 1776352998.4086077,
+      "date": "2d ago",
+      "size": "29.7 KB",
+      "size_bytes": 30439,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Epilepsy-Review-2026.md",
+      "type": "md",
+      "path": "Review/Neurology/Epilepsy-Review-2026.md",
+      "mtime": 1776352998.4071536,
+      "date": "2d ago",
+      "size": "6.2 KB",
+      "size_bytes": 6369,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Intensive-BP-after-EVT-WMH-Review.md",
+      "type": "md",
+      "path": "Review/Neurology/Intensive-BP-after-EVT-WMH-Review.md",
+      "mtime": 1776352998.4045138,
+      "date": "2d ago",
+      "size": "29.4 KB",
+      "size_bytes": 30108,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Cenobamate_Research_2026.html",
+      "type": "html",
+      "path": "Review/Neurology/Cenobamate_Research_2026.html",
+      "mtime": 1776352998.4020317,
+      "date": "2d ago",
+      "size": "28.1 KB",
+      "size_bytes": 28799,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Tavapadon-TEMPO-Review.html",
+      "type": "html",
+      "path": "Review/Neurology/Tavapadon-TEMPO-Review.html",
+      "mtime": 1776352998.4007971,
+      "date": "2d ago",
+      "size": "55.6 KB",
+      "size_bytes": 56893,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Intensive-BP-after-EVT-WMH-Review.html",
+      "type": "html",
+      "path": "Review/Neurology/Intensive-BP-after-EVT-WMH-Review.html",
+      "mtime": 1776352998.3985202,
+      "date": "2d ago",
+      "size": "7.8 KB",
+      "size_bytes": 7939,
+      "folder": "Neurology"
+    },
+    {
+      "name": "Candesartan-vs-Topiramate-Migraine-Visual.html",
+      "type": "html",
+      "path": "Review/Neurology/Candesartan-vs-Topiramate-Migraine-Visual.html",
+      "mtime": 1776352998.397349,
+      "date": "2d ago",
+      "size": "27.4 KB",
+      "size_bytes": 28023,
+      "folder": "Neurology"
+    },
+    {
+      "name": "08 ID Approach ID problems 181166 2.txt",
+      "type": "txt",
+      "path": "Review/Infectious-Disease/08 ID Approach ID problems 181166 2.txt",
+      "mtime": 1776352998.391867,
+      "date": "2d ago",
+      "size": "45.1 KB",
+      "size_bytes": 46163,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "Pulmonary-Aspergillosis-Mucormycosis-2025.pdf",
+      "type": "pdf",
+      "path": "Review/Infectious-Disease/Pulmonary-Aspergillosis-Mucormycosis-2025.pdf",
+      "mtime": 1776352998.3907156,
+      "date": "2d ago",
+      "size": "210.0 KB",
+      "size_bytes": 215074,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "HIV-AIDS-Management-Update-2026.pdf",
+      "type": "pdf",
+      "path": "Review/Infectious-Disease/HIV-AIDS-Management-Update-2026.pdf",
+      "mtime": 1776352998.3894157,
+      "date": "2d ago",
+      "size": "113.3 KB",
+      "size_bytes": 116010,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "CAP_Pneumonia_Visual.html",
+      "type": "html",
+      "path": "Review/Infectious-Disease/CAP_Pneumonia_Visual.html",
+      "mtime": 1776352998.3880837,
+      "date": "2d ago",
+      "size": "65.6 KB",
+      "size_bytes": 67167,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "HIV-AIDS-Management-Update-2026-Visual.html",
+      "type": "html",
+      "path": "Review/Infectious-Disease/HIV-AIDS-Management-Update-2026-Visual.html",
+      "mtime": 1776352998.3867378,
+      "date": "2d ago",
+      "size": "33.6 KB",
+      "size_bytes": 34367,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "CAP_Pneumonia_Review.md",
+      "type": "md",
+      "path": "Review/Infectious-Disease/CAP_Pneumonia_Review.md",
+      "mtime": 1776352998.3855891,
+      "date": "2d ago",
+      "size": "18.8 KB",
+      "size_bytes": 19214,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "aspergillosis-vs-mucormycosis.html",
+      "type": "html",
+      "path": "Review/Infectious-Disease/aspergillosis-vs-mucormycosis.html",
+      "mtime": 1776352998.3844013,
+      "date": "2d ago",
+      "size": "20.0 KB",
+      "size_bytes": 20501,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "CAP_Pneumonia_Review.pdf",
+      "type": "pdf",
+      "path": "Review/Infectious-Disease/CAP_Pneumonia_Review.pdf",
+      "mtime": 1776352998.3832395,
+      "date": "2d ago",
+      "size": "387.6 KB",
+      "size_bytes": 396852,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "Pulmonary-Aspergillosis-Mucormycosis-2025.md",
+      "type": "md",
+      "path": "Review/Infectious-Disease/Pulmonary-Aspergillosis-Mucormycosis-2025.md",
+      "mtime": 1776352998.381531,
+      "date": "2d ago",
+      "size": "25.9 KB",
+      "size_bytes": 26533,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "HIV-AIDS-Management-Update-2026.md",
+      "type": "md",
+      "path": "Review/Infectious-Disease/HIV-AIDS-Management-Update-2026.md",
+      "mtime": 1776352998.380506,
+      "date": "2d ago",
+      "size": "12.0 KB",
+      "size_bytes": 12292,
+      "folder": "Infectious-Disease"
+    },
+    {
+      "name": "IMBR-Disease-Overview v2.html",
+      "type": "html",
+      "path": "Review/High-Yield /IMBR-Disease-Overview v2.html",
+      "mtime": 1776352998.3774607,
+      "date": "2d ago",
+      "size": "112.3 KB",
+      "size_bytes": 115005,
+      "folder": "High-Yield "
+    },
+    {
+      "name": "IMBR-Disease-Overview.html",
+      "type": "html",
+      "path": "Review/High-Yield /IMBR-Disease-Overview.html",
+      "mtime": 1776352998.3755841,
+      "date": "2d ago",
+      "size": "1.8 MB",
+      "size_bytes": 1897260,
+      "folder": "High-Yield "
+    },
+    {
+      "name": "Liver-Abscess-2025.md",
+      "type": "md",
+      "path": "Review/Gastroenterology/Liver-Abscess-2025.md",
+      "mtime": 1776352998.3675447,
+      "date": "2d ago",
+      "size": "16.0 KB",
+      "size_bytes": 16381,
+      "folder": "Gastroenterology"
+    },
+    {
+      "name": "Liver-Abscess-2025.pdf",
+      "type": "pdf",
+      "path": "Review/Gastroenterology/Liver-Abscess-2025.pdf",
+      "mtime": 1776352998.3662872,
+      "date": "2d ago",
+      "size": "649.7 KB",
+      "size_bytes": 665288,
+      "folder": "Gastroenterology"
+    },
+    {
+      "name": "Liver-Abscess-2025-Visual.html",
+      "type": "html",
+      "path": "Review/Gastroenterology/Liver-Abscess-2025-Visual.html",
+      "mtime": 1776352998.3645175,
+      "date": "2d ago",
+      "size": "30.4 KB",
+      "size_bytes": 31081,
+      "folder": "Gastroenterology"
+    },
+    {
+      "name": "Liver-Abscess-2025-Visual-LIGHT.html",
+      "type": "html",
+      "path": "Review/Gastroenterology/Liver-Abscess-2025-Visual-LIGHT.html",
+      "mtime": 1776352998.3633578,
+      "date": "2d ago",
+      "size": "30.3 KB",
+      "size_bytes": 31069,
+      "folder": "Gastroenterology"
+    },
+    {
+      "name": "Tranexamic-Acid-in-Critical-Care.md",
+      "type": "md",
+      "path": "Review/Critical-Care/Tranexamic-Acid-in-Critical-Care.md",
+      "mtime": 1776352998.3603306,
+      "date": "2d ago",
+      "size": "17.2 KB",
+      "size_bytes": 17616,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "R2D2-ICU-Journal-Club.pdf",
+      "type": "pdf",
+      "path": "Review/Critical-Care/R2D2-ICU-Journal-Club.pdf",
+      "mtime": 1776352998.3581953,
+      "date": "2d ago",
+      "size": "217.8 KB",
+      "size_bytes": 223067,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "CPR_Guidelines_2025_Review.md",
+      "type": "md",
+      "path": "Review/Critical-Care/CPR_Guidelines_2025_Review.md",
+      "mtime": 1776352998.3568656,
+      "date": "2d ago",
+      "size": "14.8 KB",
+      "size_bytes": 15137,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "sepsis-ssc-2026.html",
+      "type": "html",
+      "path": "Review/Critical-Care/sepsis-ssc-2026.html",
+      "mtime": 1776352998.3558664,
+      "date": "2d ago",
+      "size": "29.6 KB",
+      "size_bytes": 30288,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "Neurocritical_Care_Society_Guidelines_2026.md",
+      "type": "md",
+      "path": "Review/Critical-Care/Neurocritical_Care_Society_Guidelines_2026.md",
+      "mtime": 1776352998.3547812,
+      "date": "2d ago",
+      "size": "10.1 KB",
+      "size_bytes": 10374,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "ARDS-Guidelines-2024-2026.md",
+      "type": "md",
+      "path": "Review/Critical-Care/ARDS-Guidelines-2024-2026.md",
+      "mtime": 1776352998.353819,
+      "date": "2d ago",
+      "size": "17.4 KB",
+      "size_bytes": 17824,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "ARDS-Guidelines-2024-2026.pdf",
+      "type": "pdf",
+      "path": "Review/Critical-Care/ARDS-Guidelines-2024-2026.pdf",
+      "mtime": 1776352998.3524165,
+      "date": "2d ago",
+      "size": "107.7 KB",
+      "size_bytes": 110267,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "CPR_Guidelines_2025_Visual.html",
+      "type": "html",
+      "path": "Review/Critical-Care/CPR_Guidelines_2025_Visual.html",
+      "mtime": 1776352998.3513231,
+      "date": "2d ago",
+      "size": "47.3 KB",
+      "size_bytes": 48417,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "Tranexamic-Acid-in-Critical-Care-Visual.html",
+      "type": "html",
+      "path": "Review/Critical-Care/Tranexamic-Acid-in-Critical-Care-Visual.html",
+      "mtime": 1776352998.349767,
+      "date": "2d ago",
+      "size": "21.8 KB",
+      "size_bytes": 22302,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "Sepsis-Guidelines-2026.md",
+      "type": "md",
+      "path": "Review/Critical-Care/Sepsis-Guidelines-2026.md",
+      "mtime": 1776352998.348428,
+      "date": "2d ago",
+      "size": "21.5 KB",
+      "size_bytes": 22062,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "R2D2-ICU-Journal-Club-hq.pdf",
+      "type": "pdf",
+      "path": "Review/Critical-Care/R2D2-ICU-Journal-Club-hq.pdf",
+      "mtime": 1776352998.3472424,
+      "date": "2d ago",
+      "size": "201.3 KB",
+      "size_bytes": 206086,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "Tranexamic-Acid-in-Critical-Care.html",
+      "type": "html",
+      "path": "Review/Critical-Care/Tranexamic-Acid-in-Critical-Care.html",
+      "mtime": 1776352998.3460052,
+      "date": "2d ago",
+      "size": "26.0 KB",
+      "size_bytes": 26648,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "R2D2-ICU-Journal-Club.html",
+      "type": "html",
+      "path": "Review/Critical-Care/R2D2-ICU-Journal-Club.html",
+      "mtime": 1776352998.345001,
+      "date": "2d ago",
+      "size": "26.6 KB",
+      "size_bytes": 27242,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "CPR-2025-Presentation.html",
+      "type": "html",
+      "path": "Review/Critical-Care/CPR-2025-Presentation.html",
+      "mtime": 1776352998.3439925,
+      "date": "2d ago",
+      "size": "23.4 KB",
+      "size_bytes": 23949,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "ARDS-Visual-2024-2026.html",
+      "type": "html",
+      "path": "Review/Critical-Care/ARDS-Visual-2024-2026.html",
+      "mtime": 1776352998.3427904,
+      "date": "2d ago",
+      "size": "31.5 KB",
+      "size_bytes": 32269,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "Neurocritical_Care_Guidelines_2026.html",
+      "type": "html",
+      "path": "Review/Critical-Care/Neurocritical_Care_Guidelines_2026.html",
+      "mtime": 1776352998.3417115,
+      "date": "2d ago",
+      "size": "22.7 KB",
+      "size_bytes": 23274,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "Neurocritical_Care_Society_Guidelines_2026.pdf",
+      "type": "pdf",
+      "path": "Review/Critical-Care/Neurocritical_Care_Society_Guidelines_2026.pdf",
+      "mtime": 1776352998.3404093,
+      "date": "2d ago",
+      "size": "236.6 KB",
+      "size_bytes": 242284,
+      "folder": "Critical-Care"
+    },
+    {
+      "name": "Long-QT-Syndrome-Visual.html",
+      "type": "html",
+      "path": "Review/Cardiology/Long-QT-Syndrome-Visual.html",
+      "mtime": 1776352998.3361735,
+      "date": "2d ago",
+      "size": "19.0 KB",
+      "size_bytes": 19491,
+      "folder": "Cardiology"
+    },
+    {
+      "name": "HOST-EXAM-Trial-2026.html",
+      "type": "html",
+      "path": "Review/Cardiology/HOST-EXAM-Trial-2026.html",
+      "mtime": 1776352998.334606,
+      "date": "2d ago",
+      "size": "9.4 KB",
+      "size_bytes": 9657,
+      "folder": "Cardiology"
+    },
+    {
+      "name": "nejm_page-03.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-03.png",
+      "mtime": 1776352998.3335733,
+      "date": "2d ago",
+      "size": "890.9 KB",
+      "size_bytes": 912258,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-02.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-02.png",
+      "mtime": 1776352998.331574,
+      "date": "2d ago",
+      "size": "502.8 KB",
+      "size_bytes": 514890,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-01.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-01.png",
+      "mtime": 1776352998.3301904,
+      "date": "2d ago",
+      "size": "478.4 KB",
+      "size_bytes": 489903,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-11.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-11.png",
+      "mtime": 1776352998.328711,
+      "date": "2d ago",
+      "size": "700.5 KB",
+      "size_bytes": 717335,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-05.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-05.png",
+      "mtime": 1776352998.3265908,
+      "date": "2d ago",
+      "size": "422.9 KB",
+      "size_bytes": 433020,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-04.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-04.png",
+      "mtime": 1776352998.323554,
+      "date": "2d ago",
+      "size": "558.4 KB",
+      "size_bytes": 571823,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-10.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-10.png",
+      "mtime": 1776352998.3213012,
+      "date": "2d ago",
+      "size": "675.9 KB",
+      "size_bytes": 692087,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-06.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-06.png",
+      "mtime": 1776352998.3181913,
+      "date": "2d ago",
+      "size": "562.9 KB",
+      "size_bytes": 576456,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-12.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-12.png",
+      "mtime": 1776352998.3159895,
+      "date": "2d ago",
+      "size": "413.5 KB",
+      "size_bytes": 423437,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-07.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-07.png",
+      "mtime": 1776352998.3122747,
+      "date": "2d ago",
+      "size": "571.5 KB",
+      "size_bytes": 585225,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "bmj_page-2.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/bmj_page-2.png",
+      "mtime": 1776352998.3092585,
+      "date": "2d ago",
+      "size": "658.1 KB",
+      "size_bytes": 673923,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "bmj_page-3.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/bmj_page-3.png",
+      "mtime": 1776352998.305728,
+      "date": "2d ago",
+      "size": "542.3 KB",
+      "size_bytes": 555353,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "bmj_page-1.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/bmj_page-1.png",
+      "mtime": 1776352998.303516,
+      "date": "2d ago",
+      "size": "736.8 KB",
+      "size_bytes": 754460,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-09.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-09.png",
+      "mtime": 1776352998.2995973,
+      "date": "2d ago",
+      "size": "501.7 KB",
+      "size_bytes": 513719,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-08.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-08.png",
+      "mtime": 1776352998.2975473,
+      "date": "2d ago",
+      "size": "653.8 KB",
+      "size_bytes": 669491,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-20.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-20.png",
+      "mtime": 1776352998.293392,
+      "date": "2d ago",
+      "size": "462.2 KB",
+      "size_bytes": 473263,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-18.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-18.png",
+      "mtime": 1776352998.2903802,
+      "date": "2d ago",
+      "size": "622.4 KB",
+      "size_bytes": 637315,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "bmj_page-4.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/bmj_page-4.png",
+      "mtime": 1776352998.2882235,
+      "date": "2d ago",
+      "size": "617.7 KB",
+      "size_bytes": 632498,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "bmj_page-5.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/bmj_page-5.png",
+      "mtime": 1776352998.286305,
+      "date": "2d ago",
+      "size": "451.2 KB",
+      "size_bytes": 462032,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-19.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-19.png",
+      "mtime": 1776352998.2834048,
+      "date": "2d ago",
+      "size": "618.7 KB",
+      "size_bytes": 633500,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "bmj_page-7.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/bmj_page-7.png",
+      "mtime": 1776352998.2819352,
+      "date": "2d ago",
+      "size": "520.8 KB",
+      "size_bytes": 533284,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "bmj_page-6.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/bmj_page-6.png",
+      "mtime": 1776352998.2806277,
+      "date": "2d ago",
+      "size": "830.3 KB",
+      "size_bytes": 850217,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-03.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-03.png",
+      "mtime": 1776352998.2787874,
+      "date": "2d ago",
+      "size": "350.9 KB",
+      "size_bytes": 359352,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-17.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-17.png",
+      "mtime": 1776352998.2764661,
+      "date": "2d ago",
+      "size": "613.8 KB",
+      "size_bytes": 628533,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-16.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-16.png",
+      "mtime": 1776352998.2748978,
+      "date": "2d ago",
+      "size": "591.2 KB",
+      "size_bytes": 605399,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-02.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-02.png",
+      "mtime": 1776352998.2727761,
+      "date": "2d ago",
+      "size": "657.7 KB",
+      "size_bytes": 673483,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-14.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-14.png",
+      "mtime": 1776352998.2709157,
+      "date": "2d ago",
+      "size": "466.5 KB",
+      "size_bytes": 477716,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-01.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-01.png",
+      "mtime": 1776352998.2690394,
+      "date": "2d ago",
+      "size": "361.9 KB",
+      "size_bytes": 370539,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-15.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-15.png",
+      "mtime": 1776352998.267252,
+      "date": "2d ago",
+      "size": "478.5 KB",
+      "size_bytes": 489989,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "lqt-patterns-nejm.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/lqt-patterns-nejm.png",
+      "mtime": 1776352998.2651832,
+      "date": "2d ago",
+      "size": "890.9 KB",
+      "size_bytes": 912258,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-11.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-11.png",
+      "mtime": 1776352998.2634752,
+      "date": "2d ago",
+      "size": "351.8 KB",
+      "size_bytes": 360220,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-05.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-05.png",
+      "mtime": 1776352998.2602496,
+      "date": "2d ago",
+      "size": "479.3 KB",
+      "size_bytes": 490820,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-04.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-04.png",
+      "mtime": 1776352998.2589839,
+      "date": "2d ago",
+      "size": "393.6 KB",
+      "size_bytes": 402998,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-10.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-10.png",
+      "mtime": 1776352998.257683,
+      "date": "2d ago",
+      "size": "339.8 KB",
+      "size_bytes": 347971,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-06.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-06.png",
+      "mtime": 1776352998.2488332,
+      "date": "2d ago",
+      "size": "393.3 KB",
+      "size_bytes": 402751,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-12.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-12.png",
+      "mtime": 1776352998.247294,
+      "date": "2d ago",
+      "size": "498.3 KB",
+      "size_bytes": 510308,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-13.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-13.png",
+      "mtime": 1776352998.2452955,
+      "date": "2d ago",
+      "size": "537.2 KB",
+      "size_bytes": 550075,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "krahn_page-07.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/krahn_page-07.png",
+      "mtime": 1776352998.242592,
+      "date": "2d ago",
+      "size": "850.5 KB",
+      "size_bytes": 870916,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-09.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-09.png",
+      "mtime": 1776352998.2364717,
+      "date": "2d ago",
+      "size": "554.8 KB",
+      "size_bytes": 568099,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "nejm_page-08.png",
+      "type": "other",
+      "path": "Review/Cardiology/images/nejm_page-08.png",
+      "mtime": 1776352998.2343037,
+      "date": "2d ago",
+      "size": "559.1 KB",
+      "size_bytes": 572521,
+      "folder": "Cardiology",
+      "subfolder": "images"
+    },
+    {
+      "name": "HOST-EXAM-Trial-2026.md",
+      "type": "md",
+      "path": "Review/Cardiology/HOST-EXAM-Trial-2026.md",
+      "mtime": 1776352998.2317333,
+      "date": "2d ago",
+      "size": "2.0 KB",
+      "size_bytes": 2019,
+      "folder": "Cardiology"
+    },
+    {
+      "name": "Reproductive and growth disorders 4-4-26 handout.pdf",
+      "type": "pdf",
+      "path": "Input/Reproductive and growth disorders 4-4-26 handout.pdf",
+      "mtime": 1776352998.2061942,
+      "date": "2d ago",
+      "size": "5.0 MB",
+      "size_bytes": 5238666
+    },
+    {
+      "name": "Reproductive and growth disorders 4-4-26 handout 2.pdf",
+      "type": "pdf",
+      "path": "Input/Reproductive and growth disorders 4-4-26 handout 2.pdf",
+      "mtime": 1776352998.1605732,
+      "date": "2d ago",
+      "size": "5.0 MB",
+      "size_bytes": 5238666
+    },
+    {
+      "name": "Practical Pearls in Internal Medicine.txt",
+      "type": "txt",
+      "path": "Input/Practical Pearls in Internal Medicine.txt",
+      "mtime": 1776352998.1515944,
+      "date": "2d ago",
+      "size": "0 B",
+      "size_bytes": 0
+    },
+    {
+      "name": "Practical Pearls in Internal Medicine.pdf",
+      "type": "pdf",
+      "path": "Input/Practical Pearls in Internal Medicine.pdf",
+      "mtime": 1776352998.1507087,
+      "date": "2d ago",
+      "size": "47.6 MB",
+      "size_bytes": 49951252
+    },
+    {
+      "name": "LongCaseEndo_internist.txt",
+      "type": "txt",
+      "path": "Input/LongCaseEndo_internist.txt",
+      "mtime": 1776352998.0752776,
+      "date": "2d ago",
+      "size": "40.1 KB",
+      "size_bytes": 41034
+    },
+    {
+      "name": "LongCaseEndo_internist.pdf",
+      "type": "pdf",
+      "path": "Input/LongCaseEndo_internist.pdf",
+      "mtime": 1776352998.0723152,
+      "date": "2d ago",
+      "size": "47.7 MB",
+      "size_bytes": 50015785
+    },
+    {
+      "name": "Long case nephro-R3 2024_slide 3.txt",
+      "type": "txt",
+      "path": "Input/Long case nephro-R3 2024_slide 3.txt",
+      "mtime": 1776352997.9984214,
+      "date": "2d ago",
+      "size": "45.0 KB",
+      "size_bytes": 46046
+    },
+    {
+      "name": "Long case nephro-R3 2024_slide 3.pdf",
+      "type": "pdf",
+      "path": "Input/Long case nephro-R3 2024_slide 3.pdf",
+      "mtime": 1776352997.9949768,
+      "date": "2d ago",
+      "size": "33.6 MB",
+      "size_bytes": 35230258
+    },
+    {
+      "name": "Long case med 2.txt",
+      "type": "txt",
+      "path": "Input/Long case med 2.txt",
+      "mtime": 1776352997.910568,
+      "date": "2d ago",
+      "size": "38.0 KB",
+      "size_bytes": 38944
+    },
+    {
+      "name": "Long case med 2.pdf",
+      "type": "pdf",
+      "path": "Input/Long case med 2.pdf",
+      "mtime": 1776352997.9047976,
+      "date": "2d ago",
+      "size": "13.5 MB",
+      "size_bytes": 14123303
+    },
+    {
+      "name": "KKU long case board\u0e1b\u0e25\u0e32\u0e22\u0e1b\u0e35 60-\u0e27\u0e0a\u0e34\u0e23\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25.pdf",
+      "type": "pdf",
+      "path": "Input/KKU long case board\u0e1b\u0e25\u0e32\u0e22\u0e1b\u0e35 60-\u0e27\u0e0a\u0e34\u0e23\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25.pdf",
+      "mtime": 1776352997.8548558,
+      "date": "2d ago",
+      "size": "395.0 KB",
+      "size_bytes": 404472
+    },
+    {
+      "name": "Handout Genetic Dis Adult.pdf",
+      "type": "pdf",
+      "path": "Input/Handout Genetic Dis Adult.pdf",
+      "mtime": 1776352997.8476932,
+      "date": "2d ago",
+      "size": "3.8 MB",
+      "size_bytes": 3946146
+    },
+    {
+      "name": "Cancer screening and Palliative care 2026.pdf",
+      "type": "pdf",
+      "path": "Input/Cancer screening and Palliative care 2026.pdf",
+      "mtime": 1776352997.793866,
+      "date": "2d ago",
+      "size": "10.4 MB",
+      "size_bytes": 10925493
+    },
+    {
+      "name": "2 Problem based in internal medicine (case discussion)_compressed-pages-2.txt",
+      "type": "txt",
+      "path": "Input/2 Problem based in internal medicine (case discussion)_compressed-pages-2.txt",
+      "mtime": 1776352997.777229,
+      "date": "2d ago",
+      "size": "36 B",
+      "size_bytes": 36
+    },
+    {
+      "name": "2 Problem based in internal medicine (case discussion)_compressed-pages-2.pdf",
+      "type": "pdf",
+      "path": "Input/2 Problem based in internal medicine (case discussion)_compressed-pages-2.pdf",
+      "mtime": 1776352997.7758434,
+      "date": "2d ago",
+      "size": "42.8 MB",
+      "size_bytes": 44927082
+    },
+    {
+      "name": "2 Problem based in internal medicine (case discussion)_compressed-pages-1.txt",
+      "type": "txt",
+      "path": "Input/2 Problem based in internal medicine (case discussion)_compressed-pages-1.txt",
+      "mtime": 1776352997.7043238,
+      "date": "2d ago",
+      "size": "407 B",
+      "size_bytes": 407
+    },
+    {
+      "name": "2 Problem based in internal medicine (case discussion)_compressed-pages-1.pdf",
+      "type": "pdf",
+      "path": "Input/2 Problem based in internal medicine (case discussion)_compressed-pages-1.pdf",
+      "mtime": 1776352997.7028415,
+      "date": "2d ago",
+      "size": "46.6 MB",
+      "size_bytes": 48819910
+    },
+    {
+      "name": "12 Hematology.txt",
+      "type": "txt",
+      "path": "Input/12 Hematology.txt",
+      "mtime": 1776352997.624288,
+      "date": "2d ago",
+      "size": "26.9 KB",
+      "size_bytes": 27564
+    },
+    {
+      "name": "12 Hematology.pdf",
+      "type": "pdf",
+      "path": "Input/12 Hematology.pdf",
+      "mtime": 1776352997.621239,
+      "date": "2d ago",
+      "size": "3.7 MB",
+      "size_bytes": 3877045
+    },
+    {
+      "name": "11 Cardiomyopathy.txt",
+      "type": "txt",
+      "path": "Input/11 Cardiomyopathy.txt",
+      "mtime": 1776352997.6134806,
+      "date": "2d ago",
+      "size": "29.4 KB",
+      "size_bytes": 30089
+    },
+    {
+      "name": "11 Cardiomyopathy.pdf",
+      "type": "pdf",
+      "path": "Input/11 Cardiomyopathy.pdf",
+      "mtime": 1776352997.6092184,
+      "date": "2d ago",
+      "size": "77.9 MB",
+      "size_bytes": 81715572
+    },
+    {
+      "name": "10 Long Case Neuro.txt",
+      "type": "txt",
+      "path": "Input/10 Long Case Neuro.txt",
+      "mtime": 1776352997.483283,
+      "date": "2d ago",
+      "size": "27.3 KB",
+      "size_bytes": 27977
+    },
+    {
+      "name": "10 Long Case Neuro.pdf",
+      "type": "pdf",
+      "path": "Input/10 Long Case Neuro.pdf",
+      "mtime": 1776352997.4804645,
+      "date": "2d ago",
+      "size": "32.5 MB",
+      "size_bytes": 34052247
+    },
+    {
+      "name": "08 ID Approach ID problems 181166 2.pdf",
+      "type": "pdf",
+      "path": "Input/08 ID Approach ID problems 181166 2.pdf",
+      "mtime": 1776352997.4245017,
+      "date": "2d ago",
+      "size": "39.4 MB",
+      "size_bytes": 41300856
+    },
+    {
+      "name": "07 GI Long case GI R3 2022.txt",
+      "type": "txt",
+      "path": "Input/07 GI Long case GI R3 2022.txt",
+      "mtime": 1776352997.3576624,
+      "date": "2d ago",
+      "size": "42.6 KB",
+      "size_bytes": 43615
+    },
+    {
+      "name": "07 GI Long case GI R3 2022.pdf",
+      "type": "pdf",
+      "path": "Input/07 GI Long case GI R3 2022.pdf",
+      "mtime": 1776352997.3537705,
+      "date": "2d ago",
+      "size": "10.2 MB",
+      "size_bytes": 10720171
+    },
+    {
+      "name": "06 Adrenal Pituitary Sex.txt",
+      "type": "txt",
+      "path": "Input/06 Adrenal Pituitary Sex.txt",
+      "mtime": 1776352997.31967,
+      "date": "2d ago",
+      "size": "45.2 KB",
+      "size_bytes": 46322
+    },
+    {
+      "name": "06 Adrenal Pituitary Sex.pdf",
+      "type": "pdf",
+      "path": "Input/06 Adrenal Pituitary Sex.pdf",
+      "mtime": 1776352997.3168695,
+      "date": "2d ago",
+      "size": "21.6 MB",
+      "size_bytes": 22694348
+    },
+    {
+      "name": "05 Rheu Vasculitis.txt",
+      "type": "txt",
+      "path": "Input/05 Rheu Vasculitis.txt",
+      "mtime": 1776352997.2806704,
+      "date": "2d ago",
+      "size": "44.2 KB",
+      "size_bytes": 45227
+    },
+    {
+      "name": "05 Rheu Vasculitis.pdf",
+      "type": "pdf",
+      "path": "Input/05 Rheu Vasculitis.pdf",
+      "mtime": 1776352997.2783349,
+      "date": "2d ago",
+      "size": "5.5 MB",
+      "size_bytes": 5766531
+    },
+    {
+      "name": "03 Interstitial Lung Disease.txt",
+      "type": "txt",
+      "path": "Input/03 Interstitial Lung Disease.txt",
+      "mtime": 1776352997.2681549,
+      "date": "2d ago",
+      "size": "21.3 KB",
+      "size_bytes": 21835
+    },
+    {
+      "name": "03 Interstitial Lung Disease.pdf",
+      "type": "pdf",
+      "path": "Input/03 Interstitial Lung Disease.pdf",
+      "mtime": 1776352997.2660363,
+      "date": "2d ago",
+      "size": "21.2 MB",
+      "size_bytes": 22263394
+    },
+    {
+      "name": "02 Glomerular Disease.txt",
+      "type": "txt",
+      "path": "Input/02 Glomerular Disease.txt",
+      "mtime": 1776352997.2319303,
+      "date": "2d ago",
+      "size": "30.6 KB",
+      "size_bytes": 31331
+    },
+    {
+      "name": "02 Glomerular Disease.pdf",
+      "type": "pdf",
+      "path": "Input/02 Glomerular Disease.pdf",
+      "mtime": 1776352997.2301478,
+      "date": "2d ago",
+      "size": "16.9 MB",
+      "size_bytes": 17712206
+    }
+  ],
+  "total": 142,
+  "folderCount": 16,
+  "typeStats": {
+    "html": 35,
+    "pdf": 14,
+    "md": 18
+  }
+}
