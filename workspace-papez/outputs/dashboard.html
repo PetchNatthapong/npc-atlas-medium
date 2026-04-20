@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 Papez — Neurology Learning Dashboard</title>
+    <style>
+        :root {
+            --bg: #0f0f1a;
+            --card: #1a1a2e;
+            --card-hover: #23233d;
+            --accent: #6c5ce7;
+            --accent2: #a29bfe;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --green: #00b894;
+            --yellow: #fdcb6e;
+            --red: #ff7675;
+            --blue: #74b9ff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+        }
+        .header h1 { font-size: 2.5rem; margin-bottom: 8px; }
+        .header h1 span { color: var(--accent2); }
+        .header p { color: var(--text-muted); font-size: 1rem; }
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background: var(--card);
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+            padding: 10px 20px;
+            background: var(--bg);
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        .stat-number { font-size: 2rem; font-weight: bold; color: var(--accent2); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        .phase-section {
+            margin: 40px 0;
+        }
+        .phase-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .phase-title .phase-num {
+            background: var(--accent);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .topic-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .topic-card:hover {
+            background: var(--card-hover);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108,92,231,0.15);
+        }
+        .topic-card .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-wiki { background: var(--blue); color: #000; }
+        .badge-flash { background: var(--green); color: #000; }
+        .badge-quiz { background: var(--yellow); color: #000; }
+        .badge-ingested { background: var(--accent); color: white; }
+
+        .topic-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--accent2);
+        }
+        .topic-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .topic-card .tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #2d2d4a;
+            color: var(--text-muted);
+        }
+
+        /* CONTENT VIEWER */
+        .viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .viewer.active { display: block; }
+        .viewer-content {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--card);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--red);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .viewer h2 {
+            color: var(--accent2);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        .viewer .content-body {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        .viewer .content-body h3 {
+            color: var(--accent2);
+            margin: 24px 0 12px;
+            font-size: 1.2rem;
+        }
+        .viewer .content-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+        .viewer .content-body th, .viewer .content-body td {
+            padding: 10px 12px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+        .viewer .content-body th {
+            background: var(--accent);
+            color: white;
+        }
+        .viewer .content-body tr:nth-child(even) { background: #1f1f35; }
+        .viewer .content-body code {
+            background: #111;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--yellow);
+            font-size: 0.9em;
+        }
+        .viewer .content-body pre {
+            background: #111;
+            padding: 16px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        .viewer .content-body pre code {
+            background: none;
+            padding: 0;
+        }
+        .viewer .content-body ul, .viewer .content-body ol {
+            padding-left: 24px;
+            margin: 12px 0;
+        }
+        .viewer .content-body li { margin: 6px 0; }
+        .viewer .content-body blockquote {
+            border-left: 4px solid var(--accent);
+            padding-left: 16px;
+            color: var(--text-muted);
+            margin: 16px 0;
+            font-style: italic;
+        }
+
+        /* QUIZ VIEWER */
+        .quiz-viewer .question {
+            background: #1f1f35;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            cursor: pointer;
+            border: 1px solid #333;
+        }
+        .quiz-viewer .question:hover { border-color: var(--accent); }
+        .quiz-viewer .question-number {
+            font-weight: bold;
+            color: var(--accent2);
+            margin-bottom: 8px;
+        }
+        .quiz-viewer .question-text { font-size: 1rem; margin-bottom: 12px; }
+        .quiz-viewer .options { list-style: none; padding: 0; }
+        .quiz-viewer .options li {
+            padding: 8px 12px;
+            margin: 4px 0;
+            background: var(--card);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .quiz-viewer .options li:hover { background: var(--accent); }
+        .quiz-viewer .answer {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--green);
+            color: #000;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .quiz-viewer .question.show-answer .answer { display: block; }
+
+        /* FLASHARD VIEWER */
+        .flashcard-viewer .flashcard {
+            background: linear-gradient(135deg, var(--card) 0%, #1f1f40 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid var(--accent);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .flashcard-viewer .flashcard:hover { transform: scale(1.01); }
+        .flashcard-viewer .card-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .flashcard-viewer .card-content {
+            font-size: 1.3rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .flashcard-viewer .card-answer {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: var(--green);
+            font-size: 1.1rem;
+        }
+        .flashcard-viewer .flashcard.show-answer .card-answer { display: block; }
+        .flashcard-viewer .flashcard.show-answer .card-hint { display: none; }
+        .flashcard-viewer .card-hint {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* NAV */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-tab {
+            padding: 10px 20px;
+            background: var(--card);
+            border: 1px solid #333;
+            border-radius: 10px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .nav-tab:hover, .nav-tab.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* PROGRESS TRACKER */
+        .progress-tracker {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .ring {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 6px solid #333;
+            border-top-color: var(--accent);
+            border-right-color: var(--accent2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .ring::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 6px solid transparent;
+            border-bottom-color: var(--green);
+            border-left-color: var(--green);
+            transform: rotate(-45deg);
+        }
+        .progress-stats { flex: 1; }
+        .progress-stats h4 { color: var(--accent2); margin-bottom: 8px; }
+        .progress-stats p { font-size: 0.85rem; color: var(--text-muted); }
+        .progress-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .progress-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .progress-btn:hover { border-color: var(--accent); color: var(--accent2); }
+
+        /* SEARCH */
+        .topic-card.hidden-by-search { display: none !important; }
+        .phase-section.search-hidden { display: none !important; }
+
+        /* COMPLETED BADGE */
+        .completed-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            font-size: 1rem;
+        }
+
+        /* SOURCE BADGE */
+        .source-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            margin-bottom: 10px;
+        }
+
+        /* SKELETON LOADING */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, var(--card) 25%, var(--card-hover) 50%, var(--card) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+            height: 20px;
+            margin: 8px 0;
+        }
+        .skeleton-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #333;
+        }
+        .skeleton-title { height: 28px; width: 60%; }
+        .skeleton-text { height: 16px; width: 90%; }
+        .skeleton-text-short { height: 16px; width: 40%; }
+
+        /* HIGHLIGHT ANIMATION */
+        @keyframes highlightPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(108,92,231,0); }
+            50% { box-shadow: 0 0 20px 8px rgba(108,92,231,0.5); }
+        }
+        .topic-card.highlighted {
+            animation: highlightPulse 0.6s ease-in-out 3;
+            border-color: var(--accent) !important;
+            transform: scale(1.04) !important;
+        }
+
+        /* RECENTLY VIEWED BAR */
+        .recent-bar {
+            display: flex;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--card);
+            border-bottom: 1px solid #333;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+        .recent-bar::-webkit-scrollbar { height: 4px; }
+        .recent-bar::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+        .recent-item {
+            padding: 6px 14px;
+            background: var(--bg);
+            border: 1px solid #444;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .recent-item:hover { border-color: var(--accent); color: var(--accent2); }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 2px solid var(--accent);
+            color: var(--accent2);
+            font-size: 1.4rem;
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(108,92,231,0.3);
+        }
+        .theme-toggle:hover { background: var(--accent); color: white; transform: scale(1.1); }
+
+        body.light-mode {
+            --bg: #f0f0f8;
+            --card: #ffffff;
+            --card-hover: #f5f5ff;
+            --text: #1a1a2e;
+            --text-muted: #666;
+            --accent: #6c5ce7;
+            --accent2: #a29bfe;
+        }
+        body.light-mode .header { background: linear-gradient(135deg, #e0e0f0 0%, #d0d0e8 100%); }
+        body.light-mode .topic-card { border-color: #ccc; background: #fff; }
+        body.light-mode .topic-card:hover { border-color: var(--accent); background: var(--card-hover); }
+        body.light-mode .viewer { background: rgba(0,0,0,0.5); }
+        body.light-mode .stats-bar, body.light-mode .search-bar, body.light-mode .recent-bar { border-color: #ddd; }
+        body.light-mode .nav-tab { background: #eee; border-color: #ccc; color: #444; }
+        body.light-mode .nav-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+        body.light-mode .progress-tracker, body.light-mode .question, body.light-mode .flashcard { border-color: #ddd; }
+        body.light-mode code { background: #e8e8f0; color: #6c5ce7; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .topic-grid { grid-template-columns: 1fr; }
+            .viewer-content { padding: 20px; margin: 10px; }
+            .stats-bar { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div style="text-align:left;">
+            <h1>🧠 <span>Papez</span> Neurology Dashboard</h1>
+            <p>From molecules to the mind — and everything in between.</p>
+        </div>
+        <div style="text-align:right; display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
+            <span id="liveClock" style="font-size:0.9rem; color:var(--accent2); font-variant-numeric:tabular-nums;"></span>
+            <span id="lastUpdated" style="font-size:0.75rem; color:var(--text-muted);"></span>
+        </div>
+    </div>
+</div>
+
+<div class="search-bar" style="padding:16px 20px; background:var(--card); border-bottom:1px solid #333; display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+    <input id="searchInput" type="text" placeholder="🔍 Search topics, tags, sources..." style="flex:1; min-width:200px; padding:10px 16px; border-radius:10px; border:1px solid #444; background:var(--bg); color:var(--text); font-size:0.95rem; outline:none;" oninput="filterTopics()">
+    <button onclick="document.getElementById('searchInput').value=''; filterTopics()" style="padding:10px 16px; border-radius:10px; border:1px solid #444; background:var(--bg); color:var(--text-muted); cursor:pointer; font-size:0.85rem;">✕ Clear</button>
+    <button onclick="pickRandomTopic()" style="padding:10px 16px; border-radius:10px; border:1px solid var(--accent); background:transparent; color:var(--accent2); cursor:pointer; font-size:0.85rem;">🎲 Random Topic</button>
+    <div id="searchCount" style="font-size:0.8rem; color:var(--text-muted); min-width:80px;"></div>
+</div>
+
+<div class="stats-bar">
+    <div class="stat">
+        <div class="stat-number">84</div>
+        <div class="stat-label">Wiki Pages</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">83</div>
+        <div class="stat-label">Flashcard Decks</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">82</div>
+        <div class="stat-label">Quiz Decks</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">78</div>
+        <div class="stat-label">PDFs Ingested</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">74</div>
+        <div class="stat-label">PDFs Remaining</div>
+    </div>
+</div>
+
+<div id="recentBar" class="recent-bar" style="display:none;">
+    <span style="font-size:0.75rem; color:var(--text-muted); padding:6px 4px; flex-shrink:0;">🕐 Recent:</span>
+    <div id="recentItems"></div>
+</div>
+
+<div id="progressTracker" class="progress-tracker">
+    <div class="ring" id="progressRing">0/0</div>
+    <div class="progress-stats">
+        <h4>📊 Your Progress</h4>
+        <p id="progressText">Complete topics to track progress</p>
+    </div>
+    <div class="progress-actions">
+        <button class="progress-btn" onclick="markAllComplete()">✅ Mark All</button>
+        <button class="progress-btn" onclick="resetProgress()">🔄 Reset</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ============================================================
+         PHASE 1: FOUNDATION
+    ============================================================ -->
+    <div class="phase-section">
+        <h2 class="phase-title">
+            <span class="phase-num">Phase 1</span>
+            🏗️ Foundation — Cellular Neuroscience & Neuroanatomy
+        </h2>
+
+        <div class="topic-grid">
+
+            <div class="topic-card" onclick="openViewer('wiki', 'ion_channels')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🧬 Ion Channels</h3>
+                <p>Voltage-gated, ligand-gated, leak channels. Action potential fundamentals.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'action_potentials')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>⚡ Action Potentials</h3>
+                <p>Depolarization, repolarization, refractory periods, propagation.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'synaptic_transmission')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🔗 Synaptic Transmission</h3>
+                <p>Synaptic cleft, vesicles, release, postsynaptic receptors.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'neurotransmitters')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🧪 Neurotransmitters & Receptors</h3>
+                <p>Excitatory, inhibitory, receptor types, receptor subunits.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'glial_cells')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🔵 Glial Cells</h3>
+                <p>Astrocytes, oligodendrocytes, microglia, Schwann cells.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'gross_brain_anatomy')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🧠 Gross Brain Anatomy</h3>
+                <p>Lobes, sulci, gyri, ventricles, meninges.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'brainstem')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🌿 Brainstem</h3>
+                <p>Midbrain, pons, medulla. Cranial nerve nuclei.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'cranial_nerves')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🔢 Cranial Nerves</h3>
+                <p>CN I-XII. Exit zones, functions, clinical testing.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'cerebellum')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🎯 Cerebellum</h3>
+                <p>Spinocerebellum, vestibulocerebellum, cerebrocerebellum.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'basal_ganglia')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🎰 Basal Ganglia</h3>
+                <p>Direct pathway, indirect pathway, Parkinson's disease.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'limbic_system')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>💗 Limbic System</h3>
+                <p>Hippocampus, amygdala, Papez circuit, emotion & memory.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'blood_supply')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🩸 Blood Supply</h3>
+                <p>Circle of Willis, MCA, ACA, PCA, stroke territories.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+         PHASE 2: CLINICAL APPRENTICE
+    ============================================================ -->
+    <div class="phase-section">
+        <h2 class="phase-title">
+            <span class="phase-num">Phase 2</span>
+            🏥 Clinical Apprentice — Examination & Localization
+        </h2>
+
+        <div class="topic-grid">
+
+            <div class="topic-card" onclick="openViewer('wiki', 'neurological_examination')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🩺 Neurological Examination</h3>
+                <p>Mental status, CN I-XII, motor, sensory, coordination, reflexes.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'lesion_localization')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🎯 Lesion Localization</h3>
+                <p>UMN vs LMN, cortical, brainstem, spinal cord, peripheral nerve.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'differential_diagnosis')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🔍 Differential Diagnosis</h3>
+                <p>Common presentations, red flags, clinical reasoning.</p>
+                <div class="tags">
+                    <span class="tag">Wiki</span><span class="tag">Flashcards</span><span class="tag">Quiz</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================
+         PHASE 3: LIBRARY INGESTION
+    ============================================================ -->
+    <div class="phase-section">
+        <h2 class="phase-title">
+            <span class="phase-num">Phase 3</span>
+            📚 Board Exam Warrior — Library Ingestion
+        </h2>
+
+        <div class="topic-grid">
+
+            <div class="topic-card" onclick="openViewer('wiki', 'antiseizure_medications')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>💊 Antiseizure Medications</h3>
+                <p>Mechanisms, PK, drug selection, TDM, DRE. VPA, LEV, LTG, CBZ, PHT and more.</p>
+                <div class="tags">
+                    <span class="tag">NPC Notebook</span><span class="tag">45 cards</span><span class="tag">53 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'seizure_classification_ilae')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>⚡ ILAE Seizure Classification</h3>
+                <p>Focal vs generalized, 2025 updates, absence vs FIA, lateralizing signs.</p>
+                <div class="tags">
+                    <span class="tag">NPC Notebook</span><span class="tag">50 cards</span><span class="tag">54 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'idiopathic_generalized_epilepsies')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🧠 IGE Syndromes</h3>
+                <p>JME, JAE, GTCA, GEFS+, SUDEP, ASM withdrawal.</p>
+                <div class="tags">
+                    <span class="tag">NPC Notebook</span><span class="tag">45 cards</span><span class="tag">53 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'parkinsons_disease_diagnosis')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🩟 Parkinson's Disease (MDS Criteria)</h3>
+                <p>MDS 2015 clinical diagnostic criteria, red flags, supportive criteria, exclusions.</p>
+                <div class="tags">
+                    <span class="tag">MDS Guideline 2015</span><span class="tag">40 cards</span><span class="tag">54 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'cadasil_carasal_caracil')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🧬 CADASIL vs CARASAL vs CARASIL</h3>
+                <p>Hereditary cSVD: NOTCH3, HTRA1, CTSA. GOM, temporal pole MRI, alopecia.</p>
+                <div class="tags">
+                    <span class="tag">Hereditary cSVD 2026</span><span class="tag">45 cards</span><span class="tag">51 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'tavapadon_tempo_trials')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>💊 Tavapadon (TEMPO Trials)</h3>
+                <p>D1/D5 agonist for PD. ICD risk 1.2% vs 17-28% with D2/D3 agonists.</p>
+                <div class="tags">
+                    <span class="tag">Movement 2026</span><span class="tag">20 cards</span><span class="tag">22 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'migraine_candesartan_vs_topiramate')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🤕 Migraine: Candesartan vs Topiramate</h3>
+                <p>Prophylaxis comparison. Candesartan 70% continuation vs 33% topiramate.</p>
+                <div class="tags">
+                    <span class="tag">Cephalalgia 2026</span><span class="tag">25 cards</span><span class="tag">25 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'epilepsy_definition')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🧩 Epilepsy Definition (ILAE 2005/2014)</h3>
+                <p>Seizure vs epilepsy vs resolved; three diagnostic criteria; provoked vs unprovoked.</p>
+                <div class="tags">
+                    <span class="tag">NPC Chapter 1</span><span class="tag">25 cards</span><span class="tag">20 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'eeg_in_epilepsy')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>📊 EEG in Epilepsy</h3>
+                <p>10-20 system, normal rhythms, epileptiform, activation procedures, NCSE criteria.</p>
+                <div class="tags">
+                    <span class="tag">NPC Chapter 8</span><span class="tag">30 cards</span><span class="tag">25 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'genetics_in_epilepsy')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🧬 Genetics in Epilepsy</h3>
+                <p>SCN1A-Dravet, KCNQ2, CDKL5, PCDH19, mTOR pathway, TSC, GLUT1, precision therapy.</p>
+                <div class="tags">
+                    <span class="tag">NPC Chapter 10</span><span class="tag">30 cards</span><span class="tag">20 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'neuroimaging_in_epilepsy')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🧠 Neuroimaging in Epilepsy</h3>
+                <p>3T epilepsy MRI, HS, FCD, DNET, ganglioglioma, PET, SISCOM, SPECT timing.</p>
+                <div class="tags">
+                    <span class="tag">NPC Chapter 9</span><span class="tag">30 cards</span><span class="tag">20 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'asm_pregnancy_teratogenicity')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>🤰 ASM in Pregnancy & Teratogenicity</h3>
+                <p>VPA 6-10% MCM, NEAD IQ deficit, LTG/LEV preferred, PK changes, NICE NG217.</p>
+                <div class="tags">
+                    <span class="tag">NPC Chapter 12</span><span class="tag">20 cards</span><span class="tag">20 Qs</span>
+                </div>
+            </div>
+
+            <div class="topic-card" onclick="openViewer('wiki', 'epilepsy_classification_framework')">
+                <span class="badge badge-ingested">INGESTED</span>
+                <h3>📋 Epilepsy Classification Framework</h3>
+                <p>ILAE 2017 three-level, four epilepsy types, six etiologies, ILAE 2022 syndromes.</p>
+                <div class="tags">
+                    <span class="tag">NPC Chapter 3</span><span class="tag">20 cards</span><span class="tag">20 Qs</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================================================
+     CONTENT VIEWER (MODAL)
+============================================================ -->
+<div class="viewer" id="viewer">
+    <div class="viewer-content">
+        <button class="close-btn" onclick="closeViewer()">✕</button>
+
+        <div class="nav-tabs" id="navTabs">
+            <button class="nav-tab active" onclick="showTab('wiki')">📖 Wiki</button>
+            <button class="nav-tab" onclick="showTab('flashcards')">🃏 Flashcards</button>
+            <button class="nav-tab" onclick="showTab('quiz')">❓ Quiz</button>
+        </div>
+
+        <div id="wikiTab" class="tab-content active">
+            <h2 id="viewerTitle">Topic Title</h2>
+            <span class="source-badge" id="viewerSource">Source</span>
+            <div class="content-body" id="wikiContent">Loading...</div>
+        </div>
+
+        <div id="flashcardsTab" class="tab-content flashcard-viewer">
+            <h2>🃏 Flashcards — <span id="flashcardTopic"></span></h2>
+            <p style="color:var(--text-muted)">Tap each card to reveal the answer</p>
+            <div id="flashcardContent">Loading...</div>
+        </div>
+
+        <div id="quizTab" class="tab-content quiz-viewer">
+            <h2>❓ Quiz — <span id="quizTopic"></span></h2>
+            <p style="color:var(--text-muted)">Tap each question to reveal the answer</p>
+            <div id="quizContent">Loading...</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const topics = {
+    // Phase 1
+    ion_channels: { title: 'Ion Channels', wiki: 'outputs/wiki/ion_channels.md', flash: 'outputs/flashcards/ion_channels_flashcards.md', quiz: 'outputs/quizzes/ion_channels_quiz.md', source: 'Kandel et al. Principles of Neural Science' },
+    action_potentials: { title: 'Action Potentials', wiki: 'outputs/wiki/action_potentials.md', flash: 'outputs/flashcards/action_potentials_flashcards.md', quiz: 'outputs/quizzes/action_potentials_quiz.md', source: 'Kandel et al.' },
+    synaptic_transmission: { title: 'Synaptic Transmission', wiki: 'outputs/wiki/synaptic_transmission.md', flash: 'outputs/flashcards/synaptic_transmission_flashcards.md', quiz: 'outputs/quizzes/synaptic_transmission_quiz.md', source: 'Kandel et al.' },
+    neurotransmitters: { title: 'Neurotransmitters & Receptors', wiki: 'outputs/wiki/neurotransmitters_receptors.md', flash: 'outputs/flashcards/neurotransmitters_receptors_flashcards.md', quiz: 'outputs/quizzes/neurotransmitters_receptors_quiz.md', source: 'Kandel et al.' },
+    glial_cells: { title: 'Glial Cells', wiki: 'outputs/wiki/glial_cells.md', flash: 'outputs/flashcards/glial_cells_flashcards.md', quiz: 'outputs/quizzes/glial_cells_quiz.md', source: 'Kandel et al.' },
+    gross_brain_anatomy: { title: 'Gross Brain Anatomy', wiki: 'outputs/wiki/gross_brain_anatomy.md', flash: 'outputs/flashcards/gross_brain_anatomy_flashcards.md', quiz: 'outputs/quizzes/gross_brain_anatomy_quiz.md', source: 'Bear & Purves' },
+    brainstem: { title: 'Brainstem', wiki: 'outputs/wiki/brainstem.md', flash: 'outputs/flashcards/brainstem_flashcards.md', quiz: 'outputs/quizzes/brainstem_quiz.md', source: 'Bear & Purves' },
+    cranial_nerves: { title: 'Cranial Nerves', wiki: 'outputs/wiki/cranial_nerves.md', flash: 'outputs/flashcards/cranial_nerves_flashcards.md', quiz: 'outputs/quizzes/cranial_nerves_quiz.md', source: 'Bear & Purves' },
+    cerebellum: { title: 'Cerebellum', wiki: 'outputs/wiki/cerebellum.md', flash: 'outputs/flashcards/cerebellum_flashcards.md', quiz: 'outputs/quizzes/cerebellum_quiz.md', source: 'Bear & Purves' },
+    basal_ganglia: { title: 'Basal Ganglia', wiki: 'outputs/wiki/basal_ganglia.md', flash: 'outputs/flashcards/basal_ganglia_flashcards.md', quiz: 'outputs/quizzes/basal_ganglia_quiz.md', source: 'Bear & Purves' },
+    limbic_system: { title: 'Limbic System', wiki: 'outputs/wiki/limbic_system.md', flash: 'outputs/flashcards/limbic_system_flashcards.md', quiz: 'outputs/quizzes/limbic_system_quiz.md', source: 'Bear & Purves' },
+    blood_supply: { title: 'Blood Supply', wiki: 'outputs/wiki/blood_supply.md', flash: 'outputs/flashcards/blood_supply_flashcards.md', quiz: 'outputs/quizzes/blood_supply_quiz.md', source: 'Bradley' },
+    // Phase 2
+    neurological_examination: { title: 'Neurological Examination', wiki: 'outputs/wiki/neurological_examination.md', flash: 'outputs/flashcards/neurological_examination_flashcards.md', quiz: 'outputs/quizzes/neurological_examination_quiz.md', source: 'Clinical Examination' },
+    lesion_localization: { title: 'Lesion Localization', wiki: 'outputs/wiki/lesion_localization.md', flash: 'outputs/flashcards/lesion_localization_flashcards.md', quiz: 'outputs/quizzes/lesion_localization_quiz.md', source: 'Localization in Clinical Neurology' },
+    differential_diagnosis: { title: 'Differential Diagnosis', wiki: 'outputs/wiki/differential_diagnosis.md', flash: 'outputs/flashcards/differential_diagnosis_flashcards.md', quiz: 'outputs/quizzes/differential_diagnosis_quiz.md', source: 'Bradley Neurology' },
+    // Phase 3 - Library
+    antiseizure_medications: { title: 'Antiseizure Medications', wiki: 'outputs/wiki/antiseizure_medications.md', flash: 'outputs/flashcards/antiseizure_medications_flashcards.md', quiz: 'outputs/quizzes/antiseizure_medications_quiz.md', source: 'NPC Thai Board Prep — Epilepsy' },
+    seizure_classification_ilae: { title: 'ILAE Seizure Classification', wiki: 'outputs/wiki/seizure_classification_ilae.md', flash: 'outputs/flashcards/seizure_classification_ilae_flashcards.md', quiz: 'outputs/quizzes/seizure_classification_ilae_quiz.md', source: 'NPC Thai Board Prep — ILAE 2017/2025' },
+    idiopathic_generalized_epilepsies: { title: 'Idiopathic Generalized Epilepsies', wiki: 'outputs/wiki/idiopathic_generalized_epilepsies.md', flash: 'outputs/flashcards/idiopathic_generalized_epilepsies_flashcards.md', quiz: 'outputs/quizzes/idiopathic_generalized_epilepsies_quiz.md', source: 'NPC Thai Board Prep — IGE' },
+    parkinsons_disease_diagnosis: { title: "Parkinson's Disease (MDS Criteria)", wiki: 'outputs/wiki/parkinsons_disease_diagnosis.md', flash: 'outputs/flashcards/parkinsons_disease_diagnosis_flashcards.md', quiz: 'outputs/quizzes/parkinsons_disease_diagnosis_quiz.md', source: 'MDS Guideline 2015 — Postuma' },
+    cadasil_carasal_caracil: { title: 'CADASIL vs CARASAL vs CARASIL', wiki: 'outputs/wiki/cadasil_carasal_caracil.md', flash: 'outputs/flashcards/cadasil_carasal_caracil_flashcards.md', quiz: 'outputs/quizzes/cadasil_carasal_caracil_quiz.md', source: 'Hereditary cSVD Review 2026' },
+    tavapadon_tempo_trials: { title: 'Tavapadon (TEMPO Trials)', wiki: 'outputs/wiki/tavapadon_tempo_trials.md', flash: 'outputs/flashcards/tavapadon_tempo_flashcards.md', quiz: 'outputs/quizzes/tavapadon_tempo_quiz.md', source: 'TEMPO Clinical Trials 2026' },
+    migraine_candesartan_vs_topiramate: { title: 'Migraine: Candesartan vs Topiramate', wiki: 'outputs/wiki/migraine_candesartan_vs_topiramate.md', flash: 'outputs/flashcards/migraine_candesartan_vs_topiramate_flashcards.md', quiz: 'outputs/quizzes/migraine_candesartan_vs_topiramate_quiz.md', source: 'Cephalalgia 2026' },
+    epilepsy_definition: { title: 'Epilepsy Definition (ILAE 2005/2014)', wiki: 'outputs/wiki/epilepsy_definition.md', flash: 'outputs/flashcards/epilepsy_definition_flashcards.md', quiz: 'outputs/quizzes/epilepsy_definition_quiz.md', source: 'NPC Chapter 1 — ILAE Definitions' },
+    eeg_in_epilepsy: { title: 'EEG in Epilepsy', wiki: 'outputs/wiki/eeg_in_epilepsy.md', flash: 'outputs/flashcards/eeg_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/eeg_in_epilepsy_quiz.md', source: 'NPC Chapter 8 — Diagnostic Methods' },
+    genetics_in_epilepsy: { title: 'Genetics in Epilepsy', wiki: 'outputs/wiki/genetics_in_epilepsy.md', flash: 'outputs/flashcards/genetics_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/genetics_in_epilepsy_quiz.md', source: 'NPC Chapter 10 — Genetic Architecture' },
+    neuroimaging_in_epilepsy: { title: 'Neuroimaging in Epilepsy', wiki: 'outputs/wiki/neuroimaging_in_epilepsy.md', flash: 'outputs/flashcards/neuroimaging_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/neuroimaging_in_epilepsy_quiz.md', source: 'NPC Chapter 9 — Structural Imaging' },
+    asm_pregnancy_teratogenicity: { title: 'ASM in Pregnancy & Teratogenicity', wiki: 'outputs/wiki/asm_pregnancy_teratogenicity.md', flash: 'outputs/flashcards/asm_pregnancy_teratogenicity_flashcards.md', quiz: 'outputs/quizzes/asm_pregnancy_teratogenicity_quiz.md', source: 'NPC Chapter 12 — Special Pharmacology' },
+    epilepsy_classification_framework: { title: 'Epilepsy Classification Framework', wiki: 'outputs/wiki/epilepsy_classification_framework.md', flash: 'outputs/flashcards/epilepsy_classification_framework_flashcards.md', quiz: 'outputs/quizzes/epilepsy_classification_framework_quiz.md', source: 'NPC Chapter 3 — ILAE 2017/2022' },
+    dystonia_primer: { title: 'Dystonia Primer (Nature Reviews 2018)', wiki: 'outputs/wiki/dystonia_primer.md', flash: 'outputs/flashcards/dystonia_primer_flashcards.md', quiz: 'outputs/quizzes/dystonia_primer_quiz.md', source: 'Nature Reviews 2018 — Movement Disorders' },
+    childhood_epilepsy_syndromes: { title: 'Childhood Epilepsy Syndromes', wiki: 'outputs/wiki/childhood_epilepsy_syndromes.md', flash: 'outputs/flashcards/childhood_epilepsy_syndromes_flashcards.md', quiz: 'outputs/quizzes/childhood_epilepsy_syndromes_quiz.md', source: 'NPC Chapter 5 — ILAE 2022' },
+};
+
+const basePath = '';
+
+function openViewer(type, topicId) {
+    const topic = topics[topicId];
+    if (!topic) return;
+
+    document.getElementById('viewerTitle').textContent = topic.title;
+    document.getElementById('viewerSource').textContent = topic.source;
+    document.getElementById('flashcardTopic').textContent = topic.title;
+    document.getElementById('quizTopic').textContent = topic.title;
+
+    // Load wiki content
+    fetch(basePath + topic.wiki)
+        .then(r => r.text())
+        .then(text => {
+            document.getElementById('wikiContent').innerHTML = renderMarkdown(text);
+        })
+        .catch(() => {
+            document.getElementById('wikiContent').innerHTML = '<p>Wiki file not found.</p>';
+        });
+
+    // Load flashcards
+    fetch(basePath + topic.flash)
+        .then(r => r.text())
+        .then(text => {
+            document.getElementById('flashcardContent').innerHTML = renderFlashcards(text);
+        })
+        .catch(() => {
+            document.getElementById('flashcardContent').innerHTML = '<p>Flashcard file not found.</p>';
+        });
+
+    // Load quiz
+    fetch(basePath + topic.quiz)
+        .then(r => r.text())
+        .then(text => {
+            document.getElementById('quizContent').innerHTML = renderQuiz(text);
+        })
+        .catch(() => {
+            document.getElementById('quizContent').innerHTML = '<p>Quiz file not found.</p>';
+        });
+
+    // Reset tabs
+    showTab('wiki');
+    document.getElementById('viewer').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeViewer() {
+    document.getElementById('viewer').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function showTab(tab) {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById(tab + 'Tab').classList.add('active');
+}
+
+function renderMarkdown(text) {
+    // Simple markdown renderer
+    let html = text
+        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+        .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/`(.+?)`/g, '<code>$1</code>')
+        .replace(/^\- (.+)$/gm, '<li>$1</li>')
+        .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+        .replace(/\n---\n/g, '<hr>')
+        .replace(/\|(.+)\|/g, (match) => {
+            const cells = match.split('|').filter(c => c.trim());
+            if (cells.some(c => /^[-:]+$/.test(c.trim()))) return '';
+            const isHeader = cells.some(c => c.match(/^\s*[-:]+[-:]*$/));
+            const tag = 'td';
+            return '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+        });
+    // Wrap tables
+    html = html.replace(/(<tr>.*<\/tr>)/gs, '<table>$1</table>');
+    return '<p>' + html + '</p>';
+}
+
+function renderFlashcards(text) {
+    const cards = [];
+    const regex = /## CARD \d+\s*\*\*(Q:|Q:).*?\*\*(.+?)\s*\*\*A:\*\*\s*(.+?)(?=\s*---|$)/gs;
+    let match;
+    while ((match = regex.exec(text)) !== null) {
+        cards.push(`<div class="flashcard" onclick="this.classList.toggle('show-answer')">
+            <div class="card-label">QUESTION</div>
+            <div class="card-content">${match[2].trim()}</div>
+            <div class="card-answer">✅ ${match[3].trim()}</div>
+            <div class="card-hint">👆 Tap to reveal answer</div>
+        </div>`);
+    }
+    return cards.length ? cards.join('') : '<p>No flashcards found.</p>';
+}
+
+function renderQuiz(text) {
+    const questions = [];
+    // Match MCQ: ### QN. ... - A) ... - B) ...
+    const mcqRegex = /### Q(\d+)\.\s*(.+?)(?=\n- [A-D]|\n\*\*A:)/gs;
+    const optionRegex = /\n- ([A-D])\)\s*(.+?)(?=\n- [A-D]|\n\*\*A:|$)/g;
+    const answerRegex = /\*\*A:\*\*\s*(.+?)(?=\n(?:---|$))/s;
+
+    let mcqMatch;
+    while ((mcqMatch = mcqRegex.exec(text)) !== null) {
+        const num = mcqMatch[1];
+        const qText = mcqMatch[2].trim();
+        const section = text.slice(mcqMatch.index);
+        const options = [];
+        let optMatch;
+        while ((optMatch = optionRegex.exec(section)) !== null && optMatch.index < 500) {
+            const isCorrect = optMatch[1] === 'A' && section.includes('✓');
+            options.push(`<li ${isCorrect ? 'style="border:2px solid var(--green)"' : ''}>${optMatch[1]}) ${optMatch[2].trim()}</li>`);
+        }
+        const ansMatch = section.match(answerRegex);
+        const answer = ansMatch ? ansMatch[1].trim() : '';
+        questions.push(`<div class="question" onclick="this.classList.toggle('show-answer')">
+            <div class="question-number">Q${num}</div>
+            <div class="question-text">${qText}</div>
+            <ul class="options">${options.join('')}</ul>
+            <div class="answer">✅ ${answer}</div>
+        </div>`);
+    }
+    return questions.length ? questions.join('') : '<p>Quiz parsing in progress...</p>';
+}
+
+// Close on ESC
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeViewer(); });
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark theme">🌙</button>
+
+    <script>
+        // ---- LIVE CLOCK & LAST UPDATED ----
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('liveClock').textContent = '🕐 ' + time + ' UTC';
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+        document.getElementById('lastUpdated').textContent = 'Loaded: ' + new Date().toLocaleString();
+
+        // ---- SEARCH ----
+        function filterTopics() {
+            const q = document.getElementById('searchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.topic-card');
+            const sections = document.querySelectorAll('.phase-section');
+            let visible = 0;
+            cards.forEach(card => {
+                const txt = (
+                    card.dataset.title + ' ' +
+                    (card.dataset.source || '') + ' ' +
+                    (card.querySelector('p')?.textContent || '') + ' ' +
+                    Array.from(card.querySelectorAll('.tag')).map(t => t.textContent).join(' ')
+                ).toLowerCase();
+                const match = !q || txt.includes(q);
+                card.classList.toggle('hidden-by-search', !match);
+                if (match) visible++;
+            });
+            sections.forEach(sec => {
+                const visibleCards = sec.querySelectorAll('.topic-card:not(.hidden-by-search)');
+                sec.classList.toggle('search-hidden', visibleCards.length === 0);
+            });
+            document.getElementById('searchCount').textContent = q ? visible + ' / ' + cards.length + ' topics' : '';
+        }
+
+        // ---- RANDOM TOPIC ----
+        function pickRandomTopic() {
+            const allCards = Array.from(document.querySelectorAll('.topic-card')).filter(c => !c.classList.contains('hidden-by-search'));
+            if (!allCards.length) return;
+            const card = allCards[Math.floor(Math.random() * allCards.length)];
+            const topicId = card.dataset.topic;
+            card.classList.add('highlighted');
+            setTimeout(() => card.classList.remove('highlighted'), 2000);
+            openViewer('wiki', topicId);
+        }
+
+        // ---- PROGRESS ----
+        const completed = JSON.parse(localStorage.getItem('papez_completed') || '[]');
+        function updateProgress() {
+            const allTopics = Object.keys(topics);
+            const done = completed.length;
+            const total = allTopics.length;
+            document.getElementById('progressRing').textContent = done + '/' + total;
+            document.getElementById('progressText').textContent = done + ' of ' + total + ' topics completed (' + (total > 0 ? Math.round(done/total*100) : 0) + '%)';
+        }
+        function markAllComplete() {
+            if (confirm('Mark all ' + Object.keys(topics).length + ' topics as complete?')) {
+                localStorage.setItem('papez_completed', JSON.stringify(Object.keys(topics)));
+                location.reload();
+            }
+        }
+        function resetProgress() {
+            if (confirm('Reset all progress?')) {
+                localStorage.removeItem('papez_completed');
+                location.reload();
+            }
+        }
+
+        // ---- RECENTLY VIEWED ----
+        function renderRecent() {
+            const r = JSON.parse(localStorage.getItem('papez_recent') || '[]');
+            const bar = document.getElementById('recentBar');
+            const container = document.getElementById('recentItems');
+            if (!r.length) { bar.style.display = 'none'; return; }
+            bar.style.display = 'flex';
+            container.innerHTML = r.map(item =>
+                '<div class="recent-item" onclick="openViewer(' + "'wiki'" + ',' + "'" + item.id + "'" + ')">' + item.title + '</div>'
+            ).join('');
+        }
+        function addToRecent(topicId) {
+            const topic = topics[topicId];
+            if (!topic) return;
+            let recent = JSON.parse(localStorage.getItem('papez_recent') || '[]');
+            recent = recent.filter(r => r.id !== topicId);
+            recent.unshift({ id: topicId, title: topic.title });
+            recent = recent.slice(0, 8);
+            localStorage.setItem('papez_recent', JSON.stringify(recent));
+            renderRecent();
+        }
+        renderRecent();
+        const _openViewer = openViewer;
+        openViewer = function(type, topicId) {
+            _openViewer(type, topicId);
+            addToRecent(topicId);
+        };
+
+        // ---- THEME TOGGLE ----
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            document.querySelector('.theme-toggle').textContent = isLight ? '🌙' : '☀️';
+            localStorage.setItem('papez_theme', isLight ? 'light' : 'dark');
+        }
+        if (localStorage.getItem('papez_theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+        document.querySelector('.theme-toggle').textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+
+        updateProgress();
+        filterTopics();
+    </script>
+
+</body>
+</html>

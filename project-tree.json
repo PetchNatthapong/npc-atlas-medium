@@ -1,0 +1,76 @@
+{
+  "workspace-papez": {
+    "type": "dir",
+    "children": {
+      "AGENTS.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/AGENTS.md", "date": "2026-04-20", "size": "7.6 KB" },
+      "MEMORY.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/MEMORY.md", "date": "2026-04-20", "size": "845 B" },
+      "SOUL.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/SOUL.md", "date": "2026-04-20", "size": "1.7 KB" },
+      "IDENTITY.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/IDENTITY.md", "date": "2026-04-20", "size": "636 B" },
+      "USER.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/USER.md", "date": "2026-04-20", "size": "477 B" },
+      "TOOLS.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/TOOLS.md", "date": "2026-04-20", "size": "860 B" },
+      "HEARTBEAT.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/HEARTBEAT.md", "date": "2026-04-20", "size": "193 B" },
+      "BOOTSTRAP.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/BOOTSTRAP.md", "date": "2026-04-20", "size": "1.4 KB" },
+      "memory": {
+        "type": "dir",
+        "children": {
+          "2026-04-20.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-papez/memory/2026-04-20.md", "date": "2026-04-20", "size": "1.7 KB" }
+        }
+      }
+    }
+  },
+  "workspace-shiba": {
+    "type": "dir",
+    "children": {
+      "AGENTS.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-shiba/AGENTS.md", "date": "2026-04-18", "size": "7.6 KB" },
+      "SOUL.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-shiba/SOUL.md", "date": "2026-04-20", "size": "1.5 KB" },
+      "IDENTITY.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-shiba/IDENTITY.md", "date": "2026-04-20", "size": "301 B" },
+      "USER.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-shiba/USER.md", "date": "2026-04-18", "size": "477 B" },
+      "TOOLS.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-shiba/TOOLS.md", "date": "2026-04-18", "size": "860 B" },
+      "HEARTBEAT.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-shiba/HEARTBEAT.md", "date": "2026-04-18", "size": "193 B" },
+      "BOOTSTRAP.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-shiba/BOOTSTRAP.md", "date": "2026-04-18", "size": "1.4 KB" }
+    }
+  },
+  "workspace-cola": {
+    "type": "dir",
+    "children": {
+      "AGENTS.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/AGENTS.md", "date": "2026-04-18", "size": "7.6 KB" },
+      "SOUL.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/SOUL.md", "date": "2026-04-18", "size": "1.7 KB" },
+      "IDENTITY.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/IDENTITY.md", "date": "2026-04-18", "size": "636 B" },
+      "USER.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/USER.md", "date": "2026-04-18", "size": "477 B" },
+      "TOOLS.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/TOOLS.md", "date": "2026-04-18", "size": "860 B" },
+      "HEARTBEAT.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/HEARTBEAT.md", "date": "2026-04-18", "size": "193 B" },
+      "BOOTSTRAP.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/BOOTSTRAP.md", "date": "2026-04-18", "size": "1.4 KB" },
+      "memory": {
+        "type": "dir",
+        "children": {
+          "2026-04-19.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/memory/2026-04-19.md", "date": "2026-04-19", "size": "1.8 KB" }
+        }
+      },
+      "skills": {
+        "type": "dir",
+        "children": {
+          "skill-creator": {
+            "type": "dir",
+            "children": {
+              "SKILL.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-cola/skills/skill-creator/SKILL.md", "date": "2026-04-20", "size": "17.4 KB" },
+              "LICENSE.txt": { "type": "file", "ftype": "txt", "path": "FOR OPENCLAW/workspace-cola/skills/skill-creator/LICENSE.txt", "date": "2026-04-20", "size": "11.1 KB" },
+              "_meta.json": { "type": "file", "ftype": "json", "path": "FOR OPENCLAW/workspace-cola/skills/skill-creator/_meta.json", "date": "2026-04-20", "size": "132 B" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "workspace-investx": {
+    "type": "dir",
+    "children": {
+      "AGENTS.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-investx/AGENTS.md", "date": "2026-04-20", "size": "7.6 KB" },
+      "SOUL.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-investx/SOUL.md", "date": "2026-04-20", "size": "1.7 KB" },
+      "IDENTITY.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-investx/IDENTITY.md", "date": "2026-04-20", "size": "636 B" },
+      "USER.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-investx/USER.md", "date": "2026-04-20", "size": "477 B" },
+      "TOOLS.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-investx/TOOLS.md", "date": "2026-04-20", "size": "860 B" },
+      "HEARTBEAT.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-investx/HEARTBEAT.md", "date": "2026-04-20", "size": "193 B" },
+      "BOOTSTRAP.md": { "type": "file", "ftype": "md", "path": "FOR OPENCLAW/workspace-investx/BOOTSTRAP.md", "date": "2026-04-20", "size": "1.4 KB" }
+    }
+  }
+}

@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infectious Disease — Board Review | Internal Medicine Subspecialty Series</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0B6157;
+            --light: #E8F5F3;
+            --dark-gray: #333;
+            --light-gray: #f5f5f5;
+            --accent-orange: #E8923A;
+            --accent-amber: #FFF3E0;
+            --success-green: #27AE60;
+            --warning-red: #C0392B;
+            --drug-blue: #1e40af;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: var(--dark-gray); background-color: #fff; }
+        body.dark-mode { background-color: #1a1a1a; color: #e0e0e0; }
+
+        /* Header */
+        header { background-color: var(--primary); color: white; padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; justify-content: space-between; align-items: center; }
+        .header-title { font-size: 24px; font-weight: bold; }
+        .header-controls { display: flex; gap: 15px; align-items: center; }
+        .search-bar { padding: 8px 12px; border: none; border-radius: 4px; width: 260px; font-size: 14px; }
+        .dark-mode-toggle { background-color: rgba(255,255,255,0.2); border: 1px solid white; color: white; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .dark-mode-toggle:hover { background-color: rgba(255,255,255,0.35); }
+        #menuBtn { display: none; background: none; border: none; color: white; font-size: 26px; cursor: pointer; padding: 4px 10px; }
+
+        /* Layout */
+        .container { display: flex; min-height: calc(100vh - 60px); }
+
+        /* Sidebar */
+        .sidebar { width: 265px; background-color: var(--light-gray); padding: 20px; position: sticky; top: 60px; max-height: calc(100vh - 60px); overflow-y: auto; border-right: 1px solid #ddd; flex-shrink: 0; }
+        body.dark-mode .sidebar { background-color: #2a2a2a; border-right-color: #444; }
+        .sidebar h3 { font-size: 12px; color: var(--primary); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; }
+        body.dark-mode .sidebar h3 { color: #5dbeaa; }
+        .nav-link { display: block; padding: 9px 12px; margin-bottom: 4px; background-color: white; border-left: 3px solid transparent; cursor: pointer; border-radius: 3px; transition: all 0.2s; font-size: 13px; line-height: 1.4; }
+        body.dark-mode .nav-link { background-color: #333; color: #e0e0e0; }
+        .nav-link:hover { background-color: var(--light); border-left-color: var(--primary); }
+        .nav-link.active { background-color: var(--primary); color: white; border-left-color: var(--accent-orange); font-weight: 600; }
+        .subnav-container { margin: 2px 0 6px 10px; border-left: 2px solid #b2dfdb; display: none; }
+        .subnav-container.visible { display: block; }
+        .subnav-link { display: block; padding: 5px 8px; font-size: 11.5px; color: #555; cursor: pointer; border-radius: 3px; transition: all 0.15s; line-height: 1.3; }
+        body.dark-mode .subnav-link { color: #bbb; }
+        .subnav-link:hover { background: var(--light); color: var(--primary); }
+        .subnav-link.active { color: var(--primary); font-weight: 600; background: var(--light); }
+
+        .progress-tracker { background-color: white; padding: 14px; border-radius: 6px; margin-top: 20px; font-size: 12px; }
+        body.dark-mode .progress-tracker { background-color: #333; }
+        .progress-bar { background-color: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden; margin: 8px 0; }
+        .progress-fill { background: linear-gradient(90deg, #0B6157, #1ABC9C); height: 100%; width: 0%; transition: width 0.4s; }
+
+        /* Main */
+        .main-content { flex: 1; padding: 40px 48px; max-width: 1020px; }
+        .section { display: none; margin-bottom: 40px; }
+        .section.active { display: block; animation: fadeIn 0.25s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-title { font-size: 28px; color: var(--primary); margin-bottom: 20px; border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+        body.dark-mode .section-title { color: #5dbeaa; border-bottom-color: #5dbeaa; }
+
+        /* Subsections */
+        .subsection { margin: 22px 0; border-radius: 4px; }
+        .subsection-title { font-size: 18px; font-weight: 600; color: var(--primary); cursor: pointer; padding: 10px 14px; display: flex; align-items: center; gap: 10px; user-select: none; border-radius: 4px; transition: background 0.15s; border-left: 3px solid var(--primary); background: linear-gradient(90deg, #E0F2F0, #fff); }
+        .subsection-title:hover { background: linear-gradient(90deg, #C8EBE7, #E0F2F0); }
+        body.dark-mode .subsection-title { color: #5dbeaa; background: linear-gradient(90deg, #1a2e2c, #252525); border-left-color: #5dbeaa; }
+        .toggle-icon { font-size: 14px; flex-shrink: 0; transition: transform 0.2s; color: var(--accent-orange); }
+        .subsection-content { overflow: hidden; max-height: 9999px; transition: max-height 0.35s ease, opacity 0.25s ease; opacity: 1; padding: 12px 20px 16px 24px; border-left: 2px solid #C8EBE7; margin-left: 14px; }
+        .subsection-content.collapsed { max-height: 0 !important; opacity: 0; padding-top: 0; padding-bottom: 0; }
+        body.dark-mode .subsection-content { border-left-color: #1e4a44; }
+
+        /* Text */
+        p { margin: 10px 0; line-height: 1.75; }
+        ul { margin: 10px 0 10px 18px; }
+        li { margin-bottom: 6px; line-height: 1.65; }
+        strong { font-weight: 700; }
+        strong.drug-name { color: var(--drug-blue); }
+        body.dark-mode strong.drug-name { color: #93c5fd; }
+        mark.trial-mark { background: linear-gradient(120deg, #fef3c7 0%, #fde68a 100%); color: #92400e; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+        body.dark-mode mark.trial-mark { background: #78350f; color: #fde68a; }
+        u.key-val { text-decoration: underline; text-decoration-color: var(--warning-red); text-decoration-thickness: 2px; font-weight: 600; color: var(--warning-red); }
+        body.dark-mode u.key-val { color: #ef9a9a; }
+        em { font-style: italic; color: var(--accent-orange); }
+
+        /* Clinical Pearl */
+        .clinical-pearl { border-left: 5px solid var(--accent-orange); background: linear-gradient(135deg, #FFF8F0, #FFF3E0); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 14.5px; }
+        body.dark-mode .clinical-pearl { background: #3d2a0f; border-left-color: #ffb74d; }
+        .clinical-pearl strong { color: var(--accent-orange); }
+
+        /* High-Yield */
+        .high-yield { border-top: 4px solid var(--primary); border-left: 4px solid var(--primary); background: linear-gradient(135deg, #E0F2F0, #C8EBE7); padding: 16px 20px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+        body.dark-mode .high-yield { background: #1a2e2c; border-color: #5dbeaa; }
+        .high-yield-title { font-weight: 700; color: var(--primary); margin-bottom: 10px; font-size: 15px; }
+        body.dark-mode .high-yield-title { color: #5dbeaa; }
+        .high-yield ul { margin: 0; padding-left: 18px; }
+        .high-yield li { margin-bottom: 5px; font-size: 14px; }
+
+        /* Alert Box (Warning) */
+        .alert-box { border-left: 5px solid var(--warning-red); background: linear-gradient(135deg, #FDEDEC, #FADBD8); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 14px; }
+        body.dark-mode .alert-box { background: #3d1515; border-left-color: #e57373; }
+        .alert-box strong { color: var(--warning-red); }
+
+        /* Tables */
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; border-radius: 4px; }
+        .table-wrap table { margin: 0; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; border-radius: 4px; overflow: hidden; }
+        th { background-color: var(--primary); color: white; padding: 11px 13px; text-align: left; font-weight: 600; }
+        td { padding: 9px 12px; border: 1px solid #ddd; vertical-align: top; }
+        body.dark-mode td { border-color: #444; }
+        tr.even td { background-color: #f0faf8; }
+        tr.odd td { background-color: #fff; }
+        body.dark-mode tr.even td { background-color: #1f2e2b; }
+        body.dark-mode tr.odd td { background-color: #222; }
+        tr:hover td { background-color: #d4f0ea; }
+        body.dark-mode tr:hover td { background-color: #1a3330; }
+
+        /* Reference Box */
+        .reference-box { border-left: 5px solid #1a7a44; background: linear-gradient(135deg, #F1F8E9, #E8F5E9); padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; }
+        body.dark-mode .reference-box { background: #1a3a20; border-left-color: #81C784; }
+        .reference-box h4 { color: #1B5E20; margin-bottom: 12px; font-size: 15px; }
+        body.dark-mode .reference-box h4 { color: #C8E6C9; }
+        .reference-box ul { list-style: none; padding-left: 0; margin: 0; }
+        .reference-box li { margin-bottom: 8px; font-size: 13px; line-height: 1.6; }
+        .ref-guideline { color: #1B5E20; font-weight: 700; }
+        .ref-trial { color: #0D47A1; font-weight: 700; }
+        body.dark-mode .ref-trial { color: #42A5F5; }
+
+        /* Practice Questions */
+        .question { background-color: var(--light-gray); padding: 20px; margin: 15px 0; border-radius: 6px; border-left: 5px solid var(--primary); }
+        body.dark-mode .question { background-color: #2a2a2a; border-left-color: #5dbeaa; }
+        .question-text { font-weight: 600; margin-bottom: 14px; font-size: 15px; }
+        .show-answer-btn { background-color: var(--primary); color: white; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600; }
+        .show-answer-btn:hover { background-color: #07433c; }
+        .answer-content { background-color: #1a7a44; color: white; padding: 15px; margin-top: 12px; border-radius: 4px; display: none; }
+        .answer-content.show { display: block; }
+
+        /* Search */
+        .search-highlight { background-color: #FFEB3B; padding: 1px 3px; border-radius: 2px; }
+        body.dark-mode .search-highlight { background-color: #f59e0b; color: #000; }
+
+        /* Sidebar overlay */
+        #sidebarOverlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 999; }
+        #backToTop { display: none; position: fixed; bottom: 20px; right: 20px; width: 44px; height: 44px; background: var(--primary); color: white; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 800; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+
+        /* Section sub-header */
+        .sub-header { margin-top: 30px; padding: 10px 16px; color: #0d5c52; border-left: 4px solid var(--primary); background: linear-gradient(135deg, #D5EFE9, #C2E8E0); font-size: 1.25em; border-radius: 4px; font-weight: 700; }
+        body.dark-mode .sub-header { color: #5dbeaa; background: linear-gradient(135deg, #1a2e2c, #222); }
+
+        @media print {
+            .sidebar, header { display: none; }
+            .section { display: block !important; }
+            .subsection-content { max-height: none !important; opacity: 1 !important; }
+        }
+
+        @media (max-width: 768px) {
+            #menuBtn { display: inline-block; }
+            #backToTop { display: block; }
+            .sidebar { position: fixed; top: 0; left: 0; width: 82vw; max-width: 320px; height: 100vh; max-height: 100vh; z-index: 1000; transform: translateX(-110%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); border-right: 1px solid #ddd; padding: 60px 16px 24px; overflow-y: auto; }
+            .sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.18); }
+            #sidebarOverlay.open { display: block; }
+            .container { flex-direction: column; }
+            .main-content { padding: 16px 14px 80px; max-width: 100%; }
+            .section-title { font-size: 20px; }
+            .subsection-title { font-size: 15px; }
+            table { font-size: 12px; display: block; overflow-x: auto; white-space: nowrap; }
+            .nav-link { min-height: 44px; display: flex; align-items: center; }
+            .subnav-link { min-height: 38px; display: flex; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button id="menuBtn" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+        <div class="header-title">🦠 Infectious Disease — Board Review</div>
+        <div class="header-controls">
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search content...">
+            <button id="darkModeToggle" class="dark-mode-toggle">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="sidebarOverlay" onclick="closeSidebar()"></div>
+        <aside class="sidebar" id="sidebar">
+            <h3>📋 Sections</h3>
+            <div id="navLinks"></div>
+            <div class="progress-tracker">
+                <div style="font-weight:700;margin-bottom:8px;">📊 Progress</div>
+                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                <div id="progressText" style="color:#555;">0 of 10 sections read</div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 1 — SEPSIS & SEPTIC SHOCK
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-1" class="section active">
+    <h1 class="section-title">1. Sepsis &amp; Septic Shock</h1>
+    <p>Sepsis is a life-threatening organ dysfunction caused by a dysregulated host response to infection. It remains the leading cause of death in ICUs worldwide. This section integrates the <strong>Sepsis-3 definitions (2016)</strong>, <strong>Surviving Sepsis Campaign (SSC) 2021 Guidelines</strong>, and landmark RCTs through 2025.</p>
+
+    <div class="subsection" id="s1-1-definitions-sepsis3">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>1.1 Definitions — Sepsis-3 Criteria</span>
+        </div>
+        <div class="subsection-content">
+            <p>The <strong>Sepsis-3 Task Force (JAMA 2016)</strong> redefined sepsis, retiring SIRS criteria due to poor specificity.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Term</th><th>Definition</th><th>Key Criteria</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>Sepsis</strong></td><td>Life-threatening organ dysfunction from dysregulated host response to infection</td><td>Suspected infection + <u class="key-val">SOFA ≥2</u> from baseline</td></tr>
+                    <tr class="odd"><td><strong>Septic Shock</strong></td><td>Subset with profound circulatory/cellular/metabolic abnormalities</td><td>Vasopressor to maintain MAP ≥65 + <u class="key-val">Lactate &gt;2 mmol/L</u> despite adequate fluid</td></tr>
+                    <tr class="even"><td><strong>qSOFA</strong></td><td>Bedside screening tool (not diagnostic)</td><td>RR ≥22, AMS, SBP ≤100; ≥2 → high risk</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ SOFA Score Components</div>
+                <ul>
+                    <li><strong>Respiratory:</strong> PaO₂/FiO₂ ratio (0–4 points)</li>
+                    <li><strong>Coagulation:</strong> Platelets (0–4 points)</li>
+                    <li><strong>Liver:</strong> Bilirubin (0–4 points)</li>
+                    <li><strong>Cardiovascular:</strong> MAP / vasopressors (0–4 points)</li>
+                    <li><strong>CNS:</strong> GCS (0–4 points)</li>
+                    <li><strong>Renal:</strong> Creatinine / urine output (0–4 points)</li>
+                </ul>
+            </div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> SIRS criteria are no longer part of the sepsis definition. qSOFA ≥2 should prompt urgent assessment for organ dysfunction but does NOT define sepsis — SOFA does.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s1-2-pathophysiology">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>1.2 Pathophysiology</span>
+        </div>
+        <div class="subsection-content">
+            <p>Sepsis involves dysregulated innate and adaptive immune responses triggered by <strong>PAMPs</strong> (pathogen-associated molecular patterns) and <strong>DAMPs</strong> (damage-associated molecular patterns) interacting with <strong>PRRs</strong> (pattern recognition receptors, esp. TLR4).</p>
+            <ul>
+                <li><strong>Phase 1 — Hyperinflammation:</strong> Cytokine storm (TNF-α, IL-1β, IL-6) → endothelial activation, capillary leak, microthrombi</li>
+                <li><strong>Phase 2 — Immunosuppression:</strong> T-cell exhaustion, lymphopenia, macrophage deactivation → susceptibility to secondary infections</li>
+                <li><strong>Microvascular dysfunction:</strong> Glycocalyx shedding, coagulation activation → DIC, distributive shock</li>
+                <li><strong>Mitochondrial dysfunction:</strong> Bioenergetic failure → multi-organ failure despite adequate perfusion pressure</li>
+            </ul>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> "Immunoparalysis" (persistent lymphopenia, low HLA-DR expression on monocytes) predicts secondary infections and poor outcome. IL-7 and anti-PD-1 therapies are being investigated to reverse this state.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s1-3-initial-assessment">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>1.3 Initial Assessment &amp; Risk Stratification</span>
+        </div>
+        <div class="subsection-content">
+            <p>Rapid assessment within <u class="key-val">30–60 minutes</u> is critical. Identify source, severity, and host factors.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Parameter</th><th>Significance</th><th>Target</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Lactate</td><td>Tissue hypoperfusion marker; prognostic</td><td>&lt;2 mmol/L; clearance ≥10% at 2h</td></tr>
+                    <tr class="odd"><td>Blood cultures (×2)</td><td>Pathogen identification; guide de-escalation</td><td>Draw before antibiotics, &lt;45 min delay</td></tr>
+                    <tr class="even"><td>MAP</td><td>Organ perfusion pressure</td><td>≥65 mmHg (≥80 in chronic HTN)</td></tr>
+                    <tr class="odd"><td>Procalcitonin</td><td>Bacterial infection biomarker; de-escalation guide</td><td>PCT-guided: stop antibiotics if PCT &lt;0.25 or ↓ ≥80%</td></tr>
+                    <tr class="even"><td>Fluid responsiveness</td><td>Predict benefit from IV fluid</td><td>PLR, PPV, IVC collapsibility, passive leg raise</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Lactate ≥4 mmol/L = high-risk sepsis even without hypotension (equivalent mortality to septic shock). Immediate aggressive resuscitation warranted.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s1-4-hour1-bundle">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>1.4 Hour-1 Bundle (SSC 2021)</span>
+        </div>
+        <div class="subsection-content">
+            <p>The <mark class="trial-mark">SSC 2021</mark> updated the Hour-1 Bundle, reinforcing time-sensitive interventions. The bundle improves survival when completed within 1 hour of sepsis recognition.</p>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Hour-1 Bundle — 5 Elements</div>
+                <ul>
+                    <li><strong>1. Measure lactate</strong> — re-measure if initial &gt;2 mmol/L</li>
+                    <li><strong>2. Blood cultures ×2</strong> — before antibiotics (do not delay antibiotics &gt;45 min)</li>
+                    <li><strong>3. Broad-spectrum antibiotics</strong> — within 1 hour of recognition</li>
+                    <li><strong>4. IV crystalloid 30 mL/kg</strong> — for hypotension or lactate ≥4 mmol/L (within 3h)</li>
+                    <li><strong>5. Vasopressors</strong> — if MAP &lt;65 during/after fluids → norepinephrine first-line</li>
+                </ul>
+            </div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> <mark class="trial-mark">ANDROMEDA-SHOCK (JAMA 2019)</mark> — peripheral perfusion-targeted resuscitation (capillary refill time) vs. lactate-targeted showed no difference in 28-day mortality but may reduce risk of excessive fluid loading.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s1-5-fluid-resuscitation">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>1.5 Fluid Resuscitation</span>
+        </div>
+        <div class="subsection-content">
+            <p>Fluid choice and volume are debated. The SSC 2021 recommends <strong>balanced crystalloids</strong> over normal saline for resuscitation.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Fluid Type</th><th>Evidence</th><th>Recommendation</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Balanced crystalloids (LR, PlasmaLyte)</td><td><mark class="trial-mark">SMART (NEJM 2018)</mark>: ↓ MAKE30 vs NS</td><td><strong>First-line</strong> — SSC 2021 weak recommendation</td></tr>
+                    <tr class="odd"><td>Normal saline 0.9%</td><td>Hyperchloremic metabolic acidosis, AKI risk</td><td>Acceptable if balanced not available</td></tr>
+                    <tr class="even"><td>Albumin 4–5%</td><td><mark class="trial-mark">ALBIOS (NEJM 2014)</mark>: no mortality benefit overall; may benefit septic shock subgroup</td><td>Consider if large volumes of crystalloid needed</td></tr>
+                    <tr class="odd"><td>Hydroxyethyl starch (HES)</td><td><mark class="trial-mark">VISEP, 6S trials</mark>: ↑ AKI, mortality</td><td><u class="key-val">CONTRAINDICATED</u> in sepsis</td></tr>
+                </tbody>
+            </table></div>
+            <div class="alert-box"><strong>⚠ Warning:</strong> Fluid overload (positive cumulative balance) is independently associated with increased mortality. After initial resuscitation, use dynamic markers (PPV, PLR, VExUS) to guide further fluids. Conservative late fluid strategy is favored.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s1-6-vasopressors">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>1.6 Vasopressors &amp; Inotropes</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Agent</th><th>Mechanism</th><th>Role</th><th>Dose</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong class="drug-name">Norepinephrine</strong></td><td>α₁ &gt;&gt; β₁</td><td><u class="key-val">First-line vasopressor</u></td><td>0.01–3.3 mcg/kg/min</td></tr>
+                    <tr class="odd"><td><strong class="drug-name">Vasopressin</strong></td><td>V1 receptor</td><td>Add-on to NE; ↓ NE dose (<mark class="trial-mark">VASST trial</mark>)</td><td>0.03–0.04 units/min (fixed dose)</td></tr>
+                    <tr class="even"><td><strong class="drug-name">Epinephrine</strong></td><td>α₁, β₁, β₂</td><td>2nd add-on if NE + vasopressin insufficient</td><td>0.01–0.5 mcg/kg/min</td></tr>
+                    <tr class="odd"><td><strong class="drug-name">Dobutamine</strong></td><td>β₁ &gt; β₂</td><td>Cardiogenic shock / cardiac compromise + sepsis</td><td>2–20 mcg/kg/min</td></tr>
+                    <tr class="even"><td><strong class="drug-name">Dopamine</strong></td><td>D1, β₁, α₁ (dose-dependent)</td><td>Not recommended — ↑ arrhythmia vs NE (<mark class="trial-mark">SOAP II</mark>)</td><td>Avoid in septic shock</td></tr>
+                    <tr class="odd"><td><strong class="drug-name">Angiotensin II</strong></td><td>AT1 receptor</td><td>Refractory vasodilatory shock (<mark class="trial-mark">ATHOS-3</mark>)</td><td>20 ng/kg/min, titrate</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> <mark class="trial-mark">ATHOS-3 (NEJM 2017)</mark> — Angiotensin II significantly increased MAP response in high-output norepinephrine-dependent vasodilatory shock. Renin ≥ 167 pg/mL identifies best responders.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s1-7-antibiotics-source">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>1.7 Empiric Antibiotics &amp; Source Control</span>
+        </div>
+        <div class="subsection-content">
+            <p>Administer empiric broad-spectrum antibiotics within <u class="key-val">1 hour</u> of sepsis recognition. Each hour of delay increases mortality ~7%.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Source</th><th>Likely Organisms</th><th>Empiric Antibiotic</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Community — unknown source</td><td>GNRs, GPC, anaerobes</td><td><strong class="drug-name">Pip-tazo</strong> 4.5g q6h or <strong class="drug-name">Meropenem</strong> 1g q8h</td></tr>
+                    <tr class="odd"><td>Pneumonia (CAP-sepsis)</td><td>S. pneumoniae, Legionella, GNRs</td><td><strong class="drug-name">Ceftriaxone</strong> + <strong class="drug-name">Azithromycin</strong> ± <strong class="drug-name">Oseltamivir</strong></td></tr>
+                    <tr class="even"><td>Urinary source</td><td>E. coli, Klebsiella</td><td><strong class="drug-name">Ceftriaxone</strong> 1g q24h (adjust per local resistance)</td></tr>
+                    <tr class="odd"><td>Intra-abdominal</td><td>GNRs, anaerobes, Enterococcus</td><td><strong class="drug-name">Pip-tazo</strong> or <strong class="drug-name">Meropenem</strong> + consider <strong class="drug-name">Metronidazole</strong></td></tr>
+                    <tr class="even"><td>Healthcare-associated / MRSA risk</td><td>MRSA, Pseudomonas, ESBL</td><td><strong class="drug-name">Vancomycin</strong> + <strong class="drug-name">Meropenem</strong></td></tr>
+                    <tr class="odd"><td>Neutropenic fever</td><td>GNRs (Pseudomonas), Viridans strep</td><td><strong class="drug-name">Cefepime</strong> 2g q8h or <strong class="drug-name">Pip-tazo</strong></td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Source Control Principles (SSC 2021)</div>
+                <ul>
+                    <li>Identify and treat source within <strong>6–12 hours</strong> of diagnosis</li>
+                    <li>Drain abscesses, remove infected devices/catheters</li>
+                    <li>Surgical consultation early if intra-abdominal source</li>
+                    <li>De-escalate antibiotics by 48–72h based on cultures + PCT</li>
+                    <li>Total duration: typically <strong>7 days</strong> (shorter if clinically appropriate)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s1-8-adjunctive">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>1.8 Adjunctive Therapies</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Intervention</th><th>Evidence</th><th>SSC 2021 Recommendation</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong class="drug-name">Hydrocortisone</strong> 200 mg/day</td><td><mark class="trial-mark">ADRENAL (NEJM 2018)</mark>: no mortality benefit; ↓ time to shock reversal. <mark class="trial-mark">APROCCHSS (NEJM 2018)</mark>: mortality benefit with HC + Fludrocortisone</td><td>Suggest if refractory septic shock (NE ≥0.25 mcg/kg/min)</td></tr>
+                    <tr class="odd"><td>Stress ulcer prophylaxis</td><td><mark class="trial-mark">SUP-ICU (NEJM 2018)</mark>: pantoprazole vs placebo — no mortality benefit, ↑ Clostridium difficile trend</td><td>Give only if GI bleeding risk factors present</td></tr>
+                    <tr class="even"><td>DVT prophylaxis</td><td>LMWH superior to UFH for VTE prevention</td><td>Recommend pharmacological DVT prophylaxis</td></tr>
+                    <tr class="odd"><td>Glucose control</td><td><mark class="trial-mark">NICE-SUGAR (NEJM 2009)</mark>: intensive control (81–108) ↑ mortality</td><td>Target glucose 140–180 mg/dL (7.8–10 mmol/L)</td></tr>
+                    <tr class="even"><td>Vitamin C + Thiamine</td><td><mark class="trial-mark">CITRIS-ALI, VITAMINS</mark>: no benefit vs placebo</td><td>Not recommended routinely</td></tr>
+                    <tr class="odd"><td>RBC transfusion</td><td><mark class="trial-mark">TRISS (NEJM 2014)</mark>: Hgb 7 g/dL threshold non-inferior</td><td>Transfuse if Hgb &lt;7 g/dL (unless active bleeding/ACS)</td></tr>
+                </tbody>
+            </table></div>
+            <div class="reference-box">
+                <h4>📚 Key References</h4>
+                <ul>
+                    <li><span class="ref-guideline">SSC 2021</span> — Evans L et al. Surviving Sepsis Campaign: International Guidelines. Intensive Care Med 2021;47:1181–1247.</li>
+                    <li><span class="ref-trial">Sepsis-3</span> — Singer M et al. JAMA 2016;315(8):801–810.</li>
+                    <li><span class="ref-trial">SMART Trial</span> — Semler MW et al. NEJM 2018;378:819–828.</li>
+                    <li><span class="ref-trial">ATHOS-3</span> — Khanna A et al. NEJM 2017;377:419–430.</li>
+                    <li><span class="ref-trial">ADRENAL</span> — Venkatesh B et al. NEJM 2018;378:797–808.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 2 — PNEUMONIA
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-2" class="section">
+    <h1 class="section-title">2. Pneumonia (CAP / HAP / VAP)</h1>
+    <p>Pneumonia remains a leading cause of infection-related morbidity and mortality worldwide. This section covers <strong>Community-Acquired Pneumonia (CAP)</strong>, <strong>Hospital-Acquired Pneumonia (HAP)</strong>, and <strong>Ventilator-Associated Pneumonia (VAP)</strong> based on <strong>IDSA/ATS 2019 CAP Guidelines</strong> and <strong>IDSA/ATS 2016 HAP/VAP Guidelines</strong>.</p>
+
+    <div class="subsection" id="s2-1-cap-diagnosis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>2.1 CAP — Diagnosis &amp; Severity Assessment</span>
+        </div>
+        <div class="subsection-content">
+            <p>CAP is defined as an acute infection of the pulmonary parenchyma in a patient who acquired the infection outside of a hospital.</p>
+            <p><strong>Diagnosis:</strong> New infiltrate on CXR/CT + ≥2 of: fever, productive cough, pleuritic pain, auscultatory findings, leukocytosis, or hypoxemia.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Severity Score</th><th>Parameters</th><th>Use</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>CURB-65</strong></td><td>Confusion, Urea &gt;7 mmol/L, RR ≥30, BP &lt;90/60, Age ≥65</td><td>Score 0–1: outpatient; 2: admission; ≥3: ICU consider</td></tr>
+                    <tr class="odd"><td><strong>PSI (PORT)</strong></td><td>Multifactorial; Class I–V</td><td>Class I–II: outpatient; III: observation; IV–V: admit</td></tr>
+                    <tr class="even"><td><strong>ATS Minor Criteria</strong></td><td>9 criteria (RR, PaO₂/FiO₂, multilobar, confusion, BUN, WBC, plt, temp, hypotension)</td><td>≥3 of 9 → ICU admission (IDSA/ATS 2019)</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ IDSA/ATS Major Criteria for Severe CAP (→ ICU)</div>
+                <ul>
+                    <li>Need for invasive mechanical ventilation</li>
+                    <li>Septic shock requiring vasopressors</li>
+                    <li><em>Either alone = severe CAP → ICU admission</em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s2-2-cap-treatment">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>2.2 CAP — Treatment (IDSA/ATS 2019)</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Setting</th><th>Patient Type</th><th>Preferred Regimen</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Outpatient</td><td>No comorbidities, no antibiotics in 3 months</td><td><strong class="drug-name">Amoxicillin</strong> 1g TID or <strong class="drug-name">Doxycycline</strong> 100mg BID</td></tr>
+                    <tr class="odd"><td>Outpatient</td><td>Comorbidities (DM, CKD, liver/heart disease)</td><td><strong class="drug-name">Amoxicillin-clavulanate</strong> + <strong class="drug-name">Azithromycin</strong>, or <strong class="drug-name">Respiratory FQ</strong> (Levofloxacin/Moxifloxacin)</td></tr>
+                    <tr class="even"><td>Inpatient (non-ICU)</td><td>Standard</td><td><strong class="drug-name">β-lactam</strong> (ceftriaxone/ampicillin-sulbactam) + <strong class="drug-name">Macrolide</strong>, or <strong class="drug-name">Respiratory FQ</strong> alone</td></tr>
+                    <tr class="odd"><td>ICU</td><td>No Pseudomonas risk</td><td><strong class="drug-name">β-lactam</strong> + <strong class="drug-name">Azithromycin</strong> or <strong class="drug-name">Respiratory FQ</strong></td></tr>
+                    <tr class="even"><td>ICU</td><td>Pseudomonas risk</td><td>Anti-pseudomonal β-lactam (<strong class="drug-name">Pip-tazo/Cefepime</strong>) + <strong class="drug-name">FQ</strong> or <strong class="drug-name">Aminoglycoside</strong></td></tr>
+                    <tr class="odd"><td>ICU</td><td>MRSA risk (prior infection, colonization, cavitary)</td><td>Add <strong class="drug-name">Vancomycin</strong> or <strong class="drug-name">Linezolid</strong></td></tr>
+                </tbody>
+            </table></div>
+            <p><strong>Duration:</strong> Minimum <u class="key-val">5 days</u> for CAP; extend if slow clinical response. Use PCT to guide de-escalation.</p>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Legionella and pneumococcal urinary antigens should be sent for hospitalized patients with severe CAP. Legionella responds to macrolides or fluoroquinolones — NOT beta-lactams alone.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s2-3-hap-vap">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>2.3 Hospital-Acquired &amp; Ventilator-Associated Pneumonia</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>HAP:</strong> Pneumonia ≥48h after hospital admission, not incubating at admission.<br>
+            <strong>VAP:</strong> Pneumonia ≥48–72h after endotracheal intubation.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Feature</th><th>HAP</th><th>VAP</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Common pathogens</td><td>MSSA/MRSA, GNRs (Klebsiella, E. coli, Pseudomonas)</td><td>Same + Acinetobacter, Stenotrophomonas</td></tr>
+                    <tr class="odd"><td>Diagnosis</td><td>New CXR infiltrate + clinical signs</td><td>CPIS or clinical criteria; BAL quantitative culture ≥10⁴ CFU/mL</td></tr>
+                    <tr class="even"><td>Empiric therapy</td><td>Pip-tazo or cefepime; add vanco if MRSA risk</td><td>Anti-pseudomonal + MRSA coverage based on risk factors</td></tr>
+                    <tr class="odd"><td>De-escalation</td><td>48–72h based on cultures</td><td>8 days total (non-fermenting GNRs may need longer)</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ VAP Prevention Bundle</div>
+                <ul>
+                    <li>Head-of-bed elevation 30–45°</li>
+                    <li>Oral decontamination with chlorhexidine (evidence debated)</li>
+                    <li>Spontaneous breathing trials + sedation holidays daily</li>
+                    <li>Subglottic secretion drainage (Hi-Lo Evac tube)</li>
+                    <li>Avoid unnecessary H₂ blocker/PPI (↑ VAP risk)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s2-4-covid19">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>2.4 COVID-19 — Management (2024 Update)</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Severity</th><th>Definition</th><th>Treatment</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Mild</td><td>SpO₂ &gt;94%, no risk factors</td><td>Supportive; consider <strong class="drug-name">Nirmatrelvir/ritonavir</strong> (Paxlovid) within 5 days of symptom onset if high-risk</td></tr>
+                    <tr class="odd"><td>Moderate</td><td>SpO₂ 90–94%, requires supplemental O₂</td><td><strong class="drug-name">Remdesivir</strong> 200→100 mg IV × 3–5 days; <strong class="drug-name">Dexamethasone</strong> if O₂ needed</td></tr>
+                    <tr class="even"><td>Severe</td><td>SpO₂ &lt;90%, NIV/HFNC</td><td><strong class="drug-name">Dexamethasone</strong> 6 mg/day × 10 days + <strong class="drug-name">Remdesivir</strong> + <strong class="drug-name">Baricitinib</strong> or <strong class="drug-name">Tocilizumab</strong> if inflammatory markers elevated</td></tr>
+                    <tr class="odd"><td>Critical</td><td>Mechanical ventilation</td><td>Low tidal volume (6 mL/kg IBW), prone positioning ≥16h/day if PaO₂/FiO₂ &lt;150; <strong class="drug-name">Dexamethasone</strong> + IL-6 inhibitor</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> <mark class="trial-mark">RECOVERY trial</mark> — Dexamethasone 6 mg/day × 10 days reduced 28-day mortality in patients requiring O₂ (NNT ~8 for ventilated, ~25 for O₂ only). <em>Harmful in those not requiring O₂.</em></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s2-5-influenza">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>2.5 Influenza &amp; Respiratory Viruses</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>Influenza:</strong> Treat with <strong class="drug-name">Oseltamivir</strong> 75 mg BID × 5 days within 48h of symptom onset. Start empirically in hospitalized patients regardless of test result if high clinical suspicion. <strong class="drug-name">Baloxavir</strong> (single dose) is alternative for uncomplicated flu, cap-dependent endonuclease inhibitor.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Virus</th><th>Test</th><th>Treatment</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Influenza A/B</td><td>Rapid Ag (low sens), PCR</td><td>Oseltamivir 75mg BID × 5d; ICU: 150mg BID × 10d</td></tr>
+                    <tr class="odd"><td>RSV</td><td>PCR</td><td>Supportive; Palivizumab (prophylaxis in high-risk infants); Nirsevimab for adults &gt;60y</td></tr>
+                    <tr class="even"><td>SARS-CoV-2</td><td>Rapid Ag, PCR</td><td>See above; Paxlovid for high-risk outpatients</td></tr>
+                    <tr class="odd"><td>Adenovirus</td><td>PCR</td><td>Supportive; Cidofovir in severe immunocompromised</td></tr>
+                    <tr class="even"><td>Metapneumovirus</td><td>PCR</td><td>Supportive</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s2-6-pcp-aspergillosis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>2.6 Pneumocystis (PCP) &amp; Aspergillosis</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>PCP (Pneumocystis jirovecii pneumonia):</strong> Occurs in HIV (CD4 &lt;200), transplant, steroid-treated patients.</p>
+            <p>Presents with subacute onset dyspnea, dry cough, diffuse bilateral ground-glass opacities, elevated LDH, low SpO₂ with exertion. β-D-glucan elevated.</p>
+            <p><strong>Treatment:</strong> <strong class="drug-name">TMP-SMX</strong> (Bactrim DS) 15–20 mg/kg/day TMP component IV/PO × 21 days. Add <strong class="drug-name">Prednisone</strong> 40 mg BID × 5d → 40 mg QD × 5d → 20 mg QD × 11d if PaO₂ &lt;70 mmHg or A-a gradient &gt;35.</p>
+            <p><strong>Invasive Pulmonary Aspergillosis (IPA):</strong></p>
+            <ul>
+                <li>Risk: prolonged neutropenia, hematologic malignancy, SOT, high-dose steroids, COVID-19-associated</li>
+                <li>Diagnosis: CT (halo sign, air crescent sign), BAL galactomannan ≥1.0, serum GM ≥0.5</li>
+                <li>Treatment: <strong class="drug-name">Voriconazole</strong> 6 mg/kg IV q12h × 2 doses → 4 mg/kg q12h (first-line). Alternative: <strong class="drug-name">Isavuconazole</strong> or <strong class="drug-name">Liposomal amphotericin B</strong></li>
+            </ul>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> COVID-19-Associated Pulmonary Aspergillosis (CAPA) occurs in ~10% of ICU COVID patients, even without classic immunosuppression. Maintain high index of suspicion in deteriorating ICU patients — check galactomannan and BAL cultures.</div>
+        </div>
+    </div>
+
+    <div class="reference-box">
+        <h4>📚 Key References</h4>
+        <ul>
+            <li><span class="ref-guideline">IDSA/ATS CAP 2019</span> — Metlay JP et al. Am J Respir Crit Care Med 2019;200(7):e45–e67.</li>
+            <li><span class="ref-guideline">IDSA/ATS HAP/VAP 2016</span> — Kalil AC et al. Clin Infect Dis 2016;63(5):e61–e111.</li>
+            <li><span class="ref-trial">RECOVERY Trial</span> — Horby P et al. NEJM 2021;384:693–704.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3 — CNS INFECTIONS
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-3" class="section">
+    <h1 class="section-title">3. CNS Infections</h1>
+    <p>CNS infections are medical emergencies requiring immediate diagnosis and treatment. Delay in antibiotics in bacterial meningitis increases mortality significantly. This section covers bacterial meningitis, viral encephalitis, brain abscess, TBM, and cryptococcal meningitis.</p>
+
+    <div class="subsection" id="s3-1-bacterial-meningitis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>3.1 Bacterial Meningitis</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Age Group</th><th>Common Organisms</th><th>Empiric Treatment</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Neonates &lt;1 month</td><td>GBS, E. coli, Listeria</td><td><strong class="drug-name">Ampicillin</strong> + <strong class="drug-name">Cefotaxime</strong> (or Gentamicin)</td></tr>
+                    <tr class="odd"><td>Infants 1–3 months</td><td>GBS, E. coli, S. pneumoniae, N. meningitidis</td><td><strong class="drug-name">Ampicillin</strong> + <strong class="drug-name">Cefotaxime</strong> + <strong class="drug-name">Vancomycin</strong></td></tr>
+                    <tr class="even"><td>Adults 18–50y</td><td>S. pneumoniae, N. meningitidis</td><td><strong class="drug-name">Vancomycin</strong> + <strong class="drug-name">Ceftriaxone</strong> 2g q12h</td></tr>
+                    <tr class="odd"><td>Adults &gt;50y / immunosuppressed</td><td>S. pneumoniae, Listeria, GNRs</td><td><strong class="drug-name">Vancomycin</strong> + <strong class="drug-name">Ceftriaxone</strong> + <strong class="drug-name">Ampicillin</strong></td></tr>
+                    <tr class="even"><td>Post-neurosurgery/trauma</td><td>Staph, GNRs (Pseudomonas, Acinetobacter)</td><td><strong class="drug-name">Vancomycin</strong> + <strong class="drug-name">Cefepime</strong> or <strong class="drug-name">Meropenem</strong></td></tr>
+                </tbody>
+            </table></div>
+            <div class="alert-box"><strong>⚠ Dexamethasone:</strong> Give <strong class="drug-name">Dexamethasone 0.15 mg/kg q6h × 4 days</strong> — administer <u class="key-val">15–20 minutes BEFORE</u> or with first antibiotic dose. Benefit proven in S. pneumoniae meningitis (↓ hearing loss, neurologic sequelae). Discontinue if non-pneumococcal.</div>
+            <p><strong>CSF Interpretation:</strong></p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Parameter</th><th>Normal</th><th>Bacterial</th><th>Viral</th><th>TBM/Fungal</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Opening pressure (cmH₂O)</td><td>10–20</td><td>&gt;30</td><td>Normal/slightly ↑</td><td>↑↑</td></tr>
+                    <tr class="odd"><td>WBC (cells/µL)</td><td>&lt;5</td><td>100–10,000 (PMN)</td><td>10–500 (lymph)</td><td>10–500 (lymph)</td></tr>
+                    <tr class="even"><td>Protein (mg/dL)</td><td>&lt;45</td><td>&gt;200</td><td>50–100</td><td>100–500</td></tr>
+                    <tr class="odd"><td>Glucose (mg/dL)</td><td>&gt;60% serum</td><td>&lt;45 (&lt;40%)</td><td>Normal</td><td>Low</td></tr>
+                    <tr class="even"><td>Gram stain</td><td>Neg</td><td>Positive 60–90%</td><td>Neg</td><td>India ink (crypto)</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Do NOT delay antibiotics for LP. If CT needed first (papilledema, focal neuro signs, immunocompromised, new seizure), blood cultures × 2 + antibiotics FIRST, then CT → LP. Each hour delay ↑ mortality ~30%.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s3-2-viral-encephalitis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>3.2 Viral Meningitis &amp; Encephalitis</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>Viral Meningitis:</strong> Usually self-limited; most common cause is Enteroviruses. CSF: lymphocytic pleocytosis, normal glucose. Treatment supportive.</p>
+            <p><strong>Viral Encephalitis:</strong> AMS + fever ± focal neurologic signs/new-onset seizures. <u class="key-val">Start IV Acyclovir empirically</u> until HSV-1 excluded by PCR.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Virus</th><th>Clinical Clues</th><th>Diagnosis</th><th>Treatment</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>HSV-1</td><td>Temporal lobe involvement, temporal hemorrhage on MRI, olfactory/memory sx</td><td>CSF HSV PCR (sens 96%, spec 99%)</td><td><strong class="drug-name">Acyclovir</strong> 10 mg/kg IV q8h × 14–21 days</td></tr>
+                    <tr class="odd"><td>HSV-2</td><td>Neonatal, recurrent aseptic meningitis (Mollaret's)</td><td>CSF HSV-2 PCR</td><td>Acyclovir 10 mg/kg q8h</td></tr>
+                    <tr class="even"><td>VZV</td><td>Dermatomal rash, elderly/immunosuppressed</td><td>CSF VZV PCR, anti-VZV Ab</td><td>Acyclovir 10–15 mg/kg q8h</td></tr>
+                    <tr class="odd"><td>CMV</td><td>Immunocompromised (HIV CD4 &lt;50, transplant)</td><td>CSF CMV PCR, CMV antigenemia</td><td><strong class="drug-name">Ganciclovir</strong> + <strong class="drug-name">Foscarnet</strong></td></tr>
+                    <tr class="even"><td>EBV</td><td>Young adults, lymphadenopathy</td><td>CSF EBV PCR, heterophile Ab</td><td>Supportive</td></tr>
+                    <tr class="odd"><td>Rabies</td><td>Animal bite, hydrophobia, aerophobia, ascending paralysis</td><td>Skin biopsy, DFA, saliva PCR</td><td>Post-exposure prophylaxis only (PEP); once symptomatic — near-fatal</td></tr>
+                    <tr class="even"><td>Japanese Encephalitis</td><td>SE Asia, rice field exposure, extrapyramidal signs</td><td>JE IgM in CSF/serum</td><td>Supportive; vaccine prevention</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s3-3-brain-abscess">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>3.3 Brain Abscess</span>
+        </div>
+        <div class="subsection-content">
+            <p>Brain abscess presents with headache + fever + focal deficits (classic triad in &lt;50%). CT/MRI shows ring-enhancing lesion(s) with perilesional edema.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Source</th><th>Common Organisms</th><th>Antibiotic</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Otogenic/sinusitis</td><td>Streptococci (Milleri group), anaerobes, GNRs</td><td><strong class="drug-name">Metronidazole</strong> + <strong class="drug-name">Ceftriaxone</strong></td></tr>
+                    <tr class="odd"><td>Dental/odontogenic</td><td>Fusobacterium, Peptostreptococcus, Streptococci</td><td>Metronidazole + Ceftriaxone</td></tr>
+                    <tr class="even"><td>Hematogenous (IE, lung)</td><td>Viridans strep, S. aureus</td><td>Based on source + sensitivities; <strong class="drug-name">Vancomycin</strong> empirically</td></tr>
+                    <tr class="odd"><td>Post-neurosurgery</td><td>Staph, GNRs</td><td>Vancomycin + Cefepime</td></tr>
+                    <tr class="even"><td>Immunocompromised</td><td>Toxoplasma, Nocardia, Aspergillus, Cryptococcus</td><td>Empiric pyrimethamine/sulfadiazine ± voriconazole</td></tr>
+                </tbody>
+            </table></div>
+            <p><strong>Management:</strong> Neurosurgical aspiration or drainage for lesions &gt;2.5 cm or mass effect. Medical management alone for small (&lt;2.5 cm), accessible lesion, known organism. Duration: 4–8 weeks IV antibiotics, then PO if appropriate.</p>
+        </div>
+    </div>
+
+    <div class="subsection" id="s3-4-tbm">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>3.4 Tuberculous Meningitis (TBM)</span>
+        </div>
+        <div class="subsection-content">
+            <p>TBM is the most severe form of extrapulmonary TB. Subacute onset (days–weeks) with headache, fever, meningism, CN palsies (VI, III, VII), signs of basilar meningitis.</p>
+            <p><strong>British MRC Grade:</strong> Grade I (GCS 15, no focal neuro), Grade II (GCS 11–14 or focal neuro), Grade III (GCS ≤10).</p>
+            <p><strong>CSF:</strong> Lymphocytic pleocytosis 100–500, protein 100–500, low glucose, AFB smear (40–90% sensitivity with multiple samples), ADA elevated (&gt;10 U/L), Xpert MTB/RIF (sensitivity ~60%).</p>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ TBM Treatment</div>
+                <ul>
+                    <li><strong>Intensive phase (2 months):</strong> <strong class="drug-name">HRZE</strong> (INH + Rifampicin + Pyrazinamide + Ethambutol)</li>
+                    <li><strong>Continuation phase (7–10 months):</strong> <strong class="drug-name">HR</strong> (INH + Rifampicin) — total 9–12 months</li>
+                    <li><strong>Dexamethasone</strong> (British MRC Trial): 0.3–0.4 mg/kg/day tapering over 6–8 weeks — reduces mortality and severe disability at 6 months. Give in ALL grades.</li>
+                    <li><strong>Pyridoxine</strong> 25 mg/day with INH to prevent peripheral neuropathy</li>
+                </ul>
+            </div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> TBM paradoxical reaction (worsening after starting treatment) occurs in 15–40%. Managed with corticosteroids. Thalidomide has been used in refractory paradoxical reactions in children.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s3-5-cryptococcal">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>3.5 Cryptococcal Meningitis</span>
+        </div>
+        <div class="subsection-content">
+            <p>Caused by <em>Cryptococcus neoformans</em> (HIV/immunocompromised) or <em>C. gattii</em> (immunocompetent). Subacute meningitis with very high ICP is hallmark.</p>
+            <p><strong>Diagnosis:</strong> CSF India ink (sens 60–80%), Cryptococcal Ag (CrAg) in CSF and serum (sens &gt;95%), culture.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Phase</th><th>Duration</th><th>Treatment (HIV-associated)</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Induction</td><td>2 weeks</td><td><strong class="drug-name">Liposomal Amphotericin B</strong> 3–4 mg/kg/day + <strong class="drug-name">Flucytosine</strong> 100 mg/kg/day (<mark class="trial-mark">ACTA trial 2018</mark>)</td></tr>
+                    <tr class="odd"><td>Consolidation</td><td>8 weeks</td><td><strong class="drug-name">Fluconazole</strong> 400 mg/day</td></tr>
+                    <tr class="even"><td>Maintenance</td><td>≥1 year (until CD4 &gt;200 × 3 months on ART)</td><td><strong class="drug-name">Fluconazole</strong> 200 mg/day</td></tr>
+                </tbody>
+            </table></div>
+            <div class="alert-box"><strong>⚠ ICP Management — Critical:</strong> Elevated ICP (opening pressure &gt;25 cmH₂O) is the leading cause of early mortality. Perform <u class="key-val">therapeutic LP daily</u> to reduce OP to &lt;20 cmH₂O or by 50%. Consider lumbar drain or VP shunt for persistent elevation. DO NOT give corticosteroids for ICP in crypto meningitis — worsens outcomes.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s3-6-neurocysticercosis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>3.6 Neurocysticercosis (NCC)</span>
+        </div>
+        <div class="subsection-content">
+            <p>Most common parasitic infection of CNS worldwide (endemic in SE Asia, Latin America, sub-Saharan Africa). Caused by larval stage of <em>Taenia solium</em>. Most common presentation: <u class="key-val">new-onset seizures</u> in endemic area.</p>
+            <p><strong>MRI stages:</strong> Vesicular (viable cyst, scolex visible) → Colloidal (ring-enhancing, inflammation) → Granular-nodular (calcifying) → Calcified (inactive).</p>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ NCC Treatment</div>
+                <ul>
+                    <li><strong>Antiparasitic (cysticidal):</strong> <strong class="drug-name">Albendazole</strong> 400 mg BID × 8–30 days ± <strong class="drug-name">Praziquantel</strong> 50 mg/kg/day × 15 days (combination superior for multiple cysts)</li>
+                    <li><strong>Corticosteroids:</strong> MUST accompany antiparasitic therapy to control inflammation — Dexamethasone or Prednisone</li>
+                    <li><strong>Anti-epileptics:</strong> Treat seizures; can discontinue AED in calcified NCC if seizure-free × 1–2 years</li>
+                    <li><strong>Avoid antiparasitic in:</strong> Calcified lesions (inactive, no benefit), ocular NCC (may worsen), encephalitic NCC (↑ inflammation)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 4 — BLOODSTREAM INFECTIONS & ENDOCARDITIS
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-4" class="section">
+    <h1 class="section-title">4. Bloodstream Infections &amp; Endocarditis</h1>
+    <p>Bacteremia and infective endocarditis represent a spectrum of intravascular infections with high mortality. Key principles: blood cultures before antibiotics, source identification and control, echocardiography for all S. aureus bacteremia.</p>
+
+    <div class="subsection" id="s4-1-bacteremia-approach">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>4.1 Bacteremia — Approach &amp; Management</span>
+        </div>
+        <div class="subsection-content">
+            <p>Draw <strong>2 sets of blood cultures</strong> (each set = 1 aerobic + 1 anaerobic bottle, 20 mL total) from different sites before starting antibiotics. Sensitivity increases from 73% (1 set) to 94% (2 sets) to 99% (3 sets).</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Organism</th><th>True Bacteremia?</th><th>Action</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>S. aureus</td><td>Always significant</td><td>Echocardiogram (TTE/TEE), extended treatment, infectious disease consult</td></tr>
+                    <tr class="odd"><td>CoNS (S. epidermidis)</td><td>Contaminant if single bottle; true if 2+ sets or with device</td><td>Remove device if possible; treat with Vancomycin</td></tr>
+                    <tr class="even"><td>E. coli / GNR</td><td>Usually significant (single set)</td><td>Find source; treat targeted</td></tr>
+                    <tr class="odd"><td>Streptococcus viridans</td><td>Significant — always evaluate for IE</td><td>Echo mandatory; penicillin/ceftriaxone</td></tr>
+                    <tr class="even"><td>Candida spp.</td><td>Always significant — candidemia</td><td>Ophthalmology exam, remove all vascular access, Echinocandin</td></tr>
+                    <tr class="odd"><td>Bacillus, Propionibacterium</td><td>Usually contaminant unless immunocompromised/device</td><td>Clinical context</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> S. aureus bacteremia rule: ALWAYS get echocardiogram. TEE superior to TTE for detecting vegetations (sens 90–95% vs 40–60%). TEE recommended if TTE non-diagnostic, prosthetic valve, intracardiac device, or high pretest probability of IE.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s4-2-staph-bacteremia">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>4.2 Staphylococcal Bacteremia</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Feature</th><th>MSSA</th><th>MRSA</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Preferred treatment</td><td><strong class="drug-name">Nafcillin/Oxacillin</strong> 2g IV q4h (or <strong class="drug-name">Cefazolin</strong> 2g IV q8h — non-inferior in most infections)</td><td><strong class="drug-name">Vancomycin</strong> (target AUC/MIC 400–600) or <strong class="drug-name">Daptomycin</strong> 8–10 mg/kg/day</td></tr>
+                    <tr class="odd"><td>IE treatment duration</td><td>4–6 weeks (native valve); 6 weeks (prosthetic)</td><td>6 weeks minimum</td></tr>
+                    <tr class="even"><td>Uncomplicated bacteremia</td><td>14 days IV antibiotics minimum</td><td>14 days IV minimum; extend if metastatic foci</td></tr>
+                    <tr class="odd"><td>Complications</td><td colspan="2">Endocarditis, septic arthritis, osteomyelitis, epidural abscess, psoas abscess — screen clinically</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Complicated vs Uncomplicated S. aureus Bacteremia</div>
+                <ul>
+                    <li><strong>Complicated:</strong> IE, metastatic infection, persistent bacteremia &gt;72h despite appropriate antibiotics, no removable source → <strong>≥4 weeks treatment</strong></li>
+                    <li><strong>Uncomplicated:</strong> Native valve, no metastatic foci, removable source removed, responds within 72h → <strong>14 days</strong></li>
+                    <li><strong>ID consult</strong> shown to reduce 90-day mortality in S. aureus bacteremia (<mark class="trial-mark">Lahey et al., CID 2009</mark>)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s4-3-ie-diagnosis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>4.3 Infective Endocarditis — Diagnosis (Modified Duke Criteria)</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Category</th><th>Criteria</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>Major — Microbiology</strong></td><td>Typical organism (S. aureus, viridans strep, HACEK, S. bovis, Enterococcus) in ≥2 blood cultures drawn &gt;12h apart; OR ≥3/4 positive cultures; OR single positive Coxiella burnetii or IgG titer &gt;1:800</td></tr>
+                    <tr class="odd"><td><strong>Major — Imaging</strong></td><td>Echo: vegetation, abscess, new dehiscence, new valvular regurgitation; OR <strong>18F-FDG PET/CT</strong> (prosthetic valve) — added in ESC 2023</td></tr>
+                    <tr class="even"><td><strong>Minor</strong></td><td>Predisposing cardiac condition/IVDU; Fever ≥38°C; Vascular phenomena (emboli, mycotic aneurysm, Janeway lesions); Immunologic phenomena (Osler nodes, Roth spots, RF+, GN); Microbiological (pos culture not meeting major)</td></tr>
+                </tbody>
+            </table></div>
+            <p><strong>Definite IE:</strong> 2 major, OR 1 major + 3 minor, OR 5 minor.<br>
+            <strong>Possible IE:</strong> 1 major + 1 minor, OR 3 minor.</p>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> S. bovis (now classified as S. gallolyticus) bacteremia/IE is associated with colorectal polyps or cancer in 20–50% of cases — <u class="key-val">colonoscopy is MANDATORY</u> for all S. bovis/gallolyticus bloodstream infections.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s4-4-ie-treatment">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>4.4 Infective Endocarditis — Treatment (AHA 2023 / ESC 2023)</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Organism</th><th>Native Valve</th><th>Prosthetic Valve</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Viridans strep (MIC ≤0.12)</td><td><strong class="drug-name">Penicillin G</strong> or <strong class="drug-name">Ceftriaxone</strong> × 4 weeks; 2 weeks if uncomplicated</td><td>6 weeks; add Gentamicin × 2 weeks</td></tr>
+                    <tr class="odd"><td>MSSA</td><td><strong class="drug-name">Nafcillin/Cefazolin</strong> × 4–6 weeks</td><td>Nafcillin + Rifampicin × 6 weeks + Gentamicin × 2 weeks</td></tr>
+                    <tr class="even"><td>MRSA</td><td><strong class="drug-name">Vancomycin</strong> × 6 weeks</td><td>Vancomycin + Rifampicin × 6 weeks + Gentamicin × 2 weeks</td></tr>
+                    <tr class="odd"><td>Enterococcus (ampicillin-sensitive)</td><td><strong class="drug-name">Ampicillin</strong> + <strong class="drug-name">Ceftriaxone</strong> × 6 weeks (<mark class="trial-mark">ACES trial</mark>) — non-inferior to ampicillin + gentamicin, less nephrotoxicity</td><td>6 weeks</td></tr>
+                    <tr class="even"><td>HACEK group</td><td><strong class="drug-name">Ceftriaxone</strong> 2g/day × 4 weeks</td><td>6 weeks</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Surgical Indications in IE (AHA 2023)</div>
+                <ul>
+                    <li><strong>Urgent/Emergency:</strong> Acute severe valvular regurgitation with hemodynamic compromise; Aortic/mitral IE with valve obstruction; Fistula into cardiac chamber; Prosthetic valve dehiscence</li>
+                    <li><strong>Elective:</strong> Persistent infection despite ≥5–7 days antibiotics; Recurrent embolism; Vegetation &gt;10 mm with mobile features; Perivalvular abscess; PVE caused by Staph or fungus</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s4-5-clabsi">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>4.5 CLABSI &amp; Candidemia</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>CLABSI Definition:</strong> BSI in patient with central vascular catheter &gt;2 days, no other source of infection.</p>
+            <p><strong>Management:</strong> Remove CVC immediately (especially for S. aureus, Candida, Pseudomonas, Mycobacterium). Exchange over guidewire acceptable only for CoNS with antibiotic lock therapy in select patients.</p>
+            <p><strong>Candidemia:</strong></p>
+            <ul>
+                <li>Remove CVC within 24h of positive culture (mortality ↓)</li>
+                <li>Ophthalmology exam for candida endophthalmitis (10–15% of candidemia)</li>
+                <li>Echo to rule out endocarditis</li>
+                <li><strong>Treatment:</strong> <strong class="drug-name">Echinocandin</strong> (Caspofungin 70→50 mg/day, Micafungin 100 mg/day) — first-line. Transition to <strong class="drug-name">Fluconazole</strong> if C. albicans/parapsilosis (fluconazole-susceptible) after clinical stability.</li>
+                <li>Duration: 14 days after last positive culture AND resolution of symptoms</li>
+            </ul>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> C. glabrata (now <em>Nakaseomyces glabrata</em>) and C. krusei (now <em>Pichia kudriavzevii</em>) have intrinsic or acquired fluconazole resistance — use Echinocandin or Voriconazole. <em>C. parapsilosis</em> has intrinsic Echinocandin MIC elevation — Fluconazole preferred if susceptible.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 5 — HIV/AIDS
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-5" class="section">
+    <h1 class="section-title">5. HIV/AIDS &amp; Antiretroviral Therapy</h1>
+    <p>HIV remains a major global pandemic with ~39 million people living with HIV worldwide (UNAIDS 2023). With effective ART, HIV is now a chronic manageable disease. This section covers WHO/DHHS 2024 guidelines on HIV testing, staging, ART initiation, and OI management.</p>
+
+    <div class="subsection" id="s5-1-testing-staging">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>5.1 HIV Testing, Staging &amp; Natural History</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>Diagnosis:</strong> 4th-generation HIV Ag/Ab combination assay (detects HIV-1/2 Ab + HIV-1 p24 Ag) — window period 18–45 days. Confirmatory: HIV-1/HIV-2 antibody differentiation assay → if reactive, HIV-1 NAT (viral load).</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>WHO Clinical Stage</th><th>CD4 Count</th><th>Key Features</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Stage 1 (Asymptomatic)</td><td>&gt;500</td><td>PGL; no symptoms or mild</td></tr>
+                    <tr class="odd"><td>Stage 2 (Mild)</td><td>350–500</td><td>Minor mucocutaneous, recurrent URTIs, herpes zoster</td></tr>
+                    <tr class="even"><td>Stage 3 (Advanced)</td><td>200–350</td><td>Unexplained weight loss &gt;10%, chronic diarrhea &gt;1 month, oral candida, pulmonary TB, severe bacterial infections</td></tr>
+                    <tr class="odd"><td>Stage 4 (AIDS-defining)</td><td>&lt;200 (or &lt;15%)</td><td>PCP, CMV retinitis, toxoplasmosis, cryptococcal meningitis, MAC, Kaposi sarcoma, HIV encephalopathy, wasting syndrome</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Acute HIV syndrome (2–4 weeks after infection): mononucleosis-like illness, high viral load, rapid CD4 decline. Highest infectivity period. Treat immediately — reduces reservoir size and protects against immune damage.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s5-2-art-2024">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>5.2 ART — DHHS 2024 Preferred Regimens</span>
+        </div>
+        <div class="subsection-content">
+            <p>ART should be initiated in <u class="key-val">ALL HIV-infected individuals</u> regardless of CD4 count. Early ART reduces AIDS events, non-AIDS morbidity (CVD, renal, hepatic), and transmission.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Regimen</th><th>Components</th><th>Notes</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>BIC/TAF/FTC</strong> (Biktarvy)</td><td>Bictegravir + TAF + Emtricitabine</td><td>DHHS preferred; high barrier to resistance, well tolerated, once daily</td></tr>
+                    <tr class="odd"><td><strong>DTG/ABC/3TC</strong> (Triumeq)</td><td>Dolutegravir + Abacavir + Lamivudine</td><td>Preferred if HLA-B*5701 negative (ABC hypersensitivity); once daily</td></tr>
+                    <tr class="even"><td><strong>DTG + TAF/FTC</strong></td><td>Dolutegravir + TAF + Emtricitabine</td><td>Separate pills; preferred in many guidelines; renal-friendly (TAF)</td></tr>
+                    <tr class="odd"><td><strong>CAB/RPV LA</strong> (Cabenuva)</td><td>Cabotegravir + Rilpivirine IM</td><td>Long-acting injectable, every 1–2 months; for virologically suppressed, VL &lt;50 copies/mL. Requires HBsAg negative, no resistance to either drug</td></tr>
+                    <tr class="even"><td><strong>LEN/CAB</strong> (Sunlenca/Apretude)</td><td>Lenacapavir SC q6mo + Cabotegravir</td><td>Highly treatment-experienced; lenacapavir approved 2022 (capsid inhibitor)</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ INSTI (Integrase Strand Transfer Inhibitor) Advantages</div>
+                <ul>
+                    <li>High barrier to resistance: DTG, BIC &gt;&gt; RAL, EVG</li>
+                    <li>Fewer drug interactions than PIs or NNRTIs</li>
+                    <li>DTG: avoid in first trimester (neural tube defect risk data conflicting — updated WHO 2022: use acceptable throughout pregnancy)</li>
+                    <li>BIC and DTG: watch for creatinine rise (tubular secretion inhibition — not true GFR change)</li>
+                    <li>Interaction: Cation-containing antacids, Ca, Mg, Fe — separate by 2–4h</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s5-3-oi-prophylaxis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>5.3 Opportunistic Infection Prophylaxis &amp; Treatment</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>OI</th><th>CD4 Threshold (start Px)</th><th>Primary Prophylaxis</th><th>Treatment (acute)</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>PCP</td><td>&lt;200 or &lt;14%</td><td><strong class="drug-name">TMP-SMX DS</strong> 1 tab QD</td><td>TMP-SMX 15–20 mg/kg/day × 21d + Prednisone if PaO₂ &lt;70</td></tr>
+                    <tr class="odd"><td>Toxoplasmosis</td><td>&lt;100 + anti-Toxo IgG+</td><td>TMP-SMX DS QD (same as PCP Px)</td><td><strong class="drug-name">Pyrimethamine</strong> + <strong class="drug-name">Sulfadiazine</strong> + Leucovorin × 6 weeks</td></tr>
+                    <tr class="even"><td>MAC</td><td>&lt;50</td><td><strong class="drug-name">Azithromycin</strong> 1200 mg weekly (or 600 mg BIW)</td><td>Azithromycin + Ethambutol ± Rifabutin × ≥12 months</td></tr>
+                    <tr class="odd"><td>CMV retinitis</td><td>&lt;50 (screen with fundoscopy)</td><td>No prophylaxis; monitor with regular fundoscopy</td><td><strong class="drug-name">Ganciclovir</strong> IV 5 mg/kg q12h × 14–21d, then maintenance; or Intravitreal injection</td></tr>
+                    <tr class="even"><td>Cryptococcal meningitis</td><td>&lt;100 (in endemic areas — WHO 2022)</td><td>Screen CrAg: if positive → preemptive Fluconazole 800 mg/day × 2 weeks → 400 mg/day × 8 weeks</td><td>Liposomal AmB + Flucytosine × 2 weeks → Fluconazole</td></tr>
+                    <tr class="odd"><td>Candida (esophageal)</td><td>Any CD4 (usually &lt;100)</td><td>Not routinely recommended</td><td><strong class="drug-name">Fluconazole</strong> 200–400 mg/day × 14–21d</td></tr>
+                </tbody>
+            </table></div>
+            <div class="alert-box"><strong>⚠ IRIS — Immune Reconstitution Inflammatory Syndrome:</strong> Occurs in 10–30% after ART initiation. Paradoxical worsening of existing OI or unmasking of subclinical OI as immune system recovers. Most common with TB, Cryptococcus, CMV. Management: Continue ART (unless life-threatening); add corticosteroids for severe IRIS; for TBM-IRIS: Prednisone 1.5 mg/kg × 2 weeks → 0.75 mg/kg × 2 weeks.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s5-4-hiv-tb">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>5.4 HIV-TB Co-infection</span>
+        </div>
+        <div class="subsection-content">
+            <p>TB is the leading cause of death in HIV-infected individuals. HIV increases TB risk 20–30× (lifetime risk 5–10%/year vs 5–10% lifetime in HIV-negative).</p>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ ART Timing in HIV-TB Co-infection</div>
+                <ul>
+                    <li><strong>CD4 &lt;50:</strong> Start ART <u class="key-val">within 2 weeks</u> of TB treatment (<mark class="trial-mark">SAPiT, CAMELIA trials</mark> — ↓ mortality)</li>
+                    <li><strong>CD4 50–500:</strong> Start ART within 8 weeks of TB treatment</li>
+                    <li><strong>TBM:</strong> <u class="key-val">Delay ART 4–8 weeks</u> after TB treatment start (<mark class="trial-mark">CAMELIA, ACTG A5221</mark> — early ART in TBM ↑ severe IRIS without mortality benefit)</li>
+                    <li><strong>Drug interactions:</strong> Rifampicin is potent CYP3A4/P-gp inducer — reduces PI levels ↓80–90%, NNRTI (NVP) ↓35–58%. Use <strong class="drug-name">Efavirenz</strong> (EFV 600–800 mg) or <strong class="drug-name">DTG</strong> 50 mg BID with rifampicin. Avoid rifampicin with most PIs and EVG/c.</li>
+                    <li><strong>LTBI treatment in HIV:</strong> 3HP (INH + Rifapentine weekly × 3 months) — preferred if no active TB and no drug interactions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s5-5-art-monitoring">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>5.5 ART Monitoring, Failure &amp; Resistance</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Parameter</th><th>Timing</th><th>Target</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>HIV RNA (viral load)</td><td>Baseline, 2–4 weeks after start, 4–8 weeks, then q3–6 months when stable</td><td><u class="key-val">Undetectable (&lt;50 copies/mL)</u> by 24 weeks</td></tr>
+                    <tr class="odd"><td>CD4 count</td><td>Baseline; q3–6 months until &gt;500 × 2 consecutive; then annually if VL suppressed</td><td>Increase ≥50–100 cells/µL per year initially</td></tr>
+                    <tr class="even"><td>Resistance testing</td><td>At diagnosis (baseline), at treatment failure</td><td>Guide regimen selection</td></tr>
+                    <tr class="odd"><td>Metabolic panel, LFT, CBC</td><td>Baseline, at 4–8 weeks, then q6 months</td><td>Screen for drug toxicity</td></tr>
+                </tbody>
+            </table></div>
+            <p><strong>Virologic failure:</strong> VL &gt;200 copies/mL on 2 consecutive measures after ≥6 months ART. Causes: non-adherence (most common), resistance, drug interactions, pharmacokinetic issues. Always check adherence first before switching.</p>
+            <div class="reference-box">
+                <h4>📚 Key References</h4>
+                <ul>
+                    <li><span class="ref-guideline">DHHS Adult/Adolescent ART Guidelines 2024</span> — clinicalinfo.hiv.gov</li>
+                    <li><span class="ref-guideline">WHO Consolidated Guidelines on HIV 2021</span> — WHO Geneva</li>
+                    <li><span class="ref-trial">PARTNER Study (Lancet 2016)</span> — No HIV transmission in serodiscordant couples with VL &lt;200; U=U (Undetectable = Untransmittable)</li>
+                    <li><span class="ref-trial">ADVANTAGE Trial (NEJM 2023)</span> — Lenacapavir + cabotegravir for treatment-naive</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 6 — TUBERCULOSIS
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-6" class="section">
+    <h1 class="section-title">6. Tuberculosis</h1>
+    <p>TB caused by <em>Mycobacterium tuberculosis</em> complex. Thailand is a high-burden country. ~10.6 million new cases worldwide per year (WHO 2022). Remains top infectious disease killer globally.</p>
+
+    <div class="subsection" id="s6-1-tb-diagnosis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>6.1 Pulmonary TB — Diagnosis</span>
+        </div>
+        <div class="subsection-content">
+            <p>Classic presentation: productive cough &gt;2–3 weeks, night sweats, weight loss, hemoptysis, low-grade fever. CXR: upper lobe cavitation, fibro-nodular infiltrates, hilar lymphadenopathy.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Test</th><th>Sensitivity</th><th>Specificity</th><th>Notes</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Sputum AFB smear (×3)</td><td>40–60%</td><td>~99%</td><td>Rapid, cheap; send 3 early morning specimens</td></tr>
+                    <tr class="odd"><td><strong>Xpert MTB/RIF Ultra</strong></td><td>90% (smear-neg: 63%)</td><td>96%</td><td>Also detects RIF resistance (surrogate for MDR-TB); WHO preferred front-line test</td></tr>
+                    <tr class="even"><td>MGIT culture (liquid)</td><td>~80% (smear-neg)</td><td>~99%</td><td>Gold standard; results in 10–14 days; DST takes additional 7–10 days</td></tr>
+                    <tr class="odd"><td>IGRA (QuantiFERON-TB Gold+)</td><td>~80%</td><td>~99%</td><td>Tests LTBI; not useful for active TB diagnosis; unaffected by BCG</td></tr>
+                    <tr class="even"><td>TST (Mantoux)</td><td>~70%</td><td>~60% (lower in BCG vaccinated)</td><td>TS &gt;10 mm (HIV+ or immunocompromised: &gt;5 mm) = positive</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s6-2-tb-treatment">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>6.2 TB Treatment (WHO 2022)</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Drug</th><th>Code</th><th>Dose (kg-based)</th><th>Key Toxicity</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong class="drug-name">Isoniazid</strong></td><td>H</td><td>5 mg/kg/day (max 300 mg)</td><td>Hepatotoxicity, peripheral neuropathy (give Pyridoxine B6)</td></tr>
+                    <tr class="odd"><td><strong class="drug-name">Rifampicin</strong></td><td>R</td><td>10 mg/kg/day (max 600 mg)</td><td>Hepatotoxicity, orange discoloration, CYP inducer (major drug interactions)</td></tr>
+                    <tr class="even"><td><strong class="drug-name">Pyrazinamide</strong></td><td>Z</td><td>25 mg/kg/day (max 2000 mg)</td><td>Hepatotoxicity, hyperuricemia, arthralgia</td></tr>
+                    <tr class="odd"><td><strong class="drug-name">Ethambutol</strong></td><td>E</td><td>15–20 mg/kg/day (max 1600 mg)</td><td>Optic neuritis (check visual acuity monthly; reduce dose in CKD)</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Standard TB Treatment Regimen</div>
+                <ul>
+                    <li><strong>Intensive phase (2 months):</strong> <strong>HRZE</strong> — daily, directly observed therapy (DOT)</li>
+                    <li><strong>Continuation phase (4 months):</strong> <strong>HR</strong> — daily; total 6 months for drug-susceptible pulmonary TB</li>
+                    <li><strong>CNS TB / bone/joint TB:</strong> 9–12 months total</li>
+                    <li><strong>Monitor LFTs</strong> at baseline, 2 weeks, monthly. Stop if ALT &gt;3× ULN + symptoms, or &gt;5× ULN asymptomatic</li>
+                    <li><strong>4-month regimen:</strong> <mark class="trial-mark">STUDY 31/ACTG A5349 (NEJM 2021)</mark> — 2 months HRZE + 2 months rifapentine + moxifloxacin (2HRZE/2PaM) non-inferior to 6-month standard regimen</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s6-3-mdr-tb">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>6.3 MDR-TB &amp; XDR-TB</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>MDR-TB:</strong> Resistant to both INH and Rifampicin.<br>
+            <strong>Pre-XDR-TB:</strong> MDR/RR-TB + resistant to any fluoroquinolone.<br>
+            <strong>XDR-TB (WHO 2021 revision):</strong> MDR/RR-TB + resistant to any FQ AND at least one of Bedaquiline or Linezolid.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Regimen</th><th>Components</th><th>Duration</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>BPaLM (WHO 2022 preferred)</strong></td><td><strong class="drug-name">Bedaquiline</strong> + <strong class="drug-name">Pretomanid</strong> + <strong class="drug-name">Linezolid</strong> + <strong class="drug-name">Moxifloxacin</strong></td><td>6 months (<mark class="trial-mark">ZeNix, TB-PRACTECAL trials</mark>)</td></tr>
+                    <tr class="odd"><td><strong>BPaL</strong></td><td>Bedaquiline + Pretomanid + Linezolid 600 mg</td><td>6–9 months (pre-XDR/XDR-TB)</td></tr>
+                    <tr class="even"><td><strong>Shorter MDR-TB (9–12 month)</strong></td><td>Bdq-Lfx-Eto-Cfz-Z-Hh-E (if FQ-susceptible)</td><td>9 months total</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Bedaquiline prolongs QT interval — baseline ECG and monitoring q2–4 weeks required. Avoid combination with other QT-prolonging drugs. Maximum QTcF 500 ms — withhold if exceeded. Linezolid causes peripheral neuropathy and myelosuppression — monitor CBC weekly.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s6-4-ltbi">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>6.4 Latent TB Infection (LTBI)</span>
+        </div>
+        <div class="subsection-content">
+            <p>LTBI = infection without active disease. ~25% of world population infected. Reactivation risk: HIV (5–10%/yr), biologic therapy (anti-TNF: ~2–5%), CKD, DM, silicosis, malnutrition, corticosteroids.</p>
+            <p><strong>Who to test:</strong> HIV, transplant candidates, anti-TNF therapy, close contacts of active TB, immigration from high-burden country, prisoners, healthcare workers.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Regimen</th><th>Duration</th><th>Notes</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>3HP</strong> (INH + Rifapentine weekly)</td><td>3 months (12 doses)</td><td>WHO preferred 2020; DOT or self-administered; caution with ART (rifapentine is CYP inducer)</td></tr>
+                    <tr class="odd"><td><strong>1HP</strong> (INH + Rifapentine daily)</td><td>1 month</td><td>Shortest; non-inferior to 9H (<mark class="trial-mark">WHIP3TB trial</mark>); increasing use</td></tr>
+                    <tr class="even"><td><strong>4R</strong> (Rifampicin daily)</td><td>4 months</td><td>Non-inferior to 9H; fewer side effects; preferred if INH resistance concern</td></tr>
+                    <tr class="odd"><td><strong>9H</strong> (INH daily)</td><td>9 months</td><td>Traditional; still used in resource-limited settings</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s6-5-extrapulmonary">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>6.5 Extrapulmonary TB</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Site</th><th>Clinical Features</th><th>Diagnosis</th><th>Treatment Duration</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Lymphadenitis</td><td>Most common EPTB; cervical; painless, matted, caseating</td><td>FNA or excision biopsy; AFB culture/histology</td><td>6 months</td></tr>
+                    <tr class="odd"><td>Pleural</td><td>Unilateral exudative effusion; ADA &gt;40 U/L; lymphocytic</td><td>ADA, pleural biopsy, culture</td><td>6 months</td></tr>
+                    <tr class="even"><td>Pericardial</td><td>Pericardial effusion, constrictive pericarditis</td><td>Pericardiocentesis; ADA, culture</td><td>6 months + Prednisone (IMPI trial — ↓ constrictive pericarditis)</td></tr>
+                    <tr class="odd"><td>CNS (TBM)</td><td>See Section 3.4</td><td>CSF analysis, Xpert</td><td>9–12 months</td></tr>
+                    <tr class="even"><td>Bone/Joint (Pott's)</td><td>Vertebral destruction, psoas abscess, cord compression</td><td>MRI spine, CT-guided biopsy</td><td>9–12 months ± surgery for cord compression</td></tr>
+                    <tr class="odd"><td>Miliary TB</td><td>Disseminated; bilateral micronodular pattern on CXR; very high mortality</td><td>Culture (blood, sputum, bone marrow, liver); IGRA often negative in severe disease</td><td>6–12 months + consider steroids</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 7 — SKIN, SOFT TISSUE & BONE INFECTIONS
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-7" class="section">
+    <h1 class="section-title">7. Skin, Soft Tissue &amp; Bone Infections</h1>
+
+    <div class="subsection" id="s7-1-cellulitis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>7.1 Cellulitis &amp; Erysipelas</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>Erysipelas:</strong> Superficial dermis, sharply demarcated, raised edges, lymphangitis — caused by Group A Strep (GAS).<br>
+            <strong>Cellulitis:</strong> Deeper dermis/subcutaneous tissue, poorly demarcated — GAS, S. aureus (MSSA or MRSA).</p>
+            <p><strong>Treatment:</strong></p>
+            <ul>
+                <li><strong>Non-purulent cellulitis (no abscess, no MRSA risk):</strong> <strong class="drug-name">Cephalexin</strong> 500 mg QID × 5–7 days (outpatient); <strong class="drug-name">Cefazolin</strong> IV if hospitalized</li>
+                <li><strong>Purulent cellulitis/abscess with MRSA risk:</strong> <strong class="drug-name">TMP-SMX DS</strong> BID or <strong class="drug-name">Doxycycline</strong> 100 mg BID × 5–7 days (outpatient); <strong class="drug-name">Vancomycin</strong> IV if hospitalized</li>
+                <li><strong>Mark skin borders</strong> to track progression; elevate limb</li>
+            </ul>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Consider tinea pedis (foot fungal infection) as portal of entry and recurrence risk in lower extremity cellulitis. Treating tinea reduces cellulitis recurrence significantly.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s7-2-necrotizing">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>7.2 Necrotizing Fasciitis</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Feature</th><th>Type 1 (Polymicrobial)</th><th>Type 2 (Monomicrobial — GAS)</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Organisms</td><td>Mixed GNRs + anaerobes + strep</td><td>Group A Strep ± S. aureus</td></tr>
+                    <tr class="odd"><td>Risk factors</td><td>DM, obesity, immunosuppression, bowel surgery</td><td>Healthy young adults; minor trauma</td></tr>
+                    <tr class="even"><td>Clinical features</td><td>Rapidly spreading, crepitus, skin necrosis, "dishwater" fluid</td><td>Toxic shock, extreme pain out of proportion</td></tr>
+                    <tr class="odd"><td>LRINEC score</td><td colspan="2">CRP, WBC, Na, glucose, Cr, Hgb — score ≥6 suggests NF (sens 59%, spec 97%)</td></tr>
+                </tbody>
+            </table></div>
+            <div class="alert-box"><strong>⚠ Surgical Emergency:</strong> <u class="key-val">Immediate surgical debridement</u> is the cornerstone of treatment. Do NOT delay for imaging if clinical diagnosis is clear. Mortality 25–35%; each hour delay ↑ mortality. HYPERBARIC OXYGEN — adjunctive, not substitute for surgery.</div>
+            <p><strong>Antibiotics:</strong> <strong class="drug-name">Vancomycin</strong> + <strong class="drug-name">Pip-tazo</strong> (or Meropenem) + <strong class="drug-name">Clindamycin</strong> (anti-toxin effect, inhibits exotoxin production in GAS).</p>
+            <p><strong>IVIG:</strong> Consider in streptococcal toxic shock syndrome — neutralizes superantigens.</p>
+        </div>
+    </div>
+
+    <div class="subsection" id="s7-3-diabetic-foot">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>7.3 Diabetic Foot Infection (DFI)</span>
+        </div>
+        <div class="subsection-content">
+            <p>DFI classified by <strong>IDSA Severity:</strong> Mild (superficial, erythema 0.5–2 cm), Moderate (deeper/larger), Severe (systemic signs/sepsis).</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Severity</th><th>Antibiotic Choice</th><th>Route/Duration</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Mild (no MRSA risk)</td><td><strong class="drug-name">Cefalexin</strong> or <strong class="drug-name">Amoxicillin-clavulanate</strong></td><td>PO × 5–7 days</td></tr>
+                    <tr class="odd"><td>Mild (MRSA risk)</td><td><strong class="drug-name">TMP-SMX DS</strong> or <strong class="drug-name">Doxycycline</strong></td><td>PO × 5–7 days</td></tr>
+                    <tr class="even"><td>Moderate (hospitalize)</td><td><strong class="drug-name">Pip-tazo</strong> or <strong class="drug-name">Cefazolin</strong> + Metronidazole</td><td>IV, transition PO when stable × 2–3 weeks</td></tr>
+                    <tr class="odd"><td>Severe</td><td><strong class="drug-name">Vancomycin</strong> + <strong class="drug-name">Pip-tazo</strong> or Meropenem</td><td>IV; extend if osteomyelitis</td></tr>
+                </tbody>
+            </table></div>
+            <p><strong>Osteomyelitis assessment:</strong> Probe-to-bone test (PPV 89% if positive); plain X-ray (late, weeks), MRI gold standard, bone biopsy for culture/histology.</p>
+        </div>
+    </div>
+
+    <div class="subsection" id="s7-4-osteomyelitis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>7.4 Osteomyelitis</span>
+        </div>
+        <div class="subsection-content">
+            <p>Most common organism: <em>S. aureus</em> (hematogenous and contiguous). Vertebral osteomyelitis (spondylodiscitis): usually hematogenous, S. aureus most common; TB common in endemic areas.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Type</th><th>Organisms</th><th>Antibiotics</th><th>Duration</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Hematogenous (MSSA)</td><td>S. aureus</td><td><strong class="drug-name">Nafcillin/Cefazolin</strong> IV → PO transition (Dicloxacillin, Cephalexin)</td><td>6 weeks IV or 2–6 weeks IV + PO (NEJM OVIVA trial)</td></tr>
+                    <tr class="odd"><td>Hematogenous (MRSA)</td><td>MRSA</td><td><strong class="drug-name">Vancomycin</strong> → <strong class="drug-name">TMP-SMX + Rifampicin</strong> PO</td><td>6 weeks minimum</td></tr>
+                    <tr class="even"><td>Contiguous (DFI)</td><td>Polymicrobial</td><td>Based on cultures + sensitivities; broad initially</td><td>6 weeks if hardware present; 3–6 weeks if resected bone</td></tr>
+                    <tr class="odd"><td>Vertebral (spondylodiscitis)</td><td>S. aureus, Strep, GNRs</td><td>Targeted based on blood culture/biopsy</td><td>6 weeks minimum; TB: 9–12 months</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> <mark class="trial-mark">OVIVA Trial (NEJM 2019)</mark> — Oral antibiotics non-inferior to IV antibiotics for bone/joint infections after initial stabilization (≥7 days IV). Oral step-down with bioavailable agents (FQ, TMP-SMX, rifampicin, linezolid) is now standard practice.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s7-5-septic-arthritis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>7.5 Septic Arthritis</span>
+        </div>
+        <div class="subsection-content">
+            <p>Most common cause: S. aureus (all ages). In sexually active young adults: <em>Neisseria gonorrhoeae</em> most common. Risk: joint prosthesis, RA, immunosuppression, bacteremia.</p>
+            <p><strong>Synovial fluid:</strong> WBC &gt;50,000/µL (PMN predominant) highly suggestive; &gt;100,000 more specific but not diagnostic alone. Glucose low, protein high. Crystal analysis to exclude gout/pseudogout.</p>
+            <p><strong>Management:</strong></p>
+            <ul>
+                <li><u class="key-val">Joint aspiration/drainage</u> — daily aspiration or surgical drainage (arthroscopy preferred for knee/shoulder); open drainage for hip</li>
+                <li><strong class="drug-name">Nafcillin/Cefazolin</strong> (MSSA) or <strong class="drug-name">Vancomycin</strong> (MRSA risk) × 2–4 weeks; Gonococcal: <strong class="drug-name">Ceftriaxone</strong> 1g/day × 7 days</li>
+                <li>Treat underlying STI (chlamydia co-treatment with doxycycline)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 8 — URINARY TRACT INFECTIONS
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-8" class="section">
+    <h1 class="section-title">8. Urinary Tract Infections</h1>
+
+    <div class="subsection" id="s8-1-uncomplicated-uti">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>8.1 Uncomplicated UTI (Cystitis)</span>
+        </div>
+        <div class="subsection-content">
+            <p>Uncomplicated = healthy, non-pregnant women, no structural/functional urinary tract abnormalities. Most common organism: <em>E. coli</em> (80%), <em>S. saprophyticus</em> (5–15% in young women).</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Drug</th><th>Dose</th><th>Duration</th><th>Notes</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong class="drug-name">Nitrofurantoin</strong></td><td>100 mg BID (macrocrystal)</td><td>5 days</td><td>First-line; only lower UTI (inadequate renal tissue concentration); avoid in CrCl &lt;30</td></tr>
+                    <tr class="odd"><td><strong class="drug-name">TMP-SMX DS</strong></td><td>1 tab BID</td><td>3 days</td><td>First-line if local resistance &lt;20%; avoid in sulfa allergy</td></tr>
+                    <tr class="even"><td><strong class="drug-name">Fosfomycin</strong></td><td>3g single dose</td><td>1 dose</td><td>Convenient; active against ESBL E. coli; inferior to others for recurrent UTI</td></tr>
+                    <tr class="odd"><td><strong class="drug-name">Fluoroquinolones</strong></td><td>Ciprofloxacin 250 BID or 500 XR QD</td><td>3 days</td><td>Not first-line (preserve for complicated UTI/pyelonephritis); increasing resistance</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s8-2-pyelonephritis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>8.2 Acute Pyelonephritis &amp; Complicated UTI</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>Complicated UTI:</strong> Structural/functional abnormalities, male sex, pregnancy, diabetes, immunosuppression, renal transplant, hospital-acquired, indwelling urinary catheter, recent antibiotics.</p>
+            <p><strong>Pyelonephritis severity:</strong></p>
+            <ul>
+                <li><strong>Outpatient (mild–moderate):</strong> <strong class="drug-name">Ciprofloxacin</strong> 500 mg BID × 7 days or <strong class="drug-name">Levofloxacin</strong> 750 mg QD × 5 days (if local susceptibility &gt;90%); TMP-SMX DS BID × 14 days if susceptible</li>
+                <li><strong>Hospitalized:</strong> <strong class="drug-name">Ceftriaxone</strong> 1–2g/day IV or <strong class="drug-name">FQ IV</strong>; for ESBL risk/failure: <strong class="drug-name">Ertapenem</strong> or <strong class="drug-name">Meropenem</strong></li>
+                <li>Duration: 7 days (FQ) to 14 days (beta-lactam); step-down to oral guided by culture sensitivity</li>
+            </ul>
+            <div class="alert-box"><strong>⚠ Emphysematous Pyelonephritis:</strong> Gas-forming infection (usually E. coli in DM) — CT showing gas within renal parenchyma/perirenal space. Medical emergency — early nephrectomy/drainage + antifungal if Candida. High mortality (40–50%) if treated medically alone in severe class.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s8-3-cauti">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>8.3 Catheter-Associated UTI (CAUTI)</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>CAUTI definition (NHSN):</strong> UTI in patient with urinary catheter &gt;2 days, not present at admission + symptomatic (fever, rigors, altered mental status, discomfort, dysuria) + positive urine culture ≥10³ CFU/mL (catheterized specimen).</p>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ CAUTI Management</div>
+                <ul>
+                    <li><strong>Catheter replacement or removal</strong> before treating and collecting culture — essential step</li>
+                    <li>Treat symptomatically, not asymptomatic bacteriuria</li>
+                    <li><strong>Asymptomatic bacteriuria (ASB):</strong> Do NOT treat except pregnancy, urologic procedures, neutropenia</li>
+                    <li>Duration: 7 days (prompt response), 10–14 days (delayed response), 5 days <strong class="drug-name">Levofloxacin</strong> (mild/moderate, not critically ill)</li>
+                    <li>Antibiotic selection guided by culture + sensitivities; start broad empirically</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s8-4-special-uti">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>8.4 UTI in Special Populations</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Population</th><th>Special Considerations</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Pregnancy</td><td>Treat ASB (↑ risk pyelonephritis, preterm labor). Safe: Nitrofurantoin (avoid near term), cephalexin, amoxicillin. Avoid: FQ, TMP-SMX (1st/3rd trimester), Nitrofurantoin term (&gt;36 weeks). Duration: 7 days.</td></tr>
+                    <tr class="odd"><td>Men</td><td>All UTI considered complicated. Rule out prostatitis (tender prostate on exam, elevated PSA). Prostatitis treatment: FQ × 4–6 weeks (acute) or TMP-SMX × 4–6 weeks. Prolonged treatment due to prostate penetration.</td></tr>
+                    <tr class="even"><td>Recurrent UTI (women)</td><td>≥2 episodes/6 months or ≥3/year. Options: post-coital prophylaxis, continuous low-dose (Nitrofurantoin 50–100 mg QD, TMP-SMX SS QD), self-start therapy, cranberry (modest benefit), vaginal estrogen (postmenopausal).</td></tr>
+                    <tr class="odd"><td>Renal transplant</td><td>High risk CAUTI and complicated UTI; Bactrim prophylaxis × 6–12 months post-transplant. Treat all culture-positive UTI (symptomatic and asymptomatic) in early post-transplant period.</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 9 — TROPICAL & TRAVEL MEDICINE
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-9" class="section">
+    <h1 class="section-title">9. Tropical &amp; Travel Medicine</h1>
+    <p>Tropical infectious diseases are endemic in Thailand and SE Asia. This section covers malaria, dengue, leptospirosis, scrub typhus, melioidosis, and pre-travel medicine — core topics for internal medicine physicians practicing in the region.</p>
+
+    <div class="subsection" id="s9-1-malaria">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>9.1 Malaria — Diagnosis &amp; Treatment</span>
+        </div>
+        <div class="subsection-content">
+            <p>Malaria caused by <em>Plasmodium</em> spp. (falciparum, vivax, ovale, malariae, knowlesi). <em>P. falciparum</em> causes most severe disease. <em>P. knowlesi</em> is emerging in SE Asia (macaque-transmitted, can be severe).</p>
+            <p><strong>Diagnosis:</strong> Thick and thin blood smears (gold standard, sens 75–90%); Rapid Diagnostic Test (RDT) — HRP2 Ag for P. falciparum, pLDH for all species; PCR most sensitive.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Species</th><th>Uncomplicated Treatment</th><th>Notes</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><em>P. falciparum</em> (or unknown)</td><td><strong class="drug-name">Artemether-Lumefantrine (AL)</strong> — 6-dose regimen over 3 days; or <strong class="drug-name">Artesunate-Amodiaquine</strong>; or <strong class="drug-name">DHA-Piperaquine</strong></td><td>ACT (Artemisinin-based combination therapy) is WHO first-line. Avoid monotherapy. Artemisinin resistance emerging in GMS (Cambodia, Myanmar, Thailand borders).</td></tr>
+                    <tr class="odd"><td><em>P. vivax / P. ovale</em></td><td><strong class="drug-name">Chloroquine</strong> 25 mg/kg over 3 days (if susceptible) + <strong class="drug-name">Primaquine</strong> 0.25 mg/kg/day × 14 days</td><td>Primaquine for radical cure (hypnozoites). Check G6PD before primaquine — hemolysis risk. If G6PD deficient: weekly primaquine 0.75 mg/kg × 8 weeks.</td></tr>
+                    <tr class="even"><td><em>P. malariae</em></td><td>Chloroquine × 3 days (no radical cure needed)</td><td>No hypnozoite stage; chloroquine still sensitive</td></tr>
+                    <tr class="odd"><td><em>P. knowlesi</em></td><td>ACT (treat like falciparum) or Chloroquine</td><td>Can cause severe malaria; daily life cycle so parasitemia rises rapidly</td></tr>
+                </tbody>
+            </table></div>
+            <div class="alert-box"><strong>⚠ Severe Malaria (WHO 2022) — IV Artesunate:</strong>
+                <ul style="margin:8px 0 0 16px;">
+                    <li>Indication: Hyperparasitemia (&gt;5%), cerebral malaria (coma/seizures), severe anemia (Hgb &lt;7), respiratory distress, AKI, jaundice, hypoglycemia, circulatory collapse</li>
+                    <li><strong class="drug-name">IV Artesunate</strong> 2.4 mg/kg at 0, 12, 24h then daily — superior to IV quinine (<mark class="trial-mark">AQUAMAT, SEAQUAMAT trials</mark>; ↓ mortality ~35%)</li>
+                    <li>Follow with full oral ACT course once patient can swallow</li>
+                    <li>Post-artesunate delayed hemolysis (PADH): monitor Hgb 2–4 weeks after treatment in hyperparasitemia cases</li>
+                </ul>
+            </div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Artemisinin partial resistance (ART-R): K13 propeller gene mutations (C580Y dominant in GMS). Clinically = slow parasite clearance. Solution: Use ACT with partner drug with longer half-life (DHA-Pip) and extend to 5 days if C580Y endemic area.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s9-2-dengue">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>9.2 Dengue Fever</span>
+        </div>
+        <div class="subsection-content">
+            <p>Dengue caused by DENV 1–4 (flavivirus). Transmitted by <em>Aedes aegypti</em>. Hyperendemic in Thailand — ~400,000 cases/year in SE Asia. Secondary infection with different serotype = severe dengue risk (antibody-dependent enhancement).</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Phase</th><th>Duration</th><th>Clinical &amp; Lab Features</th><th>Management</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>Febrile phase</strong></td><td>Day 1–3</td><td>High fever, myalgia, headache, retroorbital pain, leukopenia, thrombocytopenia begins</td><td>Paracetamol (max 4g/day); NO NSAIDs/Aspirin; adequate hydration; IVF if cannot maintain oral</td></tr>
+                    <tr class="odd"><td><strong>Critical phase</strong></td><td>Day 4–6 (defervescence)</td><td>Plasma leakage: rising Hct (≥20% from baseline), pleural effusion, ascites; ↑↑ thrombocytopenia; shock (DSS); severe bleeding</td><td>Careful fluid management (crystalloid); watch for fluid overload; PLT transfusion if &lt;10,000 or active severe bleeding; Packed RBC if hemorrhage</td></tr>
+                    <tr class="even"><td><strong>Recovery phase</strong></td><td>Day 7–10</td><td>Reabsorption of plasma; bradycardia, convalescent rash; risk of fluid overload</td><td>Reduce/stop IV fluids; diuresis if needed; monitor for fluid overload</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Warning Signs of Severe Dengue (WHO 2009)</div>
+                <ul>
+                    <li>Abdominal pain or tenderness</li>
+                    <li>Persistent vomiting</li>
+                    <li>Clinical fluid accumulation (ascites, pleural effusion)</li>
+                    <li>Mucosal bleeding</li>
+                    <li>Lethargy or restlessness</li>
+                    <li>Liver enlargement &gt;2 cm</li>
+                    <li>Lab: rapid rise in Hct with rapid decline in PLT</li>
+                </ul>
+            </div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Dengue NS1 antigen — positive from Day 1–5 (peak Day 1–3). IgM/IgG — positive from Day 4–5. Use NS1 + PCR in early phase; IgM/IgG in late phase. Leukopenia + thrombocytopenia in a febrile traveler from SE Asia = dengue until proven otherwise.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s9-3-leptospirosis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>9.3 Leptospirosis</span>
+        </div>
+        <div class="subsection-content">
+            <p>Caused by <em>Leptospira interrogans</em>. Transmitted via contact with water/soil contaminated by infected animal urine (rodents). Seasonal peak: rainy season, flooding. Thailand: ~3,000–5,000 cases/year.</p>
+            <p><strong>Clinical spectrum:</strong></p>
+            <ul>
+                <li><strong>Anicteric (90%):</strong> Abrupt fever, headache, myalgia (calf muscles), conjunctival suffusion (pathognomonic) — self-limited 1–2 weeks</li>
+                <li><strong>Weil's disease (5–10%):</strong> Jaundice + AKI + thrombocytopenia/bleeding. Severe: pulmonary hemorrhage syndrome (ARDS + hemoptysis), myocarditis, uveitis</li>
+            </ul>
+            <p><strong>Diagnosis:</strong> MAT (microscopic agglutination test) — gold standard but takes 2 weeks, needs paired sera. IgM ELISA (point-of-care): sens 50% in 1st week, rises to 90% by day 10. PCR (blood in 1st week, urine after 1st week).</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Severity</th><th>Drug</th><th>Dose &amp; Duration</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Mild/Moderate</td><td><strong class="drug-name">Doxycycline</strong></td><td>100 mg PO BID × 7 days</td></tr>
+                    <tr class="odd"><td>Mild alternative</td><td><strong class="drug-name">Amoxicillin</strong></td><td>500 mg PO TID × 7 days</td></tr>
+                    <tr class="even"><td>Severe (Weil's)</td><td><strong class="drug-name">Penicillin G</strong></td><td>1.5 MU IV q6h × 7 days</td></tr>
+                    <tr class="odd"><td>Severe alternative</td><td><strong class="drug-name">Ceftriaxone</strong></td><td>1g IV q24h × 7 days</td></tr>
+                    <tr class="even"><td>Prophylaxis (post-exposure/flood)</td><td><strong class="drug-name">Doxycycline</strong></td><td>200 mg PO weekly</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s9-4-scrub-typhus">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>9.4 Scrub Typhus &amp; Rickettsia</span>
+        </div>
+        <div class="subsection-content">
+            <p><strong>Scrub Typhus:</strong> Caused by <em>Orientia tsutsugamushi</em>; vector: chigger mite larva (<em>Leptotrombidium</em>). Endemic throughout Asia-Pacific. Pathognomonic: <u class="key-val">eschar</u> (painless necrotic ulcer at bite site) + fever + lymphadenopathy.</p>
+            <p><strong>Clinical features:</strong> Fever, headache, myalgia, rash (maculopapular, trunk → extremities), hepatosplenomegaly. Severe: ARDS, myocarditis, meningoencephalitis, AKI.</p>
+            <p><strong>Diagnosis:</strong> Clinical (eschar + fever in endemic area); Weil-Felix test (OX-K positive, low sensitivity/specificity); IgM ELISA; PCR (eschar swab, blood); Immunofluorescence (gold standard).</p>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Rickettsial Diseases — Treatment</div>
+                <ul>
+                    <li><strong>Scrub Typhus:</strong> <strong class="drug-name">Doxycycline</strong> 100 mg PO/IV BID × 7 days — dramatically responsive (fever usually defervesces within 24–48h = therapeutic confirmation)</li>
+                    <li><strong>Murine Typhus (<em>R. typhi</em>, flea vector):</strong> Doxycycline × 7 days</li>
+                    <li><strong>Rocky Mountain Spotted Fever (<em>R. rickettsii</em>):</strong> Doxycycline × 5–7 days (even in children — risk of staining teeth is outweighed by mortality risk)</li>
+                    <li><strong>Azithromycin:</strong> Alternative in pregnancy or children, mild disease — inferior to doxycycline; emerging azithromycin-resistant O. tsutsugamushi strains in Asia</li>
+                    <li><strong>Chloramphenicol:</strong> Alternative in pregnancy (but inferior; teratogenic in late pregnancy)</li>
+                </ul>
+            </div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Eschar in scrub typhus is often hidden — check groin, axilla, behind ears, under breasts, scalp. Never miss it. Therapeutic test with doxycycline: fever resolution within 24–48h = virtually diagnostic. Non-response to doxycycline should prompt reconsideration of diagnosis.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s9-5-melioidosis">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>9.5 Melioidosis</span>
+        </div>
+        <div class="subsection-content">
+            <p>Caused by <em>Burkholderia pseudomallei</em> — soil/water organism. Endemic in NE Thailand (Khon Kaen), Northern Australia, SE Asia. Highest incidence in NE Thailand: 5.5/100,000/year. Risk factors: DM (most common — 60%), alcoholism, CKD, thalassemia, occupational soil exposure (rice farmers).</p>
+            <p><strong>Clinical forms:</strong> Pneumonia (51%), bacteremia (40%), localized infection (skin/soft tissue, liver/spleen abscess, genitourinary), neurological (2% — flaccid paraparesis).</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Phase</th><th>Drug</th><th>Dose &amp; Duration</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>Intensive (IV)</strong></td><td><strong class="drug-name">Ceftazidime</strong> IV 50 mg/kg (max 6g) q8h <strong>OR</strong> <strong class="drug-name">Meropenem</strong> 1g q8h (severe/CNS)</td><td>Minimum 10–14 days; extend to 4–8 weeks for deep-seated infections (osteomyelitis, liver abscess, neuromelioidosis)</td></tr>
+                    <tr class="odd"><td><strong>Eradication (Oral)</strong></td><td><strong class="drug-name">TMP-SMX</strong> (TMP 10 mg/kg/day in 2 divided doses) ± <strong class="drug-name">Doxycycline</strong></td><td>3–6 months (reduces relapse from 26% to 10%)</td></tr>
+                </tbody>
+            </table></div>
+            <div class="alert-box"><strong>⚠ Intrinsic Resistance:</strong> <em>B. pseudomallei</em> is intrinsically resistant to penicillin, ampicillin, 1st/2nd generation cephalosporins, gentamicin, streptomycin, colistin. Do NOT use these agents.</div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> Melioidosis can mimic TB (cavitary pneumonia, weight loss, chronicity). In a diabetic patient from NE Thailand with cavitary lung disease, culture negative for AFB — always send cultures for melioidosis. Blood culture sensitivity only 60%; send multiple cultures (blood, sputum, urine, pus).</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s9-6-travel-medicine">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>9.6 Travel Medicine &amp; Pre-travel Vaccines</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Vaccine/Prophylaxis</th><th>Indication</th><th>Regimen</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Hepatitis A</td><td>Travel to endemic areas (Asia, Africa, Central/South America)</td><td>2-dose series (0, 6–12 months); single dose gives 95% protection within 4 weeks</td></tr>
+                    <tr class="odd"><td>Hepatitis B</td><td>Most travelers; healthcare workers</td><td>3-dose (0,1,6 months) or accelerated (0,7,21d + booster 12m); HepA+B combined available</td></tr>
+                    <tr class="even"><td>Typhoid</td><td>Travel to SE Asia, South Asia, Africa</td><td>Injectable Vi polysaccharide × 1 dose (2y protection) or Oral Ty21a × 4 doses q2d (5y)</td></tr>
+                    <tr class="odd"><td>Japanese Encephalitis</td><td>Rural/prolonged stay in SE Asia</td><td>Ixiaro: 2 doses 28 days apart; booster at 1 year then q3 years</td></tr>
+                    <tr class="even"><td>Yellow Fever</td><td>Travel to Sub-Saharan Africa, tropical South America; required for entry to some countries</td><td>Single dose; lifelong protection (WHO 2016 — no longer recommend boosters)</td></tr>
+                    <tr class="odd"><td>Rabies pre-exposure</td><td>Animal handlers, prolonged rural travel, activities near bats</td><td>3-dose IM series (0, 7, 21–28 days); simplifies post-exposure management (only 2 additional doses needed)</td></tr>
+                    <tr class="even"><td>Malaria chemoprophylaxis</td><td>Travel to endemic areas; depends on destination species/resistance</td><td>Atovaquone-Proguanil (Malarone) — start 1–2d before, during, 7d after; or Doxycycline — start 1–2d before, during, 4 weeks after</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Approach to Fever in Returning Traveler</div>
+                <ul>
+                    <li><strong>Most common causes:</strong> Malaria, Dengue, Typhoid, Rickettsial disease, Chikungunya, COVID-19</li>
+                    <li>Always ask: where traveled, activities, food/water consumed, animal exposures, sexual exposures, vaccinations, prophylaxis adherence</li>
+                    <li><strong>Incubation period clue:</strong> &lt;21 days = malaria, dengue, typhoid, rickettsial; &gt;21 days = hepatitis, TB, leishmaniasis</li>
+                    <li>MANDATORY tests: thick/thin smears + malaria RDT (even if not highly endemic — P. falciparum can be rapidly fatal)</li>
+                    <li>Dengue, typhoid, rickettsial disease: clinical diagnosis with supporting serology</li>
+                    <li>Eosinophilia + travel = parasitic infection (Strongyloides, Toxocara, Schistosoma, Filaria)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 10 — ANTIMICROBIAL STEWARDSHIP & MDR ORGANISMS
+═══════════════════════════════════════════════════════════════════ -->
+<section id="section-10" class="section">
+    <h1 class="section-title">10. Antimicrobial Stewardship &amp; MDR Organisms</h1>
+    <p>Antimicrobial resistance (AMR) is a global health crisis. By 2050, AMR could cause 10 million deaths/year (O'Neill Report). Thailand has one of the highest rates of ESBL-producing Enterobacteriaceae and Carbapenem-resistant Acinetobacter in SE Asia. This section covers stewardship principles and management of key resistant pathogens.</p>
+
+    <div class="subsection" id="s10-1-stewardship">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>10.1 Antimicrobial Stewardship Program (ASP)</span>
+        </div>
+        <div class="subsection-content">
+            <p>ASP = coordinated interventions to improve and measure the appropriate use of antimicrobials with the goal of achieving optimal clinical outcomes while minimizing adverse effects of antimicrobials use.</p>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Core ASP Strategies</div>
+                <ul>
+                    <li><strong>Prospective audit and feedback:</strong> ID pharmacist or physician reviews antibiotic use and provides real-time recommendations — most evidence-based strategy</li>
+                    <li><strong>Preauthorization / formulary restriction:</strong> Require approval for high-tier antibiotics (carbapenems, polymyxins, linezolid)</li>
+                    <li><strong>De-escalation:</strong> Narrow spectrum once cultures available; reduce duration based on PCT</li>
+                    <li><strong>IV-to-oral switch:</strong> Bioavailable oral agents (FQ, TMP-SMX, metronidazole, fluconazole, linezolid) — switch at 48–72h if tolerated</li>
+                    <li><strong>Rapid diagnostics:</strong> Film array, MALDI-TOF, rapid susceptibility testing → earlier de-escalation</li>
+                    <li><strong>Duration optimization:</strong> Most infections: 5–7 days; avoid prolonged broad-spectrum without defined indication</li>
+                </ul>
+            </div>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Biomarker</th><th>Role in Stewardship</th><th>Threshold</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>Procalcitonin (PCT)</strong></td><td>Bacterial infection marker; guide duration/de-escalation; reduce unnecessary AB use</td><td>Stop AB if PCT &lt;0.25 µg/L or ↓ ≥80% from peak (<mark class="trial-mark">PRORATA, SAPS trials</mark>)</td></tr>
+                    <tr class="odd"><td><strong>CRP</strong></td><td>Less specific than PCT; follow trend rather than absolute value</td><td>Normal &lt;10 mg/L; ↓ trend with treatment</td></tr>
+                    <tr class="even"><td><strong>Lactate</strong></td><td>Severity/perfusion marker; guide resuscitation</td><td>Normalize to &lt;2 mmol/L</td></tr>
+                    <tr class="odd"><td><strong>1,3-β-D-Glucan</strong></td><td>Invasive fungal infection (not Cryptococcus/Zygomycetes); negative = de-escalate empiric antifungal</td><td>&gt;80 pg/mL suggestive; &gt;200 highly specific</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s10-2-mrsa">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>10.2 MRSA — Treatment &amp; Decolonization</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Indication</th><th>Drug</th><th>Dose / Target</th><th>Notes</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Serious/systemic MRSA (BSI, IE, pneumonia, bone)</td><td><strong class="drug-name">Vancomycin</strong></td><td>15–20 mg/kg q8–12h; target <u class="key-val">AUC/MIC 400–600</u> (ASHP 2020 guidelines)</td><td>Monitor AUC (Bayesian); avoid trough-only monitoring; nephrotoxic — monitor SCr daily in ICU</td></tr>
+                    <tr class="odd"><td>BSI/bacteremia — vancomycin intolerant or failure</td><td><strong class="drug-name">Daptomycin</strong></td><td>8–10 mg/kg/day IV</td><td>Do NOT use for pneumonia (inactivated by surfactant). Monitor CK weekly. Check for daptomycin MIC before use.</td></tr>
+                    <tr class="even"><td>MRSA pneumonia</td><td><strong class="drug-name">Linezolid</strong></td><td>600 mg IV/PO q12h</td><td>Superior lung penetration vs vancomycin (<mark class="trial-mark">ZEPHyR trial</mark>); 100% oral bioavailability. Monitor for myelosuppression, serotonin syndrome, peripheral neuropathy (&gt;4 weeks use).</td></tr>
+                    <tr class="odd"><td>SSTI/outpatient MRSA</td><td><strong class="drug-name">TMP-SMX DS</strong></td><td>1–2 tabs BID × 5–10 days</td><td>Good CA-MRSA coverage; check local susceptibility. Add cephalosporin for beta-hemolytic Strep coverage if cellulitis (CA-MRSA often lacks beta-strep activity).</td></tr>
+                    <tr class="even"><td>Severe MRSA SSTI (hospitalized)</td><td><strong class="drug-name">Vancomycin</strong> IV or <strong class="drug-name">Daptomycin</strong> 4 mg/kg/day</td><td>—</td><td>Transition to oral step-down once improving</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ MRSA Decolonization Protocol (Search and Destroy)</div>
+                <ul>
+                    <li><strong class="drug-name">Mupirocin</strong> 2% nasal ointment BID × 5 days (nares)</li>
+                    <li><strong class="drug-name">Chlorhexidine gluconate</strong> 4% whole-body wash daily × 5 days</li>
+                    <li>Decolonize close contacts simultaneously</li>
+                    <li>Indication: Recurrent MRSA SSTI, pre-surgical decolonization, household contacts of index case</li>
+                    <li>Confirm decolonization with nasal swab culture 1–4 weeks after completion</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s10-3-esbl">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>10.3 ESBL-Producing Organisms</span>
+        </div>
+        <div class="subsection-content">
+            <p>ESBL (Extended-Spectrum Beta-Lactamase) — hydrolases that inactivate penicillins, cephalosporins (including 3rd/4th gen), and aztreonam. Most common: CTX-M type. Organisms: <em>E. coli</em> (most common), <em>Klebsiella pneumoniae</em>. Co-resistance: fluoroquinolones (60–80%), TMP-SMX (40–70%).</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Infection Severity</th><th>Preferred Treatment</th><th>Alternative (Step-Down)</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>Severe / sepsis / BSI</td><td><strong class="drug-name">Meropenem</strong> 1g q8h or <strong class="drug-name">Ertapenem</strong> 1g/day</td><td>Imipenem; carbapenem sparing only if isolate susceptible to alternative</td></tr>
+                    <tr class="odd"><td>Complicated UTI (non-severe)</td><td><strong class="drug-name">Ertapenem</strong> 1g/day IV or <strong class="drug-name">Temocillin</strong> (Europe)</td><td><strong class="drug-name">Nitrofurantoin</strong> (cystitis only, if susceptible); <strong class="drug-name">Fosfomycin</strong></td></tr>
+                    <tr class="even"><td>Oral step-down (if susceptible)</td><td><strong class="drug-name">TMP-SMX</strong> or <strong class="drug-name">Ciprofloxacin</strong> (if MIC susceptible)</td><td>Fosfomycin for UTI step-down; Nitrofurantoin (bladder only)</td></tr>
+                    <tr class="odd"><td>Empiric ESBL UTI (low severity)</td><td><mark class="trial-mark">MERINO Trial (JAMA 2018)</mark>: pip-tazo inferior to meropenem for ESBL bacteremia (↑ 30-day mortality). Use carbapenem for ESBL BSI.</td><td>Pip-tazo NOT reliable for ESBL BSI despite in vitro sensitivity</td></tr>
+                </tbody>
+            </table></div>
+            <div class="clinical-pearl"><strong>🔑 Pearl:</strong> <mark class="trial-mark">MERINO Trial (JAMA 2018)</mark> settled the debate: Piperacillin-tazobactam is NOT non-inferior to meropenem for ESBL bloodstream infections. 30-day mortality was 12.3% (pip-tazo) vs 3.7% (meropenem). <em>Always use carbapenem for ESBL bacteremia.</em></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s10-4-cre-crab">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>10.4 Carbapenem-Resistant Organisms (CRE, CRAB, CRPA)</span>
+        </div>
+        <div class="subsection-content">
+            <p>WHO Critical Priority pathogens. Carbapenem resistance mechanisms: carbapenemase production (KPC, NDM, OXA-48, IMP, VIM), porin loss + AmpC, efflux pumps.</p>
+            <div class="table-wrap"><table>
+                <thead><tr><th>Organism</th><th>Common Mechanism</th><th>Treatment Options</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>CRE-KPC</strong> (<em>K. pneumoniae</em> KPC)</td><td>KPC carbapenemase (serine-based)</td><td><strong class="drug-name">Ceftazidime-Avibactam</strong> (CAZ-AVI) — avibactam inhibits KPC; <strong class="drug-name">Meropenem-Vaborbactam</strong>; <strong class="drug-name">Imipenem-Cilastatin-Relebactam</strong></td></tr>
+                    <tr class="odd"><td><strong>CRE-NDM</strong> (New Delhi Metallo-β-lactamase)</td><td>MBL (metallo, zinc-based); not inhibited by avibactam</td><td><strong class="drug-name">Ceftazidime-Avibactam + Aztreonam</strong> (combination — AZT not hydrolyzed by MBL, CAZ-AVI protects AZT from ESBL); <strong class="drug-name">Colistin</strong> + carbapenem (high-dose, ↑ nephrotoxicity); <strong class="drug-name">Fosfomycin</strong> combo</td></tr>
+                    <tr class="even"><td><strong>CRAB</strong> (<em>A. baumannii</em>)</td><td>OXA carbapenemases (OXA-23, OXA-51)</td><td><strong class="drug-name">Sulbactam-Durlobactam</strong> (FDA approved 2023 — β-lactam/β-lactam inhibitor combination; high activity vs CRAB); <strong class="drug-name">Colistin</strong> + <strong class="drug-name">Meropenem</strong> (double carbapenem or high-dose extended infusion); <strong class="drug-name">Tigecycline</strong> (high-dose); <strong class="drug-name">Cefiderocol</strong> (siderophore cephalosporin)</td></tr>
+                    <tr class="odd"><td><strong>CRPA</strong> (<em>Pseudomonas aeruginosa</em>)</td><td>Multifactorial (efflux, OprD loss, MBL)</td><td><strong class="drug-name">Ceftolozane-Tazobactam</strong> (MDR-PA without MBL); <strong class="drug-name">Cefiderocol</strong>; <strong class="drug-name">Imipenem-Relebactam</strong>; combination therapy for severe infections</td></tr>
+                </tbody>
+            </table></div>
+            <div class="alert-box"><strong>⚠ Colistin Dosing:</strong> Colistimethate sodium (CMS) — dose in colistin base activity (CBA). Loading dose 5 mg/kg CBA IV (max 300 mg CBA) then maintenance 2.5–5 mg/kg/day divided q12h. Adjust for CrCl. Nephrotoxicity major concern (40–60%). Inhaled colistin adjunct for pneumonia.</div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s10-5-antifungal">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>10.5 Antifungal Stewardship</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Drug Class</th><th>Agents</th><th>Spectrum</th><th>Key Notes</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td><strong>Triazoles</strong></td><td><strong class="drug-name">Fluconazole</strong>, <strong class="drug-name">Voriconazole</strong>, <strong class="drug-name">Itraconazole</strong>, <strong class="drug-name">Posaconazole</strong>, <strong class="drug-name">Isavuconazole</strong></td><td>Fluconazole: Candida (not krusei/glabrata-often resistant), Cryptococcus. Voriconazole: Aspergillus, mold coverage. Posa/Isavu: Mucor coverage.</td><td>All: major CYP450 interactions. VRC: TDM essential (trough 1–5.5 µg/mL); variable oral absorption of ITR/VRC. Isavuconazole: fewer interactions, shorter QTc.</td></tr>
+                    <tr class="odd"><td><strong>Echinocandins</strong></td><td><strong class="drug-name">Caspofungin</strong>, <strong class="drug-name">Micafungin</strong>, <strong class="drug-name">Anidulafungin</strong></td><td>Candida (all species including FLC-resistant); No Cryptococcus, limited Aspergillus (salvage)</td><td>First-line for candidemia. Minimal drug interactions. IV only. Safe in hepatic impairment (caspofungin: reduce maintenance in Child-Pugh B). <em>C. parapsilosis</em>: intrinsic ↑ MIC.</td></tr>
+                    <tr class="even"><td><strong>Polyenes</strong></td><td><strong class="drug-name">Amphotericin B</strong> (deoxycholate, liposomal, lipid complex)</td><td>Broadest spectrum: Candida, Cryptococcus, Aspergillus, Mucor</td><td>Nephrotoxic (deoxycholate). Liposomal (L-AmB) preferred: less nephrotoxicity, equivalent/better efficacy. Premedicate with saline + antipyretics. Monitor K, Mg daily (renal wasting).</td></tr>
+                    <tr class="odd"><td><strong>Flucytosine (5-FC)</strong></td><td><strong class="drug-name">Flucytosine</strong></td><td>Candida, Cryptococcus (always in combination)</td><td>Never monotherapy (resistance emerges rapidly). Use with L-AmB for cryptococcal meningitis induction. TDM: peak 70–90 µg/mL, trough 20–40 µg/mL. Myelosuppression, hepatotoxicity.</td></tr>
+                </tbody>
+            </table></div>
+        </div>
+    </div>
+
+    <div class="subsection" id="s10-6-pharmacology">
+        <div class="subsection-title" role="button" tabindex="0" aria-expanded="true">
+            <span class="toggle-icon">▼</span><span>10.6 Key Antibiotic Pharmacology &amp; PK/PD</span>
+        </div>
+        <div class="subsection-content">
+            <div class="table-wrap"><table>
+                <thead><tr><th>Antibiotic Class</th><th>PK/PD Index</th><th>Dosing Optimization</th><th>Clinical Implication</th></tr></thead>
+                <tbody>
+                    <tr class="even"><td>β-Lactams (penicillins, cephalosporins, carbapenems)</td><td><strong>Time-dependent</strong> — %T&gt;MIC (40–70%)</td><td>Prolonged/extended infusion (3–4h), increased frequency, continuous infusion</td><td>Meropenem 2g over 3h q8h vs standard 1g over 30min — better target attainment for high MIC organisms</td></tr>
+                    <tr class="odd"><td>Aminoglycosides (Gentamicin, Amikacin)</td><td><strong>Concentration-dependent</strong> — Cmax/MIC (&gt;8–10)</td><td>Once-daily dosing (extended interval) — higher peak, same/less nephrotoxicity</td><td>Gentamicin 5–7 mg/kg q24h (Hartford nomogram); monitor trough &lt;1 µg/mL to avoid toxicity</td></tr>
+                    <tr class="even"><td>Fluoroquinolones</td><td><strong>Concentration + time-dependent</strong> — AUC/MIC (&gt;100–125 for GNR)</td><td>Once-daily dosing capitalizes on both parameters</td><td>Ciprofloxacin for pseudomonal infections: ensure AUC/MIC target; dose 400 mg IV q8h not q12h</td></tr>
+                    <tr class="odd"><td>Vancomycin</td><td><strong>AUC-dependent</strong> — AUC₂₄/MIC (400–600)</td><td>Bayesian AUC monitoring (preferred over trough alone)</td><td>Traditional trough 15–20 µg/mL abandoned (over-targeting → nephrotoxicity). AUC-guided safer.</td></tr>
+                    <tr class="even"><td>Colistin</td><td><strong>AUC-dependent</strong> — AUC/MIC</td><td>Loading dose essential; renal dose adjustment of maintenance</td><td>Colistin + rifampicin/meropenem often synergistic for CRAB. Inhaled adjunct reduces systemic toxicity.</td></tr>
+                </tbody>
+            </table></div>
+            <div class="high-yield">
+                <div class="high-yield-title">⚡ Antibiotic IV→PO Switch Candidates (High Bioavailability)</div>
+                <ul>
+                    <li><strong class="drug-name">Fluoroquinolones</strong> (Ciprofloxacin, Levofloxacin, Moxifloxacin) — ~95–100% bioavailability</li>
+                    <li><strong class="drug-name">Metronidazole</strong> — ~99%</li>
+                    <li><strong class="drug-name">Fluconazole</strong> — ~90%</li>
+                    <li><strong class="drug-name">TMP-SMX</strong> — ~90–100%</li>
+                    <li><strong class="drug-name">Linezolid</strong> — ~100%</li>
+                    <li><strong class="drug-name">Doxycycline</strong> — ~93%</li>
+                    <li><strong class="drug-name">Clindamycin</strong> — ~90%</li>
+                    <li><em>Switch criteria:</em> Afebrile ≥24h, improving clinically, tolerating PO, functioning GI tract, no malabsorption</li>
+                </ul>
+            </div>
+            <div class="reference-box">
+                <h4>📚 Key References</h4>
+                <ul>
+                    <li><span class="ref-guideline">IDSA 2022 AMR Guidance</span> — Tamma PD et al. Clin Infect Dis 2022;75(2):187–202.</li>
+                    <li><span class="ref-trial">MERINO Trial (JAMA 2018)</span> — Harris PNA et al. JAMA 2018;320(10):984–994.</li>
+                    <li><span class="ref-trial">ASHP/SIDP Vancomycin TDM 2020</span> — Rybak MJ et al. Am J Health Syst Pharm 2020;77(11):835–864.</li>
+                    <li><span class="ref-guideline">WHO AMR Action Plan 2023</span> — World Health Organization.</li>
+                    <li><span class="ref-trial">OVIVA Trial (NEJM 2019)</span> — Li HK et al. NEJM 2019;380(5):425–436.</li>
+                    <li><span class="ref-trial">ZEPHyR Trial (CID 2012)</span> — Wunderink RG et al. — Linezolid vs Vancomycin for MRSA pneumonia.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Questions -->
+    <div class="sub-header">🩺 Practice Questions</div>
+
+    <div class="question">
+        <div class="question-text">Q1. A 58-year-old man with DM2 presents with 5 days of fever, headache, and productive cough. He farms rice in Khon Kaen. CXR shows right upper lobe cavitation. AFB smear ×3 is negative. WBC 18,000, CRP 210. Blood culture pending. What is the most important diagnosis to consider and what is the initial treatment?</div>
+        <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show'); this.textContent = this.nextElementSibling.classList.contains('show') ? 'Hide Answer' : 'Show Answer'">Show Answer</button>
+        <div class="answer-content">
+            <strong>Answer: Melioidosis</strong>
+            <div class="explanation">Cavitary pneumonia + diabetic patient + rural NE Thailand + AFB negative = melioidosis until proven otherwise. Also consider TB (AFB smear low sensitivity). Start <strong>Ceftazidime</strong> 2g IV q8h (or Meropenem if severe) as intensive phase while awaiting cultures. Send blood cultures ×2, sputum culture for <em>B. pseudomallei</em>, urine culture. If TB also strongly suspected, may need to start both — discuss with ID. Eradication phase: TMP-SMX × 3–6 months after clinical response.</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">Q2. Blood cultures from a 45-year-old with fever and PICC line grow Candida parapsilosis. CVC removed. What is the preferred antifungal and why is it different from other Candida species?</div>
+        <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show'); this.textContent = this.nextElementSibling.classList.contains('show') ? 'Hide Answer' : 'Show Answer'">Show Answer</button>
+        <div class="answer-content">
+            <strong>Answer: Fluconazole (if susceptible)</strong>
+            <div class="explanation"><em>C. parapsilosis</em> has intrinsically elevated MICs to echinocandins (FKS1 polymorphism) — echinocandin failure is documented. Unlike other Candida species where echinocandins are first-line, <em>C. parapsilosis</em> should be treated with <strong>Fluconazole 400 mg/day</strong> if susceptible. If resistant to fluconazole: use Voriconazole or Liposomal AmB. Must also: get ophthalmology exam, echo (rule out endocarditis), treat for 14 days after last positive culture.</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">Q3. A 32-year-old HIV-positive man (CD4 = 45, not on ART) develops headache and fever for 2 weeks. CSF: opening pressure 32 cmH₂O, WBC 12 lymphocytes, protein 110, glucose 42 (serum 90). India ink positive. CrAg titer 1:1024. What is the treatment strategy including ART timing?</div>
+        <button class="show-answer-btn" onclick="this.nextElementSibling.classList.toggle('show'); this.textContent = this.nextElementSibling.classList.contains('show') ? 'Hide Answer' : 'Show Answer'">Show Answer</button>
+        <div class="answer-content">
+            <strong>Answer: Cryptococcal Meningitis with High ICP</strong>
+            <div class="explanation">Treatment: <strong>Liposomal AmB</strong> 3–4 mg/kg/day + <strong>Flucytosine</strong> 100 mg/kg/day × 14 days (induction) → Fluconazole 400 mg/day × 8 weeks (consolidation) → 200 mg/day maintenance until CD4 &gt;200 × 3 months on ART. ICP management: daily therapeutic LPs to reduce OP to &lt;20 cmH₂O or by 50%. DO NOT give corticosteroids (↑ mortality in crypto meningitis). ART timing: <strong>Delay 4–5 weeks</strong> after starting antifungal (COAT trial — early ART ↑ mortality in cryptococcal meningitis, unlike other OIs).</div>
+        </div>
+    </div>
+</section>
+        </main><!-- end main-content -->
+    </div><!-- end container -->
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <script>
+        /* ═══════════════════════════════════════════════════
+           SECTION REGISTRY
+        ═══════════════════════════════════════════════════ */
+        const sections = [
+            { id: 'section-1',  title: '1. Sepsis & Septic Shock' },
+            { id: 'section-2',  title: '2. Pneumonia (CAP/HAP/VAP)' },
+            { id: 'section-3',  title: '3. CNS Infections' },
+            { id: 'section-4',  title: '4. Bloodstream Infections & Endocarditis' },
+            { id: 'section-5',  title: '5. HIV/AIDS & ART' },
+            { id: 'section-6',  title: '6. Tuberculosis' },
+            { id: 'section-7',  title: '7. Skin, Soft Tissue & Bone Infections' },
+            { id: 'section-8',  title: '8. Urinary Tract Infections' },
+            { id: 'section-9',  title: '9. Tropical & Travel Medicine' },
+            { id: 'section-10', title: '10. Antimicrobial Stewardship & MDR' },
+        ];
+
+        /* ═══════════════════════════════════════════════════
+           SUBSECTION MAP — drives sidebar subnav links
+           Each id MUST match the div id in the HTML content
+        ═══════════════════════════════════════════════════ */
+        const subsectionMap = {
+            'section-1': [
+                { id: 's1-1-definitions-sepsis3',  label: '1.1 Definitions — Sepsis-3 Criteria' },
+                { id: 's1-2-pathophysiology',       label: '1.2 Pathophysiology' },
+                { id: 's1-3-initial-assessment',    label: '1.3 Initial Assessment & Risk Stratification' },
+                { id: 's1-4-hour1-bundle',          label: '1.4 Hour-1 Bundle (SSC 2021)' },
+                { id: 's1-5-fluid-resuscitation',   label: '1.5 Fluid Resuscitation' },
+                { id: 's1-6-vasopressors',          label: '1.6 Vasopressors & Inotropes' },
+                { id: 's1-7-antibiotics-source',    label: '1.7 Empiric Antibiotics & Source Control' },
+                { id: 's1-8-adjunctive',            label: '1.8 Adjunctive Therapies' },
+            ],
+            'section-2': [
+                { id: 's2-1-cap-diagnosis',         label: '2.1 CAP — Diagnosis & Severity' },
+                { id: 's2-2-cap-treatment',         label: '2.2 CAP — Treatment (IDSA/ATS 2019)' },
+                { id: 's2-3-hap-vap',               label: '2.3 HAP & VAP' },
+                { id: 's2-4-covid19',               label: '2.4 COVID-19 Management' },
+                { id: 's2-5-influenza',             label: '2.5 Influenza & Respiratory Viruses' },
+                { id: 's2-6-pcp-aspergillosis',     label: '2.6 PCP & Aspergillosis' },
+            ],
+            'section-3': [
+                { id: 's3-1-bacterial-meningitis',  label: '3.1 Bacterial Meningitis' },
+                { id: 's3-2-viral-encephalitis',    label: '3.2 Viral Meningitis & Encephalitis' },
+                { id: 's3-3-brain-abscess',         label: '3.3 Brain Abscess' },
+                { id: 's3-4-tbm',                   label: '3.4 Tuberculous Meningitis (TBM)' },
+                { id: 's3-5-cryptococcal',          label: '3.5 Cryptococcal Meningitis' },
+                { id: 's3-6-neurocysticercosis',    label: '3.6 Neurocysticercosis' },
+            ],
+            'section-4': [
+                { id: 's4-1-bacteremia-approach',   label: '4.1 Bacteremia — Approach' },
+                { id: 's4-2-staph-bacteremia',      label: '4.2 Staphylococcal Bacteremia' },
+                { id: 's4-3-ie-diagnosis',          label: '4.3 IE — Diagnosis (Duke Criteria)' },
+                { id: 's4-4-ie-treatment',          label: '4.4 IE — Treatment (AHA/ESC 2023)' },
+                { id: 's4-5-clabsi',                label: '4.5 CLABSI & Candidemia' },
+            ],
+            'section-5': [
+                { id: 's5-1-testing-staging',       label: '5.1 Testing, Staging & Natural History' },
+                { id: 's5-2-art-2024',              label: '5.2 ART — DHHS 2024 Regimens' },
+                { id: 's5-3-oi-prophylaxis',        label: '5.3 OI Prophylaxis & Treatment' },
+                { id: 's5-4-hiv-tb',                label: '5.4 HIV-TB Co-infection' },
+                { id: 's5-5-art-monitoring',        label: '5.5 ART Monitoring & Resistance' },
+            ],
+            'section-6': [
+                { id: 's6-1-tb-diagnosis',          label: '6.1 Pulmonary TB — Diagnosis' },
+                { id: 's6-2-tb-treatment',          label: '6.2 TB Treatment (WHO 2022)' },
+                { id: 's6-3-mdr-tb',                label: '6.3 MDR-TB & XDR-TB' },
+                { id: 's6-4-ltbi',                  label: '6.4 Latent TB Infection (LTBI)' },
+                { id: 's6-5-extrapulmonary',        label: '6.5 Extrapulmonary TB' },
+            ],
+            'section-7': [
+                { id: 's7-1-cellulitis',            label: '7.1 Cellulitis & Erysipelas' },
+                { id: 's7-2-necrotizing',           label: '7.2 Necrotizing Fasciitis' },
+                { id: 's7-3-diabetic-foot',         label: '7.3 Diabetic Foot Infection' },
+                { id: 's7-4-osteomyelitis',         label: '7.4 Osteomyelitis' },
+                { id: 's7-5-septic-arthritis',      label: '7.5 Septic Arthritis' },
+            ],
+            'section-8': [
+                { id: 's8-1-uncomplicated-uti',     label: '8.1 Uncomplicated UTI (Cystitis)' },
+                { id: 's8-2-pyelonephritis',        label: '8.2 Pyelonephritis & Complicated UTI' },
+                { id: 's8-3-cauti',                 label: '8.3 CAUTI' },
+                { id: 's8-4-special-uti',           label: '8.4 UTI in Special Populations' },
+            ],
+            'section-9': [
+                { id: 's9-1-malaria',               label: '9.1 Malaria — Diagnosis & Treatment' },
+                { id: 's9-2-dengue',                label: '9.2 Dengue Fever' },
+                { id: 's9-3-leptospirosis',         label: '9.3 Leptospirosis' },
+                { id: 's9-4-scrub-typhus',          label: '9.4 Scrub Typhus & Rickettsia' },
+                { id: 's9-5-melioidosis',           label: '9.5 Melioidosis' },
+                { id: 's9-6-travel-medicine',       label: '9.6 Travel Medicine & Vaccines' },
+            ],
+            'section-10': [
+                { id: 's10-1-stewardship',          label: '10.1 Antimicrobial Stewardship (ASP)' },
+                { id: 's10-2-mrsa',                 label: '10.2 MRSA Treatment & Decolonization' },
+                { id: 's10-3-esbl',                 label: '10.3 ESBL-Producing Organisms' },
+                { id: 's10-4-cre-crab',             label: '10.4 CRE, CRAB & CRPA' },
+                { id: 's10-5-antifungal',           label: '10.5 Antifungal Stewardship' },
+                { id: 's10-6-pharmacology',         label: '10.6 Antibiotic PK/PD & IV→PO Switch' },
+            ],
+        };
+
+        /* ═══════════════════════════════════════════════════
+           PROGRESS TRACKING
+        ═══════════════════════════════════════════════════ */
+        const readSections = new Set();
+
+        /* ═══════════════════════════════════════════════════
+           NAVIGATION INIT
+        ═══════════════════════════════════════════════════ */
+        function initNav() {
+            const navLinks = document.getElementById('navLinks');
+            sections.forEach(sec => {
+                const link = document.createElement('div');
+                link.className = 'nav-link';
+                link.textContent = sec.title;
+                link.id = 'nav-' + sec.id;
+                link.onclick = () => showSection(sec.id);
+                navLinks.appendChild(link);
+            });
+        }
+
+        /* ═══════════════════════════════════════════════════
+           SHOW SECTION
+        ═══════════════════════════════════════════════════ */
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById(sectionId);
+            if (target) target.classList.add('active');
+
+            // Update nav active state
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            const navEl = document.getElementById('nav-' + sectionId);
+            if (navEl) navEl.classList.add('active');
+
+            // Track progress
+            if (!readSections.has(sectionId)) {
+                readSections.add(sectionId);
+                updateProgress();
+            }
+
+            // Scroll top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Build sidebar subnav for this section
+            buildSidebarSubnav(sectionId);
+
+            // Auto-close sidebar on mobile
+            if (window.innerWidth <= 768) closeSidebar();
+        }
+
+        /* ═══════════════════════════════════════════════════
+           PROGRESS BAR
+        ═══════════════════════════════════════════════════ */
+        function updateProgress() {
+            const pct = (readSections.size / sections.length) * 100;
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('progressText').textContent =
+                readSections.size + ' of ' + sections.length + ' sections read';
+        }
+
+        /* ═══════════════════════════════════════════════════
+           SIDEBAR SUBNAV — builds clickable subsection links
+           under the active section nav item
+        ═══════════════════════════════════════════════════ */
+        function buildSidebarSubnav(sectionId) {
+            // Hide all existing subnavs
+            document.querySelectorAll('.subnav-container').forEach(el => {
+                el.classList.remove('visible');
+            });
+
+            const subs = subsectionMap[sectionId];
+            if (!subs || subs.length === 0) return;
+
+            let subnavId = 'subnav-' + sectionId;
+            let subnav = document.getElementById(subnavId);
+
+            if (!subnav) {
+                // Create subnav container once
+                subnav = document.createElement('div');
+                subnav.className = 'subnav-container';
+                subnav.id = subnavId;
+
+                subs.forEach(sub => {
+                    const link = document.createElement('span');
+                    link.className = 'subnav-link';
+                    link.textContent = sub.label;
+                    link.dataset.subId = sub.id;
+                    link.onclick = () => {
+                        scrollToSubsection(sub.id, subnav);
+                        if (window.innerWidth <= 768) closeSidebar();
+                    };
+                    subnav.appendChild(link);
+                });
+
+                // Insert directly after this section's nav-link
+                const navLink = document.getElementById('nav-' + sectionId);
+                if (navLink && navLink.parentNode) {
+                    navLink.parentNode.insertBefore(subnav, navLink.nextSibling);
+                }
+            }
+
+            subnav.classList.add('visible');
+        }
+
+        /* ═══════════════════════════════════════════════════
+           SCROLL TO SUBSECTION
+           Expands collapsed subsection, smooth-scrolls to it,
+           and highlights the active subnav link
+        ═══════════════════════════════════════════════════ */
+        function scrollToSubsection(subId, subnavContainer) {
+            const el = document.getElementById(subId);
+            if (!el) return;
+
+            // Expand subsection if collapsed
+            const content = el.querySelector('.subsection-content');
+            const titleEl = el.querySelector('.subsection-title');
+            if (content && content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                const icon = titleEl ? titleEl.querySelector('.toggle-icon') : null;
+                if (icon) icon.textContent = '▼';
+                if (titleEl) titleEl.setAttribute('aria-expanded', 'true');
+            }
+
+            // Smooth scroll with small offset for header
+            setTimeout(() => {
+                const headerH = document.querySelector('header') ? document.querySelector('header').offsetHeight : 64;
+                const top = el.getBoundingClientRect().top + window.pageYOffset - headerH - 12;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+            }, 80);
+
+            // Highlight active subnav link
+            if (subnavContainer) {
+                subnavContainer.querySelectorAll('.subnav-link').forEach(l => l.classList.remove('active'));
+                const activeLink = subnavContainer.querySelector('[data-sub-id="' + subId + '"]');
+                if (activeLink) activeLink.classList.add('active');
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           COLLAPSIBLE SUBSECTIONS (event delegation)
+        ═══════════════════════════════════════════════════ */
+        document.addEventListener('click', function(e) {
+            const titleEl = e.target.closest('.subsection-title');
+            if (!titleEl) return;
+            // Don't collapse if click originated inside a button
+            if (e.target.closest('button')) return;
+
+            const content = titleEl.nextElementSibling;
+            if (!content || !content.classList) return;
+
+            const isCollapsed = content.classList.toggle('collapsed');
+            const icon = titleEl.querySelector('.toggle-icon');
+            if (icon) icon.textContent = isCollapsed ? '▶' : '▼';
+            titleEl.setAttribute('aria-expanded', String(!isCollapsed));
+        });
+
+        // Keyboard accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const titleEl = e.target.closest('.subsection-title');
+                if (titleEl) { e.preventDefault(); titleEl.click(); }
+            }
+        });
+
+        /* ═══════════════════════════════════════════════════
+           DARK MODE
+        ═══════════════════════════════════════════════════ */
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            this.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+            localStorage.setItem('id-imbr-darkmode', document.body.classList.contains('dark-mode') ? '1' : '0');
+        });
+        // Restore dark mode preference
+        if (localStorage.getItem('id-imbr-darkmode') === '1') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('darkModeToggle').textContent = '☀️ Light Mode';
+        }
+
+        /* ═══════════════════════════════════════════════════
+           SEARCH
+        ═══════════════════════════════════════════════════ */
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(performSearch, 300);
+        });
+
+        function performSearch() {
+            const term = document.getElementById('searchInput').value.trim().toLowerCase();
+            // Remove previous highlights
+            document.querySelectorAll('.search-highlight').forEach(el => {
+                const txt = document.createTextNode(el.textContent);
+                el.parentNode.replaceChild(txt, el);
+            });
+            if (!term || term.length < 2) return;
+
+            // Scan all text nodes in main content
+            const walker = document.createTreeWalker(
+                document.querySelector('.main-content'),
+                NodeFilter.SHOW_TEXT, null, false
+            );
+            const nodes = [];
+            let node;
+            while ((node = walker.nextNode())) {
+                if (node.textContent.toLowerCase().includes(term)) nodes.push(node);
+            }
+            let firstMatch = null;
+            nodes.forEach(n => {
+                const regex = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+                const frag = document.createDocumentFragment();
+                let last = 0;
+                let m;
+                regex.lastIndex = 0;
+                const text = n.textContent;
+                while ((m = regex.exec(text)) !== null) {
+                    frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+                    const mark = document.createElement('span');
+                    mark.className = 'search-highlight';
+                    mark.textContent = m[1];
+                    frag.appendChild(mark);
+                    last = regex.lastIndex;
+                    if (!firstMatch) firstMatch = mark;
+                }
+                frag.appendChild(document.createTextNode(text.slice(last)));
+                n.parentNode.replaceChild(frag, n);
+            });
+
+            // Navigate to section containing first match
+            if (firstMatch) {
+                const parentSection = firstMatch.closest('.section');
+                if (parentSection && !parentSection.classList.contains('active')) {
+                    showSection(parentSection.id);
+                }
+                setTimeout(() => {
+                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           MOBILE SIDEBAR TOGGLE
+        ═══════════════════════════════════════════════════ */
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('sidebarOverlay').classList.toggle('open');
+        }
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('open');
+        }
+
+        /* ═══════════════════════════════════════════════════
+           WRAP TABLES FOR MOBILE SCROLL
+        ═══════════════════════════════════════════════════ */
+        function wrapTables() {
+            document.querySelectorAll('table').forEach(t => {
+                if (t.parentElement.classList.contains('table-wrap')) return;
+                const wrap = document.createElement('div');
+                wrap.className = 'table-wrap';
+                t.parentNode.insertBefore(wrap, t);
+                wrap.appendChild(t);
+            });
+        }
+
+        /* ═══════════════════════════════════════════════════
+           INIT
+        ═══════════════════════════════════════════════════ */
+        document.addEventListener('DOMContentLoaded', function() {
+            initNav();
+            showSection('section-1');
+            wrapTables();
+        });
+    </script>
+</body>
+</html>
