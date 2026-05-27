@@ -84,12 +84,6 @@
     .article-link { display: flex; align-items: center; gap: 10px; padding: 11px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; font-size: 0.82rem; color: var(--text); transition: all .15s; }
     .article-link:hover { border-color: var(--blue); color: var(--blue); }
 
-    /* ── OVERVIEW CARDS ── */
-    .overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 28px; }
-    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; }
-    .stat-n { font-size: 2rem; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 4px; }
-    .stat-l { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .header h1 { font-size: 1.3rem; }
@@ -114,7 +108,6 @@
   <div class="nav-inner">
     <button class="tab active" data-tab="agents">🤖 Agents</button>
     <button class="tab" data-tab="imbr">🏥 IMBR Review</button>
-    <button class="tab" data-tab="overview">📊 Overview</button>
   </div>
 </div>
 
@@ -226,17 +219,6 @@
       <a href="/workspace-imbr/Review/High-Yield/" class="spec-card" style="--spec-color:#eab308"><div class="spec-name">⭐ High-Yield</div><div class="spec-count">2 HTML</div></a>
     </div>
 
-  </div>
-
-  <!-- ══ OVERVIEW TAB ════════════════════════════════════════════════════════ -->
-  <div class="panel" id="panel-overview">
-    <div class="section-label">System Overview</div>
-    <div class="overview-grid">
-      <div class="stat-card"><div class="stat-n">5</div><div class="stat-l">Active Agents</div></div>
-      <div class="stat-card"><div class="stat-n">35+</div><div class="stat-l">HTML Outputs</div></div>
-      <div class="stat-card"><div class="stat-n">8</div><div class="stat-l">IMBR Specialties</div></div>
-      <div class="stat-card"><div class="stat-n">16</div><div class="stat-l">Neurology Articles</div></div>
-    </div>
   </div>
 
 </main>
