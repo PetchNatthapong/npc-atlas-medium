@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Dashboard - Hulks</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f0f1a; color: #fff; padding: 15px; font-size: 14px; }
+        .header { text-align: center; background: linear-gradient(135deg, #1a1a2e, #16213e); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+        .header h1 { font-size: 1.8em; color: #00d4ff; }
+        .progress-bar { background: #333; border-radius: 10px; height: 20px; margin: 10px 0; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #00d4ff, #00ff88); height: 100%; border-radius: 10px; }
+        .card { background: #1a1a2e; border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid #333; }
+        .card h2 { color: #00d4ff; font-size: 1em; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .stat { background: #0f3460; border-radius: 8px; padding: 10px; text-align: center; }
+        .stat-value { font-size: 1.4em; font-weight: bold; color: #00d4ff; }
+        .stat-label { font-size: 0.7em; color: #888; }
+        .day { background: #16213e; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+        .day-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 5px; }
+        .day-date { font-weight: bold; color: #00d4ff; }
+        .day-weight { color: #888; font-size: 0.85em; }
+        .deficit { padding: 3px 10px; border-radius: 15px; font-weight: bold; font-size: 0.85em; }
+        .deficit.positive { background: #00ff8833; color: #00ff88; }
+        .deficit.negative { background: #ff475733; color: #ff4757; }
+        .meals { margin-top: 8px; }
+        .meal { display: flex; justify-content: space-between; padding: 4px 8px; background: #0f3460; border-radius: 5px; margin-bottom: 4px; font-size: 0.85em; }
+        .meal-name { color: #ccc; }
+        .meal-kcal { color: #ffa502; font-weight: bold; }
+        .exercise { background: #0f3460; border-radius: 5px; padding: 8px; margin-top: 8px; font-size: 0.85em; }
+        .exercise-item { display: flex; justify-content: space-between; padding: 3px 0; flex-wrap: wrap; gap: 5px; }
+        .exercise-type { color: #ff6b6b; }
+        .exercise-burn { color: #00ff88; font-weight: bold; }
+        .exercise-detail { color: #888; font-size: 0.9em; margin-left: 10px; }
+        .summary { margin-top: 10px; padding-top: 10px; border-top: 1px solid #333; }
+        .summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.85em; }
+        .summary-label { color: #888; }
+        .summary-value { font-weight: bold; }
+        .summary-value.positive { color: #00ff88; }
+        .summary-value.negative { color: #ff4757; }
+        .bar-chart { margin-top: 10px; }
+        .bar-row { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.85em; }
+        .bar-label { width: 50px; color: #888; }
+        .bar-container { flex: 1; background: #333; border-radius: 5px; height: 18px; overflow: hidden; margin: 0 8px; }
+        .bar-intake { background: #ff4757; height: 100%; }
+        .bar-burn { background: #00d4ff; height: 100%; }
+        .bar-value { width: 50px; text-align: right; font-weight: bold; font-size: 0.8em; }
+        .legend { display: flex; gap: 15px; margin-top: 10px; font-size: 0.8em; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-box { width: 12px; height: 12px; border-radius: 3px; }
+        .goal-summary { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 10px; }
+        .goal-item { background: #0f3460; border-radius: 8px; padding: 10px; text-align: center; }
+        .goal-item .value { font-size: 1.1em; font-weight: bold; color: #00d4ff; }
+        .goal-item .label { font-size: 0.7em; color: #888; margin-top: 3px; }
+        .footer { text-align: center; color: #666; font-size: 0.75em; margin-top: 15px; padding-top: 10px; border-top: 1px solid #333; }
+        .weight-bar-wrap { display: flex; align-items: flex-end; justify-content: center; gap: 20px; height: 120px; border-bottom: 2px solid #00d4ff; padding-bottom: 5px; }
+        .weight-bar-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .weight-bar { border-radius: 5px 5px 0 0; }
+        .weight-date { font-size: 0.7em; color: #888; }
+        .weight-value { font-size: 0.8em; font-weight: bold; }
+        .run-chart { margin-top: 10px; }
+        .run-row { display: flex; align-items: center; margin-bottom: 12px; font-size: 0.85em; }
+        .run-row-header { width: 80px; color: #888; font-weight: bold; }
+        .run-bar-wrap { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .run-bar-container { background: #333; border-radius: 4px; height: 16px; overflow: hidden; margin: 0 5px; display: flex; }
+        .run-bar-dist { height: 100%; border-radius: 4px 0 0 4px; }
+        .run-bar-pace { height: 100%; border-radius: 0 4px 4px 0; }
+        .run-bar-value { width: 60px; text-align: right; font-weight: bold; font-size: 0.8em; }
+        .run-bar-value.dist { color: #00d4ff; }
+        .run-bar-value.pace { color: #ff6b6b; }
+        .new-record { color: #ffd700 !important; }
+        .new-day { border: 2px solid #00ff88 !important; }
+        .avg-row { display: flex; justify-content: space-between; padding: 5px 0; border-top: 1px dashed #333; margin-top: 8px; font-size: 0.85em; color: #888; }
+    </style>
+</head>
+<body><div style="padding:8px 16px;background:#0f0f1a;"><a href="/" style="color:#00d4ff;font-size:13px;">← Hub</a></div>
+    <div class="header">
+        <h1>🏋️ Fitness Dashboard</h1>
+        <p>Hulks Fitness Coach | 12-19 May 2026</p>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 70%;"></div>
+        </div>
+        <p style="font-size: 0.8em; color: #888;">74.00 → 72.00 kg | ลดได้ 1.40 kg จาก 2.00 kg</p>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="card">
+        <h2>📊 สรุป 7 วัน</h2>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">73.55</div>
+                <div class="stat-label">น้ำหนักเฉลี่ย (kg)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">1,299</div>
+                <div class="stat-label">เฉลี่ยกิน/วัน</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">2,443</div>
+                <div class="stat-label">เฉลี่ยเผา/วัน</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value positive">+1,144</div>
+                <div class="stat-label">เฉลี่ย Deficit</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weight Graph -->
+    <div class="card">
+        <h2>📉 กราฟน้ำหนัก</h2>
+        <div style="padding: 10px 0;">
+            <div class="weight-bar-wrap">
+                <div class="weight-bar-item">
+                    <div class="weight-bar" style="width: 50px; background: linear-gradient(180deg, #00d4ff, #0088aa); height: 74px;"></div>
+                    <span class="weight-date">12/5</span>
+                    <span class="weight-value" style="color: #00d4ff;">73.80</span>
+                </div>
+                <div class="weight-bar-item">
+                    <div class="weight-bar" style="width: 50px; background: linear-gradient(180deg, #666, #444); height: 70px;"></div>
+                    <span class="weight-date">13/5</span>
+                    <span class="weight-value" style="color: #666;">—</span>
+                </div>
+                <div class="weight-bar-item">
+                    <div class="weight-bar" style="width: 50px; background: linear-gradient(180deg, #666, #444); height: 66px;"></div>
+                    <span class="weight-date">14/5</span>
+                    <span class="weight-value" style="color: #666;">—</span>
+                </div>
+                <div class="weight-bar-item">
+                    <div class="weight-bar" style="width: 50px; background: linear-gradient(180deg, #00ff88, #00aa55); height: 60px;"></div>
+                    <span class="weight-date">15/5</span>
+                    <span class="weight-value" style="color: #00ff88;">73.60</span>
+                </div>
+                <div class="weight-bar-item">
+                    <div class="weight-bar" style="width: 50px; background: linear-gradient(180deg, #00ff88, #00aa55); height: 60px;"></div>
+                    <span class="weight-date">16/5</span>
+                    <span class="weight-value" style="color: #00ff88;">73.60</span>
+                </div>
+                <div class="weight-bar-item">
+                    <div class="weight-bar" style="width: 50px; background: linear-gradient(180deg, #ffd700, #cc9900); height: 76px;"></div>
+                    <span class="weight-date">17/5</span>
+                    <span class="weight-value" style="color: #ffd700;">73.90</span>
+                </div>
+                <div class="weight-bar-item">
+                    <div class="weight-bar" style="width: 50px; background: linear-gradient(180deg, #00ff88, #00aa55); height: 60px;"></div>
+                    <span class="weight-date">18/5</span>
+                    <span class="weight-value" style="color: #00ff88;">73.60</span>
+                </div>
+                <div class="weight-bar-item">
+                    <div class="weight-bar" style="width: 50px; background: linear-gradient(180deg, #00ff88, #00aa55); height: 55px;"></div>
+                    <span class="weight-date">19/5</span>
+                    <span class="weight-value" style="color: #00ff88;">72.60</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 10px; font-size: 0.85em; color: #888;">
+                ✅ ถึงเป้าแล้ว! 72.60 kg — เหลือแค่ 0.60 kg จากเป้า!
+            </div>
+        </div>
+    </div>
+
+    <!-- Bar Chart -->
+    <div class="card">
+        <h2>📈 Calories รายวัน</h2>
+        <div class="bar-chart">
+            <div class="bar-row">
+                <span class="bar-label">12/5</span>
+                <div class="bar-container"><div class="bar-intake" style="width: 24%;"></div></div>
+                <div class="bar-value" style="color:#ff4757;">890</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label"></span>
+                <div class="bar-container"><div class="bar-burn" style="width: 71%;"></div></div>
+                <div class="bar-value" style="color:#00d4ff;">2,586</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">13/5</span>
+                <div class="bar-container"><div class="bar-intake" style="width: 41%;"></div></div>
+                <div class="bar-value" style="color:#ff4757;">1,510</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label"></span>
+                <div class="bar-container"><div class="bar-burn" style="width: 82%;"></div></div>
+                <div class="bar-value" style="color:#00d4ff;">2,988</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">14/5</span>
+                <div class="bar-container"><div class="bar-intake" style="width: 65%; background:#ffa502;"></div></div>
+                <div class="bar-value" style="color:#ffa502;">2,370</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label"></span>
+                <div class="bar-container"><div class="bar-burn" style="width: 53%;"></div></div>
+                <div class="bar-value" style="color:#00d4ff;">1,950</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">15/5</span>
+                <div class="bar-container"><div class="bar-intake" style="width: 55%;"></div></div>
+                <div class="bar-value" style="color:#ff4757;">2,030</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label"></span>
+                <div class="bar-container"><div class="bar-burn" style="width: 100%;"></div></div>
+                <div class="bar-value" style="color:#00d4ff;">3,660</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">16/5</span>
+                <div class="bar-container"><div class="bar-intake" style="width: 38%;"></div></div>
+                <div class="bar-value" style="color:#ff4757;">1,375</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label"></span>
+                <div class="bar-container"><div class="bar-burn" style="width: 61%;"></div></div>
+                <div class="bar-value" style="color:#00d4ff;">2,235</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">17/5</span>
+                <div class="bar-container"><div class="bar-intake" style="width: 26%;"></div></div>
+                <div class="bar-value" style="color:#ff4757;">955</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label"></span>
+                <div class="bar-container"><div class="bar-burn" style="width: 78%;"></div></div>
+                <div class="bar-value" style="color:#00d4ff;">2,837</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">18/5</span>
+                <div class="bar-container"><div class="bar-intake" style="width: 27%;"></div></div>
+                <div class="bar-value" style="color:#ff4757;">1,000</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label"></span>
+                <div class="bar-container"><div class="bar-burn" style="width: 62%;"></div></div>
+                <div class="bar-value" style="color:#00d4ff;">2,250</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">19/5</span>
+                <div class="bar-container"><div class="bar-intake" style="width: 23%;"></div></div>
+                <div class="bar-value" style="color:#ff4757;">840</div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label"></span>
+                <div class="bar-container"><div class="bar-burn" style="width: 73%;"></div></div>
+                <div class="bar-value" style="color:#00d4ff;">2,683</div>
+            </div>
+        </div>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-box" style="background:#ff4757;"></div><span>กินเข้า</span></div>
+            <div class="legend-item"><div class="legend-box" style="background:#00d4ff;"></div><span>เผาผลาญ</span></div>
+        </div>
+    </div>
+
+    <!-- Running Graph -->
+    <div class="card">
+        <h2>🏃 กราฟการวิ่ง/เดิน</h2>
+        <div class="run-chart">
+            <div class="run-row">
+                <span class="run-row-header">12/5</span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-dist" style="width: 50%; background: #00d4ff;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value dist">5.23 km</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header"></span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-pace" style="width: 60%; background: #ff6b6b;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value pace">13:46</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header">13/5</span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-dist" style="width: 58%; background: #00d4ff;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value dist">6.07 km</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header"></span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-pace" style="width: 65%; background: #ff6b6b;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value pace">13:30</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header">14/5</span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-dist" style="width: 0%; background: #333;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value dist" style="color:#666;">—</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header"></span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-pace" style="width: 0%; background: #333;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value pace" style="color:#666;">พัก</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header">15/5</span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-dist" style="width: 100%; background: linear-gradient(90deg, #00ff88, #00d4ff);"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value dist" style="color:#00ff88;">10.40 km</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header"></span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-pace" style="width: 80%; background: #ff6b6b;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value pace">12:36</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header">16/5</span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-dist" style="width: 29%; background: #00d4ff;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value dist">3.02 km</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header"></span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-pace" style="width: 62%; background: #ff6b6b;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value pace">13:27</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header new-record">17/5 🏆</span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-dist" style="width: 70%; background: linear-gradient(90deg, #ffd700, #ff8c00);"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value dist new-record">7.24 km</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header"></span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-pace" style="width: 85%; background: #ff6b6b;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value pace new-record">13:00</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header">18/5</span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-dist" style="width: 0%; background: #333;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value dist" style="color:#666;">—</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header"></span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-pace" style="width: 0%; background: #333;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value pace" style="color:#666;">ตีแบด 30'</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header new-record">19/5 🆕</span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-dist" style="width: 68%; background: #00d4ff;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value dist new-record">7.08 km</span>
+            </div>
+            <div class="run-row">
+                <span class="run-row-header"></span>
+                <div class="run-bar-wrap">
+                    <div class="run-bar-container">
+                        <div class="run-bar-pace" style="width: 75%; background: #ff6b6b;"></div>
+                    </div>
+                </div>
+                <span class="run-bar-value pace">14:18</span>
+            </div>
+        </div>
+        <div class="legend" style="margin-top: 15px;">
+            <div class="legend-item"><div class="legend-box" style="background:#00d4ff;"></div><span>ระยะทาง (km)</span></div>
+            <div class="legend-item"><div class="legend-box" style="background:#ff6b6b;"></div><span>Pace / กิจกรรม</span></div>
+        </div>
+    </div>
+
+    <!-- Day 12/5 -->
+    <div class="card">
+        <div class="day">
+            <div class="day-header">
+                <span class="day-date">📅 12/5 (จันทร์)</span>
+                <span class="day-weight">น้ำหนัก: 73.80 kg</span>
+                <span class="deficit positive">+1,696</span>
+            </div>
+            <div class="meals">
+                <div class="meal"><span class="meal-name">🍳 มื้อเช้า: ข้าวเหนียว + ไก่ย่าง + มันฝรั่งทอด 1 ชิ้น</span><span class="meal-kcal">890</span></div>
+                <div class="meal"><span class="meal-name">🥣 มื้อเที่ยง: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+                <div class="meal"><span class="meal-name">🍽️ มื้อเย็น: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+                <div class="meal"><span class="meal-name">🌙 มื้อค่ำ: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+            </div>
+            <div class="exercise">
+                <div class="exercise-item">
+                    <span class="exercise-type">🚶 Walk</span>
+                    <span class="exercise-burn">636 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">5.23 km | 72 นาที | Pace 13:46/km</span>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-row"><span class="summary-label">TDEE</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">Exercise</span><span class="summary-value positive">+636</span></div>
+                <div class="summary-row"><span class="summary-label">รวมเผา</span><span class="summary-value">2,586</span></div>
+                <div class="summary-row"><span class="summary-label">รวมกิน</span><span class="summary-value">890</span></div>
+                <div class="summary-row"><span class="summary-label">Deficit</span><span class="summary-value positive">+1,696 ✅</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 13/5 -->
+    <div class="card">
+        <div class="day">
+            <div class="day-header">
+                <span class="day-date">📅 13/5 (อังคาร)</span>
+                <span class="day-weight">น้ำหนัก: —</span>
+                <span class="deficit positive">+1,478</span>
+            </div>
+            <div class="meals">
+                <div class="meal"><span class="meal-name">🍳 มื้อเช้า: ข้าวเหนียว + ไก่ย่าง + มัน</span><span class="meal-kcal">390</span></div>
+                <div class="meal"><span class="meal-name">🥣 มื้อเที่ยง: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+                <div class="meal"><span class="meal-name">🍽️ มื้อเย็น: ไก่ย่าง 3 ชิ้น + ตับ 2 ชิ้น</span><span class="meal-kcal">520</span></div>
+                <div class="meal"><span class="meal-name">🌙 มื้อค่ำ: ลาบ + ยำมะม่วง</span><span class="meal-kcal">600</span></div>
+            </div>
+            <div class="exercise">
+                <div class="exercise-item">
+                    <span class="exercise-type">🏋️ Bodyweight</span>
+                    <span class="exercise-burn">350 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">Push-up 15x3 | Squat 20x3 | Plank 30s x3 | Lunges 12x3</span>
+                </div>
+                <div class="exercise-item" style="margin-top: 5px;">
+                    <span class="exercise-type">🚶 Walk</span>
+                    <span class="exercise-burn">688 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">6.07 km | 82 นาที | Pace 13:30/km</span>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-row"><span class="summary-label">TDEE</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">Exercise</span><span class="summary-value positive">+1,038</span></div>
+                <div class="summary-row"><span class="summary-label">รวมเผา</span><span class="summary-value">2,988</span></div>
+                <div class="summary-row"><span class="summary-label">รวมกิน</span><span class="summary-value">1,510</span></div>
+                <div class="summary-row"><span class="summary-label">Deficit</span><span class="summary-value positive">+1,478 ✅</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 14/5 -->
+    <div class="card">
+        <div class="day">
+            <div class="day-header">
+                <span class="day-date">📅 14/5 (พุธ)</span>
+                <span class="day-weight">น้ำหนัก: —</span>
+                <span class="deficit negative">-420 ⚠️</span>
+            </div>
+            <div class="meals">
+                <div class="meal"><span class="meal-name">🍳 มื้อเช้า: กล้วย + ไวไวต้มโคล้ง</span><span class="meal-kcal">390</span></div>
+                <div class="meal"><span class="meal-name">🥣 มื้อเที่ยง: ข้าวหมูแดง + หมูกรอบ + กุนเชียง</span><span class="meal-kcal">500</span></div>
+                <div class="meal"><span class="meal-name">🍽️ มื้อเย็น: ข้าวเหนียว + ตำ + ไส้ + ทุเรียน 500g</span><span class="meal-kcal">1,480</span></div>
+            </div>
+            <div class="exercise">
+                <div class="exercise-item">
+                    <span class="exercise-type">🏃 ไม่ได้ออกกำลัง</span>
+                    <span class="exercise-burn">0 kcal</span>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-row"><span class="summary-label">TDEE</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">Exercise</span><span class="summary-value">+0</span></div>
+                <div class="summary-row"><span class="summary-label">รวมเผา</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">รวมกิน</span><span class="summary-value negative">2,370</span></div>
+                <div class="summary-row"><span class="summary-label">Deficit</span><span class="summary-value negative">-420 ❌</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 15/5 -->
+    <div class="card">
+        <div class="day">
+            <div class="day-header">
+                <span class="day-date">📅 15/5 (พฤหัส)</span>
+                <span class="day-weight">น้ำหนัก: 73.60 kg</span>
+                <span class="deficit positive">+1,630</span>
+            </div>
+            <div class="meals">
+                <div class="meal"><span class="meal-name">🍳 มื้อเช้า: กล้วย 1 ผล</span><span class="meal-kcal">120</span></div>
+                <div class="meal"><span class="meal-name">🥣 มื้อเที่ยง: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+                <div class="meal"><span class="meal-name">🍽️ มื้อเย็น: ก๋วยเตี๋ยว + ปลา + ไข่ + ลูกชิ้น + ทอดมัน</span><span class="meal-kcal">1,130</span></div>
+                <div class="meal"><span class="meal-name">🌙 มื้อค่ำ: ปีกไก่ย่าง 3 + ลาบหมู</span><span class="meal-kcal">780</span></div>
+            </div>
+            <div class="exercise">
+                <div class="exercise-item">
+                    <span class="exercise-type">🏋️ Bodyweight</span>
+                    <span class="exercise-burn">450 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">Jumping Jack 60x3 | Squat 10x6 | Push-up 10x6 | Lunges 10x6 | Mountain Climber 40x3</span>
+                </div>
+                <div class="exercise-item" style="margin-top: 5px;">
+                    <span class="exercise-type">🏃 Run</span>
+                    <span class="exercise-burn">1,260 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">10.40 km | 131 นาที | Pace 12:36/km</span>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-row"><span class="summary-label">TDEE</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">Exercise</span><span class="summary-value positive">+1,710</span></div>
+                <div class="summary-row"><span class="summary-label">รวมเผา</span><span class="summary-value">3,660</span></div>
+                <div class="summary-row"><span class="summary-label">รวมกิน</span><span class="summary-value">2,030</span></div>
+                <div class="summary-row"><span class="summary-label">Deficit</span><span class="summary-value positive">+1,630 ✅</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 16/5 -->
+    <div class="card">
+        <div class="day">
+            <div class="day-header">
+                <span class="day-date">📅 16/5 (เสาร์)</span>
+                <span class="day-weight">น้ำหนัก: 73.60 kg</span>
+                <span class="deficit positive">+860</span>
+            </div>
+            <div class="meals">
+                <div class="meal"><span class="meal-name">🍳 มื้อเช้า: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+                <div class="meal"><span class="meal-name">🥣 มื้อเที่ยง: ข้าว 1 ถ้วยเล็ก + เกาเหลาเนื้อพิเศษ</span><span class="meal-kcal">700</span></div>
+                <div class="meal"><span class="meal-name">🍽️ มื้อเย็น: สเต็ก 300g (lean) + บรอคโคลีย่าง + ขนมปังเนยถั่ว 2 แผ่น</span><span class="meal-kcal">675</span></div>
+                <div class="meal"><span class="meal-name">🌙 มื้อค่ำ: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+            </div>
+            <div class="exercise">
+                <div class="exercise-item">
+                    <span class="exercise-type">🚶 Walk</span>
+                    <span class="exercise-burn">285 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">3.02 km | 41 นาที | Pace 13:27/km</span>
+                </div>
+                <div class="exercise-item" style="margin-top: 5px;">
+                    <span class="exercise-type">🏋️ Bodyweight</span>
+                    <span class="exercise-burn" style="color:#888;">ข้าม ❌</span>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-row"><span class="summary-label">TDEE</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">Exercise</span><span class="summary-value positive">+285</span></div>
+                <div class="summary-row"><span class="summary-label">รวมเผา</span><span class="summary-value">2,235</span></div>
+                <div class="summary-row"><span class="summary-label">รวมกิน</span><span class="summary-value">1,375</span></div>
+                <div class="summary-row"><span class="summary-label">Deficit</span><span class="summary-value positive">+860 ✅</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 17/5 -->
+    <div class="card">
+        <div class="day">
+            <div class="day-header">
+                <span class="day-date">📅 17/5 (อาทิตย์)</span>
+                <span class="day-weight">น้ำหนัก: 73.90 kg</span>
+                <span class="deficit positive">+1,882</span>
+            </div>
+            <div class="meals">
+                <div class="meal"><span class="meal-name">🍳 มื้อเช้า: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+                <div class="meal"><span class="meal-name">🥣 มื้อเที่ยง: ขนมปังเนยถั่ว 2 แผ่น + อกไก่ย่าง 1 ไม้ + สะโพกติดน่อง 1 ไม้ + ตับไก่ 1 ไม้</span><span class="meal-kcal">750</span></div>
+                <div class="meal"><span class="meal-name">🍽️ มื้อเย็น: มยำมะม่วงปลากรอบ 1 จาน (มะม่วง 1 ผล + ปลาตัวเล็ก)</span><span class="meal-kcal">205</span></div>
+                <div class="meal"><span class="meal-name">🌙 มื้อค่ำ: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+            </div>
+            <div class="exercise">
+                <div class="exercise-item">
+                    <span class="exercise-type">🏋️ Bodyweight</span>
+                    <span class="exercise-burn">245 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">Jumping Jack 30x3 | Squat 20x3 | Lunges 10x3</span>
+                </div>
+                <div class="exercise-item" style="margin-top: 5px;">
+                    <span class="exercise-type">🚶 Walk</span>
+                    <span class="exercise-burn">642 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">7.24 km | 94 นาที | Pace 13:00/km 🏆</span>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-row"><span class="summary-label">TDEE</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">Exercise</span><span class="summary-value positive">+887</span></div>
+                <div class="summary-row"><span class="summary-label">รวมเผา</span><span class="summary-value">2,837</span></div>
+                <div class="summary-row"><span class="summary-label">รวมกิน</span><span class="summary-value">955</span></div>
+                <div class="summary-row"><span class="summary-label">Deficit</span><span class="summary-value positive">+1,882 ✅</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 18/5 -->
+    <div class="card">
+        <div class="day">
+            <div class="day-header">
+                <span class="day-date">📅 18/5 (จันทร์)</span>
+                <span class="day-weight">น้ำหนัก: 73.60 kg ✅</span>
+                <span class="deficit positive">+1,250</span>
+            </div>
+            <div class="meals">
+                <div class="meal"><span class="meal-name">🍳 มื้อเช้า: ขนมปังโฮมวีท 1 แผ่น + เนยถั่ว JIF 1 tsp</span><span class="meal-kcal">120</span></div>
+                <div class="meal"><span class="meal-name">🥣 มื้อเที่ยง: ข้าวผัด 10 คำ + หมูทอดสับทอด 100g</span><span class="meal-kcal">500</span></div>
+                <div class="meal"><span class="meal-name">🍽️ มื้อเย็น: นม Sunshine High Protein 250ml (33g Protein)</span><span class="meal-kcal">250</span></div>
+                <div class="meal"><span class="meal-name">🌙 มื้อค่ำ: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+            </div>
+            <div class="exercise">
+                <div class="exercise-item">
+                    <span class="exercise-type">🏸 แบดมินตัน</span>
+                    <span class="exercise-burn">300 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">30 นาที</span>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-row"><span class="summary-label">TDEE</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">Exercise</span><span class="summary-value positive">+300</span></div>
+                <div class="summary-row"><span class="summary-label">รวมเผา</span><span class="summary-value">2,250</span></div>
+                <div class="summary-row"><span class="summary-label">รวมกิน</span><span class="summary-value">870</span></div>
+                <div class="summary-row"><span class="summary-label">Deficit</span><span class="summary-value positive">+1,380 ✅</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 19/5 -->
+    <div class="card">
+        <div class="day new-day">
+            <div class="day-header">
+                <span class="day-date">📅 19/5 (อังคาร) 🆕</span>
+                <span class="day-weight">น้ำหนัก: 72.60 kg ✅</span>
+                <span class="deficit positive">+1,843</span>
+            </div>
+            <div class="meals">
+                <div class="meal"><span class="meal-name">🍳 มื้อเช้า: — ไม่ได้กิน —</span><span class="meal-kcal">0</span></div>
+                <div class="meal"><span class="meal-name">🥣 มื้อเที่ยง: ขนมปังโฮมวีท 1 แผ่น + เนยถั่ว JIF 1 tsp</span><span class="meal-kcal">120</span></div>
+                <div class="meal"><span class="meal-name">🍽️ มื้อเย็น: หมูสับแฮมเบิก 200g + ข้าว 100g + เกาเหลาเนื้อ</span><span class="meal-kcal">600</span></div>
+                <div class="meal"><span class="meal-name">🌙 มื้อค่ำ: Jello 120 kcal</span><span class="meal-kcal">120</span></div>
+            </div>
+            <div class="exercise">
+                <div class="exercise-item">
+                    <span class="exercise-type">🚶 Walk</span>
+                    <span class="exercise-burn">733 kcal</span>
+                </div>
+                <div class="exercise-item">
+                    <span class="exercise-detail">7.08 km | 101 นาที | Pace 14:18/km | HR avg 116, max 145</span>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-row"><span class="summary-label">TDEE</span><span class="summary-value">1,950</span></div>
+                <div class="summary-row"><span class="summary-label">Exercise</span><span class="summary-value positive">+733</span></div>
+                <div class="summary-row"><span class="summary-label">รวมเผา</span><span class="summary-value">2,683</span></div>
+                <div class="summary-row"><span class="summary-label">รวมกิน</span><span class="summary-value">840</span></div>
+                <div class="summary-row"><span class="summary-label">Deficit</span><span class="summary-value positive">+1,843 ✅</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Goal -->
+    <div class="card">
+        <h2>🎯 เป้าหมาย</h2>
+        <div class="goal-summary">
+            <div class="goal-item"><div class="value">74.00 kg</div><div class="label">เริ่มต้น (12/5)</div></div>
+            <div class="goal-item"><div class="value">73.60 kg</div><div class="label">ปัจจุบัน (19/5)</div></div>
+            <div class="goal-item"><div class="value positive">-1.40 kg</div><div class="label">ลดได้</div></div>
+            <div class="goal-item"><div class="value">72.00 kg</div><div class="label">เป้า (23/5)</div></div>
+            <div class="goal-item"><div class="value negative">0.60 kg</div><div class="label">เหลือลด</div></div>
+            <div class="goal-item"><div class="value">4 วัน</div><div class="label">ระยะเวลา</div></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🏋️ สร้างโดย Hulks Fitness Coach | TDEE: 1,950 kcal | อัปเดต: 19/5/2569</p>
+    </div>
+</body>
+</html>
