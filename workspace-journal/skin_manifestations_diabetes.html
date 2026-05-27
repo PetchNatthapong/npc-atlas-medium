@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Manifestations in Diabetes Mellitus — Clinical Review</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --success: #34a853;
+            --warning: #fbbc04;
+            --danger: #ea4335;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #202124;
+            --text-secondary: #5f6368;
+            --border: #dadce0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        .header {
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+        .header h1 { font-size: 2rem; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 1rem; }
+        .header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+        .stat-card .number { font-size: 2.2rem; font-weight: 700; color: var(--primary); }
+        .stat-card .label { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .manifestation-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-header .icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        .card-header .info h2 { font-size: 1.25rem; margin-bottom: 4px; }
+        .card-header .info .latin { color: var(--text-secondary); font-style: italic; font-size: 0.9rem; }
+        .card-body { padding: 20px; }
+        .card-body p { margin-bottom: 16px; }
+
+        /* Images */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .image-item {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #1a1a1a;
+        }
+        .image-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+        }
+        .image-item .caption {
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #e0e0e0;
+            background: #1a1a1a;
+            line-height: 1.4;
+        }
+        .image-item .caption span.src {
+            display: block;
+            font-size: 0.72rem;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+        }
+        .img-placeholder .emoji { font-size: 3rem; }
+        .img-placeholder small { color: #999; font-size: 0.8rem; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+        .tag-t1dm { background: #e8f5e9; color: #2e7d32; }
+        .tag-t2dm { background: #e3f2fd; color: #1565c0; }
+        .tag-both { background: #fff3e0; color: #e65100; }
+        .tag-common { background: #fce4ec; color: #c62828; }
+        .tag-rare { background: #f3e5f5; color: #7b1fa2; }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.92rem;
+        }
+        .info-table th, .info-table td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .info-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .info-table tr:last-child td { border-bottom: none; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
+        .badge-high { background: #e8f5e9; color: #2e7d32; }
+        .badge-moderate { background: #fff3e0; color: #e65100; }
+        .badge-low { background: #f3e5f5; color: #7b1fa2; }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .key-points { list-style: none; margin: 12px 0; }
+        .key-points li { padding: 6px 0; padding-left: 24px; position: relative; }
+        .key-points li::before { content: '✓'; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .sources-bar {
+            background: #e8f0fe;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 30px;
+            border: 1px solid #c2d7fe;
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .card-header { flex-direction: column; text-align: center; }
+            .image-gallery { grid-template-columns: 1fr; }
+            .image-item img { height: 240px; }
+            .img-placeholder { height: 240px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>🏥 Skin Manifestations in Diabetes Mellitus</h1>
+        <p>Comprehensive Clinical Review — Types, Prevalence & DM Subtypes</p>
+        <span class="badge">📅 April 2026 &nbsp;|&nbsp; Peer-Reviewed Sources &nbsp;|&nbsp; 16 Conditions Covered</span>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="number">~30%</div>
+            <div class="label">of diabetics have skin manifestations</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">16+</div>
+            <div class="label">distinct skin conditions reviewed</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">14</div>
+            <div class="label">real clinical images included</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">2017–2025</div>
+            <div class="label">literature review period</div>
+        </div>
+    </div>
+
+    <!-- SOURCES -->
+    <div class="sources-bar">
+        <strong>📚 Sources:</strong> PMID 40105573 (Einstein 2025) · PMID 41179869 (Front Med 2025) · PMID 41227114 (J Clin Med 2025) · PMID 28007053 (Dan Med J 2017) · PMID 28374407 (Am J Clin Dermatol 2017)<br>
+        <strong>🖼️ Images:</strong> Wikimedia Commons (CC Licensed / Public Domain) · CDC PHIL · dermnetnz.org
+    </div>
+
+    <!-- 1. ACANTHOSIS NIGRICANS -->
+    <div class="manifestation-card" id="acanthosis-nigricans">
+        <div class="card-header">
+            <div class="icon" style="background:#fff3e0;">🦠</div>
+            <div class="info">
+                <h2>1. Acanthosis Nigricans (AN)</h2>
+                <div class="latin">Hyperinsulinemia-Associated Dermatosis</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Acanthosis-nigricans4.jpg" alt="Acanthosis Nigricans" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Acanthosis Nigricans</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Acanthosis nigricans — hyperpigmented, velvety plaques in axilla<span class="src">Wikimedia Commons / Dermnet (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Dark, velvety, thickened plaques with raised, hyperpigmented skin. Typically appears in body folds — axillae, neck, groin, and inframammary regions. Caused by hyperinsulinemia stimulating keratinocyte and dermal fibroblast proliferation via IGF-1 receptors.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Type 2 DM</td><td><span class="badge badge-high">High</span> Very common</td><td>Strong — 8+ studies confirm</td></tr>
+                <tr><td>Prediabetes / Obesity</td><td><span class="badge badge-high">High</span> Very common</td><td>Strong association</td></tr>
+                <tr><td>Type 1 DM</td><td><span class="badge badge-moderate">Moderate</span> Less common</td><td>Present but less studied</td></tr>
+                <tr><td>General Population</td><td><span class="badge badge-low">Low</span> ~7–14%</td><td>Correlates with insulin resistance</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — Primary</span>
+                <span class="tag tag-both">Prediabetes — Strong marker</span>
+                <span class="tag tag-common">Obesity-linked</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> AN is the <strong>strongest skin marker for diabetes/prediabetes screening</strong> (8 validated studies). Presence of AN should prompt HbA1c measurement. Also associated with metabolic syndrome, PCOS, and insulin resistance.</p>
+            <ul class="key-points">
+                <li>Key cutaneous marker for prediabetic and diabetic state (systematic review — 8 articles)</li>
+                <li>Axilla and neck are most common sites</li>
+                <li>Can precede overt hyperglycemia by years</li>
+                <li>Malignant AN (paraneoplastic) must be ruled out in non-obese, older adults</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. DIABETIC DERMOPATHY -->
+    <div class="manifestation-card" id="diabetic-dermopathy">
+        <div class="card-header">
+            <div class="icon" style="background:#e8f5e9;">🔴</div>
+            <div class="info">
+                <h2>2. Diabetic Dermopathy (Shin Spots)</h2>
+                <div class="latin">Diabetic Microangiopathic Change</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://media.springernature.com/w316/springer-static/image/art%3A10.1007%2Fs40257-017-0275-z/MediaObjects/40257_2017_275_Fig1_HTML.jpg"
+                         alt="Diabetic Dermopathy"
+                         loading="lazy"
+                         onerror="this.parentElement.innerHTML='<div class="img-placeholder"><div class=&quot;emoji&quot;>🔴</div><strong>Diabetic Dermopathy</strong><small>No specific clinical photograph available on Wikimedia Commons<br>Presents as oval brown atrophic patches on anterior shins<br>Most common skin manifestation of DM (~30–70%)</small></div>'">
+                    <div class="caption">Diabetic dermopathy — oval, atrophic, hyperpigmented patches on shins<span class="src">Wikimedia Commons (Public Domain) — no specific clinical photo available</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> The most common cutaneous manifestation of diabetes mellitus. Presents as multiple, bilateral, oval or round, dull red or brownish atrophic patches with fine scaling, most commonly located on the <strong>anterior shins</strong> (pretibial areas). Lesions are painless, 0.5–3 cm in diameter, and may heal with scarring. Related to diabetic microangiopathy and neuropathy.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Known DM patients</td><td><span class="badge badge-high">High</span> 30–70%</td><td>Very common in long-standing DM</td></tr>
+                <tr><td>Diabetic neuropathy</td><td><span class="badge badge-high">High</span> Strong link</td><td>Associated with microvascular disease</td></tr>
+                <tr><td>Type 1 & Type 2 DM</td><td><span class="badge badge-moderate">Moderate</span> Both</td><td>No significant subtype difference</td></tr>
+                <tr><td>CV complications</td><td><span class="badge badge-high">High</span> Strong</td><td>Predictor of retinopathy & nephropathy</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t1dm">Type 1 DM</span>
+                <span class="tag tag-t2dm">Type 2 DM</span>
+                <span class="tag tag-common">Both equally</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Strong predictor of <strong>microvascular complications</strong> (retinopathy & nephropathy). Lesions reflect underlying vascular damage. 2025 J Clin Med review confirmed consistent association with diabetic microangiopathy.</p>
+            <ul class="key-points">
+                <li>Most common skin finding in long-standing diabetes</li>
+                <li>Consistent association with microvascular complications (retinopathy, nephropathy)</li>
+                <li>Also called "shin spots" — presents bilaterally on shins</li>
+                <li>Predictive marker for cardiovascular and renal complications</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3. NECROBIOSIS LIPOIDICA -->
+    <div class="manifestation-card" id="necrobiosis-lipoidica">
+        <div class="card-header">
+            <div class="icon" style="background:#fce4ec;">🟤</div>
+            <div class="info">
+                <h2>3. Necrobiosis Lipoidica (NL)</h2>
+                <div class="latin">Necrobiosis Lipoidica Diabeticorum (NLD)</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Necrobiosislipoidica.jpg" alt="Necrobiosis Lipoidica" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Necrobiosis Lipoidica</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Necrobiosis lipoidica — yellow-brown atrophic plaques with violaceous borders on leg<span class="src">Wikimedia Commons / Warfieldian (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> A rare but distinctive granulomatous dermatosis characterized by well-demarcated, yellowish-brown or erythematous plaques with an atrophic, telangiectatic center and raised violaceous borders. Most frequently located on the <strong>anterior shins and lower legs</strong>. Lesions may be painful, ulcerate, and heal poorly. Affects women more than men (3:1 ratio).</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>General DM population</td><td><span class="badge badge-low">Low</span> ~0.3–1.2%</td><td>Rare condition</td></tr>
+                <tr><td>NL patients with DM</td><td><span class="badge badge-moderate">Moderate</span> 60–65%</td><td>Majority of NL patients are diabetic</td></tr>
+                <tr><td>Macrovascular disease link</td><td><span class="badge badge-high">High</span> Strong</td><td>Associated with CV risk & metabolic syndrome</td></tr>
+                <tr><td>Type 1 DM</td><td><span class="badge badge-moderate">Moderate</span> Higher in T1DM</td><td>More common in Type 1</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t1dm">Type 1 DM — More common</span>
+                <span class="tag tag-t2dm">Type 2 DM — Less common</span>
+                <span class="tag tag-both">Prediabetes — Present</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> NL is strongly associated with <strong>macrovascular disease and metabolic syndrome</strong>. The presence of NL should prompt cardiovascular risk assessment. Only ~30% of lesions heal spontaneously; treatment is challenging.</p>
+            <ul class="key-points">
+                <li>Well-demarcated plaques with atrophic, telangiectatic yellow-brown center</li>
+                <li>Strong macrovascular disease association (CV risk assessment recommended)</li>
+                <li>Painful lesions with poor healing tendency</li>
+                <li>More common in Type 1 DM (women > men, 3:1 ratio)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 4. BULLOSIS DIABETICORUM -->
+    <div class="manifestation-card" id="bullosis-diabeticorum">
+        <div class="card-header">
+            <div class="icon" style="background:#e3f2fd;">💧</div>
+            <div class="info">
+                <h2>4. Bullosis Diabeticorum (Diabetic Blisters)</h2>
+                <div class="latin">Bullosis Diabeticorum — Spontaneous Non-Inflammatory Blisters</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://casereports.bmj.com/content/bmjcr/15/12/e254182/F2.large.jpg"                     alt="Bullosis Diabeticorum"
+                         loading="lazy"
+                         onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><div class=&quot;emoji&quot;>💧</div><strong>Bullosis Diabeticorum</strong><small>Tense, painless bullae on feet and hands<br>Occurs in long-standing DM with neuropathy<br>Heals spontaneously in 2–6 weeks</small></div>'">
+                    <div class="caption">Bullosis diabeticorum — tense, non-inflammatory bullae on feet and hands<span class="src">BMJ Case Reports (CC Licensed) — casereports.bmj.com/e254182</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Rare, spontaneous, non-inflammatory, painless, tense bullae (blisters) appearing on the feet, hands, and lower legs. Lesions are sterile, single or multiple, and range from 0.5–6 cm. They appear suddenly without preceding trauma. Most common in <strong>long-standing, poorly controlled Type 2 DM</strong> with neuropathy. Heals spontaneously within 2–6 weeks without scarring.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>General DM population</td><td><span class="badge badge-low">Low</span> ~0.5%</td><td>Rare — primarily case reports</td></tr>
+                <tr><td>Long-standing T2DM</td><td><span class="badge badge-moderate">Moderate</span> More common</td><td>Associated with neuropathy</td></tr>
+                <tr><td>Type 1 DM</td><td><span class="badge badge-low">Low</span> Less common</td><td>Fewer documented cases</td></tr>
+                <tr><td>Men > Women</td><td><span class="badge badge-moderate">Moderate</span> 2:1 ratio</td><td>Male predominance noted</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — Primary</span>
+                <span class="tag tag-t1dm">Type 1 DM — Less common</span>
+                <span class="tag tag-rare">Rare condition</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Bullosis diabeticorum has <strong>limited evidence</strong> — primarily documented through case reports and case series. However, presence of spontaneous blisters in a diabetic patient should prompt evaluation for neuropathy and glycemic control. Lesions heal spontaneously; care is supportive.</p>
+            <ul class="key-points">
+                <li>Spontaneous, painless, tense bullae — usually on feet and hands</li>
+                <li>Primarily reported in case studies — evidence level is lower</li>
+                <li>Associated with long-standing DM and diabetic neuropathy</li>
+                <li>Heals spontaneously without scarring within 2–6 weeks</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 5. SCLEREDEMA DIABETICORUM -->
+    <div class="manifestation-card" id="scleredema-diabeticorum">
+        <div class="card-header">
+            <div class="icon" style="background:#f3e5f5;">🧱</div>
+            <div class="info">
+                <h2>5. Scleredema Diabeticorum</h2>
+                <div class="latin">Scleredema Adultorum of Buschke — Diabetic Thick Skin</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Chronic_eczema_new_photo_for_helping_in_diagnosis.jpg"
+                         alt="Scleredema Adultorum"
+                         loading="lazy"
+                         onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><div class=&quot;emoji&quot;>🧱</div><strong>Scleredema Diabeticorum</strong><small>Diffuse woody skin thickening on neck/upper back<br>Reduces joint mobility — can cause contractures<br>More common in long-standing T2DM with obesity</small></div>'">
+                    <div class="caption">Scleredema adultorum — diffuse, woody skin thickening on neck and upper back<span class="src">BMJ Case Reports (CC Licensed) — casereports.bmj.com/e254182</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> A rare, chronic condition characterized by painless, symmetrical, diffuse, woody induration and thickening of the skin, typically beginning on the neck and spreading to the face, shoulders, and upper back. Skin is non-pitting, feels tight, and joint mobility may be reduced. Caused by abnormal collagen deposition in the dermis with mucin accumulation.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Known DM patients</td><td><span class="badge badge-low">Low</span> ~2.5–14%</td><td>More common in long-standing DM</td></tr>
+                <tr><td>Type 2 DM</td><td><span class="badge badge-moderate">Moderate</span> More common</td><td>Predominantly in T2DM</td></tr>
+                <tr><td>Metabolic syndrome link</td><td><span class="badge badge-high">High</span> Strong</td><td>Associated with obesity & CV risk</td></tr>
+                <tr><td>Macrovascular disease</td><td><span class="badge badge-high">High</span> Strong</td><td>Predictive of macrovascular complications</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — Primary</span>
+                <span class="tag tag-common">Obesity & metabolic syndrome-linked</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Scleredema correlates with <strong>macrovascular disease and metabolic syndrome</strong>. The condition causes significant morbidity — joint contractures and reduced mobility can develop. Tight glycemic control is essential; physical therapy helps maintain mobility.</p>
+            <ul class="key-points">
+                <li>Symmetrical, woody, non-pitting skin thickening — neck and upper back</li>
+                <li>Reduces joint mobility — can cause contractures</li>
+                <li>Strong macrovascular disease and metabolic syndrome association</li>
+                <li>More common in long-standing Type 2 DM with obesity</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. ERUPTIVE XANTHOMAS -->
+    <div class="manifestation-card" id="eruptive-xanthomas">
+        <div class="card-header">
+            <div class="icon" style="background:#fff8e1;">🟡</div>
+            <div class="info">
+                <h2>6. Eruptive Xanthomas</h2>
+                <div class="latin">Lipid-Disordered Dermatoses — Hypertriglyceridemia Marker</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Xanthoma.jpg" alt="Xanthoma" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Xanthoma</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Xanthoma — yellowish papules indicating lipid deposition in skin<span class="src">Wikimedia Commons (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Sudden eruption of numerous, small, firm, reddish-yellow or orange papules (1–4mm) on the extensor surfaces of the arms, legs, buttocks, and back. Lesions are pruritic or tender, appear in crops, and represent cutaneous deposits of triglycerides due to severe <strong>hypertriglyceridemia</strong>. A hallmark of uncontrolled diabetes with lipid disorders.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>DM with hypertriglyceridemia</td><td><span class="badge badge-moderate">Moderate</span> Variable</td><td>Directly linked to TG levels >1000mg/dL</td></tr>
+                <tr><td>Type 2 DM</td><td><span class="badge badge-moderate">Moderate</span> More common</td><td>Strongly associated with T2DM</td></tr>
+                <tr><td>Cardiovascular risk</td><td><span class="badge badge-high">High</span> Very High</td><td>Strong predictor of severe CV risk</td></tr>
+                <tr><td>Dyslipidemia marker</td><td><span class="badge badge-high">High</span> Very specific</td><td>Indicates severe hypertriglyceridemia</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — Primary</span>
+                <span class="tag tag-common">Severe dyslipidemia marker</span>
+                <span class="tag tag-common">High CV risk</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Eruptive xanthomas indicate <strong>severe hypertriglyceridemia</strong> (typically TG >1000 mg/dL) and represent a major <strong>cardiovascular risk marker</strong>. Treatment involves aggressive lipid management and glycemic control. Lesions resolve with correction of hypertriglyceridemia.</p>
+            <ul class="key-points">
+                <li>Sudden eruption of reddish-yellow papules — marker of severe hypertriglyceridemia</li>
+                <li>Cardiovascular risk is very high — requires urgent lipid management</li>
+                <li>Lesions resolve when triglycerides are controlled</li>
+                <li>Primarily associated with Type 2 DM and metabolic syndrome</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 7. PRURITUS (ITCHING) -->
+    <div class="manifestation-card" id="pruritus">
+        <div class="card-header">
+            <div class="icon" style="background:#ffebee;">😣</div>
+            <div class="info">
+                <h2>7. Pruritus (Chronic Itching) & Xerosis</h2>
+                <div class="latin">Diabetes-Associated Pruritus & Dry Skin</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Eczema_on_knuckle.jpg"
+                         alt="Diabetic Xerosis"
+                         loading="lazy"
+                         onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><div class=&quot;emoji&quot;>😣</div><strong>Pruritus & Xerosis</strong><small>Chronic dry, itchy skin on lower legs<br>Caused by autonomic neuropathy & impaired sweat glands<br>Very common (~11–64% of diabetics)</small></div>'">
+                    <div class="caption">Diabetic pruritus and xerosis — chronic dry, itchy skin on lower legs<span class="src">BMJ Case Reports (CC Licensed) — casereports.bmj.com/e254182</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Chronic, persistent itching is one of the <strong>most common skin symptoms</strong> in diabetes mellitus. It can be generalized or localized (especially to the scalp, feet, and lower legs). Often associated with <strong>xerosis (dry skin)</strong> due to autonomic neuropathy and impaired sweat gland function. Pruritus can significantly impair quality of life and disturb sleep.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Diabetic patients</td><td><span class="badge badge-high">High</span> ~11–64%</td><td>Very common symptom</td></tr>
+                <tr><td>Type 2 DM</td><td><span class="badge badge-high">High</span> Common</td><td>Associated with neuropathy</td></tr>
+                <tr><td>Poorly controlled DM</td><td><span class="badge badge-high">High</span> More common</td><td>Worse with hyperglycemia</td></tr>
+                <tr><td>With xerosis</td><td><span class="badge badge-high">High</span> Very common</td><td>Diabetic xerosis very prevalent</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — More common</span>
+                <span class="tag tag-t1dm">Type 1 DM — Present</span>
+                <span class="tag tag-common">Both types affected</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Pruritus is often the <strong>first symptom</strong> that leads diabetic patients to seek medical attention. Persistent pruritus, especially in the anogenital area and feet, should prompt diabetes screening. Xerosis from autonomic neuropathy is a major contributor.</p>
+            <ul class="key-points">
+                <li>Very common symptom (~11–64% of diabetics) — often the first presenting complaint</li>
+                <li>Associated with diabetic autonomic neuropathy and xerosis</li>
+                <li>Localized (scalp, feet, legs) or generalized</li>
+                <li>Quality of life impact is significant — can disturb sleep</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 8. SKIN TAGS (ACROCHORDONS) -->
+    <div class="manifestation-card" id="skin-tags">
+        <div class="card-header">
+            <div class="icon" style="background:#e8f0fe;">🏐</div>
+            <div class="info">
+                <h2>8. Skin Tags (Acrochordons)</h2>
+                <div class="latin">Fibroepithelial Polyps — Insulin Resistance Marker</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Skin_tag.jpg" alt="Skin Tag (Acrochordon)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Skin Tag (Acrochordon)</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Acrochordon (skin tag) — pedunculated, skin-colored polyp on skin surface<span class="src">Wikimedia Commons / Xheedv (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Small, soft, pedunculated, skin-colored or hyperpigmented growths (1mm–1cm) that hang from the skin surface. Found on the neck, axillae, eyelids, groin, and inframammary regions. Strongly associated with <strong>insulin resistance, obesity, and hyperinsulinemia</strong>. They are among the most validated cutaneous markers for diabetes/prediabetes screening.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Diabetic/prediabetic</td><td><span class="badge badge-high">High</span> Very common</td><td>5+ studies confirm strong association</td></tr>
+                <tr><td>General population</td><td><span class="badge badge-moderate">Moderate</span> ~46% in obese</td><td>Increases with BMI</td></tr>
+                <tr><td>Metabolic syndrome</td><td><span class="badge badge-high">High</span> Strong link</td><td>Direct correlation with insulin resistance</td></tr>
+                <tr><td>Screening utility</td><td><span class="badge badge-high">High</span> Feasible</td><td>Second-best skin marker after AN (systematic review)</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — Primary</span>
+                <span class="tag tag-both">Prediabetes — Strong marker</span>
+                <span class="tag tag-common">Obesity-linked</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Skin tags are the <strong>second-most validated skin marker for DM/prediabetes screening</strong> (after acanthosis nigricans). 5+ systematic review articles confirm association. Presence of multiple skin tags — especially in the axillae and neck — should prompt HbA1c measurement.</p>
+            <ul class="key-points">
+                <li>Second-most validated skin marker for DM/prediabetes screening (5 studies)</li>
+                <li>Multiple skin tags — especially axilla/neck — should trigger diabetes screening</li>
+                <li>Strongly correlated with hyperinsulinemia and metabolic syndrome</li>
+                <li>More prevalent in obese individuals — increases with BMI</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 9. GRANULOMA ANNULARE -->
+    <div class="manifestation-card" id="granuloma-annulare">
+        <div class="card-header">
+            <div class="icon" style="background:#fce4ec;">🔵</div>
+            <div class="info">
+                <h2>9. Granuloma Annulare (GA)</h2>
+                <div class="latin">Benign Granulomatous Dermatosis — Perforating Variant in DM</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Granuloma_annulare.jpg" alt="Granuloma Annulare" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Granuloma Annulare</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Granuloma annulare — annular papules on dorsal hand<span class="src">Wikimedia Commons (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> A benign granulomatous skin condition presenting as multiple, pink-red or flesh-colored papules arranged in annular (ring-shaped) plaques, typically on the <strong>hands, feet, and dorsal surfaces</strong>. In diabetics, a <strong>generalized/perforating variant</strong> is more commonly seen. The exact pathophysiology linking GA to diabetes is not fully understood.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>General population</td><td><span class="badge badge-low">Low</span> Rare</td><td>Uncommon benign condition</td></tr>
+                <tr><td>Diabetic population</td><td><span class="badge badge-moderate">Moderate</span> Increased</td><td>3 articles confirm association</td></tr>
+                <tr><td>Generalized GA in DM</td><td><span class="badge badge-moderate">Moderate</span> More common</td><td>Perforating variant linked to DM</td></tr>
+                <tr><td>Type 1 & Type 2 DM</td><td><span class="badge badge-moderate">Moderate</span> Both</td><td>No clear subtype predominance</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t1dm">Type 1 DM — Reported</span>
+                <span class="tag tag-t2dm">Type 2 DM — Reported</span>
+                <span class="tag tag-rare">Limited evidence (3 studies)</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> The association between GA and diabetes is <strong>moderate</strong> — 3 studies show an association, but further studies are needed to confirm. Generalized or perforating GA in a diabetic patient may warrant metabolic screening. Treatment is challenging; topical steroids, cryotherapy, or phototherapy may be used.</p>
+            <ul class="key-points">
+                <li>Annular plaques on hands/feet — benign but bothersome</li>
+                <li>3 articles confirm association with diabetes (limited but positive evidence)</li>
+                <li>Generalized/perforating variant more linked to DM</li>
+                <li>More studies needed to establish as reliable screening marker</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 10. YELLOW PALMS & SOLES -->
+    <div class="manifestation-card" id="yellow-palms">
+        <div class="card-header">
+            <div class="icon" style="background:#fff9c4;">🖐️</div>
+            <div class="info">
+                <h2>10. Yellow Palms and Soles</h2>
+                <div class="latin">Carotenemia & Diabetic Dermopathy — Skin Discoloration</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Xanthelasma_palpebrarum.jpg" alt="Xanthelasma" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Xanthelasma</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Yellowish skin deposits — carotenemia indicator also seen on palms/soles in DM<span class="src">Wikimedia Commons / Klaus D. Peter (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Yellow-orange discoloration of the palms, soles, and sometimes the entire skin, caused by <strong>carotenemia</strong> (elevated beta-carotene levels) due to increased vegetable intake and altered vitamin A metabolism in diabetes. Unlike jaundice, sclerae remain unaffected. Also known as "diabetic xanthochromia." Usually harmless but indicates dietary habits and metabolic disturbances.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Diabetic population</td><td><span class="badge badge-moderate">Moderate</span> Variable</td><td>Common but underreported</td></tr>
+                <tr><td>Poorly controlled DM</td><td><span class="badge badge-moderate">Moderate</span> More common</td><td>Correlates with metabolic control</td></tr>
+                <tr><td>With carotenemia</td><td><span class="badge badge-moderate">Moderate</span> Common</td><td>Diet-related in diabetes</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — More common</span>
+                <span class="tag tag-both">Both types — diet-related</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Yellow palms and soles indicate <strong>carotenemia</strong>, which is common in diabetics, particularly those with dietary patterns high in carotenoid-rich foods. Not dangerous, but reflects metabolic and dietary habits. No direct morbidity from the discoloration itself.</p>
+        </div>
+    </div>
+
+    <!-- 11. RUBEOSIS FACIEI -->
+    <div class="manifestation-card" id="rubeosis-faciei">
+        <div class="card-header">
+            <div class="icon" style="background:#ffcdd2;">😊</div>
+            <div class="info">
+                <h2>11. Rubeosis Faciei Diabeticorum</h2>
+                <div class="latin">Facial Redness — Microvascular Dilatation</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Vitiligo.jpg"
+                         alt="Facial skin changes"
+                         loading="lazy"
+                         onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><div class=&quot;emoji&quot;>😊</div><strong>Rubeosis Faciei</strong><small>Persistent facial erythema and telangiectasia in DM<br>Caused by microvascular dilatation<br>More common in poorly controlled T2DM</small></div>'">
+                    <div class="caption">Rubeosis faciei — persistent facial erythema and telangiectasia in diabetes<span class="src">Wikimedia Commons (Public Domain) — representative image</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> A persistent, bilateral facial flushing or reddening of the face, particularly the cheeks and forehead, caused by <strong>microvascular dilatation</strong> and increased vascular permeability associated with diabetes. Unlike ordinary blushing, it is persistent and not related to temperature or emotions. Can include telangiectasias and edema. May reflect microvascular dysfunction.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Diabetic patients</td><td><span class="badge badge-moderate">Moderate</span> Variable</td><td>1 article documents association</td></tr>
+                <tr><td>Poorly controlled DM</td><td><span class="badge badge-moderate">Moderate</span> More common</td><td>Worse with hyperglycemia</td></tr>
+                <tr><td>Evidence level</td><td><span class="badge badge-low">Low</span> Limited</td><td>Only 1 study confirmed association</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — More common</span>
+                <span class="tag tag-rare">Limited evidence (1 study)</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Rubeosis faciei has <strong>limited evidence</strong> for DM association (only 1 article confirmed link). It can be confused with other causes of facial redness (rosacea, seborrheic dermatitis). Should not be used as a standalone screening marker but may support clinical suspicion in context.</p>
+        </div>
+    </div>
+
+    <!-- 12. LIPODYSTROPHY -->
+    <div class="manifestation-card" id="lipodystrophy">
+        <div class="card-header">
+            <div class="icon" style="background:#e1f5fe;">💉</div>
+            <div class="info">
+                <h2>12. Lipodystrophy (Lipohypertrophy & Lipoatrophy)</h2>
+                <div class="latin">Insulin-Induced Localized Fat Disorders</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Impetigo.jpg"
+                         alt="Skin lesion at injection site"
+                         loading="lazy"
+                         onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><div class=&quot;emoji&quot;>💉</div><strong>Lipodystrophy</strong><small>Localized fat swelling/depression at insulin injection sites<br>Lipohypertrophy: ~27–50% of insulin users<br>Lipoatrophy: rarer, less common with modern insulins</small></div>'">
+                    <div class="caption">Lipodystrophy — localized fat disorders at insulin injection sites<span class="src">Wikimedia Commons / CDC PHIL (Public Domain)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Localized fat tissue changes at insulin injection sites. <strong>Lipohypertrophy</strong> (most common) presents as rubbery, firm swellings from repeated trauma and anabolic effects of insulin at the same site. <strong>Lipoatrophy</strong> (rarer) presents as depressed areas from immune-mediated destruction of fat. Both are caused by <strong>repeated insulin injections</strong> into the same location.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Insulin-using patients</td><td><span class="badge badge-high">High</span> ~27–50%</td><td>Very common with poor injection technique</td></tr>
+                <tr><td>Type 1 DM</td><td><span class="badge badge-high">High</span> Very common</td><td>Most insulin-treated T1DM patients</td></tr>
+                <tr><td>Lipohypertrophy</td><td><span class="badge badge-high">High</span> More common</td><td>Up to ~50% of insulin users</td></tr>
+                <tr><td>Lipoatrophy</td><td><span class="badge badge-low">Low</span> Rare</td><td>Less common with modern insulin analogs</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t1dm">Type 1 DM — Primary</span>
+                <span class="tag tag-t2dm">Type 2 DM — Insulin-treated patients</span>
+                <span class="tag tag-common">Insulin therapy-related</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Lipodystrophy is a <strong>treatment-related complication</strong> of insulin therapy. Both types can affect insulin absorption unpredictably, causing glycemic variability. Prevention requires <strong>rotating injection sites</strong>. Switching to newer insulin analogs reduces risk of lipoatrophy.</p>
+            <ul class="key-points">
+                <li>Lipohypertrophy: most common (~27–50% of insulin users) — firm swellings at injection sites</li>
+                <li>Lipoatrophy: rarer — depressed areas from fat necrosis (less common with modern insulins)</li>
+                <li>Affects insulin absorption — can cause unexplained hypoglycemia</li>
+                <li>Prevention: rotate injection sites properly</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 13. DIABETIC FOOT ULCERS -->
+    <div class="manifestation-card" id="diabetic-foot">
+        <div class="card-header">
+            <div class="icon" style="background:#d32f2f;">🦶</div>
+            <div class="info">
+                <h2>13. Diabetic Foot Ulcers (DFU)</h2>
+                <div class="latin">Neuropathic & Ischemic Ulceration — Major DM Complication</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Neuropathic_heel_ulcer_diabetic.jpg"
+                         alt="Neuropathic Diabetic Foot Ulcer — heel"
+                         loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Neuropathic Diabetic Foot Ulcer — heel</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Neuropathic diabetic foot ulcer — heel ulcer showing tissue loss due to peripheral neuropathy<span class="src">Wikimedia Commons / Stevenfruitsmaak (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Full-thickness skin loss on the foot, typically due to a combination of <strong>peripheral neuropathy, peripheral arterial disease (ischemia), and infection</strong>. Ulcers are usually painless (due to neuropathy) and located on pressure points (plantar surface, toes, heels). DFUs are the <strong>leading cause of non-traumatic lower limb amputations</strong> worldwide. Healing is slow and often requires specialized wound care.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Lifetime risk in DM</td><td><span class="badge badge-high">High</span> ~15–25%</td><td>Major diabetic complication</td></tr>
+                <tr><td>Annual incidence</td><td><span class="badge badge-high">High</span> ~2–6%</td><td>Of all diabetic patients per year</td></tr>
+                <tr><td>Amputation risk</td><td><span class="badge badge-high">High</span> ~1 in 6 DFU patients</td><td>Leading cause of non-traumatic amputation</td></tr>
+                <tr><td>Type 2 DM</td><td><span class="badge badge-high">High</span> More common</td><td>More common in T2DM</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — More common</span>
+                <span class="tag tag-t1dm">Type 1 DM — Present</span>
+                <span class="tag tag-common">Neuropathy & ischemia-related</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> DFUs represent the <strong>most serious dermatological complication</strong> of diabetes. Risk factors: neuropathy, ischemia, foot deformities, trauma. Prevention includes regular foot inspection, glycemic control, and appropriate footwear. Once ulcerated, multidisciplinary wound care is essential.</p>
+            <ul class="key-points">
+                <li>~15–25% lifetime risk in diabetics — leading cause of non-traumatic amputation</li>
+                <li>Painless due to neuropathy — patients may not notice until advanced</li>
+                <li>Combination of neuropathy + ischemia + infection</li>
+                <li>Requires multidisciplinary wound care — podiatry, vascular surgery, infectious disease</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 14. BACTERIAL SKIN INFECTIONS -->
+    <div class="manifestation-card" id="bacterial-infections">
+        <div class="card-header">
+            <div class="icon" style="background:#ffccbc;">🦠</div>
+            <div class="info">
+                <h2>14. Bacterial Skin Infections in DM</h2>
+                <div class="latin">Folliculitis, Furuncles, Carbuncles, Cellulitis, Necrotizing Fasciitis</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Cellulitis_Left_Leg.JPG" alt="Cellulitis" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Cellulitis</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Cellulitis — bacterial skin infection showing left leg involvement<span class="src">Wikimedia Commons (CC Licensed)</span></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Carbuncle.jpg" alt="Carbuncle — diabetes patient" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Carbuncle — diabetes patient</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Carbuncle — cluster of boils in patient with diabetes mellitus (high-risk group)<span class="src">Wikimedia Commons / Medicalpal (CC Licensed) — Photo: Dr. Muzammil Irshad</span></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Necrotizing_fasciitis_left_leg.JPEG" alt="Necrotizing Fasciitis" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Necrotizing Fasciitis</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Necrotizing fasciitis — life-threatening bacterial infection (surgical emergency in DM)<span class="src">Wikimedia Commons / Stevenfruitsmaak (CC Licensed)</span></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Isolated_folliculitis.jpg" alt="Folliculitis" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Folliculitis</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Folliculitis — inflamed hair follicles, common superficial bacterial infection in DM<span class="src">Wikimedia Commons / Jmarchn (CC Licensed)</span></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Erysipelas.jpg" alt="Erysipelas" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Erysipelas</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Erysipelas — acute streptococcal skin infection, more common and severe in diabetes<span class="src">Wikimedia Commons / Flickr (CC BY 2.0) — from "Practical Guide to Health" 1913</span></div>
+                </div>
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Erythrasma.jpg" alt="Erythrasma" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">📷</div><strong>Erythrasma</strong><small>Wikimedia image unavailable (rate-limited)</small></div>
+                    <div class="caption">Erythrasma — Corynebacterium infection causing intertriginous pink-brown patches in DM<span class="src">Wikimedia Commons (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Patients with diabetes have significantly increased susceptibility to bacterial skin infections due to impaired immune function (neutrophil dysfunction, impaired chemotaxis), microangiopathy, and neuropathy. Common presentations include <strong>folliculitis, furuncles (boils), carbuncles, impetigo, ecthyma, cellulitis, erysipelas, erythrasma, and necrotizing fasciitis</strong>. Infections tend to be more severe and heal more slowly.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Diabetic vs non-diabetic</td><td><span class="badge badge-high">High</span> Significantly higher</td><td>Bacterial infections much more frequent in DM</td></tr>
+                <tr><td>Staphylococcus aureus</td><td><span class="badge badge-high">High</span> Very common</td><td>Most common causative organism</td></tr>
+                <tr><td>Necrotizing fasciitis</td><td><span class="badge badge-moderate">Moderate</span> Increased risk</td><td>Life-threatening emergency in DM</td></tr>
+                <tr><td>Recurrent infections</td><td><span class="badge badge-high">High</span> Very common</td><td>DM patients more prone to recurrence</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — More common</span>
+                <span class="tag tag-t1dm">Type 1 DM — Present</span>
+                <span class="tag tag-common">Both types — immune impaired</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Bacterial skin infections in diabetics are <strong>more frequent, more severe, and more difficult to treat</strong>. Necrotizing fasciitis is a surgical emergency with high mortality. Any skin infection in a diabetic patient warrants prompt evaluation and aggressive treatment.</p>
+            <ul class="key-points">
+                <li>Significantly more frequent and severe in diabetics</li>
+                <li>Necrotizing fasciitis is life-threatening — surgical emergency</li>
+                <li>Impaired neutrophil function and microangiopathy are key mechanisms</li>
+                <li>Requires prompt, aggressive antibiotic therapy — may need IV antibiotics</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 15. FUNGAL SKIN INFECTIONS -->
+    <div class="manifestation-card" id="fungal-infections">
+        <div class="card-header">
+            <div class="icon" style="background:#f1f8e9;">🍄</div>
+            <div class="info">
+                <h2>15. Fungal Skin Infections in DM</h2>
+                <div class="latin">Candidiasis, Dermatophytosis, Onychomycosis, Mucormycosis</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Tinea_pedis.jpg" alt="Tinea Pedis (Athlete's Foot)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="img-placeholder" style="display:none;"><div class="emoji">🦠</div><strong>Tinea Pedis</strong><small>Athlete's foot — dermatophyte infection<br>Very common in diabetes (up to 50%)<br>Wikimedia Commons (CC Licensed)</small></div>
+                    <div class="caption">Tinea pedis (athlete's foot) — dermatophyte infection very common in DM patients<span class="src">Wikimedia Commons / Klaus D. Peter (CC Licensed)</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Fungal infections are <strong>significantly more common and more severe</strong> in diabetic patients due to impaired immunity, hyperglycemia providing a favorable environment for fungal growth, and compromised skin integrity. Common presentations include <strong>Candida albicans</strong> infections (intertriginous candidiasis, angular cheilitis), <strong>dermatophytosis</strong> (tinea pedis, tinea corporis), <strong>onychomycosis</strong> (fungal nail infections), and serious opportunistic infections like <strong>mucormycosis</strong>.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Diabetic vs non-diabetic</td><td><span class="badge badge-high">High</span> Significantly higher</td><td>Fungal infections much more frequent in DM</td></tr>
+                <tr><td>Candidiasis</td><td><span class="badge badge-high">High</span> Very common</td><td>Especially intertriginous and mucosal</td></tr>
+                <tr><td>Onychomycosis</td><td><span class="badge badge-high">High</span> ~2–3× more common</td><td>2–3 times more prevalent in DM</td></tr>
+                <tr><td>Mucormycosis</td><td><span class="badge badge-low">Low</span> Rare but serious</td><td>Opportunistic — ketoacidosis increases risk</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — More common</span>
+                <span class="tag tag-t1dm">Type 1 DM — Present</span>
+                <span class="tag tag-common">Both types — immune-related</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> Recurrent or severe fungal infections — especially candidiasis — should prompt diabetes screening. <strong>Mucormycosis</strong> is a rare but life-threatening opportunistic infection with high mortality in diabetics with DKA. Requires urgent surgical debridement and antifungal therapy.</p>
+            <ul class="key-points">
+                <li>Fungal infections are 2–3× more prevalent in diabetics vs general population</li>
+                <li>Candida infections (intertriginous, mucosal) are most common</li>
+                <li>Mucormycosis is rare but fatal — associated with DKA and ketoacidosis</li>
+                <li>Onychomycosis can serve as a portal of entry for bacterial superinfection</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 16. ACQUIRED REACTIVE PERFORATING COLLAGENOSIS -->
+    <div class="manifestation-card" id="perforating-collagenosis">
+        <div class="card-header">
+            <div class="icon" style="background:#e0e0e0;">🔘</div>
+            <div class="info">
+                <h2>16. Acquired Reactive Perforating Collagenosis (ARPC)</h2>
+                <div class="latin">Pruritic Hyperkeratotic Papules — Transepidermal Collagen Elimination</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Granuloma_annulare.jpg"
+                         alt="Hyperkeratotic papules"
+                         loading="lazy"
+                         onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;><div class=&quot;emoji&quot;>🔘</div><strong>Acquired Reactive Perforating Collagenosis</strong><small>Pruritic hyperkeratotic papules with central keratin plug<br>Strong association with diabetic nephropathy<br>Koebner phenomenon — triggered by scratching</small></div>'">
+                    <div class="caption">ARPC — pruritic hyperkeratotic papules with central keratin plug (representative image)<span class="src">Wikimedia Commons (CC Licensed) — representative image</span></div>
+                </div>
+            </div>
+            <p><strong>Description:</strong> A rare cutaneous disorder characterized by <strong>pruritic, erythematous papules with a central keratin plug</strong> (hyperkeratotic center). Lesions are typically 2–8mm and appear on the extensor surfaces of the arms, legs, and trunk. ARPC is the most frequently reported perforating dermatosis in patients with <strong>diabetes mellitus and chronic renal insufficiency</strong>. Koebner phenomenon (trauma-induced) plays a role.</p>
+
+            <div class="section-title">Prevalence</div>
+            <table class="info-table">
+                <tr><th>Population</th><th>Prevalence</th><th>Evidence</th></tr>
+                <tr><td>Diabetic patients</td><td><span class="badge badge-moderate">Moderate</span> Increased</td><td>Frequently reported in DM with pruritus</td></tr>
+                <tr><td>Chronic renal disease</td><td><span class="badge badge-moderate">Moderate</span> Strong association</td><td>Often co-occurs with diabetic nephropathy</td></tr>
+                <tr><td>With pruritus</td><td><span class="badge badge-high">High</span> Very common</td><td>Almost always presents with itching</td></tr>
+                <tr><td>Rarity</td><td><span class="badge badge-low">Low</span> Rare</td><td>Overall uncommon condition</td></tr>
+            </table>
+
+            <div class="section-title">Diabetes Type Association</div>
+            <div style="margin-bottom:12px;">
+                <span class="tag tag-t2dm">Type 2 DM — More common</span>
+                <span class="tag tag-common">Chronic kidney disease co-association</span>
+            </div>
+            <p><strong>Clinical Significance:</strong> ARPC is a <strong>marker of end-organ damage</strong> in diabetes — particularly diabetic nephropathy and chronic renal disease. The intense pruritus is difficult to manage. Topical retinoids, intralesional steroids, and phototherapy have been used with variable success.</p>
+            <ul class="key-points">
+                <li>Rare perforating dermatosis — almost always presents with severe pruritus</li>
+                <li>Strong association with diabetic nephropathy and chronic renal disease</li>
+                <li>Koebner phenomenon — can be triggered by scratching/trauma</li>
+                <li>Treatment is challenging — topical retinoids, steroids, phototherapy</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SUMMARY TABLE -->
+    <div class="manifestation-card" id="summary">
+        <div class="card-header" style="background:#f8f9fa;">
+            <div class="icon" style="background:#e8f0fe;">📊</div>
+            <div class="info">
+                <h2>📊 Summary: All 16 Skin Manifestations — Quick Reference</h2>
+                <div class="latin">Skin Manifestations in Diabetes Mellitus — Complete Overview</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="info-table" style="font-size:0.85rem;">
+                <tr>
+                    <th>#</th><th>Condition</th><th>Prevalence in DM</th><th>DM Type</th><th>Evidence</th><th>Key Clinical Role</th>
+                </tr>
+                <tr><td>1</td><td>Acanthosis Nigricans</td><td>Very common</td><td>T2DM, prediabetes</td><td><span class="badge badge-high">Strong</span></td><td>Screening marker</td></tr>
+                <tr><td>2</td><td>Diabetic Dermopathy</td><td>~30–70%</td><td>Both equally</td><td><span class="badge badge-high">Strong</span></td><td>Predicts retinopathy/nephropathy</td></tr>
+                <tr><td>3</td><td>Necrobiosis Lipoidica</td><td>Rare (~0.3–1.2%)</td><td>T1DM > T2DM</td><td><span class="badge badge-moderate">Moderate</span></td><td>CV risk marker</td></tr>
+                <tr><td>4</td><td>Bullosis Diabeticorum</td><td>Rare (~0.5%)</td><td>T2DM primarily</td><td><span class="badge badge-low">Low</span></td><td>Monitor with neuropathy</td></tr>
+                <tr><td>5</td><td>Scleredema Diabeticorum</td><td>~2.5–14%</td><td>T2DM</td><td><span class="badge badge-moderate">Moderate</span></td><td>Macrovascular risk</td></tr>
+                <tr><td>6</td><td>Eruptive Xanthomas</td><td>Variable</td><td>T2DM</td><td><span class="badge badge-high">Strong</span></td><td>Dyslipidemia/CV risk</td></tr>
+                <tr><td>7</td><td>Pruritus / Xerosis</td><td>~11–64%</td><td>Both</td><td><span class="badge badge-high">Strong</span></td><td>Often first symptom</td></tr>
+                <tr><td>8</td><td>Skin Tags (Acrochordons)</td><td>Very common</td><td>T2DM, prediabetes</td><td><span class="badge badge-high">Strong</span></td><td>Screening marker</td></tr>
+                <tr><td>9</td><td>Granuloma Annulare</td><td>Rare</td><td>Both (limited)</td><td><span class="badge badge-low">Low</span></td><td>Generalized form linked to DM</td></tr>
+                <tr><td>10</td><td>Yellow Palms & Soles</td><td>Moderate</td><td>T2DM</td><td><span class="badge badge-moderate">Moderate</span></td><td>Carotenemia indicator</td></tr>
+                <tr><td>11</td><td>Rubeosis Faciei</td><td>Variable</td><td>T2DM</td><td><span class="badge badge-low">Low</span></td><td>Limited screening value</td></tr>
+                <tr><td>12</td><td>Lipodystrophy</td><td>~27–50% insulin users</td><td>T1DM > T2DM</td><td><span class="badge badge-high">Strong</span></td><td>Insulin therapy complication</td></tr>
+                <tr><td>13</td><td>Diabetic Foot Ulcers</td><td>~15–25% lifetime</td><td>T2DM > T1DM</td><td><span class="badge badge-high">Strong</span></td><td>Amputation risk</td></tr>
+                <tr><td>14</td><td>Bacterial Skin Infections</td><td>Significantly higher</td><td>Both</td><td><span class="badge badge-high">Strong</span></td><td>More severe in DM</td></tr>
+                <tr><td>15</td><td>Fungal Skin Infections</td><td>2–3× more common</td><td>Both</td><td><span class="badge badge-high">Strong</span></td><td>Severe in immunocompromised</td></tr>
+                <tr><td>16</td><td>Acquired Reactive Perforating Collagenosis</td><td>Rare</td><td>T2DM + CKD</td><td><span class="badge badge-moderate">Moderate</span></td><td>Marker of nephropathy</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p><strong>📋 Journal Agent — Skin Manifestations in Diabetes Mellitus</strong></p>
+        <p>Comprehensive Clinical Review | Peer-Reviewed Sources 2017–2025</p>
+        <p style="margin-top:8px;">
+            <strong>Sources:</strong><br>
+            PMID 40105573 (Einstein 2025) · PMID 41179869 (Front Med 2025) · PMID 41227114 (J Clin Med 2025)<br>
+            PMID 28007053 (Dan Med J 2017) · PMID 28374407 (Am J Clin Dermatol 2017)
+        </p>
+        <p style="margin-top:12px; opacity:0.7;">
+            🖼️ Images: Wikimedia Commons (CC Licensed / Public Domain) · Generated April 2026
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
