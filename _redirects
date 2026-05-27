@@ -1,15 +1,9 @@
 /workspace-imbr/* /workspace-imbr/:splat 200
 /IMBR/* /IMBR/:splat 200
-/workspace-investx/ /workspace-investx/outputs/index.html 302
 /workspace-investx/* /workspace-investx/:splat 200
-/workspace-papez/ /papez.html 302
 /workspace-papez/* /workspace-papez/:splat 200
-/workspace-hulks/ /workspace-hulks/outputs/dashboard.html 302
 /workspace-hulks/* /workspace-hulks/:splat 200
 /workspace-journal/* /workspace-journal/:splat 200
 /workspace-cola/* /workspace-cola/:splat 200
 /hub /workspace-imbr/hub/dashboard.html 302
-/investx.html /investx.html 200
-/hulks.html /hulks.html 200
-/papez.html /papez.html 200
 /api/* /index.html 200
