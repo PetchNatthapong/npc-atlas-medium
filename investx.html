@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 InvestX — Stock Market Dashboard</title>
+    <style>
+        :root {
+            --bg: #0f1419;
+            --surface: #1a1a1a;
+            --border: #2f3336;
+            --text: #e7e9ea;
+            --text-dim: #71767b;
+            --accent: #1d9bf0;
+            --accent-hover: #60a5fa;
+            --success: #00ba7c;
+            --warning: #ffd700;
+            --danger: #f45b69;
+            --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); padding: 30px; min-height: 100vh; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-size: 32px; color: var(--accent); margin-bottom: 8px; }
+        .header p { color: var(--text-dim); font-size: 14px; }
+        
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; transition: transform 0.2s, border-color 0.2s; }
+        .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+        
+        .card-icon { font-size: 40px; margin-bottom: 16px; }
+        .card h2 { font-size: 20px; margin-bottom: 8px; color: var(--accent); }
+        .card p { color: var(--text-dim); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+        
+        .btn { display: inline-block; background: var(--accent); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+        .btn:hover { background: var(--accent-hover); }
+        
+        .status { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+        .status-dot { width: 10px; height: 10px; background: var(--success); border-radius: 50%; }
+        .status-text { color: var(--success); font-size: 13px; }
+        
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+        .feature { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+        .feature-icon { font-size: 24px; margin-bottom: 8px; }
+        .feature h3 { font-size: 14px; color: var(--text); margin-bottom: 4px; }
+        .feature p { font-size: 12px; color: var(--text-dim); }
+        
+        .daily-scan { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid var(--accent); border-radius: 16px; padding: 30px; margin-top: 30px; text-align: center; }
+        .daily-scan h2 { color: var(--accent); margin-bottom: 12px; font-size: 24px; }
+        .daily-scan p { color: var(--text-dim); margin-bottom: 20px; }
+        .schedule { display: inline-block; background: rgba(29, 155, 240, 0.2); color: var(--accent); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+        
+        footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 12px; }
+        footer span { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="container"><div style="padding:8px 0;"><a href="/" style="color:#1d9bf0;font-size:13px;">← Hub</a></div>
+        <div class="header">
+            <h1>📊 InvestX Dashboard</h1>
+            <p>AI-powered Stock Market Analysis | SET50 & Global Markets</p>
+        </div>
+        
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">📈</div>
+                <h2>SET50 Dashboard</h2>
+                <p>รายงานหุ้น SET50 พร้อม RSI, Trend, Support/Resistance และ Dividend Yield</p>
+                <a href="/workspace-imbr/investx-outputs/SET50_Dashboard" class="btn">📊 เปิด Dashboard</a>
+                <div class="status">
+                    <div class="status-dot"></div>
+                    <span class="status-text">อัปเดตล่าสุด: May 23, 2026</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📰</div>
+                <h2>Daily News Scan</h2>
+                <p>สรุปข่าวหุ้น AI & Tech, Semiconductors, US Markets ทุกวัน 09:00 น.</p>
+                <a href="/workspace-imbr/investx-outputs/Deep_Research_5Thai5Global_Stocks_Funds.md" class="btn">📄 ดู Research Report</a>
+                <div class="status">
+                    <div class="status-dot"></div>
+                    <span class="status-text">Schedule: ทุกวัน 09:00 Bangkok</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>Top Picks</h3>
+                <p>VI, Dividend, Turnaround</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>RSI Analysis</h3>
+                <p>Overbought/Oversold</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Dividend Yield</h3>
+                <p>เงินปันผล %</p>
+            </div>
+        </div>
+        
+        <div class="daily-scan">
+            <h2>🤖 AI Daily Scan</h2>
+            <p>InvestX Agent สแกนข่าวตลาดหุ้นอัตโนมัติทุกเช้า</p>
+            <span class="schedule">⏰ ทุกวัน 09:00 น. (Bangkok Time)</span>
+        </div>
+        
+        <!-- FOR CLAUDE Analysis Reports -->
+        <div style="margin-top:30px;">
+            <h2 style="color:var(--accent);font-size:16px;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;">📁 Analysis Reports</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+                <a href="/FOR%20CLAUDE/INVESTX/INVESTX_Deep_Analysis.html" style="display:block;background:var(--surface);border:1px solid var(--border);border-left:4px solid #34c759;border-radius:12px;padding:18px;text-decoration:none;color:var(--text);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+                    <div style="font-size:28px;margin-bottom:10px;">📊</div>
+                    <h3 style="color:#34c759;margin-bottom:6px;font-size:15px;">INVESTX Deep Analysis</h3>
+                    <p style="color:var(--text-dim);font-size:13px;">Comprehensive investment framework analysis</p>
+                </a>
+                <a href="/FOR%20CLAUDE/INVESTX/AICore_Analysis.html" style="display:block;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:18px;text-decoration:none;color:var(--text);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+                    <div style="font-size:28px;margin-bottom:10px;">🤖</div>
+                    <h3 style="color:var(--accent);margin-bottom:6px;font-size:15px;">AICore Analysis</h3>
+                    <p style="color:var(--text-dim);font-size:13px;">AI sector & core holdings deep dive</p>
+                </a>
+                <a href="/FOR%20CLAUDE/INVESTX/NVDA_Analysis.html" style="display:block;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--warning);border-radius:12px;padding:18px;text-decoration:none;color:var(--text);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+                    <div style="font-size:28px;margin-bottom:10px;">📈</div>
+                    <h3 style="color:var(--warning);margin-bottom:6px;font-size:15px;">NVDA Analysis</h3>
+                    <p style="color:var(--text-dim);font-size:13px;">NVIDIA stock analysis & outlook</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Deep Research MD viewer -->
+        <div style="margin-top:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+                <div>
+                    <h3 style="color:var(--text);font-size:15px;margin-bottom:4px;">📑 Deep Research: 5 Thai + 5 Global Stocks</h3>
+                    <p style="color:var(--text-dim);font-size:13px;">Apr 17, 2026 · SET 1,482 · S&P 7,041</p>
+                </div>
+                <a href="/workspace-imbr/investx-outputs/Deep_Research_5Thai5Global_Stocks_Funds.md" style="padding:8px 16px;background:var(--accent);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;">📄 View Report</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>📊 InvestX by <span>COLA AI System</span> | Not investment advice</p>
+        </footer>
+    </div>
+</body>
+</html>
