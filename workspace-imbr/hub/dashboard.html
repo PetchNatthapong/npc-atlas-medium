@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dashboard — FOR CLAUDE</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f2f2f7;
+      --surface: #ffffff;
+      --surface2: #e5e5ea;
+      --text: #1c1c1e;
+      --text2: #6c6c70;
+      --text3: #aeaeb2;
+      --border: rgba(0,0,0,0.09);
+      --accent: #007aff;
+      --ready-bg: #d1f7e0; --ready-fg: #1a7a3c;
+      --pending-bg: #fff3cd; --pending-fg: #9a6200;
+      --proto-bg: #ede7f6; --proto-fg: #6a1b9a;
+      --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-hover: 0 5px 18px rgba(0,0,0,0.11), 0 2px 5px rgba(0,0,0,0.07);
+      --radius: 14px;
+      --radius-sm: 9px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --surface: #1c1c1e;
+        --surface2: #2c2c2e;
+        --text: #f2f2f7;
+        --text2: #98989d;
+        --text3: #48484a;
+        --border: rgba(255,255,255,0.07);
+        --accent: #0a84ff;
+        --ready-bg: #0d3320; --ready-fg: #4cd964;
+        --pending-bg: #3a2900; --pending-fg: #ffd60a;
+        --proto-bg: #2a1240; --proto-fg: #bf5af2;
+        --shadow: 0 1px 4px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.25);
+        --shadow-hover: 0 6px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.3);
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .hdr {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 13px max(20px, env(safe-area-inset-left));
+      padding-top: max(13px, env(safe-area-inset-top));
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+    }
+    .hdr-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .hdr-left { display: flex; align-items: center; gap: 10px; }
+    .hdr-logo {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, #007aff, #5856d6);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .hdr-title { font-size: 17px; font-weight: 700; letter-spacing: -0.2px; }
+    .hdr-date  { font-size: 12px; color: var(--text2); }
+
+    /* ── Tabs ── */
+    .tabs-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 max(20px, env(safe-area-inset-left));
+    }
+    .tabs { max-width: 1160px; margin: 0 auto; display: flex; }
+    .tab-btn {
+      padding: 12px 18px; font-size: 14px; font-weight: 500;
+      color: var(--text2); background: none; border: none;
+      border-bottom: 2.5px solid transparent;
+      cursor: pointer; transition: color .15s, border-color .15s;
+      display: flex; align-items: center; gap: 7px; white-space: nowrap;
+    }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .tab-btn:hover:not(.active) { color: var(--text); }
+    .tab-ct {
+      background: var(--surface2); padding: 2px 7px;
+      border-radius: 10px; font-size: 11px; font-weight: 600; color: var(--text2);
+    }
+    .tab-btn.active .tab-ct { background: rgba(10,132,255,.12); color: var(--accent); }
+
+    /* ── Main ── */
+    .main {
+      max-width: 1160px; margin: 0 auto;
+      padding: 24px max(20px, env(safe-area-inset-left));
+      padding-bottom: max(24px, env(safe-area-inset-bottom));
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Stats bar ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .stat-n {
+      font-size: 28px; font-weight: 800;
+      color: var(--accent); line-height: 1;
+    }
+    .stat-l {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.6px; color: var(--text2); margin-top: 4px;
+    }
+
+    /* ── Controls ── */
+    .controls { display: flex; flex-direction: column; gap: 11px; margin-bottom: 20px; }
+    .search-wrap { position: relative; }
+    .search-ico {
+      position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+      color: var(--text3); pointer-events: none; font-size: 14px;
+    }
+    .search-input {
+      width: 100%; padding: 10px 12px 10px 34px;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--surface); color: var(--text);
+      font-size: 15px; font-family: inherit; outline: none;
+      transition: border-color .2s;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .search-input::placeholder { color: var(--text3); }
+
+    .filters { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+    .filters::-webkit-scrollbar { display: none; }
+    .chip {
+      padding: 6px 13px; border-radius: 20px; font-size: 12px; font-weight: 500;
+      background: var(--surface); border: 1.5px solid var(--border);
+      color: var(--text2); cursor: pointer; white-space: nowrap;
+      transition: all .15s; user-select: none;
+    }
+    .chip:hover:not(.active) { color: var(--text); border-color: var(--text3); }
+    .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* ── Cards Grid ── */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 13px; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--cc, var(--accent));
+      padding: 16px 17px;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 11px;
+      transition: box-shadow .2s, transform .2s;
+      position: relative;
+    }
+    .card:not(.card-pending):hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+    .card-pending {
+      opacity: 0.55;
+      cursor: default;
+      pointer-events: none;
+    }
+    .card-proto-tag {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--proto-fg); color: #fff;
+      font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.6px; padding: 2px 7px; border-radius: 5px;
+    }
+    .card-top { display: flex; align-items: flex-start; gap: 11px; }
+    .card-icon { font-size: 24px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+    .card-body { flex: 1; min-width: 0; }
+    .card-title { font-size: 14px; font-weight: 600; line-height: 1.35; margin-bottom: 3px; }
+    .card-sub   { font-size: 12px; color: var(--text2); }
+    .card-foot  { display: flex; align-items: center; justify-content: space-between; }
+    .card-badge {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; padding: 3px 8px; border-radius: 5px;
+    }
+    .badge-ready   { background: var(--ready-bg);   color: var(--ready-fg); }
+    .badge-pending { background: var(--pending-bg); color: var(--pending-fg); }
+    .badge-proto   { background: var(--proto-bg);   color: var(--proto-fg); }
+    .badge-plain   { background: var(--surface2);   color: var(--text2); }
+    .card-arrow { font-size: 13px; color: var(--text3); transition: color .15s; }
+    .card:not(.card-pending):hover .card-arrow { color: var(--cc, var(--accent)); }
+
+    /* ── Empty ── */
+    .empty { display: none; text-align: center; padding: 60px 20px; color: var(--text2); }
+    .empty-ico { font-size: 36px; margin-bottom: 10px; }
+    .empty-txt { font-size: 15px; }
+
+    /* ── InvestX header ── */
+    .sec-head { margin-bottom: 18px; }
+    .sec-head h2 { font-size: 20px; font-weight: 700; margin-bottom: 3px; }
+    .sec-head p  { font-size: 13px; color: var(--text2); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .hdr-title { font-size: 16px; }
+      .main { padding: 14px 14px; }
+      .grid { grid-template-columns: 1fr; gap: 10px; }
+      .card { padding: 13px 14px; }
+      .tab-btn { padding: 11px 13px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-left">
+      <div class="hdr-logo">⚡</div>
+      <div>
+        <div class="hdr-title">FOR CLAUDE</div>
+        <div class="hdr-date" id="js-date"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Tabs -->
+<div class="tabs-bar">
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="medicine">
+      🏥 Medicine <span class="tab-ct" id="js-med-ct">19</span>
+    </button>
+    <button class="tab-btn" data-tab="investx">
+      📈 InvestX <span class="tab-ct">3</span>
+    </button>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- ── MEDICINE ── -->
+  <div class="tab-panel active" id="panel-medicine">
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat"><div class="stat-n">12</div><div class="stat-l">IMBR Ready</div></div>
+      <div class="stat"><div class="stat-n">2</div><div class="stat-l">In Progress</div></div>
+      <div class="stat"><div class="stat-n">14</div><div class="stat-l">Total IMBR</div></div>
+      <div class="stat"><div class="stat-n">1</div><div class="stat-l">Long Case Series</div></div>
+    </div>
+
+    <!-- Search + Filter -->
+    <div class="controls">
+      <div class="search-wrap">
+        <span class="search-ico">🔍</span>
+        <input class="search-input" type="search" id="js-search"
+               placeholder="Search specialty or topic…" autocomplete="off" autocorrect="off">
+      </div>
+      <div class="filters" id="js-filters"></div>
+    </div>
+
+    <div class="grid" id="js-med-grid"></div>
+    <div class="empty" id="js-med-empty">
+      <div class="empty-ico">🔍</div>
+      <div class="empty-txt">No results</div>
+    </div>
+
+  </div>
+
+  <!-- ── INVESTX ── -->
+  <div class="tab-panel" id="panel-investx">
+    <div class="sec-head">
+      <h2>Investment Analysis</h2>
+      <p>Stock &amp; AI sector reports</p>
+    </div>
+    <div class="grid" id="js-invest-grid"></div>
+  </div>
+
+</main>
+
+<script>
+// ── Data ─────────────────────────────────────────────────────────────────────
+// status: "ready" | "pending" | "proto"
+// path: null = no file yet (pending)
+const MED = [
+  // ── IMBR Specialties ──
+  { title:"Neurology IMBR 2026",           specialty:"Neurology",         icon:"🧠", path:"MEDICINE/NEUROLOGY/Neurology_IMBR_2026_v2.html",                    status:"proto",   color:"#5E5CE6", note:"Ref. design · v2 · iPhone" },
+  { title:"Cardiology IMBR 2026",          specialty:"Cardiology",        icon:"❤️",  path:"MEDICINE/CARDIOLOGY/Cardiology_IMBR_2026.html",                      status:"ready",   color:"#FF3B30" },
+  { title:"Hematology IMBR 2026",          specialty:"Hematology",        icon:"🩸", path:"MEDICINE/HEMATOLOGY/Hematology_IMBR_2026.html",                      status:"ready",   color:"#FF2D55" },
+  { title:"Nephrology IMBR 2026",          specialty:"Nephrology",        icon:"🫘", path:"MEDICINE/NEPHROLOGY/IMBR_Nephrology_2026.html",                      status:"ready",   color:"#32ADE6" },
+  { title:"Endocrinology IMBR 2026",       specialty:"Endocrinology",     icon:"⚗️",  path:"MEDICINE/ENDOCRINOLOGY/Endocrinology_IMBR_2026.html",                status:"ready",   color:"#FFD60A" },
+  { title:"Gastro-Hepatology IMBR 2026",   specialty:"Gastro-Hepatology", icon:"🔬", path:"MEDICINE/GASTRO-HEPATOLOGY/GastroHepatology_IMBR_2026.html",         status:"ready",   color:"#34C759" },
+  { title:"Infectious Disease IMBR 2026",  specialty:"Infectious Disease",icon:"🦠", path:"MEDICINE/INFECTIOUS%20DISEASE/ID_IMBR_2026.html",                    status:"ready",   color:"#4CD964" },
+  { title:"Rheumatology IMBR 2026",        specialty:"Rheumatology",      icon:"🦴", path:"MEDICINE/RHEUMATOLOGY%20/Rheumatology_IMBR_2026.html",               status:"ready",   color:"#BF5AF2" },
+  { title:"Dermatology IMBR 2026",         specialty:"Dermatology",       icon:"🩹", path:"MEDICINE/DERMATOLOGY/Dermatology_IMBR_2026.html",                    status:"ready",   color:"#FF9F0A" },
+  { title:"Oncology IMBR 2026",            specialty:"Oncology",          icon:"🎗️", path:"MEDICINE/ONCOLOGY%20/Oncology_IMBR_2026.html",                        status:"ready",   color:"#FF9500" },
+  { title:"Genetics IMBR 2026",            specialty:"Genetics",          icon:"🧬", path:"MEDICINE/GENETICS/Genetics_IMBR_2026.html",                          status:"ready",   color:"#30B0C7" },
+  { title:"Hypertension IMBR 2026",        specialty:"Hypertension",      icon:"💢", path:"MEDICINE/HYPERTENSION/Hypertension_IMBR_2026.html",                  status:"ready",   color:"#FF453A" },
+  { title:"Pulmonology",                   specialty:"Pulmonology",       icon:"🫁", path:null,                                                                 status:"pending", color:"#8E8E93" },
+  { title:"Critical Care",                 specialty:"Critical Care",     icon:"🏥", path:null,                                                                 status:"pending", color:"#8E8E93" },
+  // ── Reviews ──
+  { title:"CAP Pneumonia Visual",          specialty:"Reviews",           icon:"🫁", path:"MEDICINE/Reviews/CAP_Pneumonia_Visual.html",                         status:"ready",   color:"#1DC9A4" },
+  // ── Long Case ──
+  { title:"Long Case IMBR Series",         specialty:"Long Case",         icon:"📋", path:"MEDICINE/Long%20case%20IMBR/IMBR_LongCase_Series.html",              status:"ready",   color:"#8E8E93" },
+];
+
+const INVEST = [
+  { title:"INVESTX Deep Analysis", icon:"📊", path:"INVESTX/INVESTX_Deep_Analysis.html", note:"Comprehensive investment framework", color:"#34C759", status:"ready" },
+  { title:"AICore Analysis",       icon:"🤖", path:"INVESTX/AICore_Analysis.html",        note:"AI sector & core holdings deep dive", color:"#0A84FF", status:"ready" },
+  { title:"NVDA Analysis",         icon:"📈", path:"INVESTX/NVDA_Analysis.html",          note:"NVIDIA stock analysis & outlook",    color:"#FF9500", status:"ready" },
+];
+
+// ── Date ──────────────────────────────────────────────────────────────────────
+document.getElementById('js-date').textContent =
+  new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn =>
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  })
+);
+
+// ── Badge helper ──────────────────────────────────────────────────────────────
+function badgeClass(status) {
+  return status === 'ready' ? 'badge-ready' : status === 'proto' ? 'badge-proto' : 'badge-pending';
+}
+function badgeLabel(status) {
+  return status === 'ready' ? '✓ Ready' : status === 'proto' ? '★ Prototype' : '⏳ In Progress';
+}
+
+// ── Render card HTML ──────────────────────────────────────────────────────────
+function renderCard(c) {
+  const isPending = c.status === 'pending';
+  const tag = `<span class="card-badge ${badgeClass(c.status)}">${badgeLabel(c.status)}</span>`;
+  const sub = c.specialty ?? '';
+  const note = c.note ? `<div class="card-sub" style="margin-top:2px;font-size:11px;color:var(--text3)">${c.note}</div>` : '';
+  const proto = c.status === 'proto' ? '<span class="card-proto-tag">Prototype</span>' : '';
+  const foot = isPending
+    ? `<div class="card-foot">${tag}</div>`
+    : `<div class="card-foot">${tag}<span class="card-arrow">↗</span></div>`;
+
+  const inner = `
+    ${proto}
+    <div class="card-top">
+      <div class="card-icon">${c.icon}</div>
+      <div class="card-body">
+        <div class="card-title">${c.title}</div>
+        <div class="card-sub">${sub}</div>
+        ${note}
+      </div>
+    </div>
+    ${foot}`;
+
+  if (isPending) {
+    return `<div class="card card-pending" style="--cc:${c.color}">${inner}</div>`;
+  }
+  return `<a class="card" href="${c.path}" style="--cc:${c.color}" target="_blank" rel="noopener">${inner}</a>`;
+}
+
+// ── Medicine filters ──────────────────────────────────────────────────────────
+const specialties = ['All', ...new Set(MED.map(c => c.specialty))];
+let activeFilter = 'All';
+let searchQ = '';
+
+function renderChips() {
+  const wrap = document.getElementById('js-filters');
+  wrap.innerHTML = specialties.map(s =>
+    `<button class="chip${s === activeFilter ? ' active' : ''}" data-s="${s}">${s}</button>`
+  ).join('');
+  wrap.querySelectorAll('.chip').forEach(ch =>
+    ch.addEventListener('click', () => { activeFilter = ch.dataset.s; renderChips(); renderMed(); })
+  );
+}
+
+function renderMed() {
+  const q = searchQ;
+  const list = MED.filter(c => {
+    const mf = activeFilter === 'All' || c.specialty === activeFilter;
+    const ms = !q || c.title.toLowerCase().includes(q) || c.specialty.toLowerCase().includes(q);
+    return mf && ms;
+  });
+
+  document.getElementById('js-med-ct').textContent = list.length;
+  const grid  = document.getElementById('js-med-grid');
+  const empty = document.getElementById('js-med-empty');
+
+  if (!list.length) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  grid.innerHTML = list.map(renderCard).join('');
+}
+
+document.getElementById('js-search').addEventListener('input', e => {
+  searchQ = e.target.value.toLowerCase().trim(); renderMed();
+});
+
+renderChips();
+renderMed();
+
+// ── InvestX ───────────────────────────────────────────────────────────────────
+document.getElementById('js-invest-grid').innerHTML = INVEST.map(renderCard).join('');
+</script>
+</body>
+</html>
