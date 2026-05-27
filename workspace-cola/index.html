@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COLA — AI Orchestrator</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0f172a;--surface:#1e293b;--surface-2:#334155;--border:#475569;
+      --text:#f1f5f9;--text-dim:#94a3b8;--text-muted:#64748b;
+      --accent:#3b82f6;--accent-2:#8b5cf6;--success:#10b981;
+      --warning:#f59e0b;--danger:#ef4444;
+      --font-body:'DM Sans',-apple-system,sans-serif;
+      --font-mono:'Fira Code',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .header{background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);padding:32px 20px;text-align:center;border-bottom:1px solid var(--border)}
+    .header h1{font-size:1.8rem;font-weight:700;margin-bottom:6px}
+    .header p{color:var(--text-dim);font-size:0.95rem}
+    .breadcrumb{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:14px;font-size:0.8rem;color:var(--text-muted)}
+    .breadcrumb a{color:var(--accent);text-decoration:none}
+    .breadcrumb a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:32px 20px}
+    .section-title{font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:40px}
+    .card{background:var(--surface);border:1px solid var(--border);border-left:4px solid #3b82f6;border-radius:12px;padding:18px;cursor:pointer;transition:all 0.2s;display:block}
+    .card:hover{border-color:#3b82f6;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+    .card h3{font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--text)}
+    .card .meta{font-size:0.78rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px}
+    .card .badges{display:flex;gap:6px;flex-wrap:wrap}
+    .badge{font-size:0.68rem;padding:2px 8px;border-radius:12px;font-weight:500}
+    .badge-type{background:rgba(59,130,246,0.15);color:#60a5fa;border:1px solid rgba(59,130,246,0.3)}
+    .badge-new{background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3)}
+    .footer{text-align:center;padding:20px;color:var(--text-muted);font-size:0.78rem;border-top:1px solid var(--border)}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}.header h1{font-size:1.4rem}}
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>🧃 COLA — AI Orchestrator</h1>
+  <p>Main AI coordinator — manages subagents, handles analytics and data workflows</p>
+  <div class="breadcrumb"><a href="/">Home</a> › COLA</div>
+</div>
+<div class="container">
+  <div class="section-title">🤖 System Status</div>
+  <div class="grid">
+    <div class="card" style="cursor:default;border-left-color:#10b981">
+      <h3>🟢 Orchestration Layer</h3>
+      <div class="meta">Subagent coordination active</div>
+      <div class="badges"><span class="badge badge-new">Online</span></div>
+    </div>
+    <div class="card" style="cursor:default;border-left-color:#f59e0b">
+      <h3>📊 Analytics Engine</h3>
+      <div class="meta">Data processing pipeline</div>
+      <div class="badges"><span class="badge badge-type">Active</span></div>
+    </div>
+    <div class="card" style="cursor:default;border-left-color:#8b5cf6">
+      <h3>🔗 Workspace Manager</h3>
+      <div class="meta">6 workspaces coordinated</div>
+      <div class="badges"><span class="badge badge-type">Active</span></div>
+    </div>
+  </div>
+  <p style="color:var(--text-muted);font-size:0.85rem;text-align:center;margin-top:20px">COLA operates as a backend orchestrator. Dashboard UI coming soon.</p>
+</div>
+<div class="footer">FOR OPENCLAW · Powered by OpenClaw · Built with 🐕 Shiba</div>
+</body>
+</html>
