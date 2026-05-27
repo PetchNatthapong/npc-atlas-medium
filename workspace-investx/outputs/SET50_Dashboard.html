@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestX Dashboard — SET50 Top Picks</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f1419; color: #e7e9ea; padding: 12px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #1d9bf0; font-size: 22px; margin-bottom: 4px; }
+        .subtitle { color: #71767b; font-size: 12px; margin-bottom: 16px; }
+        .disclaimer { background: #1a1a1a; border-left: 4px solid #f45b69; padding: 8px 12px; border-radius: 4px; margin-bottom: 16px; font-size: 11px; color: #f45b69; }
+        .category { margin-bottom: 20px; }
+        .category-title { font-size: 16px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #333; }
+        .cat-growing .category-title { color: #00ba7c; border-color: #00ba7c; }
+        .cat-dividend .category-title { color: #ffd700; border-color: #ffd700; }
+        .cat-turnaround .category-title { color: #f45b69; border-color: #f45b69; }
+        .stocks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+        .stock-card { background: #16181c; border-radius: 8px; padding: 10px; border: 1px solid #2f3336; max-height: 240px; overflow: hidden; }
+        .stock-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .symbol { font-size: 15px; font-weight: bold; color: #1d9bf0; }
+        .trend { font-size: 10px; padding: 3px 8px; border-radius: 20px; font-weight: 600; }
+        .trend.up { background: rgba(0,186,124,0.2); color: #00ba7c; }
+        .trend.sideways { background: rgba(255,215,0,0.2); color: #ffd700; }
+        .trend.down { background: rgba(244,91,105,0.2); color: #f45b69; }
+        .trend.recovery { background: rgba(255,165,0,0.2); color: #ffa500; }
+        .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 11px; }
+        .metric { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #2f3336; }
+        .metric:last-child { border-bottom: none; }
+        .metric-label { color: #71767b; }
+        .metric-value { font-weight: 600; }
+        .metric-value.green { color: #00ba7c; }
+        .metric-value.red { color: #f45b69; }
+        .thesis { margin-top: 8px; font-size: 10px; color: #8899a6; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .summary-table { width: 100%; border-collapse: collapse; background: #16181c; border-radius: 8px; overflow: hidden; margin-top: 16px; font-size: 11px; }
+        .summary-table th { background: #1a1a1a; padding: 8px 6px; text-align: left; font-size: 10px; color: #71767b; border-bottom: 1px solid #2f3336; }
+        .summary-table td { padding: 7px 6px; font-size: 11px; border-bottom: 1px solid #2f3336; }
+        .summary-table tr:last-child td { border-bottom: none; }
+        .summary-table .symbol-cell { font-weight: bold; color: #1d9bf0; }
+        .summary-table .rsi-high { color: #f45b69; font-weight: bold; }
+        .summary-table .rsi-low { color: #00ba7c; font-weight: bold; }
+        .summary-table .rsi-mid { color: #ffd700; }
+        .picks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+        .pick-card { background: #16181c; border-radius: 8px; padding: 10px 8px; text-align: center; }
+        .pick-card h3 { font-size: 11px; color: #71767b; margin-bottom: 3px; }
+        .pick-card .stock { font-size: 16px; font-weight: bold; margin-bottom: 3px; }
+        .pick-card.growing .stock { color: #00ba7c; }
+        .pick-card.dividend .stock { color: #ffd700; }
+        .pick-card.turnaround .stock { color: #f45b69; }
+        .pick-card .reason { font-size: 10px; color: #8899a6; }
+        footer { text-align: center; margin-top: 24px; padding: 12px; color: #71767b; font-size: 10px; }
+        @media (max-width: 768px) {
+            .stocks-grid { grid-template-columns: 1fr 1fr; }
+            .picks { grid-template-columns: 1fr; }
+            .stock-card { max-height: 220px; }
+        }
+        @media (max-width: 480px) {
+            .stocks-grid { grid-template-columns: 1fr; }
+            body { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 InvestX Dashboard</h1>
+        <p class="subtitle">SET50 Top Picks — May 15, 2026</p>
+        <div class="disclaimer">⚠️ ข้อมูลสำหรับ reference เท่านั้น ไม่ใช่คำแนะนำลงทุน | For reference only — Not investment advice</div>
+
+        <h2 class="category-title">🏆 Top Picks</h2>
+        <div class="picks">
+            <div class="pick-card growing">
+                <h3>🌱 Best VI</h3>
+                <div class="stock">DELTA</div>
+                <div class="reason">EV growth story แข็งสุดในกลุ่ม</div>
+            </div>
+            <div class="pick-card dividend">
+                <h3>💰 Best Dividend</h3>
+                <div class="stock">TISCO</div>
+                <div class="reason">Yield 5.5% สูงสุด</div>
+            </div>
+            <div class="pick-card turnaround">
+                <h3>🔄 Best Turnaround</h3>
+                <div class="stock">TOP</div>
+                <div class="reason">Margin ฟื้นเร็วสุด</div>
+            </div>
+        </div>
+
+        <div class="category cat-growing">
+            <h2 class="category-title">🌱 Growing Stocks — VI Style</h2>
+            <div class="stocks-grid">
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">DELTA</span><span class="trend up">Uptrend</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value green">68</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">185</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">155</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">175</span></div>
+                        <div class="metric"><span class="metric-label">Mkt Cap</span><span class="metric-value">~240B</span></div>
+                    </div>
+                    <div class="thesis">ผู้นำ EV charger + ขยายตลาดต่างประเทศ</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">CPALL</span><span class="trend up">Uptrend</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value green">55</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">78</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">65</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">75</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">2.1%</span></div>
+                    </div>
+                    <div class="thesis">ทรัพย์สินแข็ง 7-Eleven 17,000+ สาขา</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">ADVANC</span><span class="trend up">Uptrend</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value green">60</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">245</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">215</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">240</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">4.2%</span></div>
+                    </div>
+                    <div class="thesis">ผู้นำ AIS ครองตลาด, 5G rollout ต่อเนื่อง</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">MINT</span><span class="trend up">Uptrend</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value green">62</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">48</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">40</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">46</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">1.8%</span></div>
+                    </div>
+                    <div class="thesis">ขยาย Makiya, Pizza Hut, โรงแรมทั่วเอเชีย</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">BTS</span><span class="trend up">Uptrend</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value green">58</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">12.80</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">10.50</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">12.00</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">4.0%</span></div>
+                    </div>
+                    <div class="thesis">รายได้ recurring จากรถไฟฟ้า + ธุรกิจสื่อ</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category cat-dividend">
+            <h2 class="category-title">💰 Dividend Stocks</h2>
+            <div class="stocks-grid">
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">TISCO</span><span class="trend up">Uptrend</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value">58</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">98</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">86</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">96</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value" style="color:#ffd700;font-weight:bold">5.5%</span></div>
+                    </div>
+                    <div class="thesis">Dividend champion, งบแข็ง, ปันผลสม่ำเสมอ</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">PTTEP</span><span class="trend sideways">Sideways</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value">52</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">185</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">155</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">180</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">4.5%</span></div>
+                    </div>
+                    <div class="thesis">หุ้นปันผลนิ่ง, ราคาน้ำมันฟื้น</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">SCC</span><span class="trend sideways">Sideways</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value">50</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">420</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">350</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">410</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">4.0%</span></div>
+                    </div>
+                    <div class="thesis">ผู้นำวัสดุก่อสร้าง, infrastructure หนุน</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">KBANK</span><span class="trend up">Uptrend</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value">54</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">185</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">158</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">180</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">3.5%</span></div>
+                    </div>
+                    <div class="thesis">ธนาคารใหญ่ พอร์ตสินเชื่อหลากหลาย</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">BBL</span><span class="trend sideways">Sideways</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value">53</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">185</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">155</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">180</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">3.2%</span></div>
+                    </div>
+                    <div class="thesis">ธนาคารที่ดูแพ้ พอร์ตยาว, คุณภาพสินเชื่อดี</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category cat-turnaround">
+            <h2 class="category-title">🔄 Turnaround — Short-term Play</h2>
+            <div class="stocks-grid">
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">TOP</span><span class="trend recovery">Recovery</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value">45</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">72</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">52</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">68</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">3.8%</span></div>
+                    </div>
+                    <div class="thesis">crude ฟื้น → margin refinery ดีขึ้น</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">IRPC</span><span class="trend down">Oversold ⚠️</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value red">38</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">3.80</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">2.50</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">3.50</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">—</span></div>
+                    </div>
+                    <div class="thesis">oversold มาก ราคาถูก พลิกได้ถ้า macro ดีขึ้น</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">TASCO</span><span class="trend recovery">Recovery</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value">55</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">14.50</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">11.50</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">13.50</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">4.2%</span></div>
+                    </div>
+                    <div class="thesis">ถนน + highway โครงการรัฐ ขยายตัว</div>
+                </div>
+                <div class="stock-card">
+                    <div class="stock-header"><span class="symbol">BCPG</span><span class="trend recovery">Bottoming</span></div>
+                    <div class="metrics">
+                        <div class="metric"><span class="metric-label">RSI</span><span class="metric-value">48</span></div>
+                        <div class="metric"><span class="metric-label">52W High</span><span class="metric-value">15.50</span></div>
+                        <div class="metric"><span class="metric-label">Support</span><span class="metric-value">11.50</span></div>
+                        <div class="metric"><span class="metric-label">Resistance</span><span class="metric-value">14.50</span></div>
+                        <div class="metric"><span class="metric-label">Div Yield</span><span class="metric-value">2.5%</span></div>
+                    </div>
+                    <div class="thesis">พลังงานทดแทน รัฐบาลผลักดัน EGAT</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-title">📋 Summary Table</h2>
+        <table class="summary-table">
+            <thead>
+                <tr><th>Symbol</th><th>Category</th><th>RSI</th><th>Trend</th><th>Sup</th><th>Res</th><th>Div Yield</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="symbol-cell">DELTA</td><td>🌱 VI</td><td class="rsi-high">68</td><td>Uptrend</td><td>155</td><td>175</td><td>—</td></tr>
+                <tr><td class="symbol-cell">CPALL</td><td>🌱 VI</td><td class="rsi-mid">55</td><td>Uptrend</td><td>65</td><td>75</td><td>2.1%</td></tr>
+                <tr><td class="symbol-cell">ADVANC</td><td>🌱 VI</td><td>60</td><td>Uptrend</td><td>215</td><td>240</td><td>4.2%</td></tr>
+                <tr><td class="symbol-cell">MINT</td><td>🌱 VI</td><td>62</td><td>Uptrend</td><td>40</td><td>46</td><td>1.8%</td></tr>
+                <tr><td class="symbol-cell">BTS</td><td>🌱 VI</td><td>58</td><td>Uptrend</td><td>10.50</td><td>12.00</td><td>4.0%</td></tr>
+                <tr><td class="symbol-cell">TISCO</td><td>💰 Div</td><td>58</td><td>Uptrend</td><td>86</td><td>96</td><td style="color:#ffd700;font-weight:bold">5.5%</td></tr>
+                <tr><td class="symbol-cell">PTTEP</td><td>💰 Div</td><td class="rsi-mid">52</td><td>Sideways</td><td>155</td><td>180</td><td>4.5%</td></tr>
+                <tr><td class="symbol-cell">SCC</td><td>💰 Div</td><td class="rsi-mid">50</td><td>Sideways</td><td>350</td><td>410</td><td>4.0%</td></tr>
+                <tr><td class="symbol-cell">KBANK</td><td>💰 Div</td><td class="rsi-mid">54</td><td>Uptrend</td><td>158</td><td>180</td><td>3.5%</td></tr>
+                <tr><td class="symbol-cell">BBL</td><td>💰 Div</td><td class="rsi-mid">53</td><td>Sideways</td><td>155</td><td>180</td><td>3.2%</td></tr>
+                <tr><td class="symbol-cell">TOP</td><td>🔄 Turn</td><td class="rsi-mid">45</td><td>Recovery</td><td>52</td><td>68</td><td>3.8%</td></tr>
+                <tr><td class="symbol-cell">IRPC</td><td>🔄 Turn</td><td class="rsi-low">38</td><td>Oversold</td><td>2.50</td><td>3.50</td><td>—</td></tr>
+                <tr><td class="symbol-cell">TASCO</td><td>🔄 Turn</td><td class="rsi-mid">55</td><td>Recovery</td><td>11.50</td><td>13.50</td><td>4.2%</td></tr>
+                <tr><td class="symbol-cell">BCPG</td><td>🔄 Turn</td><td class="rsi-mid">48</td><td>Bottoming</td><td>11.50</td><td>14.50</td><td>2.5%</td></tr>
+            </tbody>
+        </table>
+
+        <footer>
+            <p>📊 InvestX Dashboard | SET50 Top Picks | Updated: May 15, 2026</p>
+            <p>⚠️ ข้อมูลสำหรับ reference เท่านั้น | Not investment advice</p>
+        </footer>
+    </div>
+</body>
+</html>
