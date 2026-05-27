@@ -3,1127 +3,986 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧠 Papez — Neurology Dashboard</title>
+    <title>🧠 Papez Neurology Library</title>
     <style>
         :root {
-            --bg: #0f0f1a;
-            --card: #1a1a2e;
-            --card-hover: #23233d;
-            --accent: #6c5ce7;
-            --accent2: #a29bfe;
-            --text: #e0e0e0;
-            --text-muted: #888;
-            --green: #00b894;
-            --yellow: #fdcb6e;
-            --red: #ff7675;
-            --blue: #74b9ff;
-            --pink: #fd79a8;
+            --bg-dark: #0a0e27;
+            --bg-card: #111827;
+            --bg-card-hover: #1a2234;
+            --accent: #6366f1;
+            --accent2: #06b6d4;
+            --accent3: #f59e0b;
+            --accent4: #ef4444;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --gradient-1: linear-gradient(135deg, #6366f1, #06b6d4);
+            --gradient-2: linear-gradient(135deg, #06b6d4, #10b981);
+            --gradient-3: linear-gradient(135deg, #f59e0b, #ef4444);
+            --gradient-4: linear-gradient(135deg, #8b5cf6, #ec4899);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
+            background: var(--bg-dark);
             color: var(--text);
             min-height: 100vh;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 30px 40px;
-            border-bottom: 1px solid #2a2a4a;
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, #0f1233 0%, var(--bg-dark) 100%);
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
         }
-        .header h1 { font-size: 28px; margin-bottom: 5px; }
-        .header p { color: var(--text-muted); font-size: 14px; }
-        .phase-section { padding: 20px 40px; }
-        .phase-title { font-size: 18px; margin-bottom: 15px; color: var(--accent2); display: flex; align-items: center; gap: 8px; }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .brain-icon {
+            width: 80px; height: 80px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 60px rgba(99,102,241,0.4);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(99,102,241,0.4); }
+            50% { box-shadow: 0 0 80px rgba(99,102,241,0.6); }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-sub {
+            font-size: 0.85rem;
+            color: var(--accent2);
+            margin-top: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            padding: 20px 30px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+            min-width: 120px;
+        }
+
+        .stat:last-child { border-right: none; }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            padding: 30px 40px 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .section-icon {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        /* Topic Grid */
         .topic-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 16px;
+            padding: 0 40px 40px;
         }
-        .topic-card {
-            background: var(--card);
-            border-radius: 12px;
-            padding: 18px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-        .topic-card:hover {
-            background: var(--card-hover);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-        .topic-card h3 { font-size: 15px; margin-bottom: 6px; }
-        .topic-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
-        .topic-meta { display: flex; gap: 8px; flex-wrap: wrap; }
-        .badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
-        .badge-ingested { background: rgba(0,184,148,0.2); color: var(--green); border: 1px solid rgba(0,184,148,0.3); }
-        .badge-phase1 { background: rgba(108,92,231,0.2); color: var(--accent2); }
-        .badge-phase2 { background: rgba(116,185,255,0.2); color: var(--blue); }
-        .badge-phase3 { background: rgba(253,203,110,0.2); color: var(--yellow); }
-        .card-links { display: flex; gap: 10px; font-size: 12px; color: var(--accent); font-weight: 600; }
-        .card-links span { cursor: pointer; }
-        .card-links span:hover { text-decoration: underline; }
 
-        /* MODAL */
-        .modal-overlay {
+        .topic-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .topic-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .topic-card:hover::before { opacity: 1; }
+
+        .topic-card .badge {
+            position: absolute;
+            top: 16px; right: 16px;
+            font-size: 0.65rem;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-ingested {
+            background: rgba(16,185,129,0.15);
+            color: #10b981;
+            border: 1px solid rgba(16,185,129,0.3);
+        }
+
+        .topic-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .topic-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(99,102,241,0.1);
+            color: var(--accent2);
+            border: 1px solid rgba(99,102,241,0.2);
+        }
+
+        .tag-cards { background: rgba(16,185,129,0.1); color: #10b981; border-color: rgba(16,185,129,0.2); }
+        .tag-qs { background: rgba(245,158,11,0.1); color: #f59e0b; border-color: rgba(245,158,11,0.2); }
+        .tag-source { background: rgba(239,68,68,0.1); color: #ef4444; border-color: rgba(239,68,68,0.2); }
+
+        /* Phase dividers */
+        .phase-divider {
+            margin: 10px 40px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(6,182,212,0.1));
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .phase-num {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .phase-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .phase-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Viewer Modal */
+        .viewer {
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.85);
             z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            backdrop-filter: blur(8px);
         }
-        .modal-overlay.active { display: flex; }
-        .modal-box {
-            background: var(--card);
-            border-radius: 16px;
-            width: 100%;
+
+        .viewer.active { display: flex; }
+
+        .viewer-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 95%;
             max-width: 900px;
             max-height: 90vh;
+            margin: auto;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
-        .modal-header {
+
+        .viewer-header {
             padding: 20px 24px;
-            background: #16213e;
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #2a2a4a;
         }
-        .modal-header h2 { font-size: 20px; }
-        .modal-header .source { font-size: 12px; color: var(--text-muted); background: rgba(108,92,231,0.2); padding: 3px 10px; border-radius: 8px; }
-        .modal-close { background: none; border: none; color: var(--text); font-size: 28px; cursor: pointer; padding: 0; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
-        .modal-close:hover { background: rgba(255,255,255,0.1); }
-        .modal-tabs {
-            display: flex;
-            gap: 0;
-            border-bottom: 1px solid #2a2a4a;
-            background: #1a1a2e;
+
+        .viewer-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
         }
-        .modal-tab {
-            padding: 14px 28px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
+
+        .viewer-header p {
+            font-size: 0.75rem;
             color: var(--text-muted);
-            border: none;
-            background: none;
-            border-bottom: 3px solid transparent;
+        }
+
+        .close-btn {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.2s;
         }
-        .modal-tab:hover { color: var(--text); }
-        .modal-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-        .modal-body {
-            padding: 24px;
-            overflow-y: auto;
+
+        .close-btn:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+
+        .nav-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-tab {
             flex: 1;
-            font-size: 14px;
-            line-height: 1.7;
+            padding: 14px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
-        .wiki-content h1 { font-size: 24px; margin-bottom: 12px; color: var(--accent2); }
-        .wiki-content h2 { font-size: 20px; margin: 20px 0 10px; color: var(--accent); }
-        .wiki-content h3 { font-size: 16px; margin: 16px 0 8px; color: #a29bfe; }
-        .wiki-content p { margin: 10px 0; }
-        .wiki-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
-        .wiki-content th { background: var(--accent); color: white; padding: 10px; text-align: left; }
-        .wiki-content td { padding: 9px 12px; border: 1px solid #2a2a4a; }
-        .wiki-content tr:nth-child(even) { background: #1f1f35; }
-        .wiki-content code { background: #2a2a4a; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
-        .wiki-content pre { background: #2a2a4a; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 14px 0; }
-        .wiki-content pre code { background: none; padding: 0; }
-        .wiki-content ul, .wiki-content ol { padding-left: 24px; margin: 10px 0; }
-        .wiki-content li { margin: 5px 0; }
-        .wiki-content blockquote {
-            border-left: 4px solid var(--accent);
-            padding: 10px 16px;
-            background: rgba(108,92,231,0.1);
-            margin: 14px 0;
-            border-radius: 0 8px 8px 0;
+
+        .nav-tab:hover { color: var(--text); }
+        .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+        .viewer-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
         }
-        .wiki-content hr { border: none; border-top: 1px solid #2a2a4a; margin: 20px 0; }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Content Styling */
+        .content-body h1 { font-size: 1.4rem; margin-bottom: 16px; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .content-body h2 { font-size: 1.1rem; color: var(--accent2); margin: 20px 0 10px; }
+        .content-body p { font-size: 0.85rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 12px; }
+        .content-body table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.8rem; }
+        .content-body th { background: rgba(99,102,241,0.2); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--accent2); }
+        .content-body td { padding: 8px 12px; border: 1px solid var(--border); color: #cbd5e1; }
+        .content-body tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+        .content-body strong { color: var(--text); }
+        .content-body code { background: rgba(99,102,241,0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; color: var(--accent2); }
+        .content-body li { font-size: 0.82rem; color: #cbd5e1; margin: 6px 0 6px 20px; line-height: 1.6; }
+        .content-body hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+        .content-body blockquote { background: rgba(6,182,212,0.1); border-left: 3px solid var(--accent2); padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 0.85rem; color: #cbd5e1; }
 
         /* Flashcard */
-        .flash-grid { display: flex; flex-direction: column; gap: 12px; }
-        .flash-card {
-            background: #1f1f35;
-            border-radius: 10px;
-            padding: 16px 20px;
-            cursor: pointer;
-            border: 1px solid #2a2a4a;
-            transition: all 0.2s;
+        .flashcard-list { display: flex; flex-direction: column; gap: 10px; }
+        .flashcard {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
         }
-        .flash-card:hover { border-color: var(--accent); }
-        .flash-card .q { font-weight: 600; color: var(--yellow); margin-bottom: 8px; font-size: 14px; }
-        .flash-card .a { display: none; color: var(--green); font-size: 14px; padding-top: 8px; border-top: 1px dashed #2a2a4a; }
-        .flash-card.flipped .a { display: block; }
-        .flash-instruction { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; text-align: center; }
-
-        /* Quiz */
-        .quiz-question {
-            background: #1f1f35;
-            border-radius: 10px;
-            padding: 16px 20px;
-            margin-bottom: 14px;
-            border: 1px solid #2a2a4a;
-        }
-        .quiz-question .q-text { font-weight: 600; color: var(--blue); margin-bottom: 12px; font-size: 14px; }
-        .quiz-question .options { list-style: none; padding: 0; }
-        .quiz-question .options li {
-            padding: 8px 14px;
-            margin: 4px 0;
-            background: #252545;
-            border-radius: 8px;
+        .flashcard-q {
+            padding: 14px 18px;
             cursor: pointer;
-            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
             transition: background 0.2s;
         }
-        .quiz-question .options li:hover { background: #2a2a5a; }
-        .quiz-question .options li.correct { background: rgba(0,184,148,0.3); color: var(--green); }
-        .quiz-question .options li.wrong { background: rgba(255,118,117,0.3); color: var(--red); }
-        .quiz-true-false { padding: 8px 14px; margin: 4px 0; background: #252545; border-radius: 8px; cursor: pointer; font-size: 13px; }
-        .quiz-true-false:hover { background: #2a2a5a; }
-        .quiz-blank input {
-            background: #252545;
-            border: 1px solid #3a3a5a;
-            border-radius: 6px;
-            color: var(--text);
-            padding: 6px 10px;
-            font-size: 13px;
-            width: 120px;
+        .flashcard-q:hover { background: rgba(255,255,255,0.03); }
+        .flashcard-q::before { content: '🔵'; font-size: 14px; flex-shrink: 0; }
+        .flashcard-q::after { content: '▼'; margin-left: auto; font-size: 10px; color: var(--text-muted); transition: transform 0.2s; }
+        .flashcard.open .flashcard-q::after { transform: rotate(180deg); }
+        .flashcard-a {
+            display: none;
+            padding: 0 18px 14px;
+            font-size: 0.82rem;
+            color: #10b981;
+            line-height: 1.6;
         }
-        .quiz-answer-display { margin-top: 10px; font-size: 13px; color: var(--green); display: none; }
-        .quiz-answer-display.show { display: block; }
+        .flashcard.open .flashcard-a { display: block; }
+        .flashcard.open .flashcard-q::before { content: '✅'; }
 
-        .debug-bar {
-            background: #1a1a2e;
-            border: 1px solid var(--red);
-            padding: 10px 16px;
-            font-size: 12px;
-            font-family: monospace;
-            color: var(--red);
-            margin: 16px 40px;
+        /* Quiz */
+        .quiz-item { margin-bottom: 20px; }
+        .quiz-q {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+        }
+        .quiz-q::before { content: attr(data-n); position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+        .quiz-options { list-style: none; padding-left: 24px; }
+        .quiz-options li {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding: 4px 0;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .quiz-options li:hover { color: var(--text); }
+        .quiz-options li.correct { color: #10b981; font-weight: 600; }
+        .quiz-options li.incorrect { color: #ef4444; }
+        .quiz-answer {
+            display: none;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: rgba(16,185,129,0.1);
+            border: 1px solid rgba(16,185,129,0.3);
             border-radius: 8px;
+            font-size: 0.78rem;
+            color: #10b981;
+        }
+        .quiz-item.revealed .quiz-answer { display: block; }
+        .quiz-item.revealed .quiz-options li.correct { color: #10b981; }
+        .quiz-reveal-btn {
+            background: var(--gradient-1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin: 12px 24px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer span { color: var(--accent); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .stats-bar { gap: 0; }
+            .stat { padding: 16px 20px; min-width: 100px; }
+            .topic-grid { padding: 0 16px 30px; gap: 12px; }
+            .phase-divider { margin: 10px 16px; }
+            .section-header { padding: 20px 16px 8px; }
+            .viewer-content { width: 98%; border-radius: 12px; }
         }
     </style>
 </head>
-<body>
+<body><div style="position:fixed;top:12px;left:16px;z-index:999"><a href="/" style="font-size:13px;color:#64748b;text-decoration:none;font-family:system-ui">← Hub</a></div>
 
-<div class="debug-bar" id="debugBar">Debug: basePath="", current page URL unknown — click a card to see fetch URL</div>
+<!-- Hero -->
+<div class="hero">
+    <div class="brain-icon">🧠</div>
+    <h1>Papez Neurology Library</h1>
+    <p>From molecules to the mind — a structured learning resource for neurology mastery</p>
+    <p class="hero-sub">Comprehensive · Visual · Interactive</p>
+</div>
 
-<div class="header"><div style="position:absolute;top:10px;left:16px;"><a href="/" style="color:#a29bfe;font-size:12px;opacity:0.8;">← Hub</a></div>
-    <h1>🧠 Papez — Neurology Learning Dashboard</h1>
-    <p>Phase 1 Foundation • Phase 2 Clinical • Phase 3 Board Exam | <span style="color:var(--green)">32 topics loaded</span></p>
-    <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-        <a href="/workspace-imbr/papez-outputs/library" style="padding:7px 18px;background:rgba(108,92,231,0.25);border:1px solid rgba(108,92,231,0.5);border-radius:8px;color:#a29bfe;font-size:13px;font-weight:600;text-decoration:none;">📚 Library</a>
-        <a href="/" style="padding:7px 18px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#888;font-size:13px;font-weight:600;text-decoration:none;">← Hub</a>
+<!-- Stats -->
+<div class="stats-bar">
+    <div class="stat">
+        <div class="stat-number">30</div>
+        <div class="stat-label">Wiki Pages</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">30</div>
+        <div class="stat-label">Flashcard Decks</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">30</div>
+        <div class="stat-label">Quiz Decks</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">15</div>
+        <div class="stat-label">PDFs Ingested</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">565+</div>
+        <div class="stat-label">Cards Created</div>
     </div>
 </div>
 
-## Phase 1 — Foundation (Cellular Neuroscience & Neuroanatomy)
+<!-- Phase 1 -->
+<div class="section-header">
+    <div class="section-icon" style="background:linear-gradient(135deg,#6366f1,#06b6d4)">📚</div>
+    <h2>Phase 1: Foundation Builder</h2>
+</div>
 
 <div class="topic-grid">
-<div class="topic-card" onclick="openModal('ion_channels')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧬 Ion Channels</h3>
-    <p>Voltage-gated, ligand-gated, leak channels. Action potential fundamentals.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('action_potentials')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>⚡ Action Potentials</h3>
-    <p>Depolarization, repolarization, refractory periods, propagation.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('synaptic_transmission')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔗 Synaptic Transmission</h3>
-    <p>Synaptic cleft, vesicles, release, postsynaptic receptors.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('neurotransmitters')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧪 Neurotransmitters & Receptors</h3>
-    <p>Excitatory, inhibitory, receptor types, receptor subunits.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('glial_cells')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔵 Glial Cells</h3>
-    <p>Astrocytes, oligodendrocytes, microglia, Schwann cells.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('gross_brain_anatomy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 Gross Brain Anatomy</h3>
-    <p>Lobes, sulci, gyri, ventricles, meninges.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('brainstem')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🌿 Brainstem</h3>
-    <p>Midbrain, pons, medulla. Cranial nerve nuclei.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('cranial_nerves')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔢 Cranial Nerves</h3>
-    <p>CN I-XII. Exit zones, functions, clinical testing.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('cerebellum')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🎯 Cerebellum</h3>
-    <p>Spinocerebellum, vestibulocerebellum, cerebrocerebellum.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('basal_ganglia')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🎰 Basal Ganglia</h3>
-    <p>Direct pathway, indirect pathway, Parkinson's disease.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('limbic_system')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💗 Limbic System</h3>
-    <p>Hippocampus, amygdala, Papez circuit, emotion & memory.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('blood_supply')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🩸 Blood Supply</h3>
-    <p>Circle of Willis, MCA, ACA, PCA, stroke territories.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-</div>
-
-## Phase 2 — Clinical Apprentice (Examination & Localization)
-
-<div class="topic-grid">
-<div class="topic-card" onclick="openModal('neurological_examination')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🩺 Neurological Examination</h3>
-    <p>Mental status, CN I-XII, motor, sensory, coordination, reflexes.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('lesion_localization')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🎯 Lesion Localization</h3>
-    <p>UMN vs LMN, cortical, brainstem, spinal cord, peripheral nerve.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('differential_diagnosis')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔍 Differential Diagnosis</h3>
-    <p>Common presentations, red flags, clinical reasoning.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
+    <div class="topic-card" onclick="openViewer('wiki', 'gross_brain_anatomy')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧠 Gross Brain Anatomy</h3>
+        <p>Lobes, sulci, gyri, meninges, ventricular system.</p>
+        <div class="tags">
+            <span class="tag">Anatomy</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">40 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'blood_supply')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🩸 Blood Supply</h3>
+        <p>Circle of Willis, ACA/MCA/PCA, stroke territories.</p>
+        <div class="tags">
+            <span class="tag">Anatomy</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">40 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'brainstem')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧬 Brainstem</h3>
+        <p>Midbrain, pons, medulla; cranial nerve nuclei.</p>
+        <div class="tags">
+            <span class="tag">Anatomy</span><span class="tag tag-cards">45 cards</span><span class="tag tag-qs">45 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'cerebellum')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🎯 Cerebellum</h3>
+        <p>Deep nuclei, peduncles, pathways, ataxia patterns.</p>
+        <div class="tags">
+            <span class="tag">Anatomy</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">40 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'limbic_system')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>💚 Limbic System</h3>
+        <p>Hippocampus, amygdala, Papez circuit, memory.</p>
+        <div class="tags">
+            <span class="tag">Anatomy</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">40 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'cranial_nerves')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🔌 Cranial Nerves</h3>
+        <p>CN I-XII, foramina, nuclei, clinical testing.</p>
+        <div class="tags">
+            <span class="tag">Anatomy</span><span class="tag tag-cards">50 cards</span><span class="tag tag-qs">50 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'basal_ganglia')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🎮 Basal Ganglia</h3>
+        <p>Direct/indirect pathways, PD/Huntington, DBS targets.</p>
+        <div class="tags">
+            <span class="tag">Physiology</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">40 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'action_potentials')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>⚡ Action Potentials</h3>
+        <p>Na+/K+ channels, Hodgkin-Huxley, propagation.</p>
+        <div class="tags">
+            <span class="tag">Physiology</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">40 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'synaptic_transmission')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🔗 Synaptic Transmission</h3>
+        <p>Neurotransmitters, vesicles, receptors, Ex/Inhibitory.</p>
+        <div class="tags">
+            <span class="tag">Physiology</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">40 Qs</span>
+        </div>
+    </div>
 </div>
 
-## Phase 3 — Board Exam Warrior (Library Ingestion)
+<!-- Phase 2 -->
+<div class="section-header">
+    <div class="section-icon" style="background:linear-gradient(135deg,#06b6d4,#10b981)">🩺</div>
+    <h2>Phase 2: Clinical Apprentice</h2>
+</div>
 
 <div class="topic-grid">
-<div class="topic-card" onclick="openModal('antiseizure_medications')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💊 Antiseizure Medications</h3>
-    <p>Mechanisms, PK, drug selection, TDM, DRE. VPA, LEV, LTG, CBZ, PHT and more.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('seizure_classification_ilae')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>⚡ ILAE Seizure Classification</h3>
-    <p>Focal vs generalized, 2025 updates, absence vs FIA, lateralizing signs.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('idiopathic_generalized_epilepsies')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 IGE Syndromes</h3>
-    <p>JME, JAE, GTCA, GEFS+, SUDEP, ASM withdrawal.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('parkinsons_disease_diagnosis')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🩟 Parkinson's Disease (MDS Criteria)</h3>
-    <p>MDS 2015 clinical diagnostic criteria, red flags, supportive criteria, exclusions.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('cadasil_carasal_caracil')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧬 CADASIL vs CARASAL vs CARASIL</h3>
-    <p>Hereditary cSVD: NOTCH3, HTRA1, CTSA. GOM, temporal pole MRI, alopecia.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('tavapadon_tempo_trials')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💊 Tavapadon (TEMPO Trials)</h3>
-    <p>D1/D5 agonist for PD. ICD risk 1.2% vs 17-28% with D2/D3 agonists.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('migraine_candesartan_vs_topiramate')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🤕 Migraine: Candesartan vs Topiramate</h3>
-    <p>Prophylaxis comparison. Candesartan 70% continuation vs 33% topiramate.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('epilepsy_definition')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧩 Epilepsy Definition (ILAE 2005/2014)</h3>
-    <p>Seizure vs epilepsy vs resolved; three diagnostic criteria; provoked vs unprovoked.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('eeg_in_epilepsy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>📊 EEG in Epilepsy</h3>
-    <p>10-20 system, normal rhythms, epileptiform, activation procedures, NCSE criteria.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('genetics_in_epilepsy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧬 Genetics in Epilepsy</h3>
-    <p>SCN1A-Dravet, KCNQ2, CDKL5, PCDH19, mTOR pathway, TSC, GLUT1, precision therapy.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('neuroimaging_in_epilepsy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 Neuroimaging in Epilepsy</h3>
-    <p>3T epilepsy MRI, HS, FCD, DNET, ganglioglioma, PET, SISCOM, SPECT timing.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('asm_pregnancy_teratogenicity')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🤰 ASM in Pregnancy & Teratogenicity</h3>
-    <p>VPA 6-10% MCM, NEAD IQ deficit, LTG/LEV preferred, PK changes, NICE NG217.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('epilepsy_classification_framework')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>📋 Epilepsy Classification Framework</h3>
-    <p>ILAE 2017 three-level, four epilepsy types, six etiologies, ILAE 2022 syndromes.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('dystonia_primer')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔄 Dystonia Primer (Nature Reviews 2018)</h3>
-    <p>TOR1A/DYT1, GCH1-DRD, GPi-DBS, BoNT, phenomenological classification.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('childhood_epilepsy_syndromes')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>👶 Childhood Epilepsy Syndromes</h3>
-    <p>CAE/SeLECTS/SeLEAS/Dravet/LGS/FIRES — ILAE 2022 classification.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('neonatal_seizures_syndromes')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>👶 Neonatal Seizures & Syndromes</h3>
-    <p>HIE, KCNQ2-DEE, SCN2A, SeLNE, EIDEE, pyridoxine, GLUT1, electroclinical dissociation.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('als_new_classification')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔬 ALS New Classification (Lancet 2016)</h3>
-    <p>C9orf72, SOD1, ALS-FTD spectrum, multidisciplinary care, phenotypes.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('als_management_ean_2024')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔬 ALS Management (EAN 2024)</h3>
-    <p>Multidisciplinary care, edaravone, tirasemtig, breathing/nutrition management.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('botulinum_toxin_cervical_dystonia')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💉 BoNT for Cervical Dystonia</h3>
-    <p>BoNT injections, target muscles, dosing, outcomes, immunogenicity.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('dbs_earlystim_trial')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 DBS EARLYSTIM Trial (NEJM 2013)</h3>
-    <p>STN DBS for PD with early motor complications. Quality of life improved.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('early_extubation_post_thrombectomy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🫁 Early Extubation Post-Thrombectomy</h3>
-    <p>EDESTROKE trial, extubation success predictors, neurocritical care.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('intracranial_atherosclerotic_stenosis')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🫀 ICV Stenosis (Wabnitz 2024)</h3>
-    <p>Aggressive medical therapy, DAPT, statin, BP control for ICAS.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('progressive_supranuclear_palsy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 PSP (MDS Criteria 2017)</h3>
-    <p>Richardson's phenotype, variants, NfL, tau, clue signs, supranuclear gaze palsy.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('multiple_system_atrophy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔴 MSA (Wenning 2022)</h3>
-    <p>MSA-C (olivopontocerebellar) vs MSA-P (parkinsonian), autonomic failure, α-synuclein.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('status_epilepticus_treatment')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>⚡ Status Epilepticus (Glauser 2016)</h3>
-    <p>Benzodiazepine phases, fosphenytoin, refractory SE, outcomes,Level A/E/B evidence.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('neuropathic_pain')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔥 Neuropathic Pain (Nature Reviews 2017)</h3>
-    <p>DN4, LANSS, TCAs, SNRIs, gabapentinoids, allodynia vs hyperalgesia.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('secondary_stroke_prevention_2021')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🩸 Secondary Stroke Prevention (AHA 2021)</h3>
-    <p>TOAST, DAPT short-term, PFO closure, ESUS no anticoag, atrial fibrillation.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('cerebral_venous_thrombosis')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💀 CVT (AHA/ASA 2011)</h3>
-    <p>LMWH-warfarin, CVT in pregnancy, OCP contraindicated, septic CVT.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('primary_stroke_prevention_2024')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🛡️ Primary Stroke Prevention (AHA 2024)</h3>
-    <p>Life's Essential 8, Mediterranean diet, sedentary behavior, GLP-1 agonists.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('essential_tremor')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🫨 Essential Tremor (AAN 2011)</h3>
-    <p>Level A: propranolol (FDA-approved) + primidone; Level B: topiramate, gabapentin; 30-50% don't respond.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('guillain_barre_syndrome')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💉 Guillain-Barré Syndrome (EAN 2023)</h3>
-    <p>IVIg 0.4g/kg × 5 days or PE; mEGRIS for ventilation risk; A-CIDP 5%; anti-GQ1b in MFS.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('wilson_disease')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔶 Wilson's Disease (EASL 2012)</h3>
-    <p>ATP7B mutation; Kayser-Fleischer rings; penicillamine/trientine chelation; zinc maintenance.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('autoimmune_encephalitis')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 Autoimmune Encephalitis (Nature/BJM)</h3>
-    <p>NMDAR (ovarian teratoma, dyskinesias), LGI1 (FBDS, hyponatremia), GABABR (SCLC); cell-surface > intracellular treatable.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('myasthenia_gravis')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💊 Myasthenia Gravis (J Clin Med 2021)</h3>
-    <p>85% AChR-Ab+; MuSK 15%; pyridostigmine, thymectomy AChR+; Rituximab MuSK+; Eculizumab refractory.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('multiple_sclerosis_mcdonald_2024')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔬 MS McDonald Criteria 2024 (Siriraj)</h3>
-    <p>DIS ≥2/5 (optic nerve=new 5th); DIT NOT required; CVS Select-6; kFLC replaces OCB; stricter ≥50yo.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('atypical_parkinsonism')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 Atypical Parkinsonism (Siriraj)</h3>
-    <p>MSA (hot cross bun), DLB (visual hallucinations), PSP (VSGP, hummingbird), CBS (alien limb, apraxia).</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('sleep_medicine')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>😴 Sleep Medicine (Theerawat)</h3>
-    <p>NREM stages 1-4 (SWS), REM (atonia), AAS/VLPO flip-flop, MSLT <5min pathologic, orexin loss = narcolepsy.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('critical_care_eeg_terminology')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>📊 Critical Care EEG (ACNS 2021)</h3>
-    <p>RPPs (G/L/BI), periodic discharges, reactivity, SIRPIDs, burst-suppression, CAPE, burst-attenuation patterns.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('inflammatory_myopathy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔥 Inflammatory Myopathy (Siriporn)</h3>
-    <p>DM (Gottron's, perifascicular atrophy), IBM (finger flexors, rimmed vacuoles), IMNM (CK>10K), antisynthetase.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('motor_neuron_disease')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔴 Motor Neuron Disease (Chiang Mai)</h3>
-    <p>ALS mixed UMN+LMN, PLS pure UMN, Kennedy SBMA, Hirayama self-limiting, SMA SMN1 deletion.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('genetics_of_stroke')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧬 Genetics of Stroke (Chiang Mai)</h3>
-    <p>CADASIL (NOTCH3), Fabry (GLA), Moyamoya (RNF213), COL4A1, Homocystinuria, SCD TCD screening.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('seizure_classification_ilae_2025')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>⚡ ILAE Seizure Classification 2025</h3>
-    <p>Consciousness = awareness + responsiveness; with/without observable manifestations; classifiers vs descriptors.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('movement_disorder_emergencies')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🚨 Movement Disorder Emergencies (Siriraj)</h3>
-    <p>NMS (fever+rigidity+CPK), PHS (PD withdrawal), acute dystonia (benztropine), dystonic storm.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('cmu_stroke_fast_track_2025')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🏥 CMU Stroke Fast Track 2025</h3>
-    <p>BEFAST, FAST VAN for LVO, NIHSS scoring, IV tPA 4 steps, CT early ischemic changes.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('stroke_etiology')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🩸 Stroke Etiology (Siriraj)</h3>
-    <p>THE PIPES/PUMPS/BLOOD mnemonics, TOAST subtypes, AF anticoagulation (64% RRR), CEA ARR 17%.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('antiseizure_medications')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💊 Anti-Seizure Medications (ASM)</h3>
-    <p>Mechanisms: Na+ block, GABA, SV2A. Narrow (CBZ/PHT) vs broad (VPA/LEV). ILAE Level A: CBZ/LEV/PHT/ZNS.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('parkinson_medication_management')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧪 PD Medication Management (Siriraj)</h3>
-    <p>Levodopa (most effective), dopamine agonists, MAO-B/COMT inhibitors. Motor complications: wearing-off, dyskinesias, on-off.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('basic_eeg_interpretation')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>📈 Basic EEG Interpretation</h3>
-    <p>10-20 system, delta/theta/alpha/beta bands, triphasic waves (metabolic), CJD (1/sec), PLEDs (acute lesion).</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('epilepsy_syndromes_internists')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 Epilepsy Syndromes for Internists (CMU)</h3>
-    <p>JME, childhood/Juvenile absence, DRE (≥2 ASM failures), SUDEP 1:1700, MESS trial early Tx.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('multiple_sclerosis_diagnostic_criteria_2024')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔬 MS McDonald Criteria 2024 (Siriraj)</h3>
-    <p>5 locations (NEW: optic nerve). DIT NOT required. CVS (75-98%), PRLs (98%), kFLC-index. ≥4/5 = 100% specificity.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('difficult_to_treat_headache')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🤕 Difficult-to-Treat Headache (Siriraj)</h3>
-    <p>MOH (analgesics ≥15d, triptans ≥10d), chronic migraine, psychiatric comorbidities, adherence ~25%.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('metabolic_myopathy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💪 Metabolic Myopathy (Siriporn Lin)</h3>
-    <p>GSD (McArdle second wind), lipid storage, FET (no lactate rise = defect), Pompe ERT available.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('mitochondrial_myopathy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>⚡ Mitochondrial Myopathy (Siriporn Lin)</h3>
-    <p>MELAS/MERRF/KSS/CPEO, heteroplasmy, maternal inheritance, ragged red fibers, power failure.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('cervical_dystonia_management')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔄 Cervical Dystonia Management (Chula)</h3>
-    <p>iCD (Albanese 2023), BoNT-A first-line, sensory trick 90%, TWSTRS, Dysport 1:3-1:4 > Botox.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('sleep_medicine_detailed')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>😴 Sleep Medicine (Theerawat)</h3>
-    <p>NREM stages 1-4/SWS, REM atonia, orexin/hypocretin, flip-flop switch, sleep deprivation effects.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('congenital_myopathy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧬 Congenital Myopathy (Siriporn Lin)</h3>
-    <p>Nemaline rods, central cores (RYR1), minicores, CFTD, ATPase fiber typing, type 1 atrophy.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('muscular_dystrophy')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💪 Muscular Dystrophy (Siriporn Lin)</h3>
-    <p>DMD/BMD (dystrophin, Gowers sign, pseudohypertrophy), LGMD, OPMD (rimmed vacuoles), FSHD.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('community_acquired_cns_infection')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🦠 Community CNS Infection (Chulalongkorn)</h3>
-    <p>S. pneumoniae 72%, classic triad 41%, CT before LP criteria, pneumococcal stroke 30%.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('immunocompromised_cns_infection')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💉 Immunocompromised CNS Infection (Ramathibodi)</h3>
-    <p>CD4 thresholds, CNS TB (4 drugs + steroids ≥12mo), toxoplasmosis, PML, cryptococcus.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('essential_neuroimaging')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 Essential Neuroimaging (Siriraj 2026)</h3>
-    <p>CT HU scale, MRI T1/T2/FLAIR signals, DWI acute stroke, hemorrhage timeline.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('mri_essentials_in_epileptology')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>MRI Essentials in Epileptology</h3>
-    <p>ILAE Imaging Task Force. Right protocol, expert review, MRI-negative ≠ no lesion.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span></div>
-</div>
-<div class="topic-card" onclick="openModal('hippocampal_sclerosis_classification')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>Hippocampal Sclerosis Classification</h3>
-    <p>ILAE consensus (Blümcke 2013). Types 1/2/3/no-HS. Surgical prognosis.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span></div>
-</div>
-<div class="topic-card" onclick="openModal('focal_cortical_dysplasia_ilae_2022')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>Focal Cortical Dysplasia — ILAE 2022</h3>
-    <p>Najm et al. FCD classification update. mMCDs, MOGHE, BOS FCD, mTOR pathway.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span></div>
-</div>
-<div class="topic-card" onclick="openModal('insomnia_sleep_apnea')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>😴 Insomnia & Sleep Apnea (Sleep Medicine)</h3>
-    <p>Two-process model, flip-flop switch, N1/N2/N3/REM, CBT-I, CPAP, AHI severity.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('perfusion_ct_stroke')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🩺 Perfusion CT in Stroke (CMU)</h3>
-    <p>CBF/CBV/Tmax, core vs penumbra, EXTEND/DEFUSE3/DAWN criteria, rCBF <30%.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('cns_demyelinating_diseases')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🔬 CNS Demyelinating Diseases (Siriraj)</h3>
-    <p>MS vs NMOSD vs MOGAD, LETM, Dawson's fingers, McDonald 2024, DMTs.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('long_case_neurology')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧠 Long Case Neurological Approach (Siriraj 2026)</h3>
-    <p>Localize lesion (WHERE/WHAT/WHY), UMN vs LMN, CN examination, reflexes.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('long_term_epilepsy_management')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>💊 Long-Term Epilepsy Management (Siriraj)</h3>
-    <p>ASM selection by comorbidity, VPA teratogenicity, monitoring CBC/LFT/BMD.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('seizure_semiology_localization')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🎯 Seizure Semiology & Localization (PSU)</h3>
-    <p>5 key patterns, automatisms, temporal vs frontal, network propagation concept.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('simbr_board_review_2023_stroke')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>📚 SIMBR Board Review 2023 Stroke (Siriraj)</h3>
-    <p>SSS formula, NIHSS, TOAST, ESUS, IV rtPA, EVT, secondary prevention.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('stroke_diagnosis_management')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🏥 Stroke Diagnosis & Management (Siriraj)</h3>
-    <p>Fast track activation, rtPA dose 0.9mg/kg, NIHSS ≥5, mimics 21%.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('common_primary_headaches')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🤕 Common Primary Headaches (Headache Medicine)</h3>
-    <p>SNOOP, ID Migraine, ICHD-3 criteria, migraine vs TTH vs cluster, MIDAS.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('movement_disorders_phenomenology')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🌀 Movement Disorders Phenomenology (Siriraj)</h3>
-    <p>Hyperkinetic vs hypokinetic, basal ganglia pathways, tremor/chorea/dystonia/myoclonus/tics.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('movement_disorder_emergencies')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🚨 Movement Disorder Emergencies (Siriraj)</h3>
-    <p>NMS (hyperthermia/rigidity/CPK), serotonin syndrome, PHS, drug-induced parkinsonism.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('genetics_of_stroke')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🧬 Genetics of Stroke (CMU)</h3>
-    <p>CADASIL (NOTCH3), CARASIL, COL4A1, Fabry, Moyamoya, monogenic vs polygenic.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('first_seizure_cluster_seizures')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>⚡ First Seizure & Cluster Seizures (Emergency)</h3>
-    <p>Recurrence risk, EEG, AED decision, cluster seizures ≥2/24h, rescue medications.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('status_epilepticus_atiwat')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🚨 Status Epilepticus — CMU (Atiwat)</h3>
-    <p>T1/T2 time points, mortality (adult 15.9%), excitotoxic damage, classification, etiology.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
-<div class="topic-card" onclick="openModal('head_up_tilt_table_test')">
-    <span class="badge badge-ingested">INGESTED</span>
-    <h3>🫀 Head-Up Tilt Table Test (HUTT)</h3>
-    <p>NMS vs POTS vs OH patterns, 70° tilt protocol, autonomic syncope diagnosis.</p>
-    <div class="card-links"><span>Wiki</span> · <span>Flashcards</span> · <span>Quiz</span></div>
-</div>
+    <div class="topic-card" onclick="openViewer('wiki', 'neurological_examination')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🩺 Neurological Examination</h3>
+        <p>Mental status, cranial nerves, motor, sensory, reflexes, coordination.</p>
+        <div class="tags">
+            <span class="tag">Clinical</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">38 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'lesion_localization')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🎯 Lesion Localization</h3>
+        <p>UMNL vs LMNL, topographic syndromes, "where is the lesion?"</p>
+        <div class="tags">
+            <span class="tag">Clinical</span><span class="tag tag-cards">35 cards</span><span class="tag tag-qs">43 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'differential_diagnosis')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧩 Differential Diagnosis</h3>
+        <p>Approach to common presentations, red flags, categories.</p>
+        <div class="tags">
+            <span class="tag">Clinical</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">43 Qs</span>
+        </div>
+    </div>
 </div>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal">
-    <div class="modal-box">
-        <div class="modal-header">
+<!-- Phase 3: Epilepsy -->
+<div class="section-header">
+    <div class="section-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">⚡</div>
+    <h2>Phase 3: Epilepsy Library</h2>
+</div>
+
+<div class="topic-grid">
+    <div class="topic-card" onclick="openViewer('wiki', 'seizure_classification_ilae')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>⚡ ILAE Seizure Classification</h3>
+        <p>Focal vs generalized, 2025 updates, absence vs FIA, lateralizing signs.</p>
+        <div class="tags">
+            <span class="tag">ILAE 2017/2025</span><span class="tag tag-cards">50 cards</span><span class="tag tag-qs">54 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'epilepsy_definition')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧩 Epilepsy Definition</h3>
+        <p>ILAE 2005/2014, three diagnostic criteria, provoked vs unprovoked.</p>
+        <div class="tags">
+            <span class="tag">ILAE 2014</span><span class="tag tag-cards">25 cards</span><span class="tag tag-qs">20 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'epilepsy_classification_framework')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>📋 Epilepsy Classification Framework</h3>
+        <p>ILAE 2017 three-level, four epilepsy types, six etiologies, 34 syndromes.</p>
+        <div class="tags">
+            <span class="tag">ILAE 2022</span><span class="tag tag-cards">20 cards</span><span class="tag tag-qs">20 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'idiopathic_generalized_epilepsies')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧠 IGE Syndromes</h3>
+        <p>JME, JAE, GTCA, GEFS+, SUDEP, ASM withdrawal.</p>
+        <div class="tags">
+            <span class="tag">IGE</span><span class="tag tag-cards">45 cards</span><span class="tag tag-qs">53 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'childhood_epilepsy_syndromes')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧒 Childhood Epilepsy Syndromes</h3>
+        <p>CAE, SeLECTS, SeLEAS, Dravet, LGS, FIRES, ILAE 2022 MAE criteria.</p>
+        <div class="tags">
+            <span class="tag">Syndromes</span><span class="tag tag-cards">25 cards</span><span class="tag tag-qs">20 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'antiseizure_medications')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>💊 Antiseizure Medications</h3>
+        <p>ASM mechanisms, PK/PD, drug selection, TDM, DRE, interactions.</p>
+        <div class="tags">
+            <span class="tag">NPC Notebook</span><span class="tag tag-cards">45 cards</span><span class="tag tag-qs">53 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'eeg_in_epilepsy')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>📊 EEG in Epilepsy</h3>
+        <p>10-20 system, normal rhythms, epileptiform, activation, NCSE criteria.</p>
+        <div class="tags">
+            <span class="tag">NPC Ch.8</span><span class="tag tag-cards">30 cards</span><span class="tag tag-qs">25 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'genetics_in_epilepsy')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧬 Genetics in Epilepsy</h3>
+        <p>SCN1A-Dravet, KCNQ2, CDKL5, PCDH19, mTOR pathway, TSC, GLUT1.</p>
+        <div class="tags">
+            <span class="tag">NPC Ch.10</span><span class="tag tag-cards">30 cards</span><span class="tag tag-qs">20 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'neuroimaging_in_epilepsy')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧠 Neuroimaging in Epilepsy</h3>
+        <p>3T epilepsy MRI protocol, HS, FCD, DNET, ganglioglioma, PET, SISCOM.</p>
+        <div class="tags">
+            <span class="tag">NPC Ch.9</span><span class="tag tag-cards">30 cards</span><span class="tag tag-qs">20 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'asm_pregnancy_teratogenicity')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🤰 ASM in Pregnancy & Teratogenicity</h3>
+        <p>VPA 6-10% MCM, NEAD IQ deficit, LTG/LEV preferred, PK changes, NICE NG217.</p>
+        <div class="tags">
+            <span class="tag">NPC Ch.12</span><span class="tag tag-cards">20 cards</span><span class="tag tag-qs">20 Qs</span>
+        </div>
+    </div>
+</div>
+
+<!-- Phase 3: Movement Disorders -->
+<div class="section-header">
+    <div class="section-icon" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)">🎮</div>
+    <h2>Phase 3: Movement Disorders</h2>
+</div>
+
+<div class="topic-grid">
+    <div class="topic-card" onclick="openViewer('wiki', 'parkinsons_disease_diagnosis')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🩟 Parkinson's Disease (MDS Criteria)</h3>
+        <p>MDS 2015 clinical diagnostic criteria, red flags, supportive criteria.</p>
+        <div class="tags">
+            <span class="tag">MDS 2015</span><span class="tag tag-cards">40 cards</span><span class="tag tag-qs">54 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'tavapadon_tempo_trials')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>💊 Tavapadon (TEMPO Trials)</h3>
+        <p>D1/D5 agonist for PD. ICD risk 1.2% vs 17-28% with D2/D3 agonists.</p>
+        <div class="tags">
+            <span class="tag">Movement 2026</span><span class="tag tag-cards">20 cards</span><span class="tag tag-qs">22 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'dystonia_primer')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🦽 Dystonia Primer</h3>
+        <p>TOR1A/DYT1, GCH1-DRD, BoNT mechanism, GPi-DBS, EARLYSTIM trial.</p>
+        <div class="tags">
+            <span class="tag">Nature Reviews 2018</span><span class="tag tag-cards">20 cards</span><span class="tag tag-qs">20 Qs</span>
+        </div>
+    </div>
+    <div class="topic-card" onclick="openViewer('wiki', 'cadasil_carasal_caracil')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🧬 CADASIL vs CARASAL vs CARASIL</h3>
+        <p>Hereditary cSVD: NOTCH3, HTRA1, CTSA, GOM, temporal pole MRI.</p>
+        <div class="tags">
+            <span class="tag">Hereditary cSVD</span><span class="tag tag-cards">45 cards</span><span class="tag tag-qs">51 Qs</span>
+        </div>
+    </div>
+</div>
+
+<!-- Phase 3: Headache -->
+<div class="section-header">
+    <div class="section-icon" style="background:linear-gradient(135deg,#10b981,#06b6d4)">🤕</div>
+    <h2>Phase 3: Headache Medicine</h2>
+</div>
+
+<div class="topic-grid">
+    <div class="topic-card" onclick="openViewer('wiki', 'migraine_candesartan_vs_topiramate')">
+        <span class="badge badge-ingested">INGESTED</span>
+        <h3>🤕 Migraine: Candesartan vs Topiramate</h3>
+        <p>Prophylaxis comparison, Cephalalgia 2026, 70% vs 33% continuation.</p>
+        <div class="tags">
+            <span class="tag">Cephalalgia 2026</span><span class="tag tag-cards">25 cards</span><span class="tag tag-qs">25 Qs</span>
+        </div>
+    </div>
+</div>
+
+<!-- More Topics Coming -->
+<div class="phase-divider">
+    <div class="phase-num">🔜</div>
+    <div class="phase-info">
+        <h3>More Topics Incoming</h3>
+        <p>Stroke, Neuromuscular, Dementia, CNS Infection, Sleep, MS/NMOSD — PDFs ready for ingestion</p>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    🧠 Papez — Neurology Learning Agent | <span>30 Wiki Pages</span> | <span>30 Flashcard Decks</span> | <span>30 Quiz Decks</span><br>
+    From molecules to the mind — and everything in between 🌟
+</div>
+
+<!-- Viewer Modal -->
+<div class="viewer" id="viewer">
+    <div class="viewer-content">
+        <div class="viewer-header">
             <div>
-                <h2 id="modalTitle">Topic</h2>
-                <span class="source" id="modalSource">Source</span>
+                <h2 id="viewerTitle">Loading...</h2>
+                <p id="viewerSource">Source</p>
             </div>
-            <button class="modal-close" onclick="closeModal()">×</button>
+            <button class="close-btn" onclick="closeViewer()">✕</button>
         </div>
-        <div class="modal-tabs">
-            <button class="modal-tab active" onclick="switchTab('wiki', this)">📖 Wiki</button>
-            <button class="modal-tab" onclick="switchTab('flash', this)">🃏 Flashcards</button>
-            <button class="modal-tab" onclick="switchTab('quiz', this)">❓ Quiz</button>
+        <div class="nav-tabs" id="navTabs">
+            <button class="nav-tab active" onclick="showTab('wiki')">📖 Wiki</button>
+            <button class="nav-tab" onclick="showTab('flashcards')">🃏 Flashcards</button>
+            <button class="nav-tab" onclick="showTab('quiz')">❓ Quiz</button>
         </div>
-        <div class="modal-body" id="modalBody">Loading...</div>
+        <div class="viewer-body">
+            <div id="wikiTab" class="tab-content active">
+                <div id="wikiContent" class="content-body">Loading...</div>
+            </div>
+            <div id="flashcardsTab" class="tab-content">
+                <p style="color:var(--text-muted);font-size:0.8rem;margin:0 0 12px 0">Tap each card to reveal the answer</p>
+                <div id="flashcardContent" class="flashcard-list">Loading...</div>
+            </div>
+            <div id="quizTab" class="tab-content">
+                <h2 style="font-size:0.9rem;margin:0 0 12px 0">❓ Quiz — <span id="quizTopic"></span></h2>
+                <p style="color:var(--text-muted);font-size:0.8rem;margin:0 0 12px 0">Tap each question to reveal the answer</p>
+                <div id="quizContent">Loading...</div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-const basePath = '/workspace-papez/outputs/';
+const basePath = '';
 
-// Topics data
 const topics = {
-    action_potentials: { title: 'Action Potentials 🧠', wiki: 'outputs/wiki/action_potentials.md', flash: 'outputs/flashcards/action_potentials_flashcards.md', quiz: 'outputs/quizzes/action_potentials_quiz.md', source: 'Neurology' },
-    als_management_ean_2024: { title: 'ALS Management — EAN Guideline 2024 🧠', wiki: 'outputs/wiki/als_management_ean_2024.md', flash: 'outputs/flashcards/als_management_ean_2024_flashcards.md', quiz: 'outputs/quizzes/als_management_ean_2024_quiz.md', source: 'Neurology' },
-    als_new_classification: { title: 'ALS: Moving Towards a New Classification System 🧠', wiki: 'outputs/wiki/als_new_classification.md', flash: 'outputs/flashcards/als_new_classification_flashcards.md', quiz: 'outputs/quizzes/als_new_classification_quiz.md', source: 'Neurology' },
-    antiseizure_medications: { title: 'Anti-Seizure Medications (ASM) — Sattawut 🧠', wiki: 'outputs/wiki/antiseizure_medications.md', flash: 'outputs/flashcards/antiseizure_medications_flashcards.md', quiz: 'outputs/quizzes/antiseizure_medications_quiz.md', source: 'Neurology' },
-    asm_pregnancy_teratogenicity: { title: 'ASM in Pregnancy: Teratogenicity & Special Considerations 🧠', wiki: 'outputs/wiki/asm_pregnancy_teratogenicity.md', flash: 'outputs/flashcards/asm_pregnancy_teratogenicity_flashcards.md', quiz: 'outputs/quizzes/asm_pregnancy_teratogenicity_quiz.md', source: 'Neurology' },
-    atypical_parkinsonism: { title: 'Atypical Parkinsonism — Siriraj Neurology 🧠', wiki: 'outputs/wiki/atypical_parkinsonism.md', flash: 'outputs/flashcards/atypical_parkinsonism_flashcards.md', quiz: 'outputs/quizzes/atypical_parkinsonism_quiz.md', source: 'Neurology' },
-    autoimmune_encephalitis: { title: 'Autoimmune Encephalitis — NPC Notebook 🧠', wiki: 'outputs/wiki/autoimmune_encephalitis.md', flash: 'outputs/flashcards/autoimmune_encephalitis_flashcards.md', quiz: 'outputs/quizzes/autoimmune_encephalitis_quiz.md', source: 'Neurology' },
-    basal_ganglia: { title: 'Basal Ganglia 🧠', wiki: 'outputs/wiki/basal_ganglia.md', flash: 'outputs/flashcards/basal_ganglia_flashcards.md', quiz: 'outputs/quizzes/basal_ganglia_quiz.md', source: 'Neurology' },
-    basic_eeg_interpretation: { title: 'Basic EEG Interpretation — Kanokwan Boonyapisi 🧠', wiki: 'outputs/wiki/basic_eeg_interpretation.md', flash: 'outputs/flashcards/basic_eeg_interpretation_flashcards.md', quiz: 'outputs/quizzes/basic_eeg_interpretation_quiz.md', source: 'Neurology' },
-    blood_supply: { title: 'Blood Supply of the Brain 🧠', wiki: 'outputs/wiki/blood_supply.md', flash: 'outputs/flashcards/blood_supply_flashcards.md', quiz: 'outputs/quizzes/blood_supply_quiz.md', source: 'Neurology' },
-    botulinum_toxin_cervical_dystonia: { title: 'Botulinum Toxin for Cervical Dystonia — Evidence-Based Review 🧠', wiki: 'outputs/wiki/botulinum_toxin_cervical_dystonia.md', flash: 'outputs/flashcards/botulinum_toxin_cervical_dystonia_flashcards.md', quiz: 'outputs/quizzes/botulinum_toxin_cervical_dystonia_quiz.md', source: 'Neurology' },
-    brainstem: { title: 'Brainstem 🧠', wiki: 'outputs/wiki/brainstem.md', flash: 'outputs/flashcards/brainstem_flashcards.md', quiz: 'outputs/quizzes/brainstem_quiz.md', source: 'Neurology' },
-    cadasil_carasal_caracil: { title: 'CADASIL vs CARASAL vs CARASIL 🧠', wiki: 'outputs/wiki/cadasil_carasal_caracil.md', flash: 'outputs/flashcards/cadasil_carasal_caracil_flashcards.md', quiz: 'outputs/quizzes/cadasil_carasal_caracil_quiz.md', source: 'Neurology' },
-    cerebellum: { title: 'Cerebellum 🧠', wiki: 'outputs/wiki/cerebellum.md', flash: 'outputs/flashcards/cerebellum_flashcards.md', quiz: 'outputs/quizzes/cerebellum_quiz.md', source: 'Neurology' },
-    cerebral_venous_thrombosis: { title: 'Cerebral Venous Thrombosis (CVT) — AHA/ASA Guideline 🧠', wiki: 'outputs/wiki/cerebral_venous_thrombosis.md', flash: 'outputs/flashcards/cerebral_venous_thrombosis_flashcards.md', quiz: 'outputs/quizzes/cerebral_venous_thrombosis_quiz.md', source: 'Neurology' },
-    cervical_dystonia_management: { title: 'Optimizing Cervical Dystonia Management — Chulalongkorn 🧠', wiki: 'outputs/wiki/cervical_dystonia_management.md', flash: 'outputs/flashcards/cervical_dystonia_management_flashcards.md', quiz: 'outputs/quizzes/cervical_dystonia_management_quiz.md', source: 'Neurology' },
-    childhood_epilepsy_syndromes: { title: 'Childhood Epilepsy Syndromes 🧠', wiki: 'outputs/wiki/childhood_epilepsy_syndromes.md', flash: 'outputs/flashcards/childhood_epilepsy_syndromes_flashcards.md', quiz: 'outputs/quizzes/childhood_epilepsy_syndromes_quiz.md', source: 'Neurology' },
-    cmu_stroke_fast_track_2025: { title: 'CMU Stroke Fast Track 2025 🧠', wiki: 'outputs/wiki/cmu_stroke_fast_track_2025.md', flash: 'outputs/flashcards/cmu_stroke_fast_track_2025_flashcards.md', quiz: 'outputs/quizzes/cmu_stroke_fast_track_2025_quiz.md', source: 'Neurology' },
-    cns_demyelinating_diseases: { title: 'CNS Demyelinating Diseases — MS, NMOSD, MOGAD 🧠', wiki: 'outputs/wiki/cns_demyelinating_diseases.md', flash: 'outputs/flashcards/cns_demyelinating_diseases_flashcards.md', quiz: 'outputs/quizzes/cns_demyelinating_diseases_quiz.md', source: 'Neurology' },
-    common_primary_headaches: { title: 'Common Primary Headaches — Diagnosis & Management 🧠', wiki: 'outputs/wiki/common_primary_headaches.md', flash: 'outputs/flashcards/common_primary_headaches_flashcards.md', quiz: 'outputs/quizzes/common_primary_headaches_quiz.md', source: 'Neurology' },
-    community_acquired_cns_infection: { title: 'Treatment of Neurological Infection in Community Setting — Chulalongkorn 🧠', wiki: 'outputs/wiki/community_acquired_cns_infection.md', flash: 'outputs/flashcards/community_acquired_cns_infection_flashcards.md', quiz: 'outputs/quizzes/community_acquired_cns_infection_quiz.md', source: 'Neurology' },
-    congenital_myopathy: { title: 'Congenital Myopathy — Siriporn Lin 🧠', wiki: 'outputs/wiki/congenital_myopathy.md', flash: 'outputs/flashcards/congenital_myopathy_flashcards.md', quiz: 'outputs/quizzes/congenital_myopathy_quiz.md', source: 'Neurology' },
-    cranial_nerves: { title: 'Cranial Nerves 🧠', wiki: 'outputs/wiki/cranial_nerves.md', flash: 'outputs/flashcards/cranial_nerves_flashcards.md', quiz: 'outputs/quizzes/cranial_nerves_quiz.md', source: 'Neurology' },
-    critical_care_eeg_terminology: { title: 'Critical Care EEG Terminology — ACNS 2021 🧠', wiki: 'outputs/wiki/critical_care_eeg_terminology.md', flash: 'outputs/flashcards/critical_care_eeg_terminology_flashcards.md', quiz: 'outputs/quizzes/critical_care_eeg_terminology_quiz.md', source: 'Neurology' },
-    dbs_earlystim_trial: { title: 'Deep Brain Stimulation for Early Parkinson — EARLYSTIM Trial 🧠', wiki: 'outputs/wiki/dbs_earlystim_trial.md', flash: 'outputs/flashcards/dbs_earlystim_trial_flashcards.md', quiz: 'outputs/quizzes/dbs_earlystim_trial_quiz.md', source: 'Neurology' },
-    differential_diagnosis: { title: 'Differential Diagnosis Framework 🧠', wiki: 'outputs/wiki/differential_diagnosis.md', flash: 'outputs/flashcards/differential_diagnosis_flashcards.md', quiz: 'outputs/quizzes/differential_diagnosis_quiz.md', source: 'Neurology' },
-    difficult_to_treat_headache: { title: 'Management of Difficult-to-Treat Primary Headache — Siriraj 🧠', wiki: 'outputs/wiki/difficult_to_treat_headache.md', flash: 'outputs/flashcards/difficult_to_treat_headache_flashcards.md', quiz: 'outputs/quizzes/difficult_to_treat_headache_quiz.md', source: 'Neurology' },
-    dystonia_primer: { title: 'Dystonia: A Comprehensive Primer 🧠', wiki: 'outputs/wiki/dystonia_primer.md', flash: 'outputs/flashcards/dystonia_primer_flashcards.md', quiz: 'outputs/quizzes/dystonia_primer_quiz.md', source: 'Neurology' },
-    early_extubation_post_thrombectomy: { title: 'Early vs Delayed Extubation After Thrombectomy — EDESTROKE Trial 🧠', wiki: 'outputs/wiki/early_extubation_post_thrombectomy.md', flash: 'outputs/flashcards/early_extubation_post_thrombectomy_flashcards.md', quiz: 'outputs/quizzes/early_extubation_post_thrombectomy_quiz.md', source: 'Neurology' },
-    eeg_in_epilepsy: { title: 'EEG in Epilepsy 🧠', wiki: 'outputs/wiki/eeg_in_epilepsy.md', flash: 'outputs/flashcards/eeg_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/eeg_in_epilepsy_quiz.md', source: 'Neurology' },
-    epilepsy_classification_framework: { title: 'Classification of Epilepsies & Diagnosis Framework 🧠', wiki: 'outputs/wiki/epilepsy_classification_framework.md', flash: 'outputs/flashcards/epilepsy_classification_framework_flashcards.md', quiz: 'outputs/quizzes/epilepsy_classification_framework_quiz.md', source: 'Neurology' },
-    epilepsy_definition: { title: 'Definition of Epilepsy 🧠', wiki: 'outputs/wiki/epilepsy_definition.md', flash: 'outputs/flashcards/epilepsy_definition_flashcards.md', quiz: 'outputs/quizzes/epilepsy_definition_quiz.md', source: 'Neurology' },
-    epilepsy_syndromes_internists: { title: 'Epilepsy Syndromes for Internists — Chiang Mai 🧠', wiki: 'outputs/wiki/epilepsy_syndromes_internists.md', flash: 'outputs/flashcards/epilepsy_syndromes_internists_flashcards.md', quiz: 'outputs/quizzes/epilepsy_syndromes_internists_quiz.md', source: 'Neurology' },
-    essential_neuroimaging: { title: 'Essential Neuroimaging — Siriraj 2026 🧠', wiki: 'outputs/wiki/essential_neuroimaging.md', flash: 'outputs/flashcards/essential_neuroimaging_flashcards.md', quiz: 'outputs/quizzes/essential_neuroimaging_quiz.md', source: 'Neurology' },
-    essential_tremor: { title: 'Essential Tremor — AAN Guideline 2011 🧠', wiki: 'outputs/wiki/essential_tremor.md', flash: 'outputs/flashcards/essential_tremor_flashcards.md', quiz: 'outputs/quizzes/essential_tremor_quiz.md', source: 'Neurology' },
-    focal_cortical_dysplasia_ilae_2022: { title: 'Focal Cortical Dysplasia — ILAE 2022 🧠', wiki: 'outputs/wiki/focal_cortical_dysplasia_ilae_2022.md', flash: 'outputs/flashcards/focal_cortical_dysplasia_ilae_2022_flashcards.md', quiz: null, source: 'Neurology' },
-    genetics_in_epilepsy: { title: 'Genetics in Epilepsy 🧠', wiki: 'outputs/wiki/genetics_in_epilepsy.md', flash: 'outputs/flashcards/genetics_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/genetics_in_epilepsy_quiz.md', source: 'Neurology' },
-    genetics_of_stroke: { title: 'Genetics of Stroke 🧠', wiki: 'outputs/wiki/genetics_of_stroke.md', flash: 'outputs/flashcards/genetics_of_stroke_flashcards.md', quiz: 'outputs/quizzes/genetics_of_stroke_quiz.md', source: 'Neurology' },
-    glial_cells: { title: 'Glial Cells 🧠', wiki: 'outputs/wiki/glial_cells.md', flash: 'outputs/flashcards/glial_cells_flashcards.md', quiz: 'outputs/quizzes/glial_cells_quiz.md', source: 'Neurology' },
-    gross_brain_anatomy: { title: 'Gross Brain Anatomy 🧠', wiki: 'outputs/wiki/gross_brain_anatomy.md', flash: 'outputs/flashcards/gross_brain_anatomy_flashcards.md', quiz: 'outputs/quizzes/gross_brain_anatomy_quiz.md', source: 'Neurology' },
-    guillain_barre_syndrome: { title: 'Guillain-Barré Syndrome — EAN/PNS Guideline 2023 🧠', wiki: 'outputs/wiki/guillain_barre_syndrome.md', flash: 'outputs/flashcards/guillain_barre_syndrome_flashcards.md', quiz: 'outputs/quizzes/guillain_barre_syndrome_quiz.md', source: 'Neurology' },
-    hippocampal_sclerosis_classification: { title: 'Hippocampal Sclerosis Classification 🧠', wiki: 'outputs/wiki/hippocampal_sclerosis_classification.md', flash: 'outputs/flashcards/hippocampal_sclerosis_classification_flashcards.md', quiz: null, source: 'Neurology' },
-    idiopathic_generalized_epilepsies: { title: 'Idiopathic Generalized Epilepsies (IGE) 🧠', wiki: 'outputs/wiki/idiopathic_generalized_epilepsies.md', flash: 'outputs/flashcards/idiopathic_generalized_epilepsies_flashcards.md', quiz: 'outputs/quizzes/idiopathic_generalized_epilepsies_quiz.md', source: 'Neurology' },
-    immunocompromised_cns_infection: { title: 'Treatment of Neurological Infection in Immunocompromised Setting — Ramathibodi 🧠', wiki: 'outputs/wiki/immunocompromised_cns_infection.md', flash: 'outputs/flashcards/immunocompromised_cns_infection_flashcards.md', quiz: 'outputs/quizzes/immunocompromised_cns_infection_quiz.md', source: 'Neurology' },
-    inflammatory_myopathy: { title: 'Inflammatory Myopathy — Siriporn Lin 🧠', wiki: 'outputs/wiki/inflammatory_myopathy.md', flash: 'outputs/flashcards/inflammatory_myopathy_flashcards.md', quiz: 'outputs/quizzes/inflammatory_myopathy_quiz.md', source: 'Neurology' },
-    insomnia_sleep_apnea: { title: 'Insomnia & Sleep Apnea — Sleep Disorders in Neurology 🧠', wiki: 'outputs/wiki/insomnia_sleep_apnea.md', flash: 'outputs/flashcards/insomnia_sleep_apnea_flashcards.md', quiz: 'outputs/quizzes/insomnia_sleep_apnea_quiz.md', source: 'Neurology' },
-    intracranial_atherosclerotic_stenosis: { title: 'Optimal Medical Management of Intracranial Atherosclerotic Stenosis (sICAS) 🧠', wiki: 'outputs/wiki/intracranial_atherosclerotic_stenosis.md', flash: 'outputs/flashcards/intracranial_atherosclerotic_stenosis_flashcards.md', quiz: 'outputs/quizzes/intracranial_atherosclerotic_stenosis_quiz.md', source: 'Neurology' },
-    ion_channels: { title: 'Ion Channels & Resting Membrane Potential 🧠', wiki: 'outputs/wiki/ion_channels.md', flash: 'outputs/flashcards/ion_channels_flashcards.md', quiz: 'outputs/quizzes/ion_channels_quiz.md', source: 'Neurology' },
-    lesion_localization: { title: 'Lesion Localization 🧠', wiki: 'outputs/wiki/lesion_localization.md', flash: 'outputs/flashcards/lesion_localization_flashcards.md', quiz: 'outputs/quizzes/lesion_localization_quiz.md', source: 'Neurology' },
-    limbic_system: { title: 'Limbic System & Papez Circuit 🧠', wiki: 'outputs/wiki/limbic_system.md', flash: 'outputs/flashcards/limbic_system_flashcards.md', quiz: 'outputs/quizzes/limbic_system_quiz.md', source: 'Neurology' },
-    long_case_neurology: { title: 'Long Case Neurological Approach — Siriraj 2026 🧠', wiki: 'outputs/wiki/long_case_neurology.md', flash: 'outputs/flashcards/long_case_neurology_flashcards.md', quiz: 'outputs/quizzes/long_case_neurology_quiz.md', source: 'Neurology' },
-    long_term_epilepsy_management: { title: 'Long-Term Epilepsy Management 🧠', wiki: 'outputs/wiki/long_term_epilepsy_management.md', flash: 'outputs/flashcards/long_term_epilepsy_management_flashcards.md', quiz: 'outputs/quizzes/long_term_epilepsy_management_quiz.md', source: 'Neurology' },
-    metabolic_myopathy: { title: 'Metabolic Myopathy — Siriporn Lin 🧠', wiki: 'outputs/wiki/metabolic_myopathy.md', flash: 'outputs/flashcards/metabolic_myopathy_flashcards.md', quiz: 'outputs/quizzes/metabolic_myopathy_quiz.md', source: 'Neurology' },
-    migraine_candesartan_vs_topiramate: { title: 'Candesartan vs Topiramate for Migraine Prophylaxis 🧠', wiki: 'outputs/wiki/migraine_candesartan_vs_topiramate.md', flash: 'outputs/flashcards/migraine_candesartan_vs_topiramate_flashcards.md', quiz: 'outputs/quizzes/migraine_candesartan_vs_topiramate_quiz.md', source: 'Neurology' },
-    mitochondrial_myopathy: { title: 'Mitochondrial Myopathy — Siriporn Lin 🧠', wiki: 'outputs/wiki/mitochondrial_myopathy.md', flash: 'outputs/flashcards/mitochondrial_myopathy_flashcards.md', quiz: 'outputs/quizzes/mitochondrial_myopathy_quiz.md', source: 'Neurology' },
-    mri_essentials_in_epileptology: { title: 'MRI Essentials in Epileptology 🧠', wiki: 'outputs/wiki/mri_essentials_in_epileptology.md', flash: 'outputs/flashcards/mri_essentials_in_epileptology_flashcards.md', quiz: null, source: 'Neurology' },
-    motor_neuron_disease: { title: 'Motor Neuron Disease — Chiang Mai University 🧠', wiki: 'outputs/wiki/motor_neuron_disease.md', flash: 'outputs/flashcards/motor_neuron_disease_flashcards.md', quiz: 'outputs/quizzes/motor_neuron_disease_quiz.md', source: 'Neurology' },
-    movement_disorder_emergencies: { title: 'Emergency in Movement Disorders 🧠', wiki: 'outputs/wiki/movement_disorder_emergencies.md', flash: 'outputs/flashcards/movement_disorder_emergencies_flashcards.md', quiz: 'outputs/quizzes/movement_disorder_emergencies_quiz.md', source: 'Neurology' },
-    movement_disorders_phenomenology: { title: 'Overview of Phenomenology in Movement Disorders 🧠', wiki: 'outputs/wiki/movement_disorders_phenomenology.md', flash: 'outputs/flashcards/movement_disorders_phenomenology_flashcards.md', quiz: 'outputs/quizzes/movement_disorders_phenomenology_quiz.md', source: 'Neurology' },
-    multiple_sclerosis_diagnostic_criteria_2024: { title: 'MS McDonald Criteria 2024 — Siriraj 🧠', wiki: 'outputs/wiki/multiple_sclerosis_diagnostic_criteria_2024.md', flash: 'outputs/flashcards/multiple_sclerosis_diagnostic_criteria_2024_flashcards.md', quiz: 'outputs/quizzes/multiple_sclerosis_diagnostic_criteria_2024_quiz.md', source: 'Neurology' },
-    multiple_sclerosis_mcdonald_2024: { title: 'Multiple Sclerosis — McDonald Criteria 2024 🧠', wiki: 'outputs/wiki/multiple_sclerosis_mcdonald_2024.md', flash: 'outputs/flashcards/multiple_sclerosis_mcdonald_2024_flashcards.md', quiz: 'outputs/quizzes/multiple_sclerosis_mcdonald_2024_quiz.md', source: 'Neurology' },
-    multiple_system_atrophy: { title: 'Multiple System Atrophy (MSA) — MDS Criteria 2022 🧠', wiki: 'outputs/wiki/multiple_system_atrophy.md', flash: 'outputs/flashcards/multiple_system_atrophy_flashcards.md', quiz: 'outputs/quizzes/multiple_system_atrophy_quiz.md', source: 'Neurology' },
-    muscular_dystrophy: { title: 'Muscular Dystrophy — Siriporn Lin 🧠', wiki: 'outputs/wiki/muscular_dystrophy.md', flash: 'outputs/flashcards/muscular_dystrophy_flashcards.md', quiz: 'outputs/quizzes/muscular_dystrophy_quiz.md', source: 'Neurology' },
-    myasthenia_gravis: { title: 'Myasthenia Gravis — J Clin Med 2021 🧠', wiki: 'outputs/wiki/myasthenia_gravis.md', flash: 'outputs/flashcards/myasthenia_gravis_flashcards.md', quiz: 'outputs/quizzes/myasthenia_gravis_quiz.md', source: 'Neurology' },
-    neonatal_seizures_syndromes: { title: 'Neonatal Seizures & Syndromes 🧠', wiki: 'outputs/wiki/neonatal_seizures_syndromes.md', flash: 'outputs/flashcards/neonatal_seizures_syndromes_flashcards.md', quiz: 'outputs/quizzes/neonatal_seizures_syndromes_quiz.md', source: 'Neurology' },
-    neuroimaging_in_epilepsy: { title: 'Neuroimaging in Epilepsy 🧠', wiki: 'outputs/wiki/neuroimaging_in_epilepsy.md', flash: 'outputs/flashcards/neuroimaging_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/neuroimaging_in_epilepsy_quiz.md', source: 'Neurology' },
-    neurological_examination: { title: 'Neurological History & Examination 🧠', wiki: 'outputs/wiki/neurological_examination.md', flash: 'outputs/flashcards/neurological_examination_flashcards.md', quiz: 'outputs/quizzes/neurological_examination_quiz.md', source: 'Neurology' },
-    neuropathic_pain: { title: 'Neuropathic Pain — Nature Reviews Disease Primer 🧠', wiki: 'outputs/wiki/neuropathic_pain.md', flash: 'outputs/flashcards/neuropathic_pain_flashcards.md', quiz: 'outputs/quizzes/neuropathic_pain_quiz.md', source: 'Neurology' },
-    neurotransmitters_receptors: { title: 'Neurotransmitters & Receptors 🧠', wiki: 'outputs/wiki/neurotransmitters_receptors.md', flash: 'outputs/flashcards/neurotransmitters_receptors_flashcards.md', quiz: 'outputs/quizzes/neurotransmitters_receptors_quiz.md', source: 'Neurology' },
-    parkinson_medication_management: { title: 'Medication Adjustment in Parkinson\'s Disease — Siriraj 🧠', wiki: 'outputs/wiki/parkinson_medication_management.md', flash: 'outputs/flashcards/parkinson_medication_management_flashcards.md', quiz: 'outputs/quizzes/parkinson_medication_management_quiz.md', source: 'Neurology' },
-    parkinsons_disease_diagnosis: { title: 'Parkinson\'s Disease: MDS Clinical Diagnostic Criteria (2015) 🧠', wiki: 'outputs/wiki/parkinsons_disease_diagnosis.md', flash: 'outputs/flashcards/parkinsons_disease_diagnosis_flashcards.md', quiz: 'outputs/quizzes/parkinsons_disease_diagnosis_quiz.md', source: 'Neurology' },
-    perfusion_ct_stroke: { title: 'Perfusion CT in Stroke — Overview, Interpretation, Pearls & Pitfalls 🧠', wiki: 'outputs/wiki/perfusion_ct_stroke.md', flash: 'outputs/flashcards/perfusion_ct_stroke_flashcards.md', quiz: 'outputs/quizzes/perfusion_ct_stroke_quiz.md', source: 'Neurology' },
-    primary_stroke_prevention_2024: { title: '2024 AHA/ASA Guideline for Primary Prevention of Stroke 🧠', wiki: 'outputs/wiki/primary_stroke_prevention_2024.md', flash: 'outputs/flashcards/primary_stroke_prevention_2024_flashcards.md', quiz: 'outputs/quizzes/primary_stroke_prevention_2024_quiz.md', source: 'Neurology' },
-    progressive_supranuclear_palsy: { title: 'Progressive Supranuclear Palsy (PSP) — MDS Criteria 2017 🧠', wiki: 'outputs/wiki/progressive_supranuclear_palsy.md', flash: 'outputs/flashcards/progressive_supranuclear_palsy_flashcards.md', quiz: 'outputs/quizzes/progressive_supranuclear_palsy_quiz.md', source: 'Neurology' },
-    secondary_stroke_prevention_2021: { title: '2021 AHA/ASA Guideline for Secondary Stroke Prevention 🧠', wiki: 'outputs/wiki/secondary_stroke_prevention_2021.md', flash: 'outputs/flashcards/secondary_stroke_prevention_2021_flashcards.md', quiz: 'outputs/quizzes/secondary_stroke_prevention_2021_quiz.md', source: 'Neurology' },
-    seizure_classification_ilae: { title: 'Seizure Classification: ILAE 2017/2025 💊', wiki: 'outputs/wiki/seizure_classification_ilae.md', flash: 'outputs/flashcards/seizure_classification_ilae_flashcards.md', quiz: 'outputs/quizzes/seizure_classification_ilae_quiz.md', source: 'Neurology' },
-    seizure_classification_ilae_2025: { title: 'Seizure Classification ILAE 2025 Update 🧠', wiki: 'outputs/wiki/seizure_classification_ilae_2025.md', flash: 'outputs/flashcards/seizure_classification_ilae_2025_flashcards.md', quiz: 'outputs/quizzes/seizure_classification_ilae_2025_quiz.md', source: 'Neurology' },
-    seizure_semiology_localization: { title: 'Seizure Semiology & Localization — Songklanagarind 🧠', wiki: 'outputs/wiki/seizure_semiology_localization.md', flash: 'outputs/flashcards/seizure_semiology_localization_flashcards.md', quiz: 'outputs/quizzes/seizure_semiology_localization_quiz.md', source: 'Neurology' },
-    simbr_board_review_2023_stroke: { title: 'SIMBR Board Review 2023 — Stroke 🧠', wiki: 'outputs/wiki/simbr_board_review_2023_stroke.md', flash: 'outputs/flashcards/simbr_board_review_2023_stroke_flashcards.md', quiz: 'outputs/quizzes/simbr_board_review_2023_stroke_quiz.md', source: 'Neurology' },
-    sleep_medicine: { title: 'Sleep Medicine — Theerawat Kumutpongpanich 🧠', wiki: 'outputs/wiki/sleep_medicine.md', flash: 'outputs/flashcards/sleep_medicine_flashcards.md', quiz: 'outputs/quizzes/sleep_medicine_quiz.md', source: 'Neurology' },
-    sleep_medicine_detailed: { title: 'Sleep Medicine — Theerawat Kumutpongpanich 🧠', wiki: 'outputs/wiki/sleep_medicine_detailed.md', flash: 'outputs/flashcards/sleep_medicine_detailed_flashcards.md', quiz: 'outputs/quizzes/sleep_medicine_detailed_quiz.md', source: 'Neurology' },
-    status_epilepticus_treatment: { title: 'Treatment of Convulsive Status Epilepticus — AES Guideline 🧠', wiki: 'outputs/wiki/status_epilepticus_treatment.md', flash: 'outputs/flashcards/status_epilepticus_treatment_flashcards.md', quiz: 'outputs/quizzes/status_epilepticus_treatment_quiz.md', source: 'Neurology' },
-    stroke_diagnosis_management: { title: 'Stroke Diagnosis & Management — Siriraj Fast Track 🧠', wiki: 'outputs/wiki/stroke_diagnosis_management.md', flash: 'outputs/flashcards/stroke_diagnosis_management_flashcards.md', quiz: 'outputs/quizzes/stroke_diagnosis_management_quiz.md', source: 'Neurology' },
-    stroke_etiology: { title: 'Stroke Etiology — Siriraj 🧠', wiki: 'outputs/wiki/stroke_etiology.md', flash: 'outputs/flashcards/stroke_etiology_flashcards.md', quiz: 'outputs/quizzes/stroke_etiology_quiz.md', source: 'Neurology' },
-    synaptic_transmission: { title: 'Synaptic Transmission 🧠', wiki: 'outputs/wiki/synaptic_transmission.md', flash: 'outputs/flashcards/synaptic_transmission_flashcards.md', quiz: 'outputs/quizzes/synaptic_transmission_quiz.md', source: 'Neurology' },
-    tavapadon_tempo_trials: { title: 'Tavapadon for Parkinson\'s Disease: TEMPO Trials 🧠', wiki: 'outputs/wiki/tavapadon_tempo_trials.md', flash: 'outputs/flashcards/tavapadon_tempo_trials_flashcards.md', quiz: 'outputs/quizzes/tavapadon_tempo_trials_quiz.md', source: 'Neurology' },
-    wilson_disease: { title: 'Wilson\'s Disease — EASL Clinical Practice Guidelines 🧠', wiki: 'outputs/wiki/wilson_disease.md', flash: 'outputs/flashcards/wilson_disease_flashcards.md', quiz: 'outputs/quizzes/wilson_disease_quiz.md', source: 'Neurology' },
-    first_seizure_cluster_seizures: { title: 'First Seizure & Cluster Seizures — Emergency 🧠', wiki: 'outputs/wiki/first_seizure_cluster_seizures.md', flash: 'outputs/flashcards/first_seizure_cluster_seizures_flashcards.md', quiz: 'outputs/quizzes/first_seizure_cluster_seizures_quiz.md', source: 'Emergency Epilepsy' },
-    status_epilepticus_atiwat: { title: 'Status Epilepticus — CMU Atiwat 🧠', wiki: 'outputs/wiki/status_epilepticus_atiwat.md', flash: 'outputs/flashcards/status_epilepticus_atiwat_flashcards.md', quiz: 'outputs/quizzes/status_epilepticus_atiwat_quiz.md', source: 'Chiang Mai' },
-    head_up_tilt_table_test: { title: 'Head-Up Tilt Table Test (HUTT) 🧠', wiki: 'outputs/wiki/head_up_tilt_table_test.md', flash: 'outputs/flashcards/head_up_tilt_table_test_flashcards.md', quiz: 'outputs/quizzes/head_up_tilt_table_test_quiz.md', source: 'Autonomic' },
-    avm_module1: { title: '🧠 AVM Module 1: Fundamentals 🩸', wiki: null, flash: null, quiz: null, source: 'Interventional' },
-    avm_module2: { title: '💉 AVM Module 2: Treatment & Embolization 🩸', wiki: null, flash: null, quiz: null, source: 'Interventional' },
-    avm_module3: { title: '🎯 AVM Module 3: Advanced Techniques 🩸', wiki: null, flash: null, quiz: null, source: 'Interventional' },
-    avm_module4: { title: '📋 AVM Module 4: Case Studies 🩸', wiki: null, flash: null, quiz: null, source: 'Interventional' },
-    avm_module5: { title: '🎓 AVM Module 5: Board Exam Prep 🩸', wiki: null, flash: null, quiz: null, source: 'Interventional' },
-    mt_module1: { title: '🫀 MT Module 1: Stroke & Thrombectomy Fundamentals', wiki: null, flash: null, quiz: null, source: 'Interventional' },
-    mt_module2: { title: '💉 MT Module 2: The Procedure (Step-by-Step)', wiki: null, flash: null, quiz: null, source: 'Interventional' },
-    mt_module3: { title: '📋 MT Module 3: Clinical Cases', wiki: null, flash: null, quiz: null, source: 'Interventional' },
-    mt_module4: { title: '🎓 MT Module 4: Board Exam Prep', wiki: null, flash: null, quiz: null, source: 'Interventional' },
+    gross_brain_anatomy: { title: 'Gross Brain Anatomy', wiki: 'outputs/wiki/gross_brain_anatomy.md', flash: 'outputs/flashcards/gross_brain_anatomy_flashcards.md', quiz: 'outputs/quizzes/gross_brain_anatomy_quiz.md', source: 'Phase 1 — Neuroanatomy' },
+    blood_supply: { title: 'Blood Supply', wiki: 'outputs/wiki/blood_supply.md', flash: 'outputs/flashcards/blood_supply_flashcards.md', quiz: 'outputs/quizzes/blood_supply_quiz.md', source: 'Phase 1 — Neuroanatomy' },
+    brainstem: { title: 'Brainstem', wiki: 'outputs/wiki/brainstem.md', flash: 'outputs/flashcards/brainstem_flashcards.md', quiz: 'outputs/quizzes/brainstem_quiz.md', source: 'Phase 1 — Neuroanatomy' },
+    cerebellum: { title: 'Cerebellum', wiki: 'outputs/wiki/cerebellum.md', flash: 'outputs/flashcards/cerebellum_flashcards.md', quiz: 'outputs/quizzes/cerebellum_quiz.md', source: 'Phase 1 — Neuroanatomy' },
+    limbic_system: { title: 'Limbic System', wiki: 'outputs/wiki/limbic_system.md', flash: 'outputs/flashcards/limbic_system_flashcards.md', quiz: 'outputs/quizzes/limbic_system_quiz.md', source: 'Phase 1 — Neuroanatomy' },
+    cranial_nerves: { title: 'Cranial Nerves', wiki: 'outputs/wiki/cranial_nerves.md', flash: 'outputs/flashcards/cranial_nerves_flashcards.md', quiz: 'outputs/quizzes/cranial_nerves_quiz.md', source: 'Phase 1 — Neuroanatomy' },
+    basal_ganglia: { title: 'Basal Ganglia', wiki: 'outputs/wiki/basal_ganglia.md', flash: 'outputs/flashcards/basal_ganglia_flashcards.md', quiz: 'outputs/quizzes/basal_ganglia_quiz.md', source: 'Phase 1 — Physiology' },
+    action_potentials: { title: 'Action Potentials', wiki: 'outputs/wiki/action_potentials.md', flash: 'outputs/flashcards/action_potentials_flashcards.md', quiz: 'outputs/quizzes/action_potentials_quiz.md', source: 'Phase 1 — Physiology' },
+    synaptic_transmission: { title: 'Synaptic Transmission', wiki: 'outputs/wiki/synaptic_transmission.md', flash: 'outputs/flashcards/synaptic_transmission_flashcards.md', quiz: 'outputs/quizzes/synaptic_transmission_quiz.md', source: 'Phase 1 — Physiology' },
+    neurological_examination: { title: 'Neurological Examination', wiki: 'outputs/wiki/neurological_examination.md', flash: 'outputs/flashcards/neurological_examination_flashcards.md', quiz: 'outputs/quizzes/neurological_examination_quiz.md', source: 'Phase 2 — Clinical' },
+    lesion_localization: { title: 'Lesion Localization', wiki: 'outputs/wiki/lesion_localization.md', flash: 'outputs/flashcards/lesion_localization_flashcards.md', quiz: 'outputs/quizzes/lesion_localization_quiz.md', source: 'Phase 2 — Clinical' },
+    differential_diagnosis: { title: 'Differential Diagnosis', wiki: 'outputs/wiki/differential_diagnosis.md', flash: 'outputs/flashcards/differential_diagnosis_flashcards.md', quiz: 'outputs/quizzes/differential_diagnosis_quiz.md', source: 'Phase 2 — Clinical' },
+    seizure_classification_ilae: { title: 'ILAE Seizure Classification', wiki: 'outputs/wiki/seizure_classification_ilae.md', flash: 'outputs/flashcards/seizure_classification_ilae_flashcards.md', quiz: 'outputs/quizzes/seizure_classification_ilae_quiz.md', source: 'ILAE 2017/2025' },
+    epilepsy_definition: { title: 'Epilepsy Definition (ILAE 2005/2014)', wiki: 'outputs/wiki/epilepsy_definition.md', flash: 'outputs/flashcards/epilepsy_definition_flashcards.md', quiz: 'outputs/quizzes/epilepsy_definition_quiz.md', source: 'NPC Ch.1' },
+    epilepsy_classification_framework: { title: 'Epilepsy Classification Framework', wiki: 'outputs/wiki/epilepsy_classification_framework.md', flash: 'outputs/flashcards/epilepsy_classification_framework_flashcards.md', quiz: 'outputs/quizzes/epilepsy_classification_framework_quiz.md', source: 'NPC Ch.3' },
+    idiopathic_generalized_epilepsies: { title: 'Idiopathic Generalized Epilepsies', wiki: 'outputs/wiki/idiopathic_generalized_epilepsies.md', flash: 'outputs/flashcards/idiopathic_generalized_epilepsies_flashcards.md', quiz: 'outputs/quizzes/idiopathic_generalized_epilepsies_quiz.md', source: 'IGE Syndromes' },
+    childhood_epilepsy_syndromes: { title: 'Childhood Epilepsy Syndromes', wiki: 'outputs/wiki/childhood_epilepsy_syndromes.md', flash: 'outputs/flashcards/childhood_epilepsy_syndromes_flashcards.md', quiz: 'outputs/quizzes/childhood_epilepsy_syndromes_quiz.md', source: 'NPC Ch.5 — ILAE 2022' },
+    antiseizure_medications: { title: 'Antiseizure Medications', wiki: 'outputs/wiki/antiseizure_medications.md', flash: 'outputs/flashcards/antiseizure_medications_flashcards.md', quiz: 'outputs/quizzes/antiseizure_medications_quiz.md', source: 'NPC Thai Board Prep' },
+    eeg_in_epilepsy: { title: 'EEG in Epilepsy', wiki: 'outputs/wiki/eeg_in_epilepsy.md', flash: 'outputs/flashcards/eeg_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/eeg_in_epilepsy_quiz.md', source: 'NPC Ch.8' },
+    genetics_in_epilepsy: { title: 'Genetics in Epilepsy', wiki: 'outputs/wiki/genetics_in_epilepsy.md', flash: 'outputs/flashcards/genetics_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/genetics_in_epilepsy_quiz.md', source: 'NPC Ch.10' },
+    neuroimaging_in_epilepsy: { title: 'Neuroimaging in Epilepsy', wiki: 'outputs/wiki/neuroimaging_in_epilepsy.md', flash: 'outputs/flashcards/neuroimaging_in_epilepsy_flashcards.md', quiz: 'outputs/quizzes/neuroimaging_in_epilepsy_quiz.md', source: 'NPC Ch.9' },
+    asm_pregnancy_teratogenicity: { title: 'ASM in Pregnancy & Teratogenicity', wiki: 'outputs/wiki/asm_pregnancy_teratogenicity.md', flash: 'outputs/flashcards/asm_pregnancy_teratogenicity_flashcards.md', quiz: 'outputs/quizzes/asm_pregnancy_teratogenicity_quiz.md', source: 'NPC Ch.12' },
+    parkinsons_disease_diagnosis: { title: "Parkinson's Disease (MDS Criteria)", wiki: 'outputs/wiki/parkinsons_disease_diagnosis.md', flash: 'outputs/flashcards/parkinsons_disease_diagnosis_flashcards.md', quiz: 'outputs/quizzes/parkinsons_disease_diagnosis_quiz.md', source: 'MDS Guideline 2015' },
+    tavapadon_tempo_trials: { title: 'Tavapadon (TEMPO Trials)', wiki: 'outputs/wiki/tavapadon_tempo_trials.md', flash: 'outputs/flashcards/tavapadon_tempo_flashcards.md', quiz: 'outputs/quizzes/tavapadon_tempo_quiz.md', source: 'TEMPO Clinical Trials 2026' },
+    dystonia_primer: { title: 'Dystonia Primer (Nature Reviews 2018)', wiki: 'outputs/wiki/dystonia_primer.md', flash: 'outputs/flashcards/dystonia_primer_flashcards.md', quiz: 'outputs/quizzes/dystonia_primer_quiz.md', source: 'Nature Reviews 2018' },
+    cadasil_carasal_caracil: { title: 'CADASIL vs CARASAL vs CARASIL', wiki: 'outputs/wiki/cadasil_carasal_caracil.md', flash: 'outputs/flashcards/cadasil_carasal_caracil_flashcards.md', quiz: 'outputs/quizzes/cadasil_carasal_caracil_quiz.md', source: 'Hereditary cSVD 2026' },
+    migraine_candesartan_vs_topiramate: { title: 'Migraine: Candesartan vs Topiramate', wiki: 'outputs/wiki/migraine_candesartan_vs_topiramate.md', flash: 'outputs/flashcards/migraine_candesartan_vs_topiramate_flashcards.md', quiz: 'outputs/quizzes/migraine_candesartan_vs_topiramate_quiz.md', source: 'Cephalalgia 2026' },
 };
-let currentTopicId = null;
-let currentTab = 'wiki';
 
-function openModal(topicId) {
-    currentTopicId = topicId;
-    const topic = topics[topicId];
-    if (!topic) { alert('Topic not found: ' + topicId); return; }
-
-    document.getElementById('modalTitle').textContent = topic.title;
-    document.getElementById('modalSource').textContent = topic.source;
-    document.getElementById('modal').classList.add('active');
-
-    // For Interventional modules, open HTML directly in same tab
-    if (topic.source === 'Interventional') {
-        const moduleUrls = {
-            avm_module1: '/workspace-imbr/papez-outputs/avm_module1.html',
-            avm_module2: '/workspace-imbr/papez-outputs/avm_module2.html',
-            avm_module3: '/workspace-imbr/papez-outputs/avm_module3.html',
-            avm_module4: '/workspace-imbr/papez-outputs/avm_module4.html',
-            avm_module5: '/workspace-imbr/papez-outputs/avm_module5.html',
-            mt_module1: '/workspace-imbr/papez-outputs/mt_module1.html',
-            mt_module2: '/workspace-imbr/papez-outputs/mt_module2.html',
-            mt_module3: '/workspace-imbr/papez-outputs/mt_module3.html',
-            mt_module4: '/workspace-imbr/papez-outputs/mt_module4.html',
-        };
-        const url = moduleUrls[topicId];
-        if (url) {
-            document.querySelectorAll('.modal-tab').forEach(t => t.style.display = 'none');
-            const absUrl = window.location.origin + '/' + url;
-            document.getElementById('modalBody').innerHTML = '<iframe src="' + absUrl + '" style="width:100%;height:80vh;border:none;border-radius:8px;" title="Interactive Module"></iframe>';
-            return;
-        }
-    }
-    document.querySelectorAll('.modal-tab').forEach(t => t.style.display = '');
-
-    // Show Wiki tab by default
-    document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
-    document.querySelector('.modal-tab').classList.add('active');
-    currentTab = 'wiki';
-
-    loadContent(topicId, 'wiki');
-}
-
-function closeModal() {
-    document.getElementById('modal').classList.remove('active');
-    currentTopicId = null;
-}
-
-function switchTab(tab, btn) {
-    currentTab = tab;
-    document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    if (currentTopicId) loadContent(currentTopicId, tab);
-}
-
-function loadContent(topicId, tab) {
+function openViewer(type, topicId) {
     const topic = topics[topicId];
     if (!topic) return;
 
-    let url = tab === 'wiki' ? topic.wiki : tab === 'flash' ? topic.flash : topic.quiz;
-    if (!url || url === 'null') {
-        document.getElementById('modalBody').innerHTML = '<p style="color:var(--text-muted)">' + tab.charAt(0).toUpperCase() + tab.slice(1) + ' content not available yet.</p>';
-        return;
-    }
-    const absUrl = window.location.origin + '/' + url;
-    document.getElementById('modalBody').innerHTML = '<p style="color:var(--text-muted)">Fetching: ' + absUrl + '</p>';
+    document.getElementById('viewerTitle').textContent = topic.title;
+    document.getElementById('viewerSource').textContent = topic.source;
+    document.getElementById('quizTopic').textContent = topic.title;
 
-    fetch(absUrl)
-        .then(r => {
-            if (!r.ok) throw new Error('HTTP ' + r.status + ': ' + r.statusText);
-            return r.text();
-        })
+    // Load wiki content
+    fetch(basePath + topic.wiki)
+        .then(r => r.text())
         .then(text => {
-            if (tab === 'wiki') renderWiki(text);
-            else if (tab === 'flash') renderFlash(text);
-            else renderQuiz(text);
+            document.getElementById('wikiContent').innerHTML = renderMarkdown(text);
         })
-        .catch(err => {
-            document.getElementById('modalBody').innerHTML =
-                '<p style="color:var(--red)">❌ Failed to load ' + tab + ': ' + err.message + '</p>' +
-                '<p style="color:var(--text-muted);font-size:12px">URL: ' + absUrl + '</p>';
-            console.error('Load error:', err);
+        .catch(() => {
+            document.getElementById('wikiContent').innerHTML = '<p style="color:#ef4444">Wiki file not found. Try reinstalling.</p>';
         });
+
+    // Load flashcards
+    fetch(basePath + topic.flash)
+        .then(r => r.text())
+        .then(text => {
+            const cards = parseFlashcards(text);
+            document.getElementById('flashcardContent').innerHTML = cards.map((c, i) =>
+                `<div class="flashcard" onclick="this.classList.toggle('open')">
+                    <div class="flashcard-q">${c.q}</div>
+                    <div class="flashcard-a">${c.a}</div>
+                </div>`
+            ).join('');
+        })
+        .catch(() => {
+            document.getElementById('flashcardContent').innerHTML = '<p style="color:#ef4444">Flashcards not found.</p>';
+        });
+
+    // Load quiz
+    fetch(basePath + topic.quiz)
+        .then(r => r.text())
+        .then(text => {
+            document.getElementById('quizContent').innerHTML = renderQuiz(text);
+        })
+        .catch(() => {
+            document.getElementById('quizContent').innerHTML = '<p style="color:#ef4444">Quiz not found.</p>';
+        });
+
+    document.getElementById('viewer').classList.add('active');
+    showTab('wiki');
 }
 
-function renderWiki(text) {
-    // Simple markdown → HTML
-    let html = text
-        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+function closeViewer() {
+    document.getElementById('viewer').classList.remove('active');
+}
+
+function showTab(tab) {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelector(`.nav-tab[onclick="showTab('${tab}')"]`).classList.add('active');
+    document.getElementById(tab === 'flashcards' ? 'flashcardsTab' : tab + 'Tab').classList.add('active');
+}
+
+function renderMarkdown(text) {
+    return text
         .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
         .replace(/`(.+?)`/g, '<code>$1</code>')
-        .replace(/^---$/gm, '<hr>')
+        .replace(/^\- (.+)$/gm, '<li>$1</li>')
         .replace(/\n\n/g, '</p><p>')
-        .replace(/^<h/, '<p>' + text.split('\n\n')[0] + '</p><h');
-    // Fix paragraphs
-    if (!html.includes('<p>')) html = '<p>' + html.replace(/\n/g, '<br>') + '</p>';
-    document.getElementById('modalBody').innerHTML = '<div class="wiki-content">' + html + '</div>';
+        .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+        .replace(/\n---\n/g, '<hr>')
+        .replace(/\|(.+)\|/g, (match) => {
+            const cells = match.split('|').filter(c => c.trim());
+            if (cells.some(c => /^[-:]+$/.test(c.trim()))) return '';
+            return '<tr>' + cells.map(c => `<td>${c.trim()}</td>`).join('') + '</tr>';
+        })
+        .replace(/(<tr>.*<\/tr>)/gs, '<table>$1</table>')
+        .replace(/^#{1} /gm, '')
+        .split('\n').map(line => line.trim()).filter(Boolean).map(line => `<p>${line}</p>`).join('');
 }
 
-function renderFlash(text) {
-    const lines = text.split('\n');
-    let html = '<p class="flash-instruction">👆 Tap each card to reveal the answer</p><div class="flash-grid">';
-    let cardOpen = false, q = '', a = '';
-    for (const line of lines) {
-        if (line.startsWith('## CARD ')) {
-            if (cardOpen) html += '<div class="flash-card" onclick="this.classList.toggle(\'flipped\')"><div class="q">' + q + '</div><div class="a">' + a + '</div></div>';
-            q = ''; a = ''; cardOpen = false;
-        } else if (line.startsWith('**Q:**')) {
-            q = line.replace('**Q:**', '').trim();
-            cardOpen = true;
-        } else if (line.startsWith('**A:**')) {
-            a = line.replace('**A:**', '').trim();
+function parseFlashcards(text) {
+    const cards = [];
+    const blocks = text.split('## CARD ');
+    blocks.slice(1).forEach(block => {
+        const qMatch = block.match(/\*\*Q:\*\*\s*(.+?)\n\*\*A:\*\*/s);
+        const aMatch = block.match(/\*\*A:\*\*\s*(.+?)(?:\n(?:\*|-)*\s*(?:#|\*)|$)/s);
+        if (qMatch && aMatch) {
+            cards.push({ q: qMatch[1].trim(), a: aMatch[1].replace(/^\*\*(.+?)\*\*/g, '$1').trim() });
         }
-    }
-    if (cardOpen) html += '<div class="flash-card" onclick="this.classList.toggle(\'flipped\')"><div class="q">' + q + '</div><div class="a">' + a + '</div></div>';
-    html += '</div>';
-    document.getElementById('modalBody').innerHTML = html;
+    });
+    return cards;
 }
 
 function renderQuiz(text) {
     const lines = text.split('\n');
-    let html = '<div style="font-size:13px;color:var(--text-muted);margin-bottom:16px">❓ Tap each question to reveal the answer</div>';
-    let inQuestion = false, qNum = 0, qText = '', opts = [], answer = '', hasAnswer = false;
-
-    for (const line of lines) {
-        if (line.match(/^### Q\d+\./)) {
-            if (inQuestion && qText) {
-                html += buildQuestion(qNum, qText, opts, answer, hasAnswer);
+    let html = '';
+    let qCount = 0;
+    let i = 0;
+    while (i < lines.length) {
+        const line = lines[i].trim();
+        if (line.match(/^#{1,3}\s+Q\d+\./) || line.match(/^Q\d+\./) || (line.startsWith('###') && line.match(/\d/))) {
+            qCount++;
+            let qText = line.replace(/^#{1,3}\s+/, '').replace(/^Q\d+\.\s*/, '').trim();
+            html += `<div class="quiz-item" onclick="this.classList.toggle('revealed')">
+                <div class="quiz-q" data-n="${qCount}">${qText}</div>
+                <ul class="quiz-options">`;
+            i++;
+            let optLines = [];
+            while (i < lines.length && !lines[i].trim().match(/^#{1,3}\s+Q/) && !lines[i].trim().match(/^Q\d+\./) && !lines[i].trim().startsWith('## ') && !lines[i].trim().startsWith('**A:**') && lines[i].trim() !== '') {
+                const opt = lines[i].trim();
+                if (opt.match(/^- [A-D]\)/)) {
+                    optLines.push(opt.replace(/^- [A-D]\)\s*/, ''));
+                } else if (optLines.length > 0 && !opt.match(/^\*\*A:/)) {
+                    optLines[optLines.length - 1] += ' ' + opt;
+                }
+                i++;
             }
-            qText = line.replace(/^### Q\d+\.\s*/, '').trim();
-            opts = []; answer = ''; hasAnswer = false; inQuestion = true; qNum++;
-        } else if (line.match(/^- [A-D]\)/)) {
-            opts.push(line.replace(/^- [A-D]\)\s*/, '').trim());
-        } else if (line.match(/^### Q\d+\s+\(FILL/)) {
-            if (inQuestion && qText) html += buildQuestion(qNum, qText, opts, answer, hasAnswer);
-            qText = line.replace(/^### Q\d+\s+/, '').trim();
-            opts = []; answer = ''; inQuestion = true; qNum++;
-        } else if (line.startsWith('**A:**')) {
-            answer = line.replace('**A:**', '').replace(/^TRUE|^FALSE|^A:\s*/gi, '').trim();
-            hasAnswer = true;
-        }
+            const correctOpt = optLines[0] || '';
+            optLines.forEach((opt, idx) => {
+                const isCorrect = idx === 0;
+                html += `<li class="${isCorrect ? 'correct' : ''}">${opt}</li>`;
+            });
+            html += `</ul><div class="quiz-answer">Answer: ${correctOpt}</div></div>`;
+        } else { i++; }
     }
-    if (inQuestion && qText) html += buildQuestion(qNum, qText, opts, answer, hasAnswer);
-    document.getElementById('modalBody').innerHTML = html;
+    return html || '<p style="color:var(--text-muted)">Quiz content unavailable.</p>';
 }
 
-function buildQuestion(num, qText, opts, answer, hasAnswer) {
-    let html = '<div class="quiz-question" id="q' + num + '">';
-    html += '<div class="q-text">Q' + num + '. ' + qText + '</div>';
-    if (opts.length) {
-        html += '<ul class="options">';
-        const letters = ['A','B','C','D'];
-        opts.forEach((o, i) => {
-            html += '<li onclick="checkAnswer(this, \'' + (letters[i] || 'A') + '\', \'' + answer.replace(/'/g, "\\'") + '\')">' + o + '</li>';
-        });
-        html += '</ul>';
-    } else if (qText.includes('BLANK') || qText.includes('Fill')) {
-        html += '<div class="quiz-blank"><input type="text" placeholder="Your answer..." onkeydown="if(event.key===\'Enter\')checkAnswerBlank(this, \'' + answer.replace(/'/g, "\\'") + '\')"></div>';
-    } else {
-        html += '<div class="quiz-true-false" onclick="checkAnswer(this, \'TRUE\', \'' + answer.replace(/'/g, "\\'") + '\')">TRUE</div>';
-        html += '<div class="quiz-true-false" onclick="checkAnswer(this, \'FALSE\', \'' + answer.replace(/'/g, "\\'") + '\')">FALSE</div>';
-    }
-    html += '</div>';
-    return html;
-}
-
-function checkAnswer(el, selected, correct) {
-    el.style.fontWeight = '600';
-    const allLi = el.parentElement.querySelectorAll('li');
-    allLi.forEach(li => {
-        const txt = li.textContent.trim();
-        const firstChar = txt.charAt(0);
-        if (firstChar === correct || txt.startsWith(correct)) {
-            li.style.background = 'rgba(0,184,148,0.3)';
-            li.style.color = 'var(--green)';
-        }
-    });
-    el.onclick = null;
-}
-
-function checkAnswerBlank(input, correct) {
-    const val = input.value.trim().toUpperCase();
-    const corr = correct.toUpperCase();
-    if (val === corr) {
-        input.style.background = 'rgba(0,184,148,0.3)';
-        input.style.color = 'var(--green)';
-    } else {
-        input.style.background = 'rgba(255,118,117,0.3)';
-        input.style.color = 'var(--red)';
-    }
-    input.disabled = true;
-}
-
-// Close modal on outside click
-document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-});
-
-// Update debug bar
-document.getElementById('debugBar').textContent = 'basePath = "' + basePath + '" | Page: ' + window.location.href + ' | Will fetch: outputs/wiki/migraine_candesartan_vs_topiramate.md';
+// Close on escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeViewer(); });
 </script>
 </body>
+</html>
