@@ -33,9 +33,18 @@
  .info-label { font-size: 11px; color: #94a3b8; margin-bottom: 2px; }
  .info-value { font-size: 16px; font-weight: 600; }
  .score-box { background: #252d3d; border-radius: 10px; padding: 24px 16px; margin-bottom: 14px; text-align: center; }
- .score-num { font-size: 48px; font-weight: 700; color: #f97316; margin-bottom: 16px; }
- .btn-row { display: flex; gap: 20px; justify-content: center; }
- .btn { width: 64px; height: 64px; border-radius: 50%; border: none; background: #3b82f6; color: white; font-size: 32px; font-weight: bold; }
+ .score-num { font-size: 48px; font-weight: 700; color: #f97316; margin-bottom: 20px; }
+ .btn-row { display: flex; gap: 24px; justify-content: center; align-items: center; }
+ .btn {
+  width: 64px; height: 64px; border-radius: 50%;
+  border: none; background: #3b82f6; color: white;
+  font-size: 32px; font-weight: 300;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  position: relative; transition: transform 0.1s, background 0.1s;
+ }
+ .btn:active { transform: scale(0.92); background: #2563eb; }
+ .btn::before { content: ''; position: absolute; width: 24px; height: 3px; background: white; border-radius: 2px; }
+ .btn.plus::after { content: ''; position: absolute; width: 3px; height: 24px; background: white; border-radius: 2px; }
  .footer { background: #252d3d; padding: 12px; text-align: center; font-size: 11px; color: #94a3b8; }
  </style>
 </head>
@@ -69,8 +78,8 @@
   <div class="score-box" id="scoreBox">
    <div class="score-num" id="scoreNum">7.0</div>
    <div class="btn-row">
-    <div class="btn" onclick="dec()">-</div>
-    <div class="btn" onclick="inc()">+</div>
+    <div class="btn minus" id="btnMinus"></div>
+    <div class="btn plus" id="btnPlus"></div>
    </div>
   </div>
  </div>
@@ -78,16 +87,20 @@
 </div>
 <script>
 var s = 7;
-function dec() { if (s > 0) { s -= 0.5; upd(); } }
-function inc() { if (s < 10) { s += 0.5; upd(); } }
+var scoreNum = document.getElementById('scoreNum');
+var myBadge = document.getElementById('myBadge');
+var card = document.getElementById('card');
+var btnMinus = document.getElementById('btnMinus');
+var btnPlus = document.getElementById('btnPlus');
+
 function upd() {
- document.getElementById('scoreNum').textContent = s.toFixed(1);
- document.getElementById('myBadge').textContent = 'My ' + s.toFixed(1);
- var c = document.getElementById('card');
- if (s >= 7) { c.style.borderColor = '#3b82f6'; }
- else if (s >= 5) { c.style.borderColor = '#f97316'; }
- else { c.style.borderColor = '#ef4444'; }
+ scoreNum.textContent = s.toFixed(1);
+ myBadge.textContent = 'My ' + s.toFixed(1);
+ card.style.borderColor = s >= 7 ? '#3b82f6' : s >= 5 ? '#f97316' : '#ef4444';
 }
+
+btnMinus.onclick = function() { if (s > 0) { s -= 0.5; upd(); } };
+btnPlus.onclick = function() { if (s < 10) { s += 0.5; upd(); } };
 </script>
 </body>
 </html>
