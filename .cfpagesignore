@@ -1,0 +1,5 @@
+# Exclude large files that exceed CF Pages 25MB limit
+IMBR/Input/
+*.pdf
+alldata.json
+data2.json
