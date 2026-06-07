@@ -3,891 +3,232 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🗂️ FOR OPENCLAW — Projects Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <title>FOR OPENCLAW — Projects Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --surface-2: #334155;
-      --border: #475569;
-      --text: #f1f5f9;
-      --text-dim: #94a3b8;
-      --text-muted: #64748b;
-      --accent: #3b82f6;
-      --accent-hover: #60a5fa;
-      --accent-2: #8b5cf6;
-      --accent-cola: #f97316;
-      --accent-claude: #8b5cf6;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'Fira Code', monospace;
+      --bg:       #0f172a;
+      --surface:  #1e293b;
+      --surface2: #273549;
+      --border:   #334155;
+      --text:     #f1f5f9;
+      --muted:    #94a3b8;
+      --dim:      #64748b;
+      --blue:     #3b82f6;
+      --purple:   #8b5cf6;
+      --green:    #10b981;
+      --amber:    #f59e0b;
+      --red:      #ef4444;
+      --cyan:     #06b6d4;
+      --pink:     #ec4899;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
+    body { font-family: "DM Sans", -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
 
-    /* HEADER */
-    .header {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      padding: 24px 20px 0;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto 16px;
-    }
-    .header-logo { font-size: 1.8rem; }
-    .header h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-    .live-clock {
-      font-size: 0.85rem;
-      color: var(--accent);
-      font-variant-numeric: tabular-nums;
-    }
+    /* ── HEADER ── */
+    .header { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 28px 24px 20px; border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1200px; margin: 0 auto; }
+    .header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 4px; }
+    .header p  { color: var(--muted); font-size: 0.88rem; }
 
-    /* TAB NAVIGATION */
-    .tab-nav {
-      display: flex;
-      gap: 4px;
-      max-width: 1100px;
-      margin: 0 auto;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .tab-nav::-webkit-scrollbar { display: none; }
-    .tab-btn {
-      padding: 12px 20px;
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-muted);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .tab-btn:hover { color: var(--text); }
-    .tab-btn.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-    .tab-btn.cola-tab.active {
-      color: var(--accent-cola);
-      border-bottom-color: var(--accent-cola);
-    }
+    /* ── NAV TABS ── */
+    .nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 0; }
+    .tab { padding: 14px 20px; font-size: 0.88rem; font-weight: 500; color: var(--muted); border: none; background: none; cursor: pointer; border-bottom: 2.5px solid transparent; transition: all .15s; white-space: nowrap; }
+    .tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .tab:hover:not(.active) { color: var(--text); }
 
-    /* CONTAINER */
-    .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+    /* ── MAIN ── */
+    .main { max-width: 1200px; margin: 0 auto; padding: 28px 24px; }
+    .panel { display: none; }
+    .panel.active { display: block; }
 
-    /* TAB CONTENT */
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
+    /* ── AGENTS GRID ── */
+    .agents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
 
-    /* SECTION TITLES */
-    .section-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
+    /* ── AGENT CARD ── */
+    .agent-card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--agent-color, var(--blue)); border-radius: 14px; padding: 20px; }
+    .agent-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .agent-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .agent-name { font-size: 1.05rem; font-weight: 700; }
+    .agent-role { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .agent-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
 
-    /* AGENTS GRID */
-    .agents-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .agent-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .agent-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(59,130,246,0.15);
-    }
-    .agent-card.cola-card:hover {
-      border-color: var(--accent-cola);
-      box-shadow: 0 8px 24px rgba(249,115,22,0.15);
-    }
-    .agent-card .emoji { font-size: 2rem; margin-bottom: 8px; }
-    .agent-card h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-    .agent-card .role {
-      font-size: 0.8rem;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-    .agent-card.cola-card .role { color: var(--accent-cola); }
-    .agent-card .desc {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.5;
-    }
-    .agent-card .badge-row {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .badge {
-      font-size: 0.7rem;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-    .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
-    .badge-orange { background: rgba(249,115,22,0.15); color: var(--accent-cola); border: 1px solid rgba(249,115,22,0.3); }
-    .badge-green { background: rgba(16,185,129,0.15); color: var(--success); border: 1px solid rgba(16,185,129,0.3); }
-    .badge-purple { background: rgba(139,92,246,0.15); color: var(--accent-2); border: 1px solid rgba(139,92,246,0.3); }
+    /* ── FILE LIST ── */
+    .file-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .file-link { display: flex; align-items: center; gap: 9px; padding: 9px 12px; background: var(--surface2); border-radius: 8px; font-size: 0.83rem; font-weight: 500; color: var(--text); border: 1px solid transparent; transition: all .15s; cursor: pointer; }
+    .file-link:hover { border-color: var(--agent-color, var(--blue)); color: var(--agent-color, var(--blue)); }
+    .file-link .ficon { font-size: 15px; flex-shrink: 0; }
+    .file-link .fname { flex: 1; }
+    .file-link .farrow { color: var(--dim); font-size: 12px; }
+    .file-link:hover .farrow { color: var(--agent-color, var(--blue)); }
+    .file-link.disabled { opacity: 0.4; pointer-events: none; cursor: default; }
 
-    /* COLA DASHBOARD CARD */
-    .cola-dashboard-card {
-      background: linear-gradient(135deg, #1e293b 0%, #2d1f0f 100%);
-      border: 1px solid var(--accent-cola);
-      border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 32px;
-    }
-    .cola-dashboard-card h2 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .cola-dashboard-card h2 span { color: var(--accent-cola); }
-    .cola-dashboard-card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
-    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-      font-family: var(--font-body);
-    }
-    .btn-primary {
-      background: var(--accent-cola);
-      color: white;
-    }
-    .btn-primary:hover { background: #ea580c; transform: translateY(-1px); }
-    .btn-secondary {
-      background: var(--surface-2);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover { border-color: var(--accent-cola); }
+    /* ── AGENT OPEN BTN ── */
+    .agent-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; background: var(--agent-color, var(--blue)); color: #fff; border-radius: 9px; font-size: 0.88rem; font-weight: 600; transition: opacity .15s; }
+    .agent-btn:hover { opacity: 0.88; }
 
-    /* IMBR SECTION */
-    .imbr-intro {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 20px;
-    }
-    .imbr-intro h2 { font-size: 1.3rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .imbr-intro h2 span { color: var(--warning); }
-    .imbr-intro p { color: var(--text-dim); font-size: 0.9rem; }
-    .stat-row {
-      display: flex;
-      gap: 24px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-    .stat {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .stat .num {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .stat .label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
+    /* ── SECTION TITLE ── */
+    .section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--dim); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
 
-    /* SPECIALTY GRID */
-    .specialty-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-    .specialty-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .specialty-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-1px);
-    }
-    .specialty-card.disabled {
-      opacity: 0.5;
-      cursor: default;
-    }
-    .specialty-card.disabled:hover {
-      transform: none;
-      border-color: var(--border);
-    }
-    .s-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
-    .s-count { font-size: 0.75rem; color: var(--text-muted); }
-    .s-files {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-    .s-files .badge { font-size: 0.65rem; padding: 2px 7px; }
+    /* ── IMBR SPECIALTIES ── */
+    .spec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 32px; }
+    .spec-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--spec-color, var(--blue)); border-radius: 10px; padding: 13px 15px; cursor: pointer; transition: all .18s; text-decoration: none; display: block; }
+    .spec-card:hover { border-color: var(--spec-color, var(--blue)); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
+    .spec-name { font-size: 0.92rem; font-weight: 600; margin-bottom: 3px; }
+    .spec-count { font-size: 0.75rem; color: var(--muted); }
 
-    /* QUICK ACCESS */
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 10px;
-    }
-    .quick-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-size: 0.85rem;
-      color: var(--text);
-      transition: all 0.2s;
-    }
-    .quick-btn:hover {
-      border-color: var(--accent);
-      transform: translateY(-1px);
-    }
+    /* ── IMBR ARTICLE LIST ── */
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+    .article-link { display: flex; align-items: center; gap: 10px; padding: 11px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; font-size: 0.82rem; color: var(--text); transition: all .15s; }
+    .article-link:hover { border-color: var(--blue); color: var(--blue); }
 
-    .tab-btn.claude-tab.active {
-      color: var(--accent-claude);
-      border-bottom-color: var(--accent-claude);
-    }
-
-    /* FOR CLAUDE SECTION */
-    .claude-intro {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 20px;
-    }
-    .claude-intro h2 { font-size: 1.3rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .claude-intro h2 span { color: var(--accent-claude); }
-    .claude-intro p { color: var(--text-dim); font-size: 0.9rem; }
-    .claude-stat-row { display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
-    .claude-stat { display: flex; align-items: center; gap: 8px; }
-    .claude-stat .num { font-size: 1.4rem; font-weight: 700; color: var(--accent-claude); }
-    .claude-stat .label { font-size: 0.8rem; color: var(--text-muted); }
-
-    .claude-sub-tabs {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 16px;
-    }
-    .claude-sub-tab {
-      padding: 8px 16px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text-dim);
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .claude-sub-tab:hover { color: var(--text); }
-    .claude-sub-tab.active {
-      background: var(--accent-claude);
-      border-color: var(--accent-claude);
-      color: #fff;
-    }
-    .claude-panel { display: none; }
-    .claude-panel.active { display: block; }
-
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      padding: 24px;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      border-top: 1px solid var(--border);
-      margin-top: 48px;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 600px) {
-      .header h1 { font-size: 1.2rem; }
-      .live-clock { display: none; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
       .agents-grid { grid-template-columns: 1fr; }
-      .tab-btn { padding: 10px 14px; font-size: 0.8rem; }
-      .stat-row { gap: 12px; }
+      .tab { padding: 12px 14px; font-size: 0.82rem; }
+    }
+    @supports (padding: env(safe-area-inset-left)) {
+      .nav, .header { padding-left: max(24px, env(safe-area-inset-left)); }
     }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-top">
-    <div>
-      <div class="header-logo">🗂️</div>
-      <h1>FOR OPENCLAW — Projects Hub</h1>
-    </div>
-    <div class="live-clock" id="liveClock"></div>
+  <div class="header-inner">
+    <h1>🗂️ FOR OPENCLAW — Projects Hub</h1>
+    <p>Agent dashboards · IMBR medical reviews · Investment research</p>
   </div>
-
-  <!-- TAB NAVIGATION -->
-  <nav class="tab-nav">
-    <button class="tab-btn active" onclick="showTab('agents')">🤖 Agents</button>
-    <button class="tab-btn" onclick="showTab('imbr')">🏥 IMBR Reviews</button>
-    <button class="tab-btn cola-tab" onclick="showTab('cola')">🧃 COLA Deck</button>
-    <button class="tab-btn claude-tab" onclick="showTab('claude')">📋 FOR CLAUDE</button>
-    <button class="tab-btn" onclick="showTab('quick')">⚡ Quick Access</button>
-  </nav>
 </div>
 
-<div class="container">
+<div class="nav">
+  <div class="nav-inner">
+    <button class="tab active" data-tab="agents">🤖 Agents</button>
+    <button class="tab" data-tab="imbr">🏥 IMBR Review</button>
+  </div>
+</div>
 
-  <!-- AGENTS TAB -->
-  <div id="tab-agents" class="tab-content active">
-    <div class="section-title">🤖 Active Agents</div>
+<main class="main">
+
+  <!-- ══ AGENTS TAB ══════════════════════════════════════════════════════════ -->
+  <div class="panel active" id="panel-agents">
+    <div class="section-label">Agent Workspaces — HTML Outputs</div>
     <div class="agents-grid">
 
-      <a href="/cola-control-deck.html" class="agent-card cola-card">
-        <div class="emoji">🧃</div>
-        <h3>COLA</h3>
-        <div class="role">AI Orchestrator</div>
-        <div class="desc">Main AI Orchestrator — coordinates subagents, manages workspace, handles data analytics.</div>
-        <div class="badge-row">
-          <span class="badge badge-orange">Control Deck</span>
-          <span class="badge badge-blue">Orchestration</span>
-        </div>
-      </a>
-
-      <a href="/workspace-imbr/Review/" class="agent-card">
-        <div class="emoji">🏥</div>
-        <h3>IMBR</h3>
-        <div class="role">Medical Review AI</div>
-        <div class="desc">Comprehensive medical review articles across 16 specialties — neurology, cardiology, infectious disease, and more.</div>
-        <div class="badge-row">
-          <span class="badge badge-blue">16 Specialties</span>
-          <span class="badge badge-green">35 Articles</span>
-        </div>
-      </a>
-
-      <a href="/workspace-papez/outputs/dashboard.html" class="agent-card">
-        <div class="emoji">🧠</div>
-        <h3>Papez</h3>
-        <div class="role">Neurology Learning Agent</div>
-        <div class="desc">From molecules to the mind — interactive neurology dashboard with wikis, flashcards, and quizzes.</div>
-        <div class="badge-row">
-          <span class="badge badge-purple">Dashboard</span>
-          <span class="badge badge-green">29 Wiki Pages</span>
-        </div>
-      </a>
-
-      <a href="/workspace-investx/" class="agent-card">
-        <div class="emoji">📈</div>
-        <h3>InvestX</h3>
-        <div class="role">Investment Advisor</div>
-        <div class="desc">AI-powered investment research — Thai and global stocks, funds, sector analysis.</div>
-        <div class="badge-row">
-          <span class="badge badge-green">Research</span>
-        </div>
-      </a>
-
-      <a href="/workspace-journal/" class="agent-card">
-        <div class="emoji">📓</div>
-        <h3>Journal</h3>
-        <div class="role">Medical Review AI</div>
-        <div class="desc">Focused review articles and analysis — skin manifestations in diabetes mellitus.</div>
-        <div class="badge-row">
-          <span class="badge badge-green">Reviews</span>
-        </div>
-      </a>
-
-      <a href="/workspace-shiba/" class="agent-card">
-        <div class="emoji">🐕</div>
-        <h3>Shiba</h3>
-        <div class="role">Technical Lead</div>
-        <div class="desc">Coding, Git, VPS management — technical infrastructure and automation.</div>
-        <div class="badge-row">
-          <span class="badge badge-blue">Coding</span>
-          <span class="badge badge-blue">Git</span>
-        </div>
-      </a>
-
-      <a href="/workspace-hulks/" class="agent-card">
-        <div class="emoji">💪</div>
-        <h3>Hulks</h3>
-        <div class="role">Fitness& Health Coach</div>
-        <div class="desc">Workout tracking, diet planning, health tips, and personalized fitness guidance.</div>
-        <div class="badge-row">
-          <span class="badge badge-blue">Workouts</span>
-          <span class="badge badge-blue">Meal Plans</span>
-        </div>
-      </a>
-
-      <a href="/workspace-nevr/" class="agent-card">
-        <div class="emoji">⚡</div>
-        <h3>Nevr</h3>
-        <div class="role">Neurology Agent</div>
-        <div class="desc">Specialized neurology agent — part of the multi-agent system.</div>
-        <div class="badge-row">
-          <span class="badge badge-purple">Neurology</span>
-        </div>
-      </a>
-
-      <a href="/workspace-sophos/" class="agent-card">
-        <div class="emoji">📚</div>
-        <h3>Sophos</h3>
-        <div class="role">General Agent</div>
-        <div class="desc">General purpose agent — part of the multi-agent system.</div>
-        <div class="badge-row">
-          <span class="badge badge-blue">General</span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- IMBR REVIEWS TAB -->
-  <div id="tab-imbr" class="tab-content">
-    <div class="imbr-intro">
-      <h2>📚 IMBR Review — <span>Medical Knowledge Base</span></h2>
-      <p>Structured review articles by specialty. Each specialty shows a directory of available files — HTML for reading, MD for source markdown, PDF for downloads.</p>
-      <div class="stat-row">
-        <div class="stat"><span class="num">16</span><span class="label">Specialties</span></div>
-        <div class="stat"><span class="num">35</span><span class="label">HTML Articles</span></div>
-        <div class="stat"><span class="num">18</span><span class="label">Markdown Files</span></div>
-        <div class="stat"><span class="num">14</span><span class="label">PDFs</span></div>
-      </div>
-    </div>
-
-    <div class="section-title">🏥 Browse by Specialty</div>
-    <div class="specialty-grid">
-      <a href="/workspace-imbr/Review/Neurology/" class="specialty-card">
-        <div class="s-name">🧠 Neurology</div>
-        <div class="s-count">16 HTML · 7 MD · 5 PDF</div>
-        <div class="s-files">
-          <span class="badge badge-blue">HTML</span>
-          <span class="badge badge-green">MD</span>
-          <span class="badge badge-orange">PDF</span>
-        </div>
-      </a>
-
-      <a href="/workspace-imbr/Review/Critical-Care/" class="specialty-card">
-        <div class="s-name">🏥 Critical Care</div>
-        <div class="s-count">8 HTML · 5 MD · 4 PDF</div>
-        <div class="s-files">
-          <span class="badge badge-blue">HTML</span>
-          <span class="badge badge-green">MD</span>
-          <span class="badge badge-orange">PDF</span>
-        </div>
-      </a>
-
-      <a href="/workspace-imbr/Review/Infectious-Disease/" class="specialty-card">
-        <div class="s-name">🦠 Infectious Disease</div>
-        <div class="s-count">3 HTML · 3 MD · 3 PDF</div>
-        <div class="s-files">
-          <span class="badge badge-blue">HTML</span>
-          <span class="badge badge-green">MD</span>
-          <span class="badge badge-orange">PDF</span>
-        </div>
-      </a>
-
-      <a href="/workspace-imbr/Review/Gastroenterology/" class="specialty-card">
-        <div class="s-name">🔬 Gastroenterology</div>
-        <div class="s-count">2 HTML · 1 MD · 1 PDF</div>
-        <div class="s-files">
-          <span class="badge badge-blue">HTML</span>
-          <span class="badge badge-green">MD</span>
-        </div>
-      </a>
-
-      <a href="/workspace-imbr/Review/Cardiology/" class="specialty-card">
-        <div class="s-name">❤️ Cardiology</div>
-        <div class="s-count">2 HTML · 1 MD</div>
-        <div class="s-files">
-          <span class="badge badge-blue">HTML</span>
-          <span class="badge badge-green">MD</span>
-        </div>
-      </a>
-
-      <a href="/workspace-imbr/Review/Rheumatology/" class="specialty-card">
-        <div class="s-name">🦴 Rheumatology</div>
-        <div class="s-count">1 HTML · 1 MD · 1 PDF</div>
-        <div class="s-files">
-          <span class="badge badge-blue">HTML</span>
-          <span class="badge badge-green">MD</span>
-          <span class="badge badge-orange">PDF</span>
-        </div>
-      </a>
-
-      <a href="/workspace-imbr/Review/Oncology/" class="specialty-card">
-        <div class="s-name">🎗️ Oncology</div>
-        <div class="s-count">1 HTML</div>
-        <div class="s-files">
-          <span class="badge badge-blue">HTML</span>
-        </div>
-      </a>
-
-      <a href="/workspace-imbr/Review/High-Yield%20/" class="specialty-card">
-        <div class="s-name">⭐ High-Yield</div>
-        <div class="s-count">2 HTML</div>
-        <div class="s-files">
-          <span class="badge badge-blue">HTML</span>
-        </div>
-      </a>
-
-      <!-- Coming Soon (disabled) -->
-      <div class="specialty-card disabled">
-        <div class="s-name">🩺 Nephrology</div>
-        <div class="s-count">Coming soon</div>
-      </div>
-
-      <div class="specialty-card disabled">
-        <div class="s-name">🫁 Pulmonology</div>
-        <div class="s-count">Coming soon</div>
-      </div>
-
-      <div class="specialty-card disabled">
-        <div class="s-name">🧪 Endocrinology</div>
-        <div class="s-count">Coming soon</div>
-      </div>
-
-      <div class="specialty-card disabled">
-        <div class="s-name">🩹 Allergy-Immunology</div>
-        <div class="s-count">Coming soon</div>
-      </div>
-
-      <div class="specialty-card disabled">
-        <div class="s-name">🧬 Genetics</div>
-        <div class="s-count">Coming soon</div>
-      </div>
-
-      <div class="specialty-card disabled">
-        <div class="s-name">🥗 Nutrition</div>
-        <div class="s-count">Coming soon</div>
-      </div>
-
-      <div class="specialty-card disabled">
-        <div class="s-name">💊 Dermatology</div>
-        <div class="s-count">Coming soon</div>
-      </div>
-
-      <div class="specialty-card disabled">
-        <div class="s-name">☠️ Toxicology</div>
-        <div class="s-count">Coming soon</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- COLA DECK TAB -->
-  <div id="tab-cola" class="tab-content">
-    <div class="cola-dashboard-card">
-      <h2>🧃 <span>COLA Control Deck</span></h2>
-      <p>Mission control dashboard for the COLA orchestrator. View active missions, agent status, and system health.</p>
-      <div class="btn-row">
-        <a href="/cola-control-deck.html" class="btn btn-primary">
-          🚀 Open Control Deck
-        </a>
-        <a href="/workspace-cola/" class="btn btn-secondary">
-          📁 COLA Workspace
-        </a>
-      </div>
-    </div>
-
-    <div class="section-title">📋 Pending Missions</div>
-    <div class="quick-grid">
-      <div class="quick-btn">📝 COLA v2.0 Enhancement — Mission Board System</div>
-      <div class="quick-btn">🎬 Movie Ticket Profile — Shiba Task</div>
-      <div class="quick-btn">🧠 NeuroAgent Phase 9 — Run Training</div>
-      <div class="quick-btn">🤖 New Bots Setup — InvestX, Nevr, Sophos</div>
-    </div>
-
-    <div class="section-title" style="margin-top: 32px;">🔗 Quick Links</div>
-    <div class="quick-grid">
-      <a href="/workspace-cola/outputs/movie-ticket-collector.html" class="quick-btn">
-        🎫 Movie Ticket Collector
-      </a>
-      <a href="/workspace-shiba/tasks/" class="quick-btn">
-        📋 Shiba Tasks
-      </a>
-      <a href="/workspace-cola/memory/" class="quick-btn">
-        💾 COLA Memory
-      </a>
-      <a href="/workspace-cola/skills/" class="quick-btn">
-        🛠️ COLA Skills
-      </a>
-    </div>
-  </div>
-
-  <!-- FOR CLAUDE TAB -->
-  <div id="tab-claude" class="tab-content">
-
-    <div class="claude-intro">
-      <h2>📋 <span>FOR CLAUDE — Medical & Investment Hub</span></h2>
-      <p>Structured medical review articles and investment analysis by specialty.</p>
-      <div class="claude-stat-row">
-        <div class="claude-stat"><span class="num">14</span><span class="label">IMBR Articles</span></div>
-        <div class="claude-stat"><span class="num">12</span><span class="label">Ready</span></div>
-        <div class="claude-stat"><span class="num">1</span><span class="label">Prototype</span></div>
-        <div class="claude-stat"><span class="num">3</span><span class="label">InvestX Reports</span></div>
-      </div>
-    </div>
-
-    <div class="claude-sub-tabs">
-      <button class="claude-sub-tab active" onclick="showClaudeSub('medicine')">🏥 Medicine</button>
-      <button class="claude-sub-tab" onclick="showClaudeSub('investx')">📈 InvestX</button>
-    </div>
-
-    <!-- MEDICINE PANEL -->
-    <div id="claude-medicine" class="claude-panel active">
-      <div class="section-title">🏥 IMBR Specialties</div>
-      <div class="specialty-grid">
-        <a href="/workspace-imbr/Review/Neurology/Neurology_IMBR_2026_v2.html" class="specialty-card">
-          <div class="s-name">🧠 Neurology IMBR 2026</div>
-          <div class="s-count">★ Prototype · v2</div>
-          <div class="s-files"><span class="badge badge-purple">Prototype</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Cardiology/Cardiology_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">❤️ Cardiology IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Hematology/Hematology_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">🩸 Hematology IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Nephrology/IMBR_Nephrology_2026.html" class="specialty-card">
-          <div class="s-name">🫘 Nephrology IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Endocrinology/Endocrinology_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">⚗️ Endocrinology IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Gastro-Hepatology/GastroHepatology_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">🔬 Gastro-Hepatology IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Infectious%20Disease/ID_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">🦠 Infectious Disease IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Rheumatology%20/Rheumatology_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">🦴 Rheumatology IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Dermatology/Dermatology_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">🩹 Dermatology IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Oncology%20/Oncology_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">🎗️ Oncology IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Genetics/Genetics_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">🧬 Genetics IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Hypertension/Hypertension_IMBR_2026.html" class="specialty-card">
-          <div class="s-name">💢 Hypertension IMBR 2026</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <div class="specialty-card disabled">
-          <div class="s-name">🫁 Pulmonology</div>
-          <div class="s-count">⏳ In Progress</div>
-          <div class="s-files"><span class="badge badge-orange">Pending</span></div>
-        </div>
-        <div class="specialty-card disabled">
-          <div class="s-name">🏥 Critical Care</div>
-          <div class="s-count">⏳ In Progress</div>
-          <div class="s-files"><span class="badge badge-orange">Pending</span></div>
-        </div>
-      </div>
-
-      <div class="section-title">📋 Reviews</div>
-      <div class="specialty-grid">
-        <a href="/workspace-imbr/Review/Reviews/CAP_Pneumonia_Visual.html" class="specialty-card">
-          <div class="s-name">🫁 CAP Pneumonia Visual</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-        <a href="/workspace-imbr/Review/Long%20case%20IMBR/IMBR_LongCase_Series.html" class="specialty-card">
-          <div class="s-name">📋 Long Case IMBR Series</div>
-          <div class="s-count">Ready</div>
-          <div class="s-files"><span class="badge badge-green">✓ Ready</span></div>
-        </a>
-      </div>
-    </div>
-
-    <!-- INVESTX PANEL -->
-    <div id="claude-investx" class="claude-panel">
-      <div class="section-title">📈 Investment Analysis</div>
-      <div class="agents-grid">
-        <a href="/workspace-investx/INVESTX_Deep_Analysis.html" class="agent-card">
-          <div class="emoji">📊</div>
-          <h3>INVESTX Deep Analysis</h3>
-          <div class="role">Investment Framework</div>
-          <div class="desc">Comprehensive investment framework — Thai and global stocks analysis.</div>
-          <div class="badge-row">
-            <span class="badge badge-green">✓ Ready</span>
+      <!-- PAPEZ -->
+      <div class="agent-card" style="--agent-color:#8b5cf6">
+        <div class="agent-head">
+          <div class="agent-icon">🧠</div>
+          <div>
+            <div class="agent-name">Papez</div>
+            <div class="agent-role">Neurology Learning Agent</div>
           </div>
-        </a>
-        <a href="/workspace-investx/AICore_Analysis.html" class="agent-card">
-          <div class="emoji">🤖</div>
-          <h3>AICore Analysis</h3>
-          <div class="role">AI Sector Deep Dive</div>
-          <div class="desc">AI sector &amp; core holdings deep dive — comprehensive analysis.</div>
-          <div class="badge-row">
-            <span class="badge badge-green">✓ Ready</span>
-          </div>
-        </a>
-        <a href="/workspace-investx/NVDA_Analysis.html" class="agent-card">
-          <div class="emoji">📈</div>
-          <h3>NVDA Analysis</h3>
-          <div class="role">NVIDIA Stock Outlook</div>
-          <div class="desc">NVIDIA stock analysis &amp; outlook — investment thesis and risks.</div>
-          <div class="badge-row">
-            <span class="badge badge-green">✓ Ready</span>
-          </div>
-        </a>
+        </div>
+        <div class="agent-desc">Board prep, clinical cases, neuro wiki — ABPN · MRCP · Thai Board</div>
+        <div class="file-list">
+          <a href="/workspace-imbr/papez-outputs/avm_module1" class="file-link"><span class="ficon">🩸</span><span class="fname">AVM Series — Modules 1–5</span><span class="farrow">↗</span></a>
+          <a href="/workspace-imbr/papez-outputs/mt_module1" class="file-link"><span class="ficon">⚡</span><span class="fname">MT Series — Modules 1–4</span><span class="farrow">↗</span></a>
+        </div>
+        <a href="/papez.html" class="agent-btn">📚 Open Library</a>
       </div>
+
+      <!-- INVESTX -->
+      <div class="agent-card" style="--agent-color:#10b981">
+        <div class="agent-head">
+          <div class="agent-icon">📈</div>
+          <div>
+            <div class="agent-name">InvestX</div>
+            <div class="agent-role">Investment Learning Agent</div>
+          </div>
+        </div>
+        <div class="agent-desc">US & Thai market monitoring, SET alerts, investment analysis</div>
+        <div class="file-list">
+                    <a href="/workspace-investx/outputs/SET50_Dashboard" class="file-link"><span class="ficon">📊</span><span class="fname">SET50 Stock Dashboard</span><span class="farrow">↗</span></a>
+        </div>
+        <a href="/investx.html" class="agent-btn" style="background:#10b981">📊 Open Dashboard</a>
+      </div>
+
+      <!-- HULKS -->
+      <div class="agent-card" style="--agent-color:#f59e0b">
+        <div class="agent-head">
+          <div class="agent-icon">💪</div>
+          <div>
+            <div class="agent-name">Coach Hulks</div>
+            <div class="agent-role">Fitness &amp; Health Agent</div>
+          </div>
+        </div>
+        <div class="agent-desc">Workout tracking, diet planning, calorie management, health tips</div>
+        <div class="file-list">
+                  </div>
+        <a href="/hulks.html" class="agent-btn" style="background:#f59e0b;color:#0f172a">💪 Open Dashboard</a>
+      </div>
+
+      <!-- COLA -->
+      <div class="agent-card" style="--agent-color:#06b6d4">
+        <div class="agent-head">
+          <div class="agent-icon">🧃</div>
+          <div>
+            <div class="agent-name">COLA</div>
+            <div class="agent-role">AI Orchestrator</div>
+          </div>
+        </div>
+        <div class="agent-desc">Coordinates subagents, manages workspaces, handles data analytics</div>
+        <div class="file-list">
+                  </div>
+        <a href="/workspace-cola/" class="agent-btn" style="background:#06b6d4">🧃 Open Dashboard</a>
+      </div>
+
+
+
+      <!-- FOR CLAUDE LINK (slim) -->
+      <a href="/hub" style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;font-size:0.88rem;color:var(--muted);transition:all .15s;" onmouseover="this.style.borderColor='#94a3b8';this.style.color='#f1f5f9'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+        <span>⚡ <strong style="color:var(--text)">FOR CLAUDE Hub</strong> — IMBR 2026 study guides + InvestX reports</span>
+        <span>↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══ IMBR TAB ════════════════════════════════════════════════════════════ -->
+  <div class="panel" id="panel-imbr">
+    <div class="section-label">IMBR Medical Reviews — Specialties</div>
+    <div class="spec-grid">
+      <a href="/workspace-imbr/Review/Neurology/" class="spec-card" style="--spec-color:#8b5cf6"><div class="spec-name">🧠 Neurology</div><div class="spec-count">16 HTML · 7 MD · 5 PDF</div></a>
+      <a href="/workspace-imbr/Review/Critical-Care/" class="spec-card" style="--spec-color:#ef4444"><div class="spec-name">🏥 Critical Care</div><div class="spec-count">8 HTML · 5 MD · 4 PDF</div></a>
+      <a href="/workspace-imbr/Review/Infectious-Disease/" class="spec-card" style="--spec-color:#10b981"><div class="spec-name">🦠 Infectious Disease</div><div class="spec-count">3 HTML · 3 MD · 3 PDF</div></a>
+      <a href="/workspace-imbr/Review/Gastroenterology/" class="spec-card" style="--spec-color:#14b8a6"><div class="spec-name">🔬 Gastroenterology</div><div class="spec-count">2 HTML · 1 MD · 1 PDF</div></a>
+      <a href="/workspace-imbr/Review/Cardiology/" class="spec-card" style="--spec-color:#f43f5e"><div class="spec-name">❤️ Cardiology</div><div class="spec-count">2 HTML · 1 MD</div></a>
+      <a href="/workspace-imbr/Review/Rheumatology/" class="spec-card" style="--spec-color:#3b82f6"><div class="spec-name">🦴 Rheumatology</div><div class="spec-count">1 HTML · 1 MD · 1 PDF</div></a>
+      <a href="/workspace-imbr/Review/Oncology/" class="spec-card" style="--spec-color:#f59e0b"><div class="spec-name">🎗️ Oncology</div><div class="spec-count">1 HTML</div></a>
+      <a href="/workspace-imbr/Review/High-Yield/" class="spec-card" style="--spec-color:#eab308"><div class="spec-name">⭐ High-Yield</div><div class="spec-count">2 HTML</div></a>
     </div>
 
   </div>
 
-  <!-- QUICK ACCESS TAB -->
-  <div id="tab-quick" class="tab-content">
-    <div class="section-title">⚡ Quick Access</div>
-    <div class="quick-grid">
-      <a href="/workspace-imbr/Review/Neurology/Cenobamate_Comparative_Effectiveness_2026" class="quick-btn">
-        📄 Cenobamate Review
-      </a>
-      <a href="/workspace-imbr/Review/Neurology/Cenobamate_Visual_2026" class="quick-btn">
-        📊 Cenobamate Visual
-      </a>
-      <a href="/workspace-imbr/Review/Neurology/CADASIL-vs-CARASAL-2026" class="quick-btn">
- 🧬 CADASIL vs CARASAL
-      </a>
-      <a href="/workspace-imbr/Review/Neurology/Tavapadon-TEMPO-Review" class="quick-btn">
-        💊 Tavapadon TEMPO
-      </a>
-      <a href="/workspace-papez/outputs/dashboard.html" class="quick-btn">
-        🧠 Papez Dashboard
-      </a>
-      <a href="/workspace-imbr/Review/" class="quick-btn">
-        🏥 All IMBR Reviews
-      </a>
-      <a href="/cola-control-deck.html" class="quick-btn">
-        🧃 COLA Control Deck
-      </a>
-      <a href="/workspace-investx/" class="quick-btn">
-        📈 InvestX
-      </a>
-    </div>
-  </div>
+</main>
 
-</div>
-
-<div class="footer">
+<div style="text-align:center;padding:20px;color:var(--dim);font-size:0.78rem;border-top:1px solid var(--border);margin-top:20px">
   FOR OPENCLAW · Powered by OpenClaw · Built with 🐕 Shiba
 </div>
 
 <script>
   // Tab switching
-  function showTab(tabName) {
-    // Hide all tab contents
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    // Deactivate all tab buttons
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    // Show selected tab
-    document.getElementById('tab-' + tabName).classList.add('active');
-    // Activate selected button
-    event.target.classList.add('active');
-  }
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
 
-  // Live clock
-  function updateClock() {
-    const now = new Date();
-    const time = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    document.getElementById('liveClock').textContent = '🕐 ' + time + ' UTC';
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
-
-  // FOR CLAUDE sub-tabs
-  function showClaudeSub(sub) {
-    document.querySelectorAll('.claude-panel').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.claude-sub-tab').forEach(el => el.classList.remove('active'));
-    document.getElementById('claude-' + sub).classList.add('active');
-    event.target.classList.add('active');
-  }
+  // Restore active tab from hash
+  const hash = location.hash.replace('#','');
+  const tabMap = { agents:'agents', imbr:'imbr', overview:'overview', project:'agents' };
+  const target = tabMap[hash] || 'agents';
+  document.querySelector(`[data-tab="${target}"]`)?.click();
 </script>
-
 </body>
 </html>
