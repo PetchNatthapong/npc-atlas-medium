@@ -108,6 +108,7 @@
   <div class="nav-inner">
     <button class="tab active" data-tab="agents">🤖 Agents</button>
     <button class="tab" data-tab="imbr">🏥 IMBR Review</button>
+    <button class="tab" data-tab="claude">📋 FOR CLAUDE</button>
   </div>
 </div>
 
@@ -183,11 +184,7 @@
 
 
 
-      <!-- FOR CLAUDE LINK (slim) -->
-      <a href="/hub" style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;font-size:0.88rem;color:var(--muted);transition:all .15s;" onmouseover="this.style.borderColor='#94a3b8';this.style.color='#f1f5f9'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
-        <span>⚡ <strong style="color:var(--text)">FOR CLAUDE Hub</strong> — IMBR 2026 study guides + InvestX reports</span>
-        <span>↗</span>
-      </a>
+      <!-- FOR CLAUDE is now a proper tab — see FOR CLAUDE tab above -->
     </div>
   </div>
 
@@ -205,6 +202,43 @@
       <a href="/workspace-imbr/Review/High-Yield/" class="spec-card" style="--spec-color:#eab308"><div class="spec-name">⭐ High-Yield</div><div class="spec-count">2 HTML</div></a>
     </div>
 
+  </div>
+
+  <!-- ══ FOR CLAUDE TAB ════════════════════════════════════════════════════ -->
+  <div class="panel" id="panel-claude">
+    <div class="section-label">🏥 IMBR Medical Reviews</div>
+    <div class="spec-grid">
+      <a href="/workspace-imbr/Review/Neurology/Neurology_IMBR_2026_v2.html" class="spec-card" style="--spec-color:#8b5cf6"><div class="spec-name">🧠 Neurology IMBR 2026</div><div class="spec-count">★ Prototype</div></a>
+      <a href="/workspace-imbr/Review/Cardiology/Cardiology_IMBR_2026.html" class="spec-card" style="--spec-color:#f43f5e"><div class="spec-name">❤️ Cardiology IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Hematology/Hematology_IMBR_2026.html" class="spec-card" style="--spec-color:#ec4899"><div class="spec-name">🩸 Hematology IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Nephrology/IMBR_Nephrology_2026.html" class="spec-card" style="--spec-color:#06b6d4"><div class="spec-name">🫘 Nephrology IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Endocrinology/Endocrinology_IMBR_2026.html" class="spec-card" style="--spec-color:#eab308"><div class="spec-name">⚗️ Endocrinology IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Gastro-Hepatology/GastroHepatology_IMBR_2026.html" class="spec-card" style="--spec-color:#10b981"><div class="spec-name">🔬 Gastro-Hepatology IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Infectious%20Disease/ID_IMBR_2026.html" class="spec-card" style="--spec-color:#22c55e"><div class="spec-name">🦠 Infectious Disease IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Rheumatology%20/Rheumatology_IMBR_2026.html" class="spec-card" style="--spec-color:#a855f7"><div class="spec-name">🦴 Rheumatology IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Dermatology/Dermatology_IMBR_2026.html" class="spec-card" style="--spec-color:#f97316"><div class="spec-name">🩹 Dermatology IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Oncology%20/Oncology_IMBR_2026.html" class="spec-card" style="--spec-color:#f59e0b"><div class="spec-name">🎗️ Oncology IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Genetics/Genetics_IMBR_2026.html" class="spec-card" style="--spec-color:#06b6d4"><div class="spec-name">🧬 Genetics IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+      <a href="/workspace-imbr/Review/Hypertension/Hypertension_IMBR_2026.html" class="spec-card" style="--spec-color:#ef4444"><div class="spec-name">💢 Hypertension IMBR 2026</div><div class="spec-count">✓ Ready</div></a>
+    </div>
+    <div class="section-label">📈 InvestX Reports</div>
+    <div class="agents-grid" style="margin-bottom:24px">
+      <div class="agent-card" style="--agent-color:#10b981">
+        <div class="agent-head"><div class="agent-icon">📊</div><div><div class="agent-name">INVESTX Deep Analysis</div><div class="agent-role">Investment Framework</div></div></div>
+        <div class="agent-desc">Comprehensive investment framework — Thai and global stocks analysis.</div>
+        <a href="/workspace-investx/INVESTX_Deep_Analysis.html" class="agent-btn" style="background:#10b981">📊 Open Report</a>
+      </div>
+      <div class="agent-card" style="--agent-color:#3b82f6">
+        <div class="agent-head"><div class="agent-icon">🤖</div><div><div class="agent-name">AICore Analysis</div><div class="agent-role">AI Sector Deep Dive</div></div></div>
+        <div class="agent-desc">AI sector &amp; core holdings deep dive — comprehensive analysis.</div>
+        <a href="/workspace-investx/AICore_Analysis.html" class="agent-btn">🤖 Open Report</a>
+      </div>
+      <div class="agent-card" style="--agent-color:#f59e0b">
+        <div class="agent-head"><div class="agent-icon">📈</div><div><div class="agent-name">NVDA Analysis</div><div class="agent-role">NVIDIA Stock Outlook</div></div></div>
+        <div class="agent-desc">NVIDIA stock analysis &amp; outlook — investment thesis and risks.</div>
+        <a href="/workspace-investx/NVDA_Analysis.html" class="agent-btn" style="background:#f59e0b;color:#0f172a">📈 Open Report</a>
+      </div>
+    </div>
   </div>
 
 </main>
@@ -226,7 +260,7 @@
 
   // Restore active tab from hash
   const hash = location.hash.replace('#','');
-  const tabMap = { agents:'agents', imbr:'imbr', overview:'overview', project:'agents' };
+  const tabMap = { agents:'agents', imbr:'imbr', claude:'claude', overview:'overview', project:'agents' };
   const target = tabMap[hash] || 'agents';
   document.querySelector(`[data-tab="${target}"]`)?.click();
 </script>
