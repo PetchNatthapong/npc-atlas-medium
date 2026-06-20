@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>🤖 COLA CONTROL DECK</title>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <style>
+ :root {
+ --bg-primary: #0a0a0f;
+ --bg-secondary: #12121a;
+ --bg-tertiary: #1a1a26;
+ --bg-card: #22222e;
+ --accent-orange: #f97316;
+ --accent-green: #22c55e;
+ --accent-blue: #3b82f6;
+ --accent-purple: #8b5cf6;
+ --accent-red: #ef4444;
+ --accent-yellow: #fbbf24;
+ --text-primary: #f8fafc;
+ --text-secondary: #94a3b8;
+ --border: #2a2a3a;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Inter', sans-serif;
+ background: var(--bg-primary);
+ color: var(--text-primary);
+ min-height: 100vh;
+ }
+
+ /* Toast Notification */
+ .toast {
+ position: fixed;
+ bottom: 20px;
+ right: 20px;
+ background: var(--bg-secondary);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ padding: 14px 20px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ z-index: 1000;
+ transform: translateX(400px);
+ transition: transform 0.3s ease;
+ box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+ }
+ 
+ .toast.show {
+ transform: translateX(0);
+ }
+ 
+ .toast.success { border-left: 3px solid var(--accent-green); }
+ .toast.error { border-left: 3px solid var(--accent-red); }
+ .toast.info { border-left: 3px solid var(--accent-blue); }
+ 
+ .toast-icon {
+ width: 24px;
+ height: 24px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 12px;
+ }
+ 
+ .toast.success .toast-icon { background: rgba(34, 197, 94, 0.2); color: var(--accent-green); }
+ .toast.error .toast-icon { background: rgba(239, 68, 68, 0.2); color: var(--accent-red); }
+ .toast.info .toast-icon { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+ 
+ .toast-message {
+ font-size: 0.9rem;
+ }
+ 
+ .toast-close {
+ background: none;
+ border: none;
+ color: var(--text-secondary);
+ cursor: pointer;
+ padding: 4px;
+ margin-left: 10px;
+ }
+
+ /* Header */
+ .header {
+ background: var(--bg-secondary);
+ border-bottom: 1px solid var(--border);
+ padding: 12px 20px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ z-index: 100;
+ }
+
+ .header-left {
+ display: flex;
+ align-items: center;
+ gap: 20px;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ }
+
+ .logo-icon {
+ width: 32px;
+ height: 32px;
+ background: var(--accent-orange);
+ border-radius: 8px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 16px;
+ }
+
+ .logo-text {
+ font-weight: 700;
+ font-size: 1.1rem;
+ }
+
+ .breadcrumbs {
+ color: var(--text-secondary);
+ font-size: 0.85rem;
+ }
+
+ .breadcrumbs span {
+ color: var(--text-primary);
+ }
+
+ .header-right {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .issue-count {
+ background: var(--bg-tertiary);
+ padding: 6px 12px;
+ border-radius: 6px;
+ font-size: 0.85rem;
+ color: var(--text-secondary);
+ }
+
+ .new-issue-btn {
+ background: var(--accent-orange);
+ color: white;
+ border: none;
+ padding: 8px 16px;
+ border-radius: 6px;
+ font-weight: 600;
+ font-size: 0.85rem;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ transition: all 0.2s;
+ }
+
+ .new-issue-btn:hover {
+ background: #ea6c0f;
+ transform: translateY(-1px);
+ }
+
+ .search-bar {
+ background: var(--bg-tertiary);
+ border: 1px solid var(--border);
+ padding: 8px 12px;
+ border-radius: 6px;
+ width: 200px;
+ color: var(--text-primary);
+ font-size: 0.85rem;
+ }
+
+ .search-bar::placeholder {
+ color: var(--text-secondary);
+ }
+
+ /* Layout */
+ .layout {
+ display: flex;
+ margin-top: 60px;
+ min-height: calc(100vh - 60px);
+ }
+
+ /* Sidebar */
+ .sidebar {
+ width: 220px;
+ background: var(--bg-secondary);
+ border-right: 1px solid var(--border);
+ padding: 20px 0;
+ position: fixed;
+ top: 60px;
+ left: 0;
+ bottom: 0;
+ overflow-y: auto;
+ }
+
+ .nav-section {
+ margin-bottom: 24px;
+ }
+
+ .nav-title {
+ font-size: 0.7rem;
+ text-transform: uppercase;
+ color: var(--text-secondary);
+ letter-spacing: 1px;
+ padding: 0 16px;
+ margin-bottom: 8px;
+ }
+
+ .nav-item {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 10px 16px;
+ color: var(--text-secondary);
+ cursor: pointer;
+ transition: all 0.2s;
+ font-size: 0.9rem;
+ }
+
+ .nav-item:hover {
+ background: var(--bg-tertiary);
+ color: var(--text-primary);
+ }
+
+ .nav-item.active {
+ background: rgba(249, 115, 22, 0.1);
+ color: var(--accent-orange);
+ border-left: 3px solid var(--accent-orange);
+ }
+
+ .nav-item-left {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ }
+
+ .nav-count {
+ background: var(--bg-tertiary);
+ padding: 2px 8px;
+ border-radius: 10px;
+ font-size: 0.75rem;
+ }
+
+ .nav-item.active .nav-count {
+ background: var(--accent-orange);
+ color: white;
+ }
+
+ /* Main Content */
+ .main {
+ flex: 1;
+ margin-left: 220px;
+ padding: 20px;
+ }
+
+ /* Mission Board */
+ .board-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+
+ .board-title {
+ font-size: 1.2rem;
+ font-weight: 700;
+ }
+
+ .board-actions {
+ display: flex;
+ gap: 8px;
+ }
+
+ .filter-btn {
+ background: var(--bg-secondary);
+ border: 1px solid var(--border);
+ color: var(--text-secondary);
+ padding: 6px 12px;
+ border-radius: 6px;
+ font-size: 0.8rem;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ transition: all 0.2s;
+ }
+
+ .filter-btn:hover {
+ border-color: var(--accent-orange);
+ color: var(--text-primary);
+ }
+
+ /* Task Cards */
+ .tasks-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+ gap: 16px;
+ }
+
+ .task-card {
+ background: var(--bg-card);
+ border-radius: 12px;
+ padding: 16px;
+ border: 1px solid var(--border);
+ transition: all 0.2s;
+ position: relative;
+ overflow: hidden;
+ }
+
+ .task-card:hover {
+ border-color: var(--accent-orange);
+ transform: translateY(-2px);
+ }
+ 
+ .task-card.running::after {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: 2px;
+ background: linear-gradient(90deg, var(--accent-green), var(--accent-blue), var(--accent-purple));
+ animation: progress 2s linear infinite;
+ }
+ 
+ @keyframes progress {
+ 0% { transform: translateX(-100%); }
+ 100% { transform: translateX(100%); }
+ }
+
+ .task-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+ margin-bottom: 12px;
+ }
+
+ .task-id {
+ font-family: 'Fira Code', monospace;
+ font-size: 0.75rem;
+ color: var(--text-secondary);
+ background: var(--bg-tertiary);
+ padding: 2px 8px;
+ border-radius: 4px;
+ }
+
+ .task-actions {
+ display: flex;
+ gap: 6px;
+ }
+
+ .task-action-btn {
+ width: 28px;
+ height: 28px;
+ border-radius: 50%;
+ border: none;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 12px;
+ transition: all 0.2s;
+ }
+
+ .task-action-btn:hover {
+ transform: scale(1.1);
+ }
+
+ .task-action-btn.green {
+ background: rgba(34, 197, 94, 0.2);
+ color: var(--accent-green);
+ }
+
+ .task-action-btn.green:hover {
+ background: var(--accent-green);
+ color: white;
+ }
+
+ .task-action-btn.orange {
+ background: rgba(249, 115, 22, 0.2);
+ color: var(--accent-orange);
+ }
+
+ .task-action-btn.orange:hover {
+ background: var(--accent-orange);
+ color: white;
+ }
+
+ .task-action-btn.blue {
+ background: rgba(59, 130, 246, 0.2);
+ color: var(--accent-blue);
+ }
+
+ .task-action-btn.blue:hover {
+ background: var(--accent-blue);
+ color: white;
+ }
+ 
+ .task-action-btn.loading {
+ pointer-events: none;
+ opacity: 0.5;
+ }
+ 
+ .task-action-btn.loading i {
+ animation: spin 1s linear infinite;
+ }
+ 
+ @keyframes spin {
+ 100% { transform: rotate(360deg); }
+ }
+
+ .task-title {
+ font-weight: 600;
+ font-size: 0.95rem;
+ margin-bottom: 8px;
+ line-height: 1.4;
+ }
+
+ .task-desc {
+ font-size: 0.8rem;
+ color: var(--text-secondary);
+ margin-bottom: 12px;
+ line-height: 1.5;
+ }
+
+ .task-meta {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .task-agent {
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ }
+
+ .agent-avatar {
+ width: 24px;
+ height: 24px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 10px;
+ font-weight: 600;
+ }
+
+ .agent-avatar.p {
+ background: var(--accent-green);
+ }
+
+ .agent-avatar.m {
+ background: var(--accent-blue);
+ }
+ 
+ .agent-avatar.c {
+ background: var(--accent-purple);
+ }
+
+ .task-status {
+ font-size: 0.7rem;
+ color: var(--text-secondary);
+ background: var(--bg-tertiary);
+ padding: 4px 10px;
+ border-radius: 12px;
+ }
+ 
+ .task-status.completed { color: var(--accent-green); }
+ .task-status.pending { color: var(--accent-yellow); }
+ .task-status.running { color: var(--accent-blue); }
+
+ /* Quick Actions Panel */
+ .quick-panel {
+ margin-top: 24px;
+ background: var(--bg-secondary);
+ border-radius: 12px;
+ padding: 16px;
+ border: 1px solid var(--border);
+ }
+
+ .quick-title {
+ font-size: 0.85rem;
+ font-weight: 600;
+ margin-bottom: 12px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ }
+
+ .quick-actions {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 10px;
+ }
+
+ .quick-btn {
+ background: var(--bg-tertiary);
+ border: 1px solid var(--border);
+ border-radius: 8px;
+ padding: 12px;
+ text-align: center;
+ cursor: pointer;
+ transition: all 0.2s;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 6px;
+ }
+
+ .quick-btn:hover {
+ border-color: var(--accent-orange);
+ transform: translateY(-2px);
+ }
+ 
+ .quick-btn:active {
+ transform: translateY(0);
+ }
+ 
+ .quick-btn.loading {
+ pointer-events: none;
+ opacity: 0.6;
+ }
+ 
+ .quick-btn.loading i {
+ animation: spin 1s linear infinite;
+ }
+
+ .quick-btn i {
+ font-size: 18px;
+ color: var(--accent-orange);
+ }
+ 
+ .quick-btn.active i {
+ color: var(--accent-green);
+ }
+
+ .quick-btn span {
+ display: block;
+ font-size: 0.75rem;
+ color: var(--text-secondary);
+ }
+
+ /* Modal */
+ .modal-overlay {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: rgba(0,0,0,0.7);
+ display: none;
+ align-items: center;
+ justify-content: center;
+ z-index: 200;
+ }
+ 
+ .modal-overlay.show {
+ display: flex;
+ }
+ 
+ .modal {
+ background: var(--bg-secondary);
+ border: 1px solid var(--border);
+ border-radius: 16px;
+ padding: 24px;
+ width: 90%;
+ max-width: 500px;
+ }
+ 
+ .modal-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+ 
+ .modal-title {
+ font-size: 1.1rem;
+ font-weight: 700;
+ }
+ 
+ .modal-close {
+ background: none;
+ border: none;
+ color: var(--text-secondary);
+ cursor: pointer;
+ font-size: 1.2rem;
+ }
+ 
+ .modal-body input,
+ .modal-body textarea,
+ .modal-body select {
+ width: 100%;
+ background: var(--bg-tertiary);
+ border: 1px solid var(--border);
+ border-radius: 8px;
+ padding: 12px;
+ color: var(--text-primary);
+ font-size: 0.9rem;
+ margin-bottom: 12px;
+ }
+ 
+ .modal-body textarea {
+ min-height: 80px;
+ resize: vertical;
+ }
+ 
+ .modal-footer {
+ display: flex;
+ justify-content: flex-end;
+ gap: 10px;
+ margin-top: 20px;
+ }
+ 
+ .modal-btn {
+ padding: 10px 20px;
+ border-radius: 8px;
+ border: none;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+ 
+ .modal-btn.primary {
+ background: var(--accent-orange);
+ color: white;
+ }
+ 
+ .modal-btn.primary:hover {
+ background: #ea6c0f;
+ }
+ 
+ .modal-btn.secondary {
+ background: var(--bg-tertiary);
+ color: var(--text-secondary);
+ }
+ 
+ .modal-btn.secondary:hover {
+ color: var(--text-primary);
+ }
+
+ /* Terminal Output */
+ .terminal-output {
+ background: #000;
+ border-radius: 8px;
+ padding: 16px;
+ margin-top: 16px;
+ font-family: 'Fira Code', monospace;
+ font-size: 0.8rem;
+ max-height: 200px;
+ overflow-y: auto;
+ display: none;
+ }
+ 
+ .terminal-output.show {
+ display: block;
+ }
+ 
+ .terminal-output .line {
+ color: var(--accent-green);
+ margin-bottom: 4px;
+ }
+ 
+ .terminal-output .error {
+ color: var(--accent-red);
+ }
+
+ /* Responsive */
+ @media (max-width: 1024px) {
+ .sidebar { width: 180px; }
+ .main { margin-left: 180px; }
+ .tasks-grid { grid-template-columns: 1fr; }
+ }
+
+ @media (max-width: 768px) {
+ .sidebar { display: none; }
+ .main { margin-left: 0; }
+ }
+ </style>
+</head>
+<body>
+ <!-- Toast Notification -->
+ <div class="toast" id="toast">
+ <div class="toast-icon"><i class="fas fa-check"></i></div>
+ <div class="toast-message" id="toastMessage">Success!</div>
+ <button class="toast-close" onclick="hideToast()"><i class="fas fa-times"></i></button>
+ </div>
+ 
+ <!-- New Issue Modal -->
+ <div class="modal-overlay" id="newIssueModal">
+ <div class="modal">
+ <div class="modal-header">
+ <div class="modal-title">➕ Create New Mission</div>
+ <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+ </div>
+ <div class="modal-body">
+ <input type="text" id="issueTitle" placeholder="Mission title...">
+ <textarea id="issueDesc" placeholder="Description..."></textarea>
+ <select id="issueAgent">
+ <option value="COLA">COLA</option>
+ <option value="IMBR">IMBR</option>
+ <option value="Shiba">Shiba</option>
+ <option value="Hulks">Hulks</option>
+ <option value="Journal">Journal</option>
+ <option value="InvestX">InvestX</option>
+ <option value="Papez">Papez</option>
+ </select>
+ <select id="issuePriority">
+ <option value="High">🔴 High</option>
+ <option value="Medium">🟡 Medium</option>
+ <option value="Low">🟢 Low</option>
+ </select>
+ </div>
+ <div class="modal-footer">
+ <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+ <button class="modal-btn primary" onclick="createIssue()">Create Mission</button>
+ </div>
+ </div>
+ </div>
+ 
+ <!-- Terminal Output -->
+ <div class="terminal-output" id="terminalOutput"></div>
+
+ <!-- Header -->
+ <header class="header">
+ <div class="header-left">
+ <div class="logo">
+ <div class="logo-icon">◆</div>
+ <span class="logo-text">COLA CONTROL DECK</span>
+ </div>
+ <div class="breadcrumbs">
+ AT > <span>AgentsTown</span> > Mission Board
+ </div>
+ </div>
+ <div class="header-right">
+ <div class="issue-count" id="issueCount">0 Issues</div>
+ <input type="text" class="search-bar" placeholder="Search issues..." id="searchInput">
+ <button class="new-issue-btn" onclick="openModal()">
+ <i class="fas fa-plus"></i>
+ New Issue
+ </button>
+ </div>
+ </header>
+
+ <!-- Layout -->
+ <div class="layout">
+ <!-- Sidebar -->
+ <aside class="sidebar">
+ <div class="nav-section">
+ <div class="nav-title">WORKSPACE</div>
+ <div class="nav-item active" onclick="switchView.call(this, 'mission')">
+ <div class="nav-item-left">
+ <i class="fas fa-columns"></i>
+ Mission Board
+ </div>
+ <span class="nav-count" id="missionCount">0</span>
+ </div>
+ <div class="nav-item" onclick="switchView.call(this, 'team')">
+ <div class="nav-item-left">
+ <i class="fas fa-comments"></i>
+ Team Chat
+ </div>
+ </div>
+ <div class="nav-item" onclick="switchView.call(this, 'agents')">
+ <div class="nav-item-left">
+ <i class="fas fa-robot"></i>
+ Agents
+ </div>
+ <span class="nav-count">7</span>
+ </div>
+ </div>
+
+ <div class="nav-section">
+ <div class="nav-title">CAPABILITY</div>
+ <div class="nav-item" onclick="switchView.call(this, 'skills')">
+ <div class="nav-item-left">
+ <i class="fas fa-star"></i>
+ Skills
+ </div>
+ <span class="nav-count" id="skillCount">0</span>
+ </div>
+ <div class="nav-item" onclick="switchView.call(this, 'workflow')">
+ <div class="nav-item-left">
+ <i class="fas fa-project-diagram"></i>
+ Workflow
+ </div>
+ </div>
+ </div>
+
+ <div class="nav-section">
+ <div class="nav-title">SYSTEM</div>
+ <div class="nav-item" onclick="runSync('pull')">
+ <div class="nav-item-left">
+ <i class="fas fa-download"></i>
+ Sync from VPS
+ </div>
+ </div>
+ <div class="nav-item" onclick="runSync('push')">
+ <div class="nav-item-left">
+ <i class="fas fa-upload"></i>
+ Push to VPS
+ </div>
+ </div>
+ <div class="nav-item" onclick="refreshAll()">
+ <div class="nav-item-left">
+ <i class="fas fa-sync"></i>
+ Refresh Data
+ </div>
+ </div>
+ <div class="nav-item" onclick="showTerminal()">
+ <div class="nav-item-left">
+ <i class="fas fa-terminal"></i>
+ Terminal
+ </div>
+ </div>
+ </div>
+ </aside>
+
+ <!-- Main Content -->
+ <main class="main">
+ <div class="board-header">
+ <div class="board-title">📋 Mission Board</div>
+ <div class="board-actions">
+ <button class="filter-btn" onclick="filterMissions('all')">
+ All
+ </button>
+ <button class="filter-btn" onclick="filterMissions('active')">
+ Active
+ </button>
+ <button class="filter-btn" onclick="filterMissions('pending')">
+ Pending
+ </button>
+ <button class="filter-btn" onclick="filterMissions('completed')">
+ Completed
+ </button>
+ </div>
+ </div>
+
+ <!-- Tasks Grid -->
+ <div class="tasks-grid" id="tasksGrid">
+ <!-- Tasks will be loaded here -->
+ </div>
+
+ <!-- Quick Actions -->
+ <div class="quick-panel">
+ <div class="quick-title">
+ <i class="fas fa-bolt"></i> Quick Actions
+ </div>
+ <div class="quick-actions">
+ <div class="quick-btn" id="btnOpenClaw" onclick="runBulkAction('openclaw')">
+ <i class="fas fa-play"></i>
+ <span>Run OpenClaw</span>
+ </div>
+ <div class="quick-btn" id="btnHermes" onclick="runBulkAction('hermes')">
+ <i class="fas fa-wind"></i>
+ <span>Run Hermes</span>
+ </div>
+ <div class="quick-btn" id="btnSync" onclick="runSync('both')">
+ <i class="fab fa-google"></i>
+ <span>Git Sync</span>
+ </div>
+ <div class="quick-btn" id="btnRefresh" onclick="refreshAll()">
+ <i class="fas fa-sync-alt"></i>
+ <span>Refresh All</span>
+ </div>
+ </div>
+ </div>
+ </main>
+ </div>
+
+ <script>
+ // Mission data
+ let missions = [
+ {
+ id: 'ATN-001',
+ title: 'COLA v2.0 Enhancement',
+ desc: 'Add mission control, memory graph, and agent status dashboard to COLA',
+ agent: 'COLA',
+ agentAvatar: 'c',
+ status: 'In Progress'
+ },
+ {
+ id: 'ATN-002',
+ title: 'Movie Ticket Collector',
+ desc: 'Build web app for collecting movie ticket information and creating profiles',
+ agent: 'Shiba',
+ agentAvatar: 'm',
+ status: 'Completed'
+ },
+ {
+ id: 'ATN-003',
+ title: 'Fortune Teller Skill',
+ desc: 'Create tarot, horoscope, and numerology skill for COLA',
+ agent: 'COLA',
+ agentAvatar: 'c',
+ status: 'Completed'
+ },
+ {
+ id: 'ATN-004',
+ title: 'Phase 9 NeuroAgent Training',
+ desc: 'Run Phase 9 training with TTA Dice target 0.60-0.63',
+ agent: 'Shiba',
+ agentAvatar: 'm',
+ status: 'Pending'
+ },
+ {
+ id: 'ATN-005',
+ title: 'IMBR Medical Review',
+ desc: 'Create comprehensive medical review articles for board exam preparation',
+ agent: 'IMBR',
+ agentAvatar: 'p',
+ status: 'In Progress'
+ },
+ {
+ id: 'ATN-006',
+ title: 'InvestX Stock Analysis',
+ desc: 'Daily SET50 analysis and stock recommendation system',
+ agent: 'InvestX',
+ agentAvatar: 'm',
+ status: 'Daily'
+ }
+ ];
+
+ let currentFilter = 'all';
+
+ // Toast notification
+ function showToast(type, message) {
+ const toast = document.getElementById('toast');
+ const toastMessage = document.getElementById('toastMessage');
+ const toastIcon = toast.querySelector('.toast-icon i');
+ 
+ toast.className = 'toast ' + type;
+ toastMessage.textContent = message;
+ 
+ if (type === 'success') toastIcon.className = 'fas fa-check';
+ else if (type === 'error') toastIcon.className = 'fas fa-times';
+ else if (type === 'info') toastIcon.className = 'fas fa-info-circle';
+ 
+ toast.classList.add('show');
+ 
+ setTimeout(() => {
+ toast.classList.remove('show');
+ }, 4000);
+ }
+
+ function hideToast() {
+ document.getElementById('toast').classList.remove('show');
+ }
+
+ // Modal functions
+ function openModal() {
+ document.getElementById('newIssueModal').classList.add('show');
+ }
+
+ function closeModal() {
+ document.getElementById('newIssueModal').classList.remove('show');
+ }
+
+ function createIssue() {
+ const title = document.getElementById('issueTitle').value;
+ const desc = document.getElementById('issueDesc').value;
+ const agent = document.getElementById('issueAgent').value;
+ const priority = document.getElementById('issuePriority').value;
+ 
+ if (!title) {
+ showToast('error', 'Please enter a mission title');
+ return;
+ }
+ 
+ const agentAvatar = agent.charAt(0).toLowerCase();
+ const status = 'Pending';
+ 
+ const newMission = {
+ id: 'ATN-' + String(missions.length + 1).padStart(3, '0'),
+ title: title,
+ desc: desc || 'New mission created',
+ agent: agent,
+ agentAvatar: agentAvatar,
+ status: status,
+ priority: priority
+ };
+ 
+ missions.push(newMission);
+ closeModal();
+ loadMissions();
+ showToast('success', 'Mission "' + title + '" created!');
+ 
+ // Clear form
+ document.getElementById('issueTitle').value = '';
+ document.getElementById('issueDesc').value = '';
+ 
+ // Log to terminal
+ addTerminalLine('✓ Created mission: ' + newMission.id + ' - ' + title);
+ }
+
+ // Load missions
+ function loadMissions() {
+ const grid = document.getElementById('tasksGrid');
+ const count = document.getElementById('missionCount');
+ const issueCount = document.getElementById('issueCount');
+ 
+ let filteredMissions = missions;
+ if (currentFilter !== 'all') {
+ filteredMissions = missions.filter(m => {
+ if (currentFilter === 'active') return m.status === 'In Progress';
+ if (currentFilter === 'pending') return m.status === 'Pending' || m.status === 'Daily';
+ if (currentFilter === 'completed') return m.status === 'Completed';
+ return true;
+ });
+ }
+ 
+ count.textContent = filteredMissions.length;
+ issueCount.textContent = filteredMissions.length + ' Issues';
+ 
+ grid.innerHTML = filteredMissions.map(m => {
+ const statusClass = m.status.toLowerCase().replace(' ', '');
+ return `
+ <div class="task-card" data-id="${m.id}">
+ <div class="task-header">
+ <span class="task-id">${m.id}</span>
+ <div class="task-actions">
+ <button class="task-action-btn green" title="Run with OpenClaw" onclick="runTask('${m.id}', 'openclaw')">
+ <i class="fas fa-play"></i>
+ </button>
+ <button class="task-action-btn orange" title="Run with Hermes" onclick="runTask('${m.id}', 'hermes')">
+ <i class="fas fa-wind"></i>
+ </button>
+ <button class="task-action-btn blue" title="Run with Claude" onclick="runTask('${m.id}', 'claude')">
+ <i class="fas fa-brain"></i>
+ </button>
+ </div>
+ </div>
+ <div class="task-title">${m.title}</div>
+ <div class="task-desc">${m.desc}</div>
+ <div class="task-meta">
+ <div class="task-agent">
+ <div class="agent-avatar ${m.agentAvatar}">${m.agentAvatar.toUpperCase()}</div>
+ <span>${m.agent}</span>
+ </div>
+ <span class="task-status ${statusClass}">${m.status}</span>
+ </div>
+ </div>
+ `;
+ }).join('');
+ 
+ // Update skill count
+ const skillCount = document.getElementById('skillCount');
+ if (skillCount) skillCount.textContent = '3';
+ }
+
+ // Task actions
+ function runTask(id, runtime) {
+ const btn = event.target.closest('button');
+ btn.classList.add('loading');
+ 
+ const mission = missions.find(m => m.id === id);
+ 
+ // If API available, call it
+ if (apiAvailable) {
+ fetch(API_BASE + '/api/run/' + id, {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ runtime })
+ })
+ .then(r => r.json())
+ .then(data => {
+ showToast('success', data.message || 'Mission running!');
+ addTerminalLine('→ ' + id + ' sent to ' + runtime);
+ })
+ .catch(e => {
+ showToast('error', 'Failed to run mission');
+ addTerminalLine('✗ Error: ' + e.message);
+ });
+ }
+ 
+ showToast('info', `Running ${id} with ${runtime.toUpperCase()}...`);
+ addTerminalLine(`→ Executing ${id} via ${runtime.toUpperCase()}...`);
+ 
+ setTimeout(() => {
+ btn.classList.remove('loading');
+ if (mission && mission.status === 'Pending') {
+ mission.status = 'In Progress';
+ loadMissions();
+ }
+ showToast('success', `${id} executed!`);
+ addTerminalLine(`✓ ${id} completed`);
+ }, 1500);
+ }
+
+ function syncTask(id) {
+ const btn = event.target.closest('button');
+ btn.classList.add('loading');
+ 
+ showToast('info', `Syncing ${id}...`);
+ addTerminalLine(`→ Syncing ${id} with Google Drive...`);
+ 
+ setTimeout(() => {
+ btn.classList.remove('loading');
+ showToast('success', `${id} synced!`);
+ addTerminalLine(`✓ ${id} synced to Google Drive`);
+ }, 1000);
+ }
+
+ function runBulkAction(runtime) {
+ const btnId = runtime === 'openclaw' ? 'btnOpenClaw' : 'btnHermes';
+ const btn = document.getElementById(btnId);
+ btn.classList.add('loading');
+ 
+ const activeCount = missions.filter(m => m.status === 'In Progress' || m.status === 'Pending').length;
+ showToast('info', `Running ${runtime.toUpperCase()} on ${activeCount} missions...`);
+ 
+ addTerminalLine(`→ Bulk executing via ${runtime.toUpperCase()}...`);
+ 
+ setTimeout(() => {
+ btn.classList.remove('loading');
+ showToast('success', `${runtime.toUpperCase()} bulk execution complete!`);
+ addTerminalLine(`✓ Bulk execution completed`);
+ }, 2000);
+ }
+
+ // Filter missions
+ function filterMissions(filter) {
+ currentFilter = filter;
+ loadMissions();
+ 
+ document.querySelectorAll('.filter-btn').forEach(btn => {
+ btn.style.background = 'var(--bg-secondary)';
+ btn.style.color = 'var(--text-secondary)';
+ });
+ event.target.style.background = 'var(--accent-orange)';
+ event.target.style.color = 'white';
+ }
+
+ // Sync functions
+ function runSync(mode) {
+ const btn = document.getElementById('btnSync');
+ btn.classList.add('loading');
+ btn.classList.add('active');
+ 
+ const modes = {
+ 'pull': 'Pulling from VPS...',
+ 'push': 'Pushing to VPS...',
+ 'both': 'Syncing with VPS...'
+ };
+ 
+ showToast('info', modes[mode] || 'Syncing...');
+ addTerminalLine(`→ ${modes[mode]}`);
+ 
+ setTimeout(() => {
+ btn.classList.remove('loading');
+ btn.classList.remove('active');
+ showToast('success', 'Sync complete!');
+ addTerminalLine('✓ Sync completed successfully');
+ }, 2000);
+ }
+
+ // Refresh all
+ function refreshAll() {
+ const btn = document.getElementById('btnRefresh');
+ btn.classList.add('loading');
+ 
+ showToast('info', 'Refreshing mission data...');
+ addTerminalLine('→ Refreshing data from server...');
+ 
+ setTimeout(() => {
+ btn.classList.remove('loading');
+ loadMissions();
+ showToast('success', 'All data refreshed!');
+ addTerminalLine('✓ Refresh completed');
+ }, 1000);
+ }
+
+ // Terminal
+ function showTerminal() {
+ const terminal = document.getElementById('terminalOutput');
+ terminal.classList.toggle('show');
+ }
+
+ function addTerminalLine(text) {
+ const terminal = document.getElementById('terminalOutput');
+ const line = document.createElement('div');
+ line.className = 'line';
+ line.textContent = '> ' + text + ' [' + new Date().toLocaleTimeString() + ']';
+ terminal.appendChild(line);
+ terminal.scrollTop = terminal.scrollHeight;
+ }
+
+ // Search
+ document.getElementById('searchInput').addEventListener('input', function(e) {
+ const query = e.target.value.toLowerCase();
+ const cards = document.querySelectorAll('.task-card');
+
+ cards.forEach(card => {
+ const title = card.querySelector('.task-title').textContent.toLowerCase();
+ const desc = card.querySelector('.task-desc').textContent.toLowerCase();
+
+ if (title.includes(query) || desc.includes(query)) {
+ card.style.display = 'block';
+ } else {
+ card.style.display = 'none';
+ }
+ });
+ });
+
+ // Switch view
+function switchView(view) {
+  const main = document.querySelector('.main');
+  const boardHeader = document.querySelector('.board-header');
+  const tasksGrid = document.getElementById('tasksGrid');
+  const quickPanel = document.querySelector('.quick-panel');
+
+  // Deactivate all nav items
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  // Activate the clicked one
+  event.currentTarget.classList.add('active');
+
+  if (view === 'mission') {
+    if (boardHeader) boardHeader.style.display = 'flex';
+    if (tasksGrid) tasksGrid.style.display = 'grid';
+    if (quickPanel) quickPanel.style.display = 'block';
+    loadMissions();
+    return;
+  }
+
+  // Hide mission board elements
+  if (boardHeader) boardHeader.style.display = 'none';
+  if (tasksGrid) tasksGrid.style.display = 'none';
+  if (quickPanel) quickPanel.style.display = 'none';
+
+  let html = '';
+
+  if (view === 'agents') {
+    html = `
+      <div style="padding:20px">
+        <h2 style="margin-bottom:16px"><i class="fas fa-robot"></i> Agents</h2>
+        <div class="tasks-grid">
+          <div class="task-card"><div class="task-header"><span class="task-id">VPS</span></div><div class="task-title">COLA</div><div class="task-desc">Main Orchestrator (@COL4ABot)</div></div>
+          <div class="task-card"><div class="task-header"><span class="task-id">VPS</span></div><div class="task-title">IMBR</div><div class="task-desc">Internal Medicine Board Review</div></div>
+          <div class="task-card"><div class="task-header"><span class="task-id">VPS</span></div><div class="task-title">InvestX</div><div class="task-desc">Investment Research</div></div>
+          <div class="task-card"><div class="task-header"><span class="task-id">VPS</span></div><div class="task-title">Papez</div><div class="task-desc">Neurology Learning</div></div>
+          <div class="task-card"><div class="task-header"><span class="task-id">VPS</span></div><div class="task-title">Shiba</div><div class="task-desc">Coding Agent</div></div>
+          <div class="task-card"><div class="task-header"><span class="task-id">VPS</span></div><div class="task-title">Hulks</div><div class="task-desc">Fitness Coach</div></div>
+          <div class="task-card"><div class="task-header"><span class="task-id">VPS</span></div><div class="task-title">Journal</div><div class="task-desc">News Curation</div></div>
+        </div>
+      </div>`;
+  } else if (view === 'skills') {
+    html = `
+      <div style="padding:20px">
+        <h2 style="margin-bottom:16px"><i class="fas fa-star"></i> Skills</h2>
+        <div class="tasks-grid">
+          <div class="task-card"><div class="task-title">Medical Review</div><div class="task-desc">IMBR Agent</div></div>
+          <div class="task-card"><div class="task-title">Investment Analysis</div><div class="task-desc">InvestX Agent</div></div>
+          <div class="task-card"><div class="task-title">Fortune Teller</div><div class="task-desc">Tarot + Numerology</div></div>
+          <div class="task-card"><div class="task-title">NeuroAgent</div><div class="task-desc">Stroke Imaging (Papez)</div></div>
+          <div class="task-card"><div class="task-title">Health Coaching</div><div class="task-desc">Hulks Agent</div></div>
+        </div>
+      </div>`;
+  } else if (view === 'workflow') {
+    html = `
+      <div style="padding:20px">
+        <h2 style="margin-bottom:16px"><i class="fas fa-project-diagram"></i> Workflow</h2>
+        <div style="background:var(--bg-card);padding:20px;border-radius:12px;border:1px solid var(--border)">
+          <p><strong>mimeo 9-step method</strong></p>
+          <p style="color:var(--text-secondary);margin-top:12px">DISAMBIGUATE → DISCOVER → FETCH → DISTILL → CLUSTER → VERIFY → DELEGATE → CRITIQUE → DELIVER</p>
+        </div>
+      </div>`;
+  } else if (view === 'team') {
+    html = `<div style="padding:40px;text-align:center;color:var(--text-secondary)"><i class="fas fa-comments" style="font-size:48px"></i><p style="margin-top:16px">Team Chat coming soon</p></div>`;
+  }
+
+  if (tasksGrid) {
+    tasksGrid.innerHTML = html;
+    tasksGrid.style.display = 'block';
+  }
+}
+ 
+ function generateMissionsHTML() {
+ let currentFiltered = missions;
+ if (currentFilter !== 'all') {
+ currentFiltered = missions.filter(m => {
+ if (currentFilter === 'active') return m.status === 'In Progress';
+ if (currentFilter === 'pending') return m.status === 'Pending' || m.status === 'Daily';
+ if (currentFilter === 'completed') return m.status === 'Completed';
+ return true;
+ });
+ }
+ return currentFiltered.map(m => {
+ const statusClass = m.status.toLowerCase().replace(' ', '');
+ return `
+ <div class="task-card" data-id="${m.id}">
+ <div class="task-header">
+ <span class="task-id">${m.id}</span>
+ <div class="task-actions">
+ <button class="task-action-btn green" title="Run with OpenClaw" onclick="runTask('${m.id}', 'openclaw')">
+ <i class="fas fa-play"></i>
+ </button>
+ <button class="task-action-btn orange" title="Run with Hermes" onclick="runTask('${m.id}', 'hermes')">
+ <i class="fas fa-wind"></i>
+ </button>
+ <button class="task-action-btn blue" title="Run with Claude" onclick="runTask('${m.id}', 'claude')">
+ <i class="fas fa-brain"></i>
+ </button>
+ </div>
+ </div>
+ <div class="task-title">${m.title}</div>
+ <div class="task-desc">${m.desc}</div>
+ <div class="task-meta">
+ <div class="task-agent">
+ <div class="agent-avatar ${m.agentAvatar}">${m.agentAvatar.toUpperCase()}</div>
+ <span>${m.agent}</span>
+ </div>
+ <span class="task-status ${statusClass}">${m.status}</span>
+ </div>
+ </div>
+ `;
+ }).join('');
+ }
+ 
+ // filteredMissions is already defined in loadMissions()
+
+ // Load on init
+ loadMissions();
+ testAPI(); // Test API connection
+ addTerminalLine('COLA Control Deck initialized');
+ addTerminalLine('Ready for commands...');
+ </script>
+</body>
+</html>
